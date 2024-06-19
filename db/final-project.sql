@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2024 a las 19:18:15
+-- Tiempo de generación: 19-06-2024 a las 19:49:57
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alumnos` (
   `ID_alumno` int(11) NOT NULL,
-  `asd` int(11) NOT NULL,
+  `sss` int(11) NOT NULL,
   `asdasd` int(11) NOT NULL,
   `asdasdasd` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
