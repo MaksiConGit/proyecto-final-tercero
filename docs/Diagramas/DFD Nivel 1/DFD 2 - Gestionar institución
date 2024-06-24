@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-06-23T23:05:15.784Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="oPjN7MjvkFp_A7rmL7kB" version="24.6.2" type="google">
+<mxfile host="app.diagrams.net" modified="2024-06-24T13:37:24.546Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="d-5IOTgPUn091_HTnOty" version="24.6.2" type="google">
   <diagram name="Página-1" id="BunKmMJ-pLjQCvH-Fu7x">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
@@ -364,7 +364,7 @@
             <mxPoint x="10" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Dw-8PvchW0uQbKZWsPdG-72" value="Notas" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+        <mxCell id="Dw-8PvchW0uQbKZWsPdG-72" value="Asistencias" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
           <mxGeometry x="554" y="917.5" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Dw-8PvchW0uQbKZWsPdG-73" value="" style="group" connectable="0" vertex="1" parent="1">
