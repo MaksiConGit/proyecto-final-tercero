@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-06-24T12:51:05.145Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="lOl3UNLen6VtTYH7rVx4" version="24.6.2" type="google">
+<mxfile host="app.diagrams.net" modified="2024-06-24T13:03:26.370Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="3YvC9Ngb0NsJOJ_6-rhC" version="24.6.2" type="google">
   <diagram name="Página-1" id="BunKmMJ-pLjQCvH-Fu7x">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
@@ -23,7 +23,7 @@
         <mxCell id="ZkSHeUPP8idSm59Wl3ps-2" value="Directivos" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="37" y="300" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="bsq7FPvalT68u3a3NHjW-5" value="Cursos" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+        <mxCell id="bsq7FPvalT68u3a3NHjW-5" value="Materias" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
           <mxGeometry x="554" y="300" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="goO2O2_ApSKeQG0PPcm_-1" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;2.2&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
@@ -94,7 +94,7 @@
         <mxCell id="Ok6PrCDMh-m7JlxFgKPB-5" value="Directivos" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="37" y="420" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="Ok6PrCDMh-m7JlxFgKPB-6" value="Cursos" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+        <mxCell id="Ok6PrCDMh-m7JlxFgKPB-6" value="Materias" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
           <mxGeometry x="554" y="420" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ok6PrCDMh-m7JlxFgKPB-7" value="" style="group" connectable="0" vertex="1" parent="1">
@@ -141,7 +141,7 @@
         <mxCell id="Ok6PrCDMh-m7JlxFgKPB-18" value="Directivos" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="37" y="540" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="Ok6PrCDMh-m7JlxFgKPB-19" value="Cursos" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+        <mxCell id="Ok6PrCDMh-m7JlxFgKPB-19" value="Materias" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
           <mxGeometry x="554" y="540" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ok6PrCDMh-m7JlxFgKPB-20" value="" style="group" connectable="0" vertex="1" parent="1">
