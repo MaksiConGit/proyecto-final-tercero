@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-06-23T23:45:54.543Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="CY0xwCTQiuhUnVr0Pd7z" version="24.6.2" type="google">
+<mxfile host="app.diagrams.net" modified="2024-06-25T12:10:06.109Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="9U1nc00TrEJRHYz0kuDg" version="24.6.2" type="google">
   <diagram name="Página-1" id="BunKmMJ-pLjQCvH-Fu7x">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
@@ -71,7 +71,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="Dw-8PvchW0uQbKZWsPdG-10" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Se les asigna alumnos a cursos? O se da por entendido dando cursos al alumno?&lt;/font&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="90" y="200" width="120" height="80" as="geometry" />
+          <mxGeometry x="20" y="210" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="Dw-8PvchW0uQbKZWsPdG-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
@@ -197,6 +197,9 @@
           <mxGeometry x="-0.1057" y="2" relative="1" as="geometry">
             <mxPoint y="2" as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="OLQoGlEzaw7tSlLIgN3U-1" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Se les debería asignar una carrera a los cursos&lt;/font&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="120" y="120" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

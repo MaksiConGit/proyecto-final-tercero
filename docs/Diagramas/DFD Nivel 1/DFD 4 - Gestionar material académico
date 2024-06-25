@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-06-24T21:04:27.896Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0" etag="13B4IM6JCekr0lFK2S7a" version="24.6.2" type="google">
+<mxfile host="app.diagrams.net" modified="2024-06-25T11:54:18.924Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="l_9O1lRt-cfg3S-xeetB" version="24.6.2" type="google">
   <diagram name="Página-1" id="b5gq5kTEN46D2r1LUzja">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -151,6 +151,27 @@
               <mxPoint x="200" y="505" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="d2ovm82TIKr1eMUwQgHg-1" value="Si el profesor quiere modificar o eliminar un material?" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="707" y="45" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UTOGStVXb344h6jiApr9-1" value="Si los directivos quieren eliminar o modificar carpetas?" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry y="350" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UTOGStVXb344h6jiApr9-2" value="Si los directivos quieren modificar o eliminar el acceso que tiene un profesor" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="-20" y="200" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UTOGStVXb344h6jiApr9-3" value="Se debería primeramente obtener los datos del profesor desde el almacen Profesores?" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="100" y="220" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UTOGStVXb344h6jiApr9-4" value="El profesor debería pasar sus datos?" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="150" y="-20" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UTOGStVXb344h6jiApr9-6" value="El primer proceso debería empezar arriba a la izquiera para más legibilidad" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="430" y="590" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="UTOGStVXb344h6jiApr9-7" value="El acceso de profesores debería estar almacenado?&amp;nbsp;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="717" y="310" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

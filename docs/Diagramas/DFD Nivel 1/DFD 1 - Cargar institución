@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-06-23T14:58:33.994Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="VMPbGkmJyKF9aWwt3Aqp" version="24.6.2" type="google">
+<mxfile host="app.diagrams.net" modified="2024-06-25T12:07:09.892Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="l52nDebssw3Qxg7nhWc7" version="24.6.2" type="google">
   <diagram name="Página-1" id="BunKmMJ-pLjQCvH-Fu7x">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
@@ -231,6 +231,9 @@
           <mxGeometry x="-0.2247" relative="1" as="geometry">
             <mxPoint x="59" as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="Cqo5bBzVj12O5emGZ3YI-1" value="Los directivos deberían gestionar carreras" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="140" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

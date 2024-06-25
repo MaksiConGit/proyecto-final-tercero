@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-06-23T19:01:18.424Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="44JTB0xgx6WyWLUVjxnH" version="24.6.2" type="google">
+<mxfile host="app.diagrams.net" modified="2024-06-25T12:08:26.019Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="8mLepjYEitB2cyPR68AI" version="24.6.2" type="google">
   <diagram name="Página-1" id="BunKmMJ-pLjQCvH-Fu7x">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
@@ -69,7 +69,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="bsq7FPvalT68u3a3NHjW-12" value="Directivos" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="534" width="120" height="40" as="geometry" />
+          <mxGeometry x="50" y="534" width="120" height="36" as="geometry" />
         </mxCell>
         <mxCell id="bsq7FPvalT68u3a3NHjW-13" value="Material academico" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
           <mxGeometry x="443.83" y="850" width="100" height="40" as="geometry" />
@@ -452,7 +452,7 @@
         <mxCell id="ZBBeim9xUmzYzRn1ch8--104" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;En vez de poner tantos almacenes, se podría poner uno que se llame Institución y englobe todos?&lt;/font&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="970" y="450" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="ZBBeim9xUmzYzRn1ch8--110" value="&lt;font size=&quot;1&quot;&gt;Debería poner que el proceso le pasa los datos que le pasaron, pero no entra&lt;/font&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="ZBBeim9xUmzYzRn1ch8--110" value="&lt;font size=&quot;1&quot;&gt;Debería poner que el proceso le pasa los datos que le pasaron, pero no entra&lt;/font&gt;" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="1040" y="534" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="ZBBeim9xUmzYzRn1ch8--115" value="Material academico" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
@@ -491,6 +491,12 @@
           <mxGeometry x="-0.4308" y="-1" relative="1" as="geometry">
             <mxPoint x="18" y="-1" as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="bTv0YgUxmyeGEJxx8T4_-1" value="La institución debería gestionar los días no hábiles" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="700" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="XBTKkx6YKHFMksMy7I9S-1" value="Los directivos deberían cargar y gestionar carreras" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="90" y="400" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
