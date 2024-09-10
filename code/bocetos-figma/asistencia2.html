@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión Académica</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .progress-bar {
+            transition: width 1s ease-in-out;
+        }
+        .accordion {
+            cursor: pointer;
+            transition: background-color 0.6s ease;
+        }
+        .accordion-content {
+            display: none;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="container mx-auto">
+        <header class="flex justify-between items-center mb-6">
+            <h1 class="text-3xl font-bold">Página Principal</h1>
+            <div class="flex items-center space-x-4">
+                <nav>
+                    <ul class="flex space-x-4">
+                        <li class="accordion">
+                            <a href="#" class="text-blue-500">Materias</a>
+                            <div class="accordion-content">
+                                <a href="#" class="block text-blue-500">Submateria 1</a>
+                                <a href="#" class="block text-blue-500">Submateria 2</a>
+                            </div>
+                        </li>
+                        <li class="accordion">
+                            <a href="#" class="text-blue-500">Profesores</a>
+                            <div class="accordion-content">
+                                <a href="#" class="block text-blue-500">Profesor 1</a>
+                                <a href="#" class="block text-blue-500">Profesor 2</a>
+                            </div>
+                        </li>
+                        <li class="accordion">
+                            <a href="#" class="text-blue-500">Calendario</a>
+                            <div class="accordion-content">
+                                <a href="#" class="block text-blue-500">Evento 1</a>
+                                <a href="#" class="block text-blue-500">Evento 2</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="relative">
+                    <img src="https://via.placeholder.com/40" alt="Usuario" class="rounded-full">
+                </div>
+            </div>
+        </header>
+        
+        <section class="mb-6">
+            <h2 class="text-2xl font-semibold">Asistencia por Materia</h2>
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <div class="flex flex-col items-center">
+                    <span>Base de Datos</span>
+                    <canvas id="chartBaseDatos" width="100" height="100"></canvas>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span>Desarrollo Web</span>
+                    <canvas id="chartDesarrolloWeb" width="100" height="100"></canvas>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span>Seguridad de los Sistemas</span>
+                    <canvas id="chartSeguridadSistemas" width="100" height="100"></canvas>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span>Practica Profesionalizante</span>
+                    <canvas id="chartPracticaProfesionalizante" width="100" height="100"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-6">
+            <h2 class="text-2xl font-semibold">Asistencia Promedio</h2>
+            <div class="flex justify-center items-center mt-4">
+                <div class="w-32 h-32 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl">
+                    85%
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        // Datos de asistencia
+        const data = {
+            baseDatos: 85,
+            desarrolloWeb: 90,
+            seguridadSistemas: 78,
+            practicaProfesionalizante: 65
+        };
+
+        // Configuración de gráficos
+        const config = (ctx, percentage) => ({
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [percentage, 100 - percentage],
+                    backgroundColor: ['#4CAF50', '#E0E0E0'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutoutPercentage: 70,
+                plugins: {
+                    tooltip: {
+                        enabled: false
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: `${percentage}%`,
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Inicialización de gráficos
+        window.onload = function() {
+            const ctxBaseDatos = document.getElementById('chartBaseDatos').getContext('2d');
+            new Chart(ctxBaseDatos, config(ctxBaseDatos, data.baseDatos));
+
+            const ctxDesarrolloWeb = document.getElementById('chartDesarrolloWeb').getContext('2d');
+            new Chart(ctxDesarrolloWeb, config(ctxDesarrolloWeb, data.desarrolloWeb));
+
+            const ctxSeguridadSistemas = document.getElementById('chartSeguridadSistemas').getContext('2d');
+            new Chart(ctxSeguridadSistemas, config(ctxSeguridadSistemas, data.seguridadSistemas));
+
+            const ctxPracticaProfesionalizante = document.getElementById('chartPracticaProfesionalizante').getContext('2d');
+            new Chart(ctxPracticaProfesionalizante, config(ctxPracticaProfesionalizante, data.practicaProfesionalizante));
+        };
+
+        // JavaScript para el menú de solapas
+        document.querySelectorAll('.accordion').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+                let content = item.querySelector('.accordion-content');
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
