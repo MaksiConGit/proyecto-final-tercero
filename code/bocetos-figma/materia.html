@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materia: Base de Datos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.css" rel="stylesheet" />
+    
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js"></script>
+
+    <style>
+        #calendar {
+            /* Limitar el tamaño del calendario y centrarlo dentro de la columna */
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Ajustes para el calendario móvil */
+        @media (max-width: 768px) {
+            #calendar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-200 p-4">
+            <ul class="space-y-4">
+                <li><a href="index.html" class="text-gray-700 hover:text-gray-900">Página principal</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-gray-900">Materias</a></li>
+                <li><a href="asistencia.html" class="text-gray-700 hover:text-gray-900">Asistencia</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-gray-900">Notas</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-gray-900">Ver todo el material académico</a></li>
+            </ul>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="flex-1 p-6">
+            <!-- Header de la materia -->
+            <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+                <img src="Materia.png" alt="Imagen de Base de Datos" class="rounded-lg w-full h-56 object-cover mb-4">
+                <h1 class="text-4xl font-bold text-gray-800">Base De Datos</h1>
+                <div class="flex items-center mt-4">
+                    <img src="profesor.png" alt="Profesor" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-700">Profesor Nicolas Rotilli</h2>
+                        <p class="text-gray-600">rotillinicolas@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de Materiales -->
+            <div class="space-y-4">
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Temario de la materia</h3>
+                    <p class="text-gray-600 mb-2">Nicolas Rotilli - 30 Abril</p>
+                    <p class="text-gray-600">En este PDF está todo el temario de la materia, las modalidades que hay y demás.</p>
+                    <a href="temario.pdf" class="text-indigo-600 font-bold mt-2 block">Descargar PDF</a>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Material</h3>
+                    <p class="text-gray-600 mb-2">Nicolas Rotilli - 30 Agosto</p>
+                    <p class="text-gray-600">En este PDF está todo el material de la materia.</p>
+                    <a href="material.pdf" class="text-indigo-600 font-bold mt-2 block">Descargar PDF</a>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Temario del Parcial</h3>
+                    <p class="text-gray-600 mb-2">Nicolas Rotilli - 18 Agosto</p>
+                    <p class="text-gray-600">En este PDF está el temario para el próximo parcial.</p>
+                    <a href="parcial.pdf" class="text-indigo-600 font-bold mt-2 block">Descargar PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar derecho (Calendario y asistencia) -->
+        <div class="w-80 bg-white p-4">
+            <!-- Calendario interactivo -->
+            <div class="mb-6">
+                <h3 class="text-center font-semibold text-lg text-gray-800 mb-4">Calendario</h3>
+                <div id="calendar"></div>
+            </div>
+
+            <div class="bg-green-100 p-6 rounded-lg text-center">
+                <h3 class="text-2xl font-bold text-green-700">85%</h3>
+                <p class="text-green-600">Asistencia Promedio</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para inicializar FullCalendar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth', // Vista inicial en forma de calendario mensual
+                locale: 'es', // Cambiar idioma a español
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                height: 'auto',  // Adaptar la altura del calendario
+                contentHeight: 400,  // Fijar una altura específica para que quede compacto
+                events: [
+                    {
+                        title: 'Examen Parcial',
+                        start: '2024-09-15',
+                        end: '2024-09-15',
+                        description: 'Examen parcial de Base de Datos'
+                    },
+                    {
+                        title: 'Entrega de Proyecto',
+                        start: '2024-09-22',
+                        end: '2024-09-22',
+                        description: 'Fecha límite para entregar proyecto final'
+                    }
+                ]
+            });
+
+            calendar.render();
+        });
+    </script>
+</body>
+</html>

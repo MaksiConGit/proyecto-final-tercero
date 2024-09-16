@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asistencia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <div class="bg-gray-200 w-64 p-6">
+      <ul>
+        <li class="mb-4"><a href="index.html" class="font-semibold">Página Principal</a></li>
+        <li class="mb-4"><a href="#" class="font-semibold">Notas</a></li>
+        <li class="mb-4"><a href="#" class="font-semibold">Asistencia</a></li>
+        <li class="mb-4"><a href="#" class="font-semibold">Ver todo el material académico</a></li>
+      </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="flex-1 p-6">
+      <!-- Solapas -->
+      <div class="mb-6">
+        <div x-data="{ openTab: 1 }" class="w-full">
+          <ul class="flex cursor-pointer">
+            <li :class="{ 'border-b-2 border-blue-500': openTab === 1 }" @click="openTab = 1" class="px-4 py-2">
+              <a class="text-xl font-semibold">Materias</a>
+            </li>
+            <li :class="{ 'border-b-2 border-blue-500': openTab === 2 }" @click="openTab = 2" class="px-4 py-2">
+              <a class="text-xl font-semibold">Profesores</a>
+            </li>
+            <li :class="{ 'border-b-2 border-blue-500': openTab === 3 }" @click="openTab = 3" class="px-4 py-2">
+              <a class="text-xl font-semibold">Calendario</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Sección de calendario y asistencia promedio -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-bold mb-4">Calendario de Asistencias</h2>
+          <div class="bg-white rounded-lg shadow-md p-4">
+            <!-- Calendario -->
+            <div class="grid grid-cols-7 gap-2 mb-4">
+              <div class="text-center font-bold">Dom</div>
+              <div class="text-center font-bold">Lun</div>
+              <div class="text-center font-bold">Mar</div>
+              <div class="text-center font-bold">Mié</div>
+              <div class="text-center font-bold">Jue</div>
+              <div class="text-center font-bold">Vie</div>
+              <div class="text-center font-bold">Sáb</div>
+              
+              <!-- Celdas del calendario -->
+              <!-- Aquí podrías generar dinámicamente las celdas con datos -->
+              <div class="text-center py-2">28</div>
+              <div class="text-center py-2">29</div>
+              <div class="text-center py-2">30</div>
+              <div class="text-center py-2">31</div>
+              <div class="text-center py-2">1</div>
+              <div class="text-center py-2">2</div>
+              <div class="text-center py-2">3</div>
+              <!-- Repite las celdas del calendario -->
+            </div>
+          </div>
+          
+          <!-- Asistencia promedio -->
+          <div class="flex items-center justify-center mt-6">
+            <div class="w-32 h-32 relative">
+              <svg viewBox="0 0 36 36" class="w-full h-full">
+                <circle cx="18" cy="18" r="15" stroke="gray" stroke-width="3" fill="none" />
+                <path d="M18 3 a 15 15 0 0 1 0 30 a 15 15 0 0 1 0 -30" stroke="green" stroke-width="3" fill="none" />
+              </svg>
+              <span class="absolute inset-0 flex items-center justify-center font-bold text-2xl">85%</span>
+            </div>
+            <span class="ml-4 text-xl font-semibold">Asistencia Promedio</span>
+          </div>
+        </div>
+
+        <!-- Lista de materias con asistencia individual -->
+        <div class="grid grid-cols-1 gap-6">
+          <h2 class="text-xl font-bold mb-4">Asistencia por Materia</h2>
+          
+          <!-- Materia 1 -->
+          <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
+            <div>
+              <h2 class="text-xl font-bold">Base de Datos</h2>
+            </div>
+            <div class="flex items-center">
+              <div class="w-16 h-16 relative">
+                <svg viewBox="0 0 36 36" class="w-full h-full">
+                  <circle cx="18" cy="18" r="15" stroke="gray" stroke-width="3" fill="none" />
+                  <path d="M18 3 a 15 15 0 0 1 0 30 a 15 15 0 0 1 0 -30" stroke="green" stroke-width="3" fill="none" />
+                </svg>
+                <span class="absolute inset-0 flex items-center justify-center font-bold text-xl">85%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Materia 2 -->
+          <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
+            <div>
+              <h2 class="text-xl font-bold">Desarrollo Web</h2>
+            </div>
+            <div class="flex items-center">
+              <div class="w-16 h-16 relative">
+                <svg viewBox="0 0 36 36" class="w-full h-full">
+                  <circle cx="18" cy="18" r="15" stroke="gray" stroke-width="3" fill="none" />
+                  <path d="M18 3 a 15 15 0 0 1 0 30 a 15 15 0 0 1 0 -30" stroke="green" stroke-width="3" fill="none" />
+                </svg>
+                <span class="absolute inset-0 flex items-center justify-center font-bold text-xl">90%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Materia 3 -->
+          <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
+            <div>
+              <h2 class="text-xl font-bold">Seguridad de los Sistemas</h2>
+            </div>
+            <div class="flex items-center">
+              <div class="w-16 h-16 relative">
+                <svg viewBox="0 0 36 36" class="w-full h-full">
+                  <circle cx="18" cy="18" r="15" stroke="gray" stroke-width="3" fill="none" />
+                  <path d="M18 3 a 15 15 0 0 1 0 30 a 15 15 0 0 1 0 -30" stroke="green" stroke-width="3" fill="none" />
+                </svg>
+                <span class="absolute inset-0 flex items-center justify-center font-bold text-xl">78%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Materia 4 -->
+          <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
+            <div>
+              <h2 class="text-xl font-bold">Practica Profesionalizante</h2>
+            </div>
+            <div class="flex items-center">
+              <div class="w-16 h-16 relative">
+                <svg viewBox="0 0 36 36" class="w-full h-full">
+                  <circle cx="18" cy="18" r="15" stroke="gray" stroke-width="3" fill="none" />
+                  <path d="M18 3 a 15 15 0 0 1 0 30 a 15 15 0 0 1 0 -30" stroke="yellow" stroke-width="3" fill="none" />
+                </svg>
+                <span class="absolute inset-0 flex items-center justify-center font-bold text-xl">65%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para solapas -->
+  <script src="https://unpkg.com/alpinejs@2.8.2" defer></script>
+</body>
+</html>

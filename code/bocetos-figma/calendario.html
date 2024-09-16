@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Interactivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FullCalendar CSS -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
+    <style>
+        .fc-toolbar-title {
+            color: #4c1d95; /* Color púrpura del encabezado */
+            font-size: 1.5rem;
+        }
+        .fc-event {
+            background-color: #4c1d95; /* Eventos en púrpura */
+            border: none;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Contenedor Principal -->
+    <div class="min-h-screen flex flex-col">
+        
+        <!-- Encabezado -->
+        <header class="bg-purple-900 p-4 flex justify-between items-center text-white">
+            <h1 class="text-xl font-bold">Calendario Interactivo</h1>
+            <div class="flex space-x-4">
+                <a href="index.html" class="text-white hover:text-gray-200">Página Principal</a>
+                <a href="materia.html" class="text-white hover:text-gray-200">Materias</a>
+                <a href="profesores.html" class="text-white hover:text-gray-200">Profesores</a>
+                <a href="asistencia.html" class="text-white hover:text-gray-200">Asistencias</a>
+            </div>
+        </header>
+
+        <!-- Cuerpo de la Página -->
+        <main class="flex-grow p-6">
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <!-- Calendario Interactivo -->
+                <div id='calendar'></div>
+            </div>
+        </main>
+
+        <!-- Pie de página -->
+        <footer class="bg-purple-900 text-white p-4 text-center">
+            © 2024 - Sistema Académico
+        </footer>
+
+    </div>
+
+    <!-- FullCalendar JS -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'es',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    {
+                        title: 'Entrega de Trabajo',
+                        start: '2024-09-15',
+                        color: '#22c55e' // Verde para entrega de trabajos
+                    },
+                    {
+                        title: 'Examen Parcial',
+                        start: '2024-09-20',
+                        color: '#ef4444' // Rojo para pruebas
+                    },
+                    {
+                        title: 'Feriado',
+                        start: '2024-09-25',
+                        color: '#facc15' // Amarillo para feriados
+                    },
+                    {
+                        title: 'Paro General',
+                        start: '2024-09-30',
+                        color: '#60a5fa' // Azul para paros
+                    }
+                ],
+                eventClick: function(info) {
+                    alert('Evento: ' + info.event.title);
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
+</body>
+</html>

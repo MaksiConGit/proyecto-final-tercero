@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex font-sans bg-gray-100">
+    <div class="w-20 bg-gray-200 flex flex-col items-center py-5">
+        <img src="notas.png" alt="Notas" class="w-8 mb-5 hover:opacity-75 transition-opacity">
+        <img src="asistencia.png" alt="Asistencia" class="w-8 mb-5 hover:opacity-75 transition-opacity">
+        <img src="material.png" alt="Material académico" class="w-8 mb-5 hover:opacity-75 transition-opacity">
+    </div>
+    <div class="flex-grow">
+        <div class="bg-purple-800 text-white p-4 flex justify-between items-center">
+            <nav class="flex space-x-4">
+                <a href="index.html" class="hover:bg-purple-600 px-4 py-2 rounded-full transition-colors">Página principal</a>
+                <a href="materia.html" class="hover:bg-purple-600 px-4 py-2 rounded-full transition-colors">Materia</a>
+                <a href="#" class="bg-purple-600 px-4 py-2 rounded-full">Profesores</a>
+            </nav>
+            <div class="w-10 h-10 bg-gray-400 rounded-full"></div>
+        </div>
+        <div class="p-6">
+            <input type="text" id="search" placeholder="Buscar profesor..." class="mb-4 p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <div id="profesor-list" class="space-y-6">
+                <div class="bg-white rounded-lg p-5 shadow hover:shadow-lg transition-shadow flex items-center">
+                    <img src="profesor.png" alt="Walter Bur" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <strong class="text-lg">Walter Bur</strong>
+                        <p>Materia: Seguridad de los Sistemas</p>
+                        <p>Email: WalterBur@gmail.com</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg p-5 shadow hover:shadow-lg transition-shadow flex items-center">
+                    <img src="profesor2.png" alt="Karina Gigli" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <strong class="text-lg">Karina Gigli</strong>
+                        <p>Materia: Práctica Profesionalizante</p>
+                        <p>Email: KarinaGigli@gmail.com</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg p-5 shadow hover:shadow-lg transition-shadow flex items-center">
+                    <img src="profesor.png" alt="Nicolas Rotilli" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <strong class="text-lg">Nicolas Rotilli</strong>
+                        <p>Materia: Base de Datos</p>
+                        <p>Email: NicolasRotilli@gmail.com</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg p-5 shadow hover:shadow-lg transition-shadow flex items-center">
+                    <img src="profesor2.png" alt="Nancy Cabral" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <strong class="text-lg">Nancy Cabral</strong>
+                        <p>Materia: Gestión de Software</p>
+                        <p>Email: NancyCabral@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('search').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const profesores = document.querySelectorAll('#profesor-list > div');
+            
+            profesores.forEach(profesor => {
+                const name = profesor.querySelector('strong').textContent.toLowerCase();
+                if (name.includes(query)) {
+                    profesor.classList.remove('hidden');
+                } else {
+                    profesor.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material 2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .dark-mode {
+            transition: background-color 0.3s, color 0.3s;
+        }
+    </style>
+</head>
+<body class="flex font-sans bg-gray-100 dark:bg-gray-900 dark-mode">
+    <div class="w-20 bg-gray-200 dark:bg-gray-800 flex flex-col items-center py-5">
+        <img src="notas.png" alt="Notas" class="w-8 mb-5 hover:opacity-75 transition-opacity">
+        <img src="asistencia.png" alt="Asistencia" class="w-8 mb-5 hover:opacity-75 transition-opacity">
+        <img src="material.png" alt="Material académico" class="w-8 mb-5 hover:opacity-75 transition-opacity">
+    </div>
+    <div class="flex-grow">
+        <div class="bg-purple-800 dark:bg-purple-700 text-white p-4 flex justify-between items-center">
+            <nav class="flex space-x-4">
+                <a href="index.html" class="hover:bg-purple-600 px-4 py-2 rounded-full transition-colors">Página principal</a>
+                <a href="materia.html" class="bg-purple-600 px-4 py-2 rounded-full">Materia</a>
+                <a href="profesores.html" class="hover:bg-purple-600 px-4 py-2 rounded-full transition-colors">Profesores</a>
+            </nav>
+            <button id="theme-toggle" class="w-10 h-10 bg-gray-400 dark:bg-gray-600 rounded-full focus:outline-none">
+                🌙
+            </button>
+        </div>
+        <div class="p-6">
+            <input type="text" id="search" placeholder="Buscar material..." class="mb-4 p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <h1 class="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Material 2024</h1>
+            <ul id="material-list" class="list-disc list-inside space-y-2 text-gray-900 dark:text-gray-300">
+                <li class="transition-transform transform hover:scale-105"><strong>Base de datos</strong>
+                    <ul class="list-disc list-inside pl-5">
+                        <li>pdf1</li>
+                        <li>pdf2</li>
+                    </ul>
+                </li>
+                <li class="transition-transform transform hover:scale-105">Seguridad de los sistemas</li>
+                <li class="transition-transform transform hover:scale-105">Desarrollo Web</li>
+                <li class="transition-transform transform hover:scale-105">Práctica Profesionalizante</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+        const searchInput = document.getElementById('search');
+        const materialItems = document.querySelectorAll('#material-list > li');
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            toggleButton.textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+        });
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            materialItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
