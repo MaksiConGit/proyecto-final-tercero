@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('course_number');
             $table->string('section');
             $table->foreignId('career_id')->constrained()
                                         ->onUpdate('cascade')
                                         ->onDelete('restrict');
-            $table->boolean('is_deleted');
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });
     }
