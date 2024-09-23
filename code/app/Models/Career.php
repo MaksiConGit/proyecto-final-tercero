@@ -9,8 +9,4 @@ class Career extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'is_deleted',
-    ];
 }
