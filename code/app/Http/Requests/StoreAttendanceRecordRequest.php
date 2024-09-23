@@ -22,8 +22,9 @@ class StoreAttendanceRecordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'student_id' => 'required|exists:student,id',
+            'student_id' => 'required|exists:students,id',
             'has_attended' => 'required|boolean',
+            'date' => 'required|date',
             'is_deleted' => 'boolean',
         ];
     }

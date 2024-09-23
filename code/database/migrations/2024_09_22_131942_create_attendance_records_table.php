@@ -17,6 +17,7 @@ return new class extends Migration
                                             ->onDelete('restrict')
                                             ->onUpdate('cascade');
             $table->boolean('has_attended');
+            $table->date('date');
             $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });
