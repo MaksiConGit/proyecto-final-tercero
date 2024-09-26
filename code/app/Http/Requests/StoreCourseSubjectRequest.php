@@ -22,7 +22,9 @@ class StoreCourseSubjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'course_id' => 'required|exists:courses,id',
+            'subject_id' => 'required|exists:subjects,id',
+            'is_deleted' => 'boolean'
         ];
     }
 }
