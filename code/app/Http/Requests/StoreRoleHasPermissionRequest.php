@@ -24,7 +24,7 @@ class StoreRoleHasPermissionRequest extends FormRequest
         return [
             'role_id' => 'required|exists:roles,id',
             'permission_id' => 'required|exists:permissions,id',
-            'is_deleted' => 'boleean'
+            'is_deleted' => 'boolean'
         ];
     }
 }
