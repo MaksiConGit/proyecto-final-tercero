@@ -23,7 +23,7 @@ class StoreRoleRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'is_deleted' => 'boleean'
+            'is_deleted' => 'boolean'
         ];
     }
 }
