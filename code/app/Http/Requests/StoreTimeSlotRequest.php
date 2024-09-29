@@ -23,7 +23,7 @@ class StoreTimeSlotRequest extends FormRequest
     {
         return [
             'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|after:start_time',
+            'end_time' => 'required|date_format:H:i|after:start_time',
             'subject_id' => 'required|exists:subjects,id',
             'days_of_week_id' => 'required|exists:days_of_weeks,id',
             'is_deleted' => 'boolean'
