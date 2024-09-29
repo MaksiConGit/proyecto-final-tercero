@@ -23,7 +23,9 @@ class StoreAcademicMaterialRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'subject_id' => 'required|exists:subjects,id'
+            'subject_id' => 'required|exists:subjects,id',
+            'teacher_id' => 'required|exists:teachers,id',
+            'is_deleted' => 'boolean'
         ];
     }
 }

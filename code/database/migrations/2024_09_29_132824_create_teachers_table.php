@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('academic_materials', function (Blueprint $table) {
+        Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('subject_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });
     }
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('academic_materials');
+        Schema::dropIfExists('teachers');
     }
 };
