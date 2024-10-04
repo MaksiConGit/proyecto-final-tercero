@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Country>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Province>
  */
-class CountryFactory extends Factory
+class ProvinceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +18,8 @@ class CountryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->country()
+            'name' =>fake()->unique()->state(),
+            'country_id' => Country::inRandomOrder()->first()->id 
         ];
     }
 }
