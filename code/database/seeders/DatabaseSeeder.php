@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         
         $this->call([
             InstitutionSeeder::class,
-            CareerSeeder::class
+            CareerSeeder::class,
+            SubjectSeeder::class
         ]);
     }
 }
