@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
             InstitutionSeeder::class,
             CareerSeeder::class,
             SubjectSeeder::class,
-            CountrySeeder::class
+            CountrySeeder::class,
+            ProvinceSeeder::class,
+            CitySeeder::class
         ]);
     }
 }
