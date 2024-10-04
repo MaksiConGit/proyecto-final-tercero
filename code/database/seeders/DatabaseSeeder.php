@@ -22,7 +22,10 @@ class DatabaseSeeder extends Seeder
             SubjectSeeder::class,
             CountrySeeder::class,
             ProvinceSeeder::class,
-            CitySeeder::class
+            CitySeeder::class,
+            PermissionSeeder::class,
+            RoleSeeder::class,
+            RoleHasPermissionSeeder::class
         ]);
     }
 }
