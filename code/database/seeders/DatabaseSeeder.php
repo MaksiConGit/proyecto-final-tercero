@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             RoleSeeder::class,
             RoleHasPermissionSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            Days_of_weekSeeder::class
         ]);
     }
 }
