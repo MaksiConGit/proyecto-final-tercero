@@ -19,9 +19,7 @@ class DatabaseSeeder extends Seeder
             Institution_Career_CourseSeeder::class,
             SubjectSeeder::class,
             Country_Province_CitySeeder::class,
-            PermissionSeeder::class,
-            RoleSeeder::class,
-            RoleHasPermissionSeeder::class,
+            Role_Permission_RoleHasPermissionSeeder::class,
             UserSeeder::class,
             PrincipalTeacherStudentSeeder::class,
             Days_Timetable_TimeSlotSeeder::class
