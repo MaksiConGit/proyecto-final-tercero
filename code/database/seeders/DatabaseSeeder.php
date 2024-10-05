@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             SubjectSeeder::class,
             Days_Timetable_TimeSlotSeeder::class,
             Material_Exam_GradeSeeder::class,
-            CourseTablesSeeder::class
+            CourseTablesSeeder::class,
+            AttendanceSeeder::class
         ]);
     }
 }
