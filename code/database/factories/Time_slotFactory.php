@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Course;
 use App\Models\Days_of_week;
 use App\Models\Subject;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,7 +22,7 @@ class Time_slotFactory extends Factory
         return [
             'start_time' => fake()->time('H:i'),
             'end_time' => fake()->time('H:i'),
-            'subject_id' => Subject::inRandomOrder()->first()->id ,
+            'course_id' => Course::inRandomOrder()->first()->id ,
             'days_of_week_id' => Days_of_week::inRandomOrder()->first()->id 
         ];
     }

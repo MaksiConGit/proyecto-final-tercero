@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Timetable;
+use App\Models\Course;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TimetableSeeder extends Seeder
+class CourseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Timetable::factory(10)->create();
+        Course::factory(10)->create();
     }
 }
