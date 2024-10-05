@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             InstitutionSeeder::class,
             CareerSeeder::class,
+            CourseSeeder::class,
             SubjectSeeder::class,
             CountrySeeder::class,
             ProvinceSeeder::class,
@@ -26,7 +27,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             RoleHasPermissionSeeder::class,
             UserSeeder::class,
-            PrincipalTeacherStudentSeeder::class
+            PrincipalTeacherStudentSeeder::class,
+            Days_Timetable_TimeSlotSeeder::class
         ]);
     }
 }
