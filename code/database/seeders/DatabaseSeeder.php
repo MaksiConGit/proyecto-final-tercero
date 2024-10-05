@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             Role_Permission_RoleHasPermissionSeeder::class,
             UserSeeder::class,
             PrincipalTeacherStudentSeeder::class,
-            Days_Timetable_TimeSlotSeeder::class
+            Days_Timetable_TimeSlotSeeder::class,
+            CourseTablesSeeder::class
         ]);
     }
 }
