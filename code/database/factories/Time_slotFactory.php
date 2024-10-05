@@ -2,9 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Course;
 use App\Models\Days_of_week;
-use App\Models\Subject;
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
