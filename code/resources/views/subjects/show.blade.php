@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Materia N</h1>
+    <h1>Materia: {{$subject->name}}</h1>
+    <a href="{{route('subjects.edit', $subject)}}">Edit</a>
+
+    <form method="POST" action="{{route('subjects.destroy', $subject)}}">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Delete</button>
+    </form>
+
 </body>
 </html>

@@ -8,5 +8,11 @@
 </head>
 <body>
     <h1>Lista de materias</h1>
+    <a href="{{route('subjects.create')}}">create</a>
+    <ul>
+        @foreach ($subjects as $subject)
+        <li><a href="{{route('subjects.show', [$subject])}}"> {{$subject->name}} @if ($subject->is_deleted)(borrado) @endif </a></li>
+        @endforeach
+    </ul>
 </body>
 </html>
