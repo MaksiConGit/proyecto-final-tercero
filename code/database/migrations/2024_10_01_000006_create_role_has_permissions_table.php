@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('role_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->foreignId('permission_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->boolean('is_deleted')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

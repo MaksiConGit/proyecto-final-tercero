@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('student_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->foreignId('exam_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->integer('grade');
-            $table->boolean('is_deleted')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
