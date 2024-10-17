@@ -37,7 +37,7 @@ class SubjectController extends Controller
     }
 
     public function destroy(Subject $subject){
-        $subject->update(['is_deleted' => true]);
+        $subject->delete();
         return redirect(route('subjects.index'));
 
     }
