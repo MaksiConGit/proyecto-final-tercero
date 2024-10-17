@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('time_slot_id')->constrained()
                                         ->onDelete('restrict')
                                         ->onUpdate('cascade');
-            $table->boolean('is_deleted')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

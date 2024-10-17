@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('exam_number');
             $table->date('date');
             $table->foreignId('teacher_subject_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->boolean('is_deleted')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

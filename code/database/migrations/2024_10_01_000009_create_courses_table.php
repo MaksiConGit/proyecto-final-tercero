@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('career_id')->constrained()
                                         ->onUpdate('cascade')
                                         ->onDelete('restrict');
-            $table->boolean('is_deleted')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
