@@ -9,4 +9,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Career extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'name',
+        'institution_id',
+    ];
+
+    public function institution(){
+        return $this->belongsTo(Institution::class);
+    }
 }
