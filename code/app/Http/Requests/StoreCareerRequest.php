@@ -11,7 +11,7 @@ class StoreCareerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,6 @@ class StoreCareerRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'institution_id' => 'required|exists:institutions,id',
-            'is_deleted' => 'boolean'
         ];
     }
 }

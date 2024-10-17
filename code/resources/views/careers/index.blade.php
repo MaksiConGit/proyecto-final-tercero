@@ -7,11 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Lista de materias</h1>
-    <a href="{{route('subjects.create')}}">create</a>
+    <h1>Carreras</h1>
+    <a href="{{route('careers.create')}}">create</a>
     <ul>
-        @foreach ($subjects as $subject)
-        <li><a href="{{route('subjects.show', [$subject])}}"> {{$subject->name}}</a></li>
+        @foreach ($careers as $career)
+        <li><a href="{{route('careers.show', [$career])}}"> {{$career->name}}</a></li>
         @endforeach
     </ul>
 </body>
