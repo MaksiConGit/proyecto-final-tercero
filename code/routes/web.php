@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,6 @@ Route::resource('subjects', SubjectController::class)
 
 Route::resource('careers', CareerController::class)
     ->names('careers');
+
+Route::resource('courses', CourseController::class)
+    ->names('courses');
