@@ -18,7 +18,7 @@ return new class extends Migration
                                             ->onUpdate('cascade');
             $table->boolean('has_attended');
             $table->date('date');
-            $table->boolean('is_deleted')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
