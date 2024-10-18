@@ -14,5 +14,12 @@
         <li><a href="{{route('careers.show', [$career])}}"> {{$career->name}}</a></li>
         @endforeach
     </ul>
+    <hr>
+    <h4>Carreras Eliminadas</h4>
+    <ul>
+        @foreach ($trashed as $trash)
+            <li>{{$trash->name}}</li>
+        @endforeach
+    </ul>
 </body>
 </html>
