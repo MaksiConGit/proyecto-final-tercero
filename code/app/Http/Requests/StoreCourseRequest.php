@@ -11,7 +11,7 @@ class StoreCourseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,7 @@ class StoreCourseRequest extends FormRequest
         return [
             'course_number' => 'required|numeric',
             'section' => 'required|string',
-            'career_id' => 'required|exists:career,id',
-            'is_deleted' => 'boolean'
+            'career_id' => 'required|exists:careers,id',
         ];
     }
 }
