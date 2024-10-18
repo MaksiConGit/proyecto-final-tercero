@@ -22,7 +22,7 @@
             <input type="text" name="name" value="{{old('name') }}"  required />
         </label>
         <br>
-        <label>
+        {{-- <label>
             institution:
             <select id="institution_id" name="institution_id" required>
                 <option value="">Selecciona una Institución</option>
@@ -30,7 +30,7 @@
                     <option value="{{ $institution->id }}">{{ $institution->name }}</option>
                 @endforeach
             </select>
-        </label>
+        </label> --}}
 
         </div>
         <button type="submit"> create </button>

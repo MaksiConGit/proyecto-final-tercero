@@ -23,7 +23,6 @@ class StoreCareerRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'institution_id' => 'required|exists:institutions,id',
         ];
     }
 }

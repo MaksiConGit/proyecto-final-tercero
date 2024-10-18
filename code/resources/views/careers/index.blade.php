@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Carreras</h1>
+    <h1>Carreras de la Institución "{{ $institution->name}}"</h1>
     <a href="{{route('careers.create')}}">create</a>
     <ul>
         @foreach ($careers as $career)
