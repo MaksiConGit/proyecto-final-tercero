@@ -28,7 +28,18 @@
             section:
             <input type="text" name="section" value="{{old('section', $course->section) }}" required />
         </label>
-
+        <br>
+        <label>
+            career:
+            <select id="career_id" name="career_id" required>
+                @foreach ($careers as $career)
+                    <option value="{{ $career->id }}"
+                        {{ $career->id == $course->career->id ? 'selected' : '' }}>
+                        {{ $career->name }}
+                    </option>
+                @endforeach
+            </select>
+        </label>
         </div>
         <button type="submit"> update </button>
     </form>

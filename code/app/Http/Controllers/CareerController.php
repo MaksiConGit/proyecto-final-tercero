@@ -11,7 +11,8 @@ class CareerController extends Controller
 {
     public function index(){
         $careers = Career::all();
-        return view ('careers.index', compact('careers'));
+        $trashed = Career::onlyTrashed()->get();
+        return view ('careers.index', compact('careers', 'trashed'));
     }
 
     public function create(){
@@ -29,11 +30,11 @@ class CareerController extends Controller
     }
 
     public function edit(Career $career){
-        return view ('careers.edit', compact('career'));
+        $institutions = Institution::all();
+        return view ('careers.edit', compact('career', 'institutions'));
     }
 
     public function update(Request $request ,Career $career){
-        $request->validate(['name'=>'required|string|max:255']);
         $career->update($request->all());
         return redirect(route('careers.show', $career));
     }

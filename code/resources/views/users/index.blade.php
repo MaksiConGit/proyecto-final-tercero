@@ -14,5 +14,12 @@
             <li><a href="{{route('users.show', [$user])}}"> {{$user->name}} @if ($user->is_deleted)(borrado) @endif </a></li>
         @endforeach
     </ul>
+    <hr>
+    <h4>Usuarios Eliminadas</h4>
+    <ul>
+        @foreach ($trashed as $trash)
+            <li>{{$trash->name}}</li>
+        @endforeach
+    </ul>
 </body>
 </html>
