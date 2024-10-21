@@ -11,7 +11,7 @@ class StoreSubjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,6 @@ class StoreSubjectRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'is_deleted' => 'boolean'
         ];
     }
 }

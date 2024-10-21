@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Days_of_week;
 use App\Models\Time_slot;
 use App\Models\Timetable;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +25,20 @@ class Days_Timetable_TimeSlotSeeder extends Seeder
         Days_of_week::factory()->create(['day' => 'Sábado']);
         Days_of_week::factory()->create(['day' => 'Domingo']);
 
+        Time_slot::create([
+            'start_time' => '1',
+            'end_time' => '1',
+            'course_id' => '1',
+            'days_of_week_id' => '1',
+            'deleted_at' => Carbon::now(),
+        ]);
+
         Time_slot::factory(10)->create();
+
+        Timetable::create([
+            'course_id' => '1',
+            'deleted_at' => Carbon::now(),
+        ]);
 
         Timetable::factory(10)->create();
 

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignId('institution_id')->constrained()
                                             ->onUpdate('cascade')
                                             ->onDelete('restrict');
-            $table->boolean('is_deleted')->default(false);
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });
