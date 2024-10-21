@@ -11,7 +11,8 @@ class CourseController extends Controller
 {
     public function index(){
         $courses = Course::all();
-        return view ('courses.index', compact('courses'));
+        $trashed = Course::onlyTrashed()->get();
+        return view ('courses.index', compact('courses', 'trashed'));
     }
 
     public function create(){
@@ -29,11 +30,11 @@ class CourseController extends Controller
     }
 
     public function edit(Course $course){
-        return view ('courses.edit', compact('course'));
+        $careers = Career::all();
+        return view ('courses.edit', compact('course', 'careers'));
     }
 
     public function update(Request $request ,Course $course){
-        $request->validate(['course_number'=>'required|numeric|max:255', 'section'=>'required|string|max:255']);
         $course->update($request->all());
         return redirect(route('courses.show', $course));
     }

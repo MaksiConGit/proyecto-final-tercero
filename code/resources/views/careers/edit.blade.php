@@ -21,7 +21,19 @@
 
         <label>
             name:
-            <input type="text" name="name" value="{{old('name', $career->name) }}" required />
+            <input type="text" name="name" value="{{ old('name', $career->name) }}" required />
+        </label>
+        <br>
+        <label>
+            institution:
+            <select id="institution_id" name="institution_id" required>
+                @foreach ($institutions as $institution)
+                    <option value="{{ $institution->id }}"
+                        {{ $institution->id == $career->institution->id ? 'selected' : '' }}>
+                        {{ $institution->name }}
+                    </option>
+                @endforeach
+            </select>
         </label>
 
         </div>

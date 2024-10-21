@@ -14,5 +14,12 @@
         <li><a href="{{route('courses.show', [$course])}}"> {{$course->course_number}}° {{$course->section}}</a></li>
         @endforeach
     </ul>
+    <hr>
+    <h4>Cursos Eliminadas</h4>
+    <ul>
+        @foreach ($trashed as $trash)
+            <li>{{$trash->course_number . "° " . $trash->section}}</li>
+        @endforeach
+    </ul>
 </body>
 </html>
