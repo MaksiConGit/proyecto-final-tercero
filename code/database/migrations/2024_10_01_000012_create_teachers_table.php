@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('city_id')->constrained()
                                         ->onDelete('restrict')
                                         ->onUpdate('cascade');
-            $table->foreignId('user_id')->constrained()
+            $table->foreignId('user_id')->nullable()->constrained()
                                         ->onDelete('restrict')
                                         ->onUpdate('cascade');
             $table->softDeletes();
