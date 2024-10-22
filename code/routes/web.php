@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,7 +14,9 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -23,13 +26,12 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('users', UserController::class)->names('users');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
-Route::resource('subjects', SubjectController::class)
-    ->names('subjects');
+Route::resource('subjects', SubjectController::class)->names('subjects');
 
-Route::resource('careers', CareerController::class)
-    ->names('careers');
+Route::resource('careers', CareerController::class)->names('careers');
 
-Route::resource('courses', CourseController::class)
-    ->names('courses');
+Route::resource('courses', CourseController::class)->names('courses');
+
+Route::resource('teachers', TeacherController::class)->names('teachers');

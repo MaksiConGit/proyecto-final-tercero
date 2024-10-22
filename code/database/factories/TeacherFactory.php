@@ -25,7 +25,7 @@ class TeacherFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'birthdate' => fake()->date(),
             'city_id' => City::inRandomOrder()->first()->id,
-            'user_id' => User::inRandomOrder()->first()->id 
+            'user_id' => fake()->unique()->randomElement(User::pluck('id')),
         ];
     }
 }
