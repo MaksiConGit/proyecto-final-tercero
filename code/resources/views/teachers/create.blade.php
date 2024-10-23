@@ -55,8 +55,13 @@
         </label>
         <br>
         <label>
-            user_id:
-            <input type="text" name="user_id" value="{{ old('user_id') }}" />
+            (opcional) user_id:
+            <select id="user_id" name="user_id">
+                <option value="">Selecciona una cuenta de usuario libre</option>
+                @foreach ($teachersThatHasNoUser as $user)
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                @endforeach
+            </select>
         </label>
         <br>
         </div>

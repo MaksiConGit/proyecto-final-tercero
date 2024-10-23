@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreTeacherRequest extends FormRequest
+class UpdateTeacherRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,8 @@ class StoreTeacherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:2|max:255',
-            'lastname' => 'required|string|min:2|max:255',
-            'dni' => 'required|string|max:255|unique:teachers,dni',
-            'phone' => 'required|string|max:14',
-            'birthdate' => 'required|date|before:today',
-            'city_id' => 'required|exists:cities,id',
-            'user_id' => 'nullable|exists:users,id',
+            'dni' => ['required', Rule::unique('teachers')->ignore($this->teacher->id)],
+            'user_id' => ['nullable', Rule::unique('teachers')->ignore($this->teacher->id)],
         ];
     }
 }
