@@ -23,7 +23,12 @@ class UpdateTeacherRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'required|string|min:2|max:255',
+            'lastname' => 'required|string|min:2|max:255',
             'dni' => ['required', Rule::unique('teachers')->ignore($this->teacher->id)],
+            'phone' => 'required|string|max:14',
+            'birthdate' => 'required|date|before:today',
+            'city_id' => 'required|exists:cities,id',
             'user_id' => ['nullable', Rule::unique('teachers')->ignore($this->teacher->id)],
         ];
     }
