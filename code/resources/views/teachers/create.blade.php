@@ -45,11 +45,11 @@
         </label>
         <br>
         <label>
-            career:
+            city_id:
             <select id="city_id" name="city_id" required>
                 <option value="">Selecciona una Ciudad</option>
                 @foreach ($cities as $city)
-                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                    <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
                 @endforeach
             </select>
         </label>

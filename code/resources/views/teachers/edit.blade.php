@@ -49,7 +49,7 @@
             city_id:
             <select id="city_id" name="city_id" required>
                 @foreach ($cities as $city)
-                    <option value="{{ $city->id }}" {{ $city->id == $teacher->city->id ? 'selected' : '' }}>
+                    <option value="{{ $city->id }}" {{ old('city_id', $teacher->city_id) == $city->id ? 'selected' : '' }}>
                         {{ $city->name }}
                     </option>
                 @endforeach
