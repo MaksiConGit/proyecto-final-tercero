@@ -57,8 +57,30 @@
         </label>
         <br>
         <label>
-            user_id:
-            <input type="text" name="user_id" value="{{ old('user_id', $teacher->user_id) }}" />
+            (opcional) user_id:
+            <select id="user_id" name="user_id">
+                <option value="">Selecciona una cuenta de usuario libre</option>
+
+                {{-- Mostrar el usuario ya asignado al profesor si existe --}}
+                @if ($teacher->user)
+                    <option value="{{ $teacher->user->id }}" selected>
+                        {{ $teacher->user->name }} (Actual)
+                    </option>
+                @endif
+
+
+                {{-- Mostrar los usuarios libres --}}
+                @foreach ($teachersThatHasNoUser as $user)
+                    {{-- Verifica que user no sea null --}}
+                    @if ($user)
+                        <option value="{{ $user->id }}" {{-- Verifica que exista un user dentro de teacher.
+                            (Esto es para evitar una dato fantasma cuando a un teacher se le asigna una user_id y luego esa user_id es borrada) --}}
+                            {{ isset($teacher->user) && $user->id == $teacher->user->id ? 'selected' : '' }}>
+                            {{ $user->name }}
+                        </option>
+                    @endif
+                @endforeach
+            </select>
         </label>
         <br>
         </div>
