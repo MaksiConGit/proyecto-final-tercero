@@ -18,7 +18,7 @@ class ExamFactory extends Factory
     public function definition(): array
     {
         return [
-            'exam_number' => fake()-> randomDigitNotNull() ,
+            'number' => fake()-> randomDigitNotNull() ,
             'date' => fake()-> date(),
             'teacher_subject_id' => DB::table('teacher_subjects')-> inRandomOrder()->first()->id
         ];
