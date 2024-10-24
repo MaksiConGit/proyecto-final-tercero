@@ -27,10 +27,10 @@
         <label>
             Profesor:
             <select id="teacher_id" name="teacher_id" required >
-                <option value="">Selecciona un profesor</option>
+                <option value="" disabled selected >Seleccione un profesor</option>
                 @foreach ($teachers as $teacher)
                     <option value="{{ $teacher->id }}" {{ old('teacher_id') == $teacher->id ? 'selected' : ''}}>
-                        {{ $teacher->name }}
+                        {{ $teacher->name }} {{ $teacher->lastname }}
                     </option>
                 @endforeach
             </select>
@@ -39,7 +39,7 @@
         <label>
             Materia:
             <select id="subject_id" name="subject_id" required>
-                <option value="">Selecciona una materia</option>
+                <option value="" disabled selected >Seleccione una materia</option>
                 @foreach ($subjects as $subject)
                     <option value="{{ $subject->id }}"  {{ old('subject_id') == $subject->id ? 'selected' : ''}}>
                         {{ $subject->name }}
