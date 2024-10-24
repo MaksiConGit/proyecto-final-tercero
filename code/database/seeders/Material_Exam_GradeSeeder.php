@@ -25,7 +25,7 @@ class Material_Exam_GradeSeeder extends Seeder
             'deleted_at' => Carbon::now(),
         ]);
         Exam::create([
-            'exam_number' => '1',
+            'number' => '1',
             'date' => Carbon::yesterday(),
             'teacher_subject_id' => '1',
             'deleted_at' => Carbon::now(),
