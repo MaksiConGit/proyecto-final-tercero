@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Formulario de Edición de Profesores</h1>
+    <h1>Formulario de Edición de Estudiantes</h1>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -17,32 +17,32 @@
             @endforeach
         </ul>
     @endif
-    <form method="POST" action="{{ route('teachers.update', $teacher) }}">
+    <form method="POST" action="{{ route('students.update', $student) }}">
         @csrf
         @method('PUT')
         <label>
             name:
-            <input type="text" name="name" value="{{ old('name', $teacher->name) }}" required />
+            <input type="text" name="name" value="{{ old('name', $student->name) }}" required />
         </label>
         <br>
         <label>
             lastname:
-            <input type="text" name="lastname" value="{{ old('lastname', $teacher->lastname) }}" required />
+            <input type="text" name="lastname" value="{{ old('lastname', $student->lastname) }}" required />
         </label>
         <br>
         <label>
             dni:
-            <input type="text" name="dni" value="{{ old('dni', $teacher->dni) }}" required />
+            <input type="text" name="dni" value="{{ old('dni', $student->dni) }}" required />
         </label>
         <br>
         <label>
             phone:
-            <input type="text" name="phone" value="{{ old('phone', $teacher->phone) }}" required />
+            <input type="text" name="phone" value="{{ old('phone', $student->phone) }}" required />
         </label>
         <br>
         <label>
             birthdate:
-            <input type="date" name="birthdate" value="{{ old('birthdate', $teacher->birthdate) }}" required />
+            <input type="date" name="birthdate" value="{{ old('birthdate', $student->birthdate) }}" required />
         </label>
         <br>
         <label>
@@ -52,14 +52,14 @@
                 <option value="">Selecciona una ciudad</option>
 
                 {{-- Mostrar la ciudad actual del estudiante --}}
-                @if ($teacher->city)
-                    <option value="{{ $teacher->city->id }}" selected>
-                        {{ $teacher->city->name }} (Actual)
+                @if ($student->city)
+                    <option value="{{ $student->city->id }}" selected>
+                        {{ $student->city->name }} (Actual)
                     </option>
                 @endif
                 {{-- Mostrar la ciudades restantes y no repite la ciudad actual del estudiante --}}
                 @foreach ($cities as $city)
-                    @if ($city->id != $teacher->city_id)
+                    @if ($city->id != $student->city_id)
                         <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>
                             {{ $city->name }}
                         </option>
@@ -73,21 +73,21 @@
             <select id="user_id" name="user_id">
                 <option value="">Selecciona una cuenta de usuario libre</option>
 
-                {{-- Mostrar el usuario ya asignado al profesor si existe --}}
-                @if ($teacher->user)
-                    <option value="{{ $teacher->user->id }}" selected>
-                        {{ $teacher->user->name }} (Actual)
+                {{-- Mostrar el usuario ya asignado al estudiante si existe --}}
+                @if ($student->user)
+                    <option value="{{ $student->user->id }}" selected>
+                        {{ $student->user->name }} (Actual)
                     </option>
                 @endif
 
 
                 {{-- Mostrar los usuarios libres --}}
-                @foreach ($teachersThatHasNoUser as $user)
+                @foreach ($studentsThatHasNoUser as $user)
                     {{-- Verifica que user no sea null --}}
                     @if ($user)
-                        <option value="{{ $user->id }}" {{-- Verifica que exista un user dentro de teacher.
-                            (Esto es para evitar una dato fantasma cuando a un teacher se le asigna una user_id y luego esa user_id es borrada) --}}
-                            {{ old('user_id', isset($teacher->user) ? $teacher->user->id : null) == $user->id ? 'selected' : '' }}>
+                        <option value="{{ $user->id }}" {{-- Verifica que exista un user dentro de student.
+                            (Esto es para evitar una dato fantasma cuando a un student se le asigna una user_id y luego esa user_id es borrada) --}}
+                            {{ old('user_id', isset($student->user) ? $student->user->id : null) == $user->id ? 'selected' : '' }}>
 
                             {{ $user->name }}
                         </option>

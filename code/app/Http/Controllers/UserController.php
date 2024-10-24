@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy('name', 'asc')->get();
         $trashed = User::onlyTrashed()->get();
         return view ('users.index', compact('users', 'trashed'));
     }

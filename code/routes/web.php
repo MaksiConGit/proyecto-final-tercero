@@ -3,9 +3,11 @@
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,3 +37,6 @@ Route::resource('careers', CareerController::class)->names('careers');
 Route::resource('courses', CourseController::class)->names('courses');
 
 Route::resource('teachers', TeacherController::class)->names('teachers');
+
+Route::resource('students', StudentController::class)->names('students');
+
