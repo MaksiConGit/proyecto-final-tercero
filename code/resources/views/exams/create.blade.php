@@ -50,7 +50,7 @@
         <br>
         <label>
             Fecha:
-            <input type="text" name="date" value="{{ old('date') }}" required />
+            <input type="date" name="date" value="{{ old('date') }}" required />
         </label>
         <br>
         </div>

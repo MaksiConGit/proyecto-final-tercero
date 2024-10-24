@@ -11,7 +11,7 @@
 <body>
     <h1>Examen: {{ $exam->teacherSubject->subject->name }} {{ $exam->number }}</h1>
     <ul>
-        <li>Profesor: {{ $exam->teacherSubject->teacher->name }}</li>
+        <li>Profesor: {{($exam->teacherSubject->teacher ? $exam->teacherSubject->teacher->name : 'No asignado')}}</li>
         <li>Fecha: {{ $exam->date }}</li>
     </ul>
     <a href="{{ route('exams.edit', $exam) }}">Edit</a>

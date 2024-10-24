@@ -37,7 +37,19 @@ class SubjectController extends Controller
     }
 
     public function destroy(Subject $subject){
+
+        $teacherSubjects = $subject->teacherSubject;
+
+        foreach ($teacherSubjects as $teacherSubject) {
+            $exams = $teacherSubject->exams;
+
+            foreach ($exams as $exam) {
+                $exam->delete();
+            }
+        }
+
         $subject->delete();
+        
         return redirect(route('subjects.index'));
 
     }

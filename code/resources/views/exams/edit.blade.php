@@ -28,7 +28,9 @@
         <label>
             Profesor:
             <select id="teacher_id" name="teacher_id" required >
-                <option value="">Selecciona un profesor</option>
+                <option value="{{ $exam->teacherSubject->teacher ? $exam->teacherSubject->teacher->id : '' }}">
+                    {{ $exam->teacherSubject->teacher ? $exam->teacherSubject->teacher->name : 'Seleccione un profesor' }}
+                </option>
                 @foreach ($teachers as $teacher)
                     <option value="{{ $teacher->id }}" {{ old('teacher_id') == $teacher->id ? 'selected' : ''}}>
                         {{ $teacher->name }}
@@ -40,7 +42,7 @@
         <label>
             Materia:
             <select id="subject_id" name="subject_id" required>
-                <option value="">Selecciona una materia</option>
+                <option value="{{ $exam->teacherSubject->subject->id }}">{{ $exam->teacherSubject->subject->name }}</option>
                 @foreach ($subjects as $subject)
                     <option value="{{ $subject->id }}"  {{ old('subject_id') == $subject->id ? 'selected' : ''}}>
                         {{ $subject->name }}
@@ -51,7 +53,7 @@
         <br>
         <label>
             Fecha:
-            <input type="text" name="date" value="{{ old('date', $exam->date) }}" required />
+            <input type="date" name="date" value="{{ old('date', $exam->date) }}" required />
         </label>
         <br>
         </div>
