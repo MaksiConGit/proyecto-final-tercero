@@ -16,6 +16,10 @@ class PrincipalTeacherStudentSeeder extends Seeder
      */
     public function run(): void
     {
+        Principal::factory(10)->create();
+        Teacher::factory(10)->create();
+        Student::factory(10)->create();
+
         Principal::create([
             'name' => 'No deberias ver esto',
             'lastname' => '',
@@ -46,9 +50,5 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'user_id' => '1',
             'deleted_at' => Carbon::now(),
         ]);
-
-        Principal::factory(10)->create();
-        Teacher::factory(10)->create();
-        Student::factory(10)->create();
     }
 }

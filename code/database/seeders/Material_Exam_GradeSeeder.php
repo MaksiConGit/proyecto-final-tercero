@@ -16,6 +16,11 @@ class Material_Exam_GradeSeeder extends Seeder
      */
     public function run(): void
     {
+        AcademicMaterial::factory(10)->create();
+        Exam::factory(10)->create();
+        Grade::factory(10)->create();
+
+        // Registros borrados
         AcademicMaterial::create([
             'name' => 'No deberias ver esto',
             'file_path' => 'file_path',
@@ -37,8 +42,5 @@ class Material_Exam_GradeSeeder extends Seeder
             'deleted_at' => Carbon::now(),
         ]);
 
-        AcademicMaterial::factory(10)->create();
-        Exam::factory(10)->create();
-        Grade::factory(10)->create();
     }
 }

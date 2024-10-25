@@ -18,4 +18,8 @@ class Subject extends Model
         return $this->hasMany(TeacherSubject::class);
     }
 
+    public function exams(){
+        return $this->hasManyThrough(Exam::class, TeacherSubject::class, 'subject_id', 'teacher_subject_id', 'id', 'id')->withTrashed();
+    }
+
 }

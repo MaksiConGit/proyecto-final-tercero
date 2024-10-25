@@ -9,4 +9,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Grade extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'student_id',
+        'exam_id',
+        'grade'
+    ];
+
+    public function student(){
+        return $this->belongsTo(Student::class);
+    }
+
+    public function exam(){
+        return $this->belongsTo(Exam::class);
+    }
+
+    public function subject()
+    {
+        return $this->hasOneThrough(Subject::class, Exam::class, 'id', 'id', 'exam_id', 'subject_id');
+    }
+
 }
