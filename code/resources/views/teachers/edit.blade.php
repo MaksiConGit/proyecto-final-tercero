@@ -47,23 +47,12 @@
         <br>
         <label>
             city_id:
-
             <select id="city_id" name="city_id" required>
-                <option value="">Selecciona una ciudad</option>
-
-                {{-- Mostrar la ciudad actual del estudiante --}}
-                @if ($teacher->city)
-                    <option value="{{ $teacher->city->id }}" selected>
-                        {{ $teacher->city->name }} (Actual)
-                    </option>
-                @endif
-                {{-- Mostrar la ciudades restantes y no repite la ciudad actual del estudiante --}}
                 @foreach ($cities as $city)
-                    @if ($city->id != $teacher->city_id)
-                        <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>
-                            {{ $city->name }}
-                        </option>
-                    @endif
+                    <option value="{{ $city->id }}"
+                        {{ old('city_id', $teacher->city_id) == $city->id ? 'selected' : '' }}>
+                        {{ $city->name }}
+                    </option>
                 @endforeach
             </select>
         </label>

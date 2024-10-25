@@ -22,7 +22,7 @@ class StudentFactory extends Factory
             'name' => fake()->name(),
             'lastname' => fake()->lastName(),
             'dni' => fake()->unique()->randomNumber(8, true),
-            'phone' => fake()->phoneNumber(),
+            'phone' => fake()->e164PhoneNumber(),
             'birthdate' => fake()->date(),
             'city_id' => City::inRandomOrder()->first()->id,
             'user_id' => fake()->unique()->randomElement(User::pluck('id')), 
