@@ -11,7 +11,7 @@ class StoreExamRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,10 +22,10 @@ class StoreExamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'exam_number' => 'required|integer',
+            'number' => 'required|integer',
             'date' => 'required|date',
-            'teacher_subject_id' => 'required|exists:teacher_subject,id',
-            'is_deleted' => 'boolean',
+            'teacher_id' => 'required|exists:teachers,id',
+            'subject_id' => 'required|exists:subjects,id',
         ];
     }
 }

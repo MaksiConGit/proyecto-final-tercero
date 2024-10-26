@@ -9,4 +9,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Exam extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'number',
+        'date',
+        'teacher_subject_id',
+    ];
+
+    public function teacherSubject(){
+        return $this->belongsTo(TeacherSubject::class);
+    }
+
 }

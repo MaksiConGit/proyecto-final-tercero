@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
-            $table->integer('exam_number');
+            $table->integer('number');
             $table->date('date');
             $table->foreignId('teacher_subject_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->softDeletes();
