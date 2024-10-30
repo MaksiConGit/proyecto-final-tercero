@@ -69,6 +69,62 @@
             </div>
         </div>
         <div class="w-full h-10 bg-red-300 mt-6">
+            <div class="space-y-4 p-4 max-w-lg mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-white p-4 rounded-lg shadow-md border">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-semibold">Temario de la materia</h2>
+                        <button class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times"></i> <!-- Usa una librería de íconos como Font Awesome -->
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-500">Nicolas Rotilli • 30 Abril</p>
+                    <p class="mt-2 text-gray-700">En este PDF está todo el temario de la materia, las modalidades que hay y demás</p>
+                    <div class="flex items-center mt-4">
+                        <i class="fas fa-file-pdf text-gray-700 mr-2"></i> <!-- Icono PDF -->
+                        <span class="font-semibold text-gray-700">PDF</span>
+                    </div>
+                </div>
+            
+                <!-- Card 2 -->
+                <div class="bg-white p-4 rounded-lg shadow-md border">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-semibold">Material</h2>
+                    </div>
+                    <p class="text-sm text-gray-500">Nicolas Rotilli • 30 Agosto</p>
+                    <p class="mt-2 text-gray-700">En este PDF está todo el temario de la materia, las modalidades que hay y demás</p>
+                    <div class="flex items-center mt-4">
+                        <i class="fas fa-file-pdf text-gray-700 mr-2"></i>
+                        <span class="font-semibold text-gray-700">PDF</span>
+                    </div>
+                </div>
+            
+                <!-- Card 3 -->
+                <div class="bg-white p-4 rounded-lg shadow-md border">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-semibold">Temario del Parcial</h2>
+                    </div>
+                    <p class="text-sm text-gray-500">Nicolas Rotilli • 18 Agosto</p>
+                    <p class="mt-2 text-gray-700">En este PDF está el temario para el próximo parcial</p>
+                    <div class="flex items-center mt-4">
+                        <i class="fas fa-file-pdf text-gray-700 mr-2"></i>
+                        <span class="font-semibold text-gray-700">PDF</span>
+                    </div>
+                </div>
+            
+                <!-- Card 4 -->
+                <div class="bg-white p-4 rounded-lg shadow-md border">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-semibold">Material</h2>
+                    </div>
+                    <p class="text-sm text-gray-500">Nicolas Rotilli • 10 Agosto</p>
+                    <p class="mt-2 text-gray-700">En este PDF está todo el temario de la materia, las modalidades que hay y demás</p>
+                    <div class="flex items-center mt-4">
+                        <i class="fas fa-file-pdf text-gray-700 mr-2"></i>
+                        <span class="font-semibold text-gray-700">PDF</span>
+                    </div>
+                </div>
+            </div>
             
         </div>
     </div>
