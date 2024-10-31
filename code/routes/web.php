@@ -13,6 +13,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/profesorAlumnos', function () {
+    return view('profesorAlumnos');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })
