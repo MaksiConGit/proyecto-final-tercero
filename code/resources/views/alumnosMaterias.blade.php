@@ -15,7 +15,7 @@
         <div class="m-0 flex items-center justify-between ">
             <h1 class="text-2xl font-bold">Instituto</h1>
             <div class="w-8 h-8">
-                <img src="usuario_foto.png" alt="Icono de usuario">
+                <img src="../images/usuario_foto.png" alt="Icono de usuario">
             </div>
         </div>
     </header>
@@ -110,7 +110,7 @@
                 <div class="ml-1 grid grid-cols-3 gap-4">
                     <a href="materia.html">
                         <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl">
-                            <img src="Materia.png" alt="Base de Datos" class="w-full h-32 object-cover">
+                            <img src="../images/Materia.png" alt="Base de Datos" class="w-full h-32 object-cover">
                             <div class="p-2">
                                 <h2 class="font-bold text-lg">Base de Datos</h2>
                                 <p class="text-gray-500">Nicolas Rotili</p>
@@ -121,7 +121,7 @@
 
                     <a href="materia.html">
                         <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl">
-                            <img src="Materia.png" alt="Base de Datos" class="w-full h-32 object-cover">
+                            <img src="../images/Materia.png" alt="Base de Datos" class="w-full h-32 object-cover">
                             <div class="p-2">
                                 <h2 class="font-bold text-lg">Base de Datos</h2>
                                 <p class="text-gray-500">Nicolas Rotili</p>
@@ -132,7 +132,7 @@
 
                     <a href="materia.html">
                         <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl">
-                            <img src="Materia.png" alt="Materia" class="w-full h-32 object-cover">
+                            <img src="../images/Materia.png" alt="Materia" class="w-full h-32 object-cover">
                             <div class="p-2">
                                 <h2 class="font-bold text-lg">Matematicas</h2>
                                 <p class="text-gray-500">Fede</p>
@@ -143,7 +143,7 @@
 
                     <a href="materia.html">
                         <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl">
-                            <img src="Materia.png" alt="Materia" class="w-full h-32 object-cover">
+                            <img src="../images/Materia.png" alt="Materia" class="w-full h-32 object-cover">
                             <div class="p-2">
                                 <h2 class="font-bold text-lg">Seguridad</h2>
                                 <p class="text-gray-500">Walter</p>
@@ -154,7 +154,7 @@
 
                     <a href="materia.html">
                         <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl">
-                            <img src="Materia.png" alt="Materia" class="w-full h-32 object-cover">
+                            <img src="../images/Materia.png" alt="Materia" class="w-full h-32 object-cover">
                             <div class="p-2">
                                 <h2 class="font-bold text-lg">Programacion</h2>
                                 <p class="text-gray-500">Nico Rotili</p>
