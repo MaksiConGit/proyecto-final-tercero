@@ -13,17 +13,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< Updated upstream
-=======
-Route::get('/profesor', function () {
-    return view('indexProfesor');
-});
-
 Route::get('/profeMateria', function () {
     return view('profeMateria');
 });
 
->>>>>>> Stashed changes
 Route::get('/dashboard', function () {
     return view('dashboard');
 })
