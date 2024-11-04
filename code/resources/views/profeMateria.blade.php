@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horario de Carreras</title>
+    <title>Materia: Base de Datos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 </head>
@@ -23,7 +23,7 @@
     <nav class="bg-purple-800 text-white p-4">
         <ol class="flex items-center justify-center space-x-2">
             <li>
-                <a href="www.youtube.com" class="flex items-center text-white hover:underline font-semibold">
+                <a href="index.html" class="flex items-center text-white hover:underline font-semibold">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
                         fill="currentColor">
                         <path
@@ -41,27 +41,16 @@
                 </svg>
             </li>
             <li>
-                <a href="#" class="text-white hover:underline font-semibold">Materias</a>
+                <a href="#" class="text-white hover:underline font-semibold">Base de Datos</a>
             </li>
-            <li>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd" />
-                </svg>
-            </li>
-            <li>
-                <a href="#" class="text-white hover:underline font-semibold">Programacion</a>
-            </li>
-
         </ol>
         </div>
     </nav>
 
-    <div class="flex py-2">
+    <div class="flex">
+    <div class="flex mt-2">
         <aside class=" w-44 bg-gray-200 text-black min-h-screen border-r-2 border-gray-300 p-2">
-            <h2 class="text-xl font-bold mb-4 flex justify-center pb-2 border-b-2 border-gray-400">Carreras</h2>
+            <h2 class="text-xl font-bold mb-4 flex justify-center pb-2 border-b-2 border-gray-400">Sistemas</h2>
             <ul class="space-y-4">
                 <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-gray-300 text-gray-900"
                     data-inactive-classes="text-gray-600">
@@ -70,7 +59,7 @@
                             class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
                             data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
                             aria-controls="accordion-flush-body-1">
-                            <span>Sistemas</span>
+                            <span>Materias</span>
                             <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                                 xmlns="" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -79,259 +68,233 @@
                         </button>
                     </h2>
                     <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
-                        <div class="py-4 border-b border-gray-400">
-                            <p class="mb-1 text-gray-500 flex justify-center">Cursos</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Materias</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Alumnos</p>
+                        <div class="py-1 border-b border-gray-400">
+                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">B. de Datos</a>
+                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">D. de Sistemas</a>
+                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">R. y Comunicaciones</a>
+                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">S. de los Sistemas</a>
+                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">S. de Inf. Org.</a>
+                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">P. Profesionalizantes 2</a>
+                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">D. y L. Laboral</a>
+                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">E. y R. Social</a>
                         </div>
                     </div>
+                </div>
+                <h2 id="accordion-flush-heading-2">
+                    <button type="button"
+                        class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
+                        data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
+                        aria-controls="accordion-flush-body-2">
+                        <a href="Asistencias.html">Asistencias</a>
+                    </button>
+                </h2>
                     <h2 id="accordion-flush-heading-2">
                         <button type="button"
                             class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
                             data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
                             aria-controls="accordion-flush-body-2">
-                            <span>Robotica</span>
-                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M9 5 5 1 1 5" />
-                            </svg>
+                            <a href="">Profesores</a>
                         </button>
                     </h2>
-                    <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
-                        <div class="py-4 border-b border-gray-400">
-                            <p class="mb-1 text-gray-500 flex justify-center">Cursos</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Materias</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Alumnos</p>
-                        </div>
-                    </div>
-                    <h2 id="accordion-flush-heading-3">
-                        <button button type="button"
+                    <h2 id="accordion-flush-heading-2">
+                        <button type="button"
                             class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
-                            data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
-                            aria-controls="accordion-flush-body-3">
-                            <span>Industrial</span>
-                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M9 5 5 1 1 5" />
-                            </svg>
+                            data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
+                            aria-controls="accordion-flush-body-2">
+                            <a href="">Material</a>
                         </button>
                     </h2>
-                    <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
-                        <div class="py-4 border-b border-gray-400">
-                            <p class="mb-1 text-gray-500 flex justify-center">Cursos</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Materias</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Alumnos</p>
-                            <ul class="ps-5 text-gray-500 list-disc">
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                    <h2 id="accordion-flush-heading-2">
+                        <button type="button"
+                            class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
+                            data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
+                            aria-controls="accordion-flush-body-2">
+                            <a href="">Notas</a>
+                        </button>
+                    </h2>
             </ul>
         </aside>
-
-        {{--Cuerpo --}}
-        <div class="border-2 border-gray-300 m-4 rounded-md w-8/12 mt-0">
-        <div class="flex-auto mr-2 mt-2">
-            <div class="relative w-full min-h-min">
-                <img src="../images/Materia.png" alt="Descripción de la imagen"
-                    class="w-3/4 h-72 mx-auto rounded-xl">
-                <div class="absolute bottom-0 left-32 p-4">
-                    <span class="text-white text-4xl font-bold shadow-lg">Programacion</span>
-                </div>
-            </div>
-
-
-                <div class="flex justify-center mt-2">
-                    <div class="flex items-center p-4 border border-gray-300 rounded-lg bg-white shadow-md mt-2 w-2/3">
-                        <div class="w-14 h-14 rounded-full overflow-hidden mr-4">
-                            <img src="https://via.placeholder.com/60" alt="Foto de perfil">
+                <div class="flex-1 justify-center mx-44">
+                    <div class="bg-white shadow-md rounded-lg p-3 mb-6 w-full">
+                        <img src="../images/Materia.png" alt="Imagen de Base de Datos" class="rounded-lg w-full h-56 object-cover mb-4">
+                        <h1 class="text-4xl font-bold text-gray-800">Base De Datos</h1>
+                        <div class="flex items-center mt-4">
+                            <img src="../images/profesor.png" alt="Profesor" class="w-16 h-16 rounded-full mr-4">
+                            <div>
+                                <h2 class="text-lg font-semibold text-gray-700">Profesor Nicolas Rotilli</h2>
+                                <p class="text-gray-600">rotillinicolas@gmail.com</p>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-800">Nicolas Rotilli</h3>
-                            <p class="text-sm text-gray-600">rotillinicolas@gmail.com</p>
+                    </div>
+
+                    <!-- Lista de Materiales -->
+                    <div class="space-y-4">
+                        <div class="bg-white shadow-md rounded-lg p-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Temario de la materia</h3>
+                            <p class="text-gray-600 mb-2">Nicolas Rotilli - 30 Abril</p>
+                            <p class="text-gray-600">En este PDF está todo el temario de la materia, las modalidades que
+                                hay y demás.</p>
+                            <p><a href="fpdf/indexfpdf.php" class="text-indigo-600 font-bold mt-2 block">Descargar
+                                    PDF</a></p>
+                        </div>
+                        <div class="bg-white shadow-md rounded-lg p-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Material</h3>
+                            <p class="text-gray-600 mb-2">Nicolas Rotilli - 30 Agosto</p>
+                            <p class="text-gray-600">En este PDF está todo el material de la materia.</p>
+                            <a href="material.pdf" class="text-indigo-600 font-bold mt-2 block">Descargar PDF</a>
+                        </div>
+                        <div class="bg-white shadow-md rounded-lg p-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Temario del Parcial</h3>
+                            <p class="text-gray-600 mb-2">Nicolas Rotilli - 18 Agosto</p>
+                            <p class="text-gray-600">En este PDF está el temario para el próximo parcial.</p>
+                            <a href="parcial.pdf" class="text-indigo-600 font-bold mt-2 block">Descargar PDF</a>
                         </div>
                     </div>
                 </div>
+                
+                <aside class="pr-7">
 
-                <div class="border-t-2 border-gray-300 mt-4 mx-4"></div>
-                <div class="w-full min-h-min mt-3">
-                    <div class="space-y-4 p-4 max-w-lg mx-auto">
+                    <body class="flex items-center justify-center min-h-screen bg-gray-100">
 
-                        <!-- Card 1 -->
-                        <a href="" class="">
-                            <div class="bg-white p-2 rounded-lg shadow-md border hover:shadow-xl">
-                                <div class="flex justify-between items-center border-b border-gray-300 mb-3">
-                                    <h2 class="text-lg font-semibold mb-1">Trabajo 1</h2>
-                                </div>
-                                <p class="text-sm text-gray-500">Nicolas Rotilli • 30 Abril</p>
-                                <p class="mt-2 text-gray-700">En este PDF está todo el temario de la materia, las
-                                    modalidades que hay y demás</p>
+                        <div class="w-80 p-4 bg-white rounded-lg shadow-md">
+                            <div class="flex items-center justify-between bg-blue-500 text-white rounded-t-lg p-3">
+                                <button onclick="changeMonth(-1)" class="text-lg">&#10094;</button>
+                                <span id="month-year" class="font-bold"></span>
+                                <button onclick="changeMonth(1)" class="text-lg">&#10095;</button>
                             </div>
-                        </a>
+                            <div class="grid grid-cols-7 text-center mt-2 gap-y-3">
+                                <!-- Días de la semana -->
+                                <div class="font-semibold text-gray-600">Dom</div>
+                                <div class="font-semibold text-gray-600">Lun</div>
+                                <div class="font-semibold text-gray-600">Mar</div>
+                                <div class="font-semibold text-gray-600">Mié</div>
+                                <div class="font-semibold text-gray-600">Jue</div>
+                                <div class="font-semibold text-gray-600">Vie</div>
+                                <div class="font-semibold text-gray-600">Sáb</div>
+                                <!-- Días del mes generados con JavaScript -->
+                            </div>
 
-                        <!-- Card 2 -->
-                        <a href="" class="">
-                            <div class="bg-white p-2 rounded-lg shadow-md border mt-4 hover:shadow-xl">
-                                <div class="flex justify-between items-center border-b border-gray-300 mb-3">
-                                    <h2 class="text-lg font-semibold mb-1">Trabajo 2</h2>
-                                </div>
-                                <p class="text-sm text-gray-500">Nicolas Rotilli • 30 Abril</p>
-                                <p class="mt-2 text-gray-700">En este PDF está todo el temario de la materia, las
-                                    modalidades que hay y demás</p>
+                            <div class="flex justify-center w-6/6">
+                                <button
+                                    class="w-1/3 bg-green-500 text-white mt-4 py-2 rounded-md hover:bg-green-600 m-auto"
+                                    onclick="goToCurrentMonth()">
+                                    Mes Actual
+                                </button>
                             </div>
-                        </a>
-                        <a href="" class="">
-                            <div class="bg-white p-2 rounded-lg shadow-md border mt-4 hover:shadow-xl">
-                                <div class="flex justify-between items-center border-b border-gray-300 mb-3">
-                                    <h2 class="text-lg font-semibold mb-1">Trabajo 2</h2>
+
+                            <!-- Acordeón para fechas importantes -->
+                            <div class="mt-4">
+                                <button
+                                    class="w-full bg-gray-200 text-gray-700 py-2 rounded-md font-medium hover:bg-gray-300"
+                                    onclick="toggleAccordion()">
+                                    Fechas Importantes
+                                </button>
+                                <div id="accordion-content" class="hidden mt-2 p-2 bg-gray-200 rounded-lg">
+                                    <ul id="important-dates" class="list-disc list-inside text-gray-600">
+                                        <!-- Fechas importantes generadas dinámicamente -->
+                                    </ul>
                                 </div>
-                                <p class="text-sm text-gray-500">Nicolas Rotilli • 30 Abril</p>
-                                <p class="mt-2 text-gray-700">En este PDF está todo el temario de la materia, las
-                                    modalidades que hay y demás</p>
                             </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                        </div>
+
+                        <div class="bg-green-100 p-6 rounded-lg text-center mt-4">
+                            <h3 class="text-2xl font-bold text-green-700">85%</h3>
+                            <p class="text-green-600">Asistencia Promedio</p>
+                        </div>
         </div>
+    </div>
+    <!-- Script para inicializar FullCalendar -->
+    <script>
+        // Fechas importantes con formato "DD/MM/YYYY"
+        const specialDates = {
+            '10/10/2024': 'Día de Ventas Especial',
+        };
 
-        <aside class="pr-4">
+        let currentDate = new Date();
+        let selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
 
-            <body class="flex items-center justify-center min-h-screen bg-gray-100">
+        function renderCalendar() {
+            const daysContainer = document.querySelector('.grid-cols-7:nth-child(2)');
+            const monthYearElement = document.getElementById('month-year');
+            daysContainer.innerHTML = '';
 
-                <div class="w-80 p-4 bg-white rounded-lg shadow-md">
-                    <div class="flex items-center justify-between bg-blue-500 text-white rounded-t-lg p-3">
-                        <button onclick="changeMonth(-1)" class="text-lg">&#10094;</button>
-                        <span id="month-year" class="font-bold"></span>
-                        <button onclick="changeMonth(1)" class="text-lg">&#10095;</button>
-                    </div>
-                    <div class="grid grid-cols-7 text-center mt-2 gap-y-1">
-                        <!-- Días de la semana -->
-                        <div class="font-semibold text-gray-600">Dom</div>
-                        <div class="font-semibold text-gray-600">Lun</div>
-                        <div class="font-semibold text-gray-600">Mar</div>
-                        <div class="font-semibold text-gray-600">Mié</div>
-                        <div class="font-semibold text-gray-600">Jue</div>
-                        <div class="font-semibold text-gray-600">Vie</div>
-                        <div class="font-semibold text-gray-600">Sáb</div>
-                        <!-- Días del mes generados con JavaScript -->
-                    </div>
+            const year = selectedDate.getFullYear();
+            const month = selectedDate.getMonth();
 
-                    <div class="flex justify-center w-6/6">
-                        <button class="w-1/3 bg-green-500 text-white mt-4 py-2 rounded-md hover:bg-green-600 m-auto"
-                            onclick="goToCurrentMonth()">
-                            Mes Actual
-                        </button>
-                    </div>
+            // Actualizar el título con el mes y año actuales
+            monthYearElement.textContent = selectedDate.toLocaleString('es-ES', {
+                month: 'long',
+                year: 'numeric'
+            });
 
-                    <!-- Acordeón para fechas importantes -->
-                    <div class="mt-4">
-                        <button class="w-full bg-gray-200 text-gray-700 py-2 rounded-md font-medium hover:bg-gray-300"
-                            onclick="toggleAccordion()">
-                            Fechas Importantes
-                        </button>
-                        <div id="accordion-content" class="hidden mt-2 p-2 bg-gray-200 rounded-lg">
-                            <ul id="important-dates" class="list-disc list-inside text-gray-600">
-                                <!-- Fechas importantes generadas dinámicamente -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            // Obtener primer día y cantidad de días del mes
+            const firstDayOfMonth = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-                <script>
-                    // Fechas importantes con formato "DD/MM/YYYY"
-                    const specialDates = {
-                        '10/10/2024': 'Día de Ventas Especial',
-                    };
+            // Generar días en blanco hasta el primer día del mes
+            for (let i = 0; i < firstDayOfMonth; i++) {
+                const blankDay = document.createElement('div');
+                daysContainer.appendChild(blankDay);
+            }
 
-                    let currentDate = new Date();
-                    let selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            // Llenado de días del mes
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('w-6', 'h-6', 'flex', 'items-center', 'justify-center', 'rounded-md', 'text-sm',
+                    'font-medium');
 
-                    function renderCalendar() {
-                        const daysContainer = document.querySelector('.grid-cols-7:nth-child(2)');
-                        const monthYearElement = document.getElementById('month-year');
-                        daysContainer.innerHTML = '';
+                // Cambiar el formato a DD/MM/YYYY
+                const dateKey = `${String(day).padStart(2, '0')}/${String(month + 1).padStart(2, '0')}/${year}`;
 
-                        const year = selectedDate.getFullYear();
-                        const month = selectedDate.getMonth();
+                // Marcar día actual
+                if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate
+                    .getFullYear()) {
+                    dayElement.classList.add('bg-yellow-400', 'text-white', 'font-bold');
+                }
+                // Marcar días especiales en azul
+                else if (specialDates[dateKey]) {
+                    dayElement.classList.add('bg-blue-500', 'text-white');
+                } else {
+                    dayElement.classList.add('text-gray-700');
+                }
 
-                        // Actualizar el título con el mes y año actuales
-                        monthYearElement.textContent = selectedDate.toLocaleString('es-ES', {
-                            month: 'long',
-                            year: 'numeric'
-                        });
+                dayElement.textContent = day;
+                daysContainer.appendChild(dayElement);
+            }
 
-                        // Obtener primer día y cantidad de días del mes
-                        const firstDayOfMonth = new Date(year, month, 1).getDay();
-                        const daysInMonth = new Date(year, month + 1, 0).getDate();
+            renderImportantDates();
+        }
 
-                        // Generar días en blanco hasta el primer día del mes
-                        for (let i = 0; i < firstDayOfMonth; i++) {
-                            const blankDay = document.createElement('div');
-                            daysContainer.appendChild(blankDay);
-                        }
+        function changeMonth(delta) {
+            selectedDate.setMonth(selectedDate.getMonth() + delta);
+            renderCalendar();
+        }
 
-                        // Llenado de días del mes
-                        for (let day = 1; day <= daysInMonth; day++) {
-                            const dayElement = document.createElement('div');
-                            dayElement.classList.add('w-6', 'h-6', 'flex', 'items-center', 'justify-center', 'rounded-md', 'text-sm',
-                                'font-medium');
+        function goToCurrentMonth() {
+            selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            renderCalendar();
+        }
 
-                            // Cambiar el formato a DD/MM/YYYY
-                            const dateKey = `${String(day).padStart(2, '0')}/${String(month + 1).padStart(2, '0')}/${year}`;
+        function renderImportantDates() {
+            const importantDatesList = document.getElementById('important-dates');
+            importantDatesList.innerHTML = '';
 
-                            // Marcar día actual
-                            if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate
-                                .getFullYear()) {
-                                dayElement.classList.add('bg-yellow-400', 'text-white', 'font-bold');
-                            }
-                            // Marcar días especiales en azul
-                            else if (specialDates[dateKey]) {
-                                dayElement.classList.add('bg-blue-500', 'text-white');
-                            } else {
-                                dayElement.classList.add('text-gray-700');
-                            }
+            for (const [date, description] of Object.entries(specialDates)) {
+                // Ya está en formato DD/MM/YYYY
+                const li = document.createElement('li');
+                li.textContent = `${date}: ${description}`;
+                importantDatesList.appendChild(li);
+            }
+        }
 
-                            dayElement.textContent = day;
-                            daysContainer.appendChild(dayElement);
-                        }
+        function toggleAccordion() {
+            const accordionContent = document.getElementById('accordion-content');
+            accordionContent.classList.toggle('hidden');
+        }
 
-                        renderImportantDates();
-                    }
-
-                    function changeMonth(delta) {
-                        selectedDate.setMonth(selectedDate.getMonth() + delta);
-                        renderCalendar();
-                    }
-
-                    function goToCurrentMonth() {
-                        selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-                        renderCalendar();
-                    }
-
-                    function renderImportantDates() {
-                        const importantDatesList = document.getElementById('important-dates');
-                        importantDatesList.innerHTML = '';
-
-                        for (const [date, description] of Object.entries(specialDates)) {
-                            // Ya está en formato DD/MM/YYYY
-                            const li = document.createElement('li');
-                            li.textContent = `${date}: ${description}`;
-                            importantDatesList.appendChild(li);
-                        }
-                    }
-
-                    function toggleAccordion() {
-                        const accordionContent = document.getElementById('accordion-content');
-                        accordionContent.classList.toggle('hidden');
-                    }
-
-                    renderCalendar();
-                </script>
-        </aside>
-
+        renderCalendar();
+    </script>
+    
         <div
             class="fixed bottom-6 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
             <img src="../images/mas.png" alt="Botón 1" class="w-10 h-10">
