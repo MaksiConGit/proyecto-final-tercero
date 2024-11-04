@@ -128,10 +128,10 @@
             </aside>
             <!-- Lista de materias con asistencia individual -->
             <div class="max-w-4xl min-h-min mt-3">
-                <div class="space-y-4 p-4">
-                    <h2 class="text-xl font-bold mb-4">Asistencia por Materia</h2>
+                <h2 class="text-3xl p-4 font-bold mb-2">Asistencia por Materia</h2>
+                <div class="space-y-2 p-4 grid grid-cols-2 gap-4">
                     <!-- Materia 1 -->
-                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
+                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center min-h-32">
                         <div>
                             <h2 class="text-xl font-bold">Base de Datos</h2>
                         </div>
@@ -148,8 +148,9 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- Materia 2 -->
-                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
+                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center min-h-32">
                         <div>
                             <h2 class="text-xl font-bold">Desarrollo Web</h2>
                         </div>
@@ -166,8 +167,9 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- Materia 3 -->
-                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
+                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center min-h-32">
                         <div>
                             <h2 class="text-xl font-bold">Seguridad de los Sistemas</h2>
                         </div>
@@ -184,10 +186,11 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- Materia 4 -->
-                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
+                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center min-h-32">
                         <div>
-                            <h2 class="text-xl font-bold">Practica Profesionalizante</h2>
+                            <h2 class="text-xl font-bold">Etica y Responsabilidad Social</h2>
                         </div>
                         <div class="flex items-center">
                             <div class="w-16 h-16 relative">
@@ -202,8 +205,9 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- Materia 5 -->
-                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
+                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center min-h-32">
                         <div>
                             <h2 class="text-xl font-bold">Derecho Laboral</h2>
                         </div>
@@ -220,9 +224,69 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Materia 6 -->
+                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center min-h-32">
+                        <div>
+                            <h2 class="text-xl font-bold">Practicas Profesionalizantes 2</h2>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 relative">
+                                <svg viewBox="0 0 36 36" class="w-full h-full">
+                                    <circle cx="18" cy="18" r="15" stroke="gray" stroke-width="3"
+                                        fill="none" />
+                                    <path d="M18 3 a 15 15 0 0 1 0 30 a 15 15 0 0 1 0 -30" stroke="green"
+                                        stroke-width="3" fill="none" />
+                                </svg>
+                                <span
+                                    class="absolute inset-0 flex items-center justify-center font-bold text-xl">95%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Materia 7 -->
+                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center min-h-32">
+                        <div>
+                            <h2 class="text-xl font-bold">Redes y Comunicacioens</h2>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 relative">
+                                <svg viewBox="0 0 36 36" class="w-full h-full">
+                                    <circle cx="18" cy="18" r="15" stroke="gray" stroke-width="3"
+                                        fill="none" />
+                                    <path d="M18 3 a 15 15 0 0 1 0 30 a 15 15 0 0 1 0 -30" stroke="green"
+                                        stroke-width="3" fill="none" />
+                                </svg>
+                                <span
+                                    class="absolute inset-0 flex items-center justify-center font-bold text-xl">88%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Materia 8 -->
+                    <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center min-h-32">
+                        <div>
+                            <h2 class="text-xl font-bold">Sistemas de Informacion Organizacionesles</h2>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 relative">
+                                <svg viewBox="0 0 36 36" class="w-full h-full">
+                                    <circle cx="18" cy="18" r="15" stroke="gray" stroke-width="3"
+                                        fill="none" />
+                                    <path d="M18 3 a 15 15 0 0 1 0 30 a 15 15 0 0 1 0 -30" stroke="green"
+                                        stroke-width="3" fill="none" />
+                                </svg>
+                                <span
+                                    class="absolute inset-0 flex items-center justify-center font-bold text-xl">92%</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
         </div>
+    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
