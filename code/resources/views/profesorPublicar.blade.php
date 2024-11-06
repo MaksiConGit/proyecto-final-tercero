@@ -49,7 +49,7 @@
 
     <div class="flex">
         <div class="flex mt-2">
-            <aside class=" w-44 bg-gray-200 text-black min-h-screen border-r-2 border-gray-300 p-2">
+            {{-- <aside class=" w-44 bg-gray-200 text-black min-h-screen border-r-2 border-gray-300 p-2">
                 <h2 class="text-xl font-bold mb-4 flex justify-center pb-2 border-b-2 border-gray-400">Sistemas</h2>
                 <ul class="space-y-4">
                     <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-gray-300 text-gray-900"
@@ -59,7 +59,7 @@
                                 class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
                                 data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
                                 aria-controls="accordion-flush-body-1">
-                                <span>Materias</span>
+                                <span>Sistema</span>
                                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                                     xmlns="" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -69,47 +69,43 @@
                         </h2>
                         <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
                             <div class="py-1 border-b border-gray-400">
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">B.
-                                    de Datos</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">D.
-                                    de Sistemas</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">R.
-                                    y Comunicaciones</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">S.
-                                    de los Sistemas</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">S.
-                                    de Inf. Org.</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">P.
-                                    Profesionalizantes 2</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">D.
-                                    y L. Laboral</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">E.
-                                    y R. Social</a>
+                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
+                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
+                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
                             </div>
                         </div>
                     </div>
+                    
+                    <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-gray-300 text-gray-900"
+                        data-inactive-classes="text-gray-600">
+                        <h2 id="accordion-flush-heading-2">
+                            <button type="button"
+                                class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
+                                data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
+                                aria-controls="accordion-flush-body-1">
+                                <span>Robotica</span>
+                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                    xmlns="" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M9 5 5 1 1 5" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+                            <div class="py-1 border-b border-gray-400">
+                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
+                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
+                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <h2 id="accordion-flush-heading-2">
                         <button type="button"
                             class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
                             data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
                             aria-controls="accordion-flush-body-2">
-                            <a href="Asistencias.html">Asistencias</a>
-                        </button>
-                    </h2>
-                    <h2 id="accordion-flush-heading-2">
-                        <button type="button"
-                            class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
-                            data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
-                            aria-controls="accordion-flush-body-2">
-                            <a href="">Profesores</a>
+                            <a href="">Industrial</a>
                         </button>
                     </h2>
                     <h2 id="accordion-flush-heading-2">
@@ -129,7 +125,7 @@
                         </button>
                     </h2>
                 </ul>
-            </aside>
+            </aside> --}}
             <div class="flex-1 justify-center mx-44">
                 <div class="bg-white shadow-md rounded-lg p-3 mb-6 w-full">
                     <img src="../images/Materia.png" alt="Imagen de Base de Datos"
@@ -328,6 +324,7 @@
     </script>
 
     <script>
+
             // Fechas importantes con formato "DD/MM/YYYY"
             const specialDates = {
                 '10/10/2024': 'Día de Ventas Especial',
@@ -418,10 +415,7 @@
             renderCalendar();
         </script>
 
-    
-
-
-
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 
 </body>
 
