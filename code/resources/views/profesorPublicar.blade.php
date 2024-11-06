@@ -213,107 +213,11 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="bg-green-100 p-6 rounded-lg text-center mt-4">
-                        <h3 class="text-2xl font-bold text-green-700">85%</h3>
-                        <p class="text-green-600">Asistencia Promedio</p>
-                    </div>
         </div>
     </div>
-    <!-- Script para inicializar FullCalendar -->
-    <script>
-        // Fechas importantes con formato "DD/MM/YYYY"
-        const specialDates = {
-            '10/10/2024': 'Día de Ventas Especial',
-        };
-
-        let currentDate = new Date();
-        let selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-
-        function renderCalendar() {
-            const daysContainer = document.querySelector('.grid-cols-7:nth-child(2)');
-            const monthYearElement = document.getElementById('month-year');
-            daysContainer.innerHTML = '';
-
-            const year = selectedDate.getFullYear();
-            const month = selectedDate.getMonth();
-
-            // Actualizar el título con el mes y año actuales
-            monthYearElement.textContent = selectedDate.toLocaleString('es-ES', {
-                month: 'long',
-                year: 'numeric'
-            });
-
-            // Obtener primer día y cantidad de días del mes
-            const firstDayOfMonth = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-            // Generar días en blanco hasta el primer día del mes
-            for (let i = 0; i < firstDayOfMonth; i++) {
-                const blankDay = document.createElement('div');
-                daysContainer.appendChild(blankDay);
-            }
-
-            // Llenado de días del mes
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dayElement = document.createElement('div');
-                dayElement.classList.add('w-6', 'h-6', 'flex', 'items-center', 'justify-center', 'rounded-md', 'text-sm',
-                    'font-medium');
-
-                // Cambiar el formato a DD/MM/YYYY
-                const dateKey = `${String(day).padStart(2, '0')}/${String(month + 1).padStart(2, '0')}/${year}`;
-
-                // Marcar día actual
-                if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate
-                    .getFullYear()) {
-                    dayElement.classList.add('bg-yellow-400', 'text-white', 'font-bold');
-                }
-                // Marcar días especiales en azul
-                else if (specialDates[dateKey]) {
-                    dayElement.classList.add('bg-blue-500', 'text-white');
-                } else {
-                    dayElement.classList.add('text-gray-700');
-                }
-
-                dayElement.textContent = day;
-                daysContainer.appendChild(dayElement);
-            }
-
-            renderImportantDates();
-        }
-
-        function changeMonth(delta) {
-            selectedDate.setMonth(selectedDate.getMonth() + delta);
-            renderCalendar();
-        }
-
-        function goToCurrentMonth() {
-            selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-            renderCalendar();
-        }
-
-        function renderImportantDates() {
-            const importantDatesList = document.getElementById('important-dates');
-            importantDatesList.innerHTML = '';
-
-            for (const [date, description] of Object.entries(specialDates)) {
-                // Ya está en formato DD/MM/YYYY
-                const li = document.createElement('li');
-                li.textContent = `${date}: ${description}`;
-                importantDatesList.appendChild(li);
-            }
-        }
-
-        function toggleAccordion() {
-            const accordionContent = document.getElementById('accordion-content');
-            accordionContent.classList.toggle('hidden');
-        }
-
-        renderCalendar();
-    </script>
 
     <div
-        class="group fixed bottom-6 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
+        class="group fixed bottom-6 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300" id="openFormBtn2">
         <img src="../images/material.png" alt="Botón 1" class="w-10 h-10">
         <div
             class="absolute mr-20 mt-1 transform -translate-x-1/2 mb-2 w-48 bg-purple-700 text-white text-center rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -325,40 +229,199 @@
         <img src="../images/examen.png" alt="Botón 2" class="w-10 h-10">
         <div class="absolute mr-20 mt-1 transform -translate-x-1/2 mb-2 w-48 bg-purple-700 text-white text-center rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Examen</div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+    
 
     <!-- Overlay del formulario -->
-    <div id="formOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 justify-center items-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-            <button id="closeFormBtn" class="text-red-500 float-right">Cerrar</button>
-            <h2 class="text-xl mb-4">Formulario</h2>
-            <form>
-                <label for="name" class="block mb-2">Nombre:</label>
-                <input type="text" id="name" name="name" class="border p-2 w-full mb-4 rounded" required>
+    <div id="formExamen" class="hidden">
+        <div class="fixed inset-0 flex bg-black bg-opacity-50 justify-center items-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+                <div class="flex justify-center">
+                    <h2 class="text-xl mb-2">Formulario</h2>
+                </div>
+                <form action="$$" method="post" enctype="multipart/form-data">
+                    <label for="name" class="block mb-2 border-t border-gray-400 pt-2">Titulo del examen</label>
+                    <input type="text" id="name" name="name" class="border p-2 w-full mb-4 rounded"
+                        required>
 
-                <label for="email" class="block mb-2">Correo electrónico:</label>
-                <input type="email" id="email" name="email" class="border p-2 w-full mb-4 rounded" required>
+                    <label for="email" class="block mb-2">Descripcion</label>
+                    <input type="email" id="email" name="email" class="border p-2 w-full mb-4 rounded"
+                        required>
 
-                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Enviar</button>
-            </form>
+                    <label for="archivo">Selecciona un archivo:</label>
+                    <input class="mt-2 mb-2 border-b border-gray-400 pb-3" type="file" id="archivo"
+                        name="archivo">
+
+                    <div class="flex justify-evenly w-full pt-1">
+                        <button type="submit"
+                            class="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded">Enviar</button>
+                        <button id="closeFormBtn"
+                            class="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded">Cerrar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+
+    <div id="formMaterial" class="hidden">
+        <div class="fixed inset-0 flex bg-black bg-opacity-50 justify-center items-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+                <div class="flex justify-center">
+                    <h2 class="text-xl mb-2">Formulario</h2>
+                </div>
+                <form action="$$" method="post" enctype="multipart/form-data">
+                    <label for="name" class="block mb-2 border-t border-gray-400 pt-2">Titulo del material</label>
+                    <input type="text" id="name" name="name" class="border p-2 w-full mb-4 rounded"
+                        required>
+
+                    <label for="email" class="block mb-2">Descripcion</label>
+                    <input type="email" id="email" name="email" class="border p-2 w-full mb-4 rounded"
+                        required>
+
+                    <label for="archivo">Selecciona un archivo:</label>
+                    <input class="mt-2 mb-2 border-b border-gray-400 pb-3" type="file" id="archivo"
+                        name="archivo">
+
+                    <div class="flex justify-evenly w-full pt-1">
+                        <button type="submit"
+                            class="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded">Enviar</button>
+                        <button id="closeFormBtn2"
+                            class="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded">Cerrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.getElementById('openFormBtn').addEventListener('click', function() {
-            document.getElementById('formOverlay').classList.remove('hidden');
+            document.getElementById('formExamen').classList.remove('hidden');
         });
 
         document.getElementById('closeFormBtn').addEventListener('click', function() {
-            document.getElementById('formOverlay').classList.add('hidden');
+            document.getElementById('formExamen').classList.add('hidden');
         });
 
         // Opcional: cerrar el overlay al hacer clic fuera del formulario
-        document.getElementById('formOverlay').addEventListener('click', function(event) {
+        document.getElementById('formExamen').addEventListener('click', function(event) {
             if (event.target === this) {
-                document.getElementById('formOverlay').classList.add('hidden');
+                document.getElementById('formExamen').classList.add('hidden');
+            }
+        });
+
+        // aca
+
+        document.getElementById('openFormBtn2').addEventListener('click', function() {
+            document.getElementById('formMaterial').classList.remove('hidden');
+        });
+
+        document.getElementById('closeFormBtn2').addEventListener('click', function() {
+            document.getElementById('formMaterial').classList.add('hidden');
+        });
+
+        // Opcional: cerrar el overlay al hacer clic fuera del formulario
+        document.getElementById('formMaterial').addEventListener('click', function(event) {
+            if (event.target === this) {
+                document.getElementById('formMaterial').classList.add('hidden');
             }
         });
     </script>
+
+    <script>
+            // Fechas importantes con formato "DD/MM/YYYY"
+            const specialDates = {
+                '10/10/2024': 'Día de Ventas Especial',
+            };
+    
+            let currentDate = new Date();
+            let selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    
+            function renderCalendar() {
+                const daysContainer = document.querySelector('.grid-cols-7:nth-child(2)');
+                const monthYearElement = document.getElementById('month-year');
+                daysContainer.innerHTML = '';
+    
+                const year = selectedDate.getFullYear();
+                const month = selectedDate.getMonth();
+    
+                // Actualizar el título con el mes y año actuales
+                monthYearElement.textContent = selectedDate.toLocaleString('es-ES', {
+                    month: 'long',
+                    year: 'numeric'
+                });
+    
+                // Obtener primer día y cantidad de días del mes
+                const firstDayOfMonth = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+    
+                // Generar días en blanco hasta el primer día del mes
+                for (let i = 0; i < firstDayOfMonth; i++) {
+                    const blankDay = document.createElement('div');
+                    daysContainer.appendChild(blankDay);
+                }
+    
+                // Llenado de días del mes
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.classList.add('w-6', 'h-6', 'flex', 'items-center', 'justify-center', 'rounded-md', 'text-sm',
+                        'font-medium');
+    
+                    // Cambiar el formato a DD/MM/YYYY
+                    const dateKey = `${String(day).padStart(2, '0')}/${String(month + 1).padStart(2, '0')}/${year}`;
+    
+                    // Marcar día actual
+                    if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate
+                        .getFullYear()) {
+                        dayElement.classList.add('bg-yellow-400', 'text-white', 'font-bold');
+                    }
+                    // Marcar días especiales en azul
+                    else if (specialDates[dateKey]) {
+                        dayElement.classList.add('bg-blue-500', 'text-white');
+                    } else {
+                        dayElement.classList.add('text-gray-700');
+                    }
+    
+                    dayElement.textContent = day;
+                    daysContainer.appendChild(dayElement);
+                }
+    
+                renderImportantDates();
+            }
+    
+            function changeMonth(delta) {
+                selectedDate.setMonth(selectedDate.getMonth() + delta);
+                renderCalendar();
+            }
+    
+            function goToCurrentMonth() {
+                selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+                renderCalendar();
+            }
+    
+            function renderImportantDates() {
+                const importantDatesList = document.getElementById('important-dates');
+                importantDatesList.innerHTML = '';
+    
+                for (const [date, description] of Object.entries(specialDates)) {
+                    // Ya está en formato DD/MM/YYYY
+                    const li = document.createElement('li');
+                    li.textContent = `${date}: ${description}`;
+                    importantDatesList.appendChild(li);
+                }
+            }
+    
+            function toggleAccordion() {
+                const accordionContent = document.getElementById('accordion-content');
+                accordionContent.classList.toggle('hidden');
+            }
+    
+            renderCalendar();
+        </script>
+
+    
+
+
+
 
 </body>
 
