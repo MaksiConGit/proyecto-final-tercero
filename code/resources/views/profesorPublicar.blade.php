@@ -15,7 +15,7 @@
         <div class="m-0 flex items-center justify-between ">
             <h1 class="text-2xl font-bold">Instituto</h1>
             <div class="w-8 h-8">
-                <img src="../images/usuario_foto.png" alt="Icono de usuario">
+                <img src="../images/icono.png" alt="Icono de usuario">
             </div>
         </div>
     </header>
@@ -41,53 +41,69 @@
                 </svg>
             </li>
             <li>
-                <a href="#" class="text-white hover:underline font-semibold">Base de Datos</a>
+                <a href="../images/materia.png" class="text-white hover:underline font-semibold">Base de Datos</a>
             </li>
         </ol>
         </div>
     </nav>
 
     <div class="flex">
-    <div class="flex mt-2">
-        <aside class=" w-44 bg-gray-200 text-black min-h-screen border-r-2 border-gray-300 p-2">
-            <h2 class="text-xl font-bold mb-4 flex justify-center pb-2 border-b-2 border-gray-400">Sistemas</h2>
-            <ul class="space-y-4">
-                <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-gray-300 text-gray-900"
-                    data-inactive-classes="text-gray-600">
-                    <h2 id="accordion-flush-heading-1">
-                        <button type="button"
-                            class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
-                            data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
-                            aria-controls="accordion-flush-body-1">
-                            <span>Materias</span>
-                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                xmlns="" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M9 5 5 1 1 5" />
-                            </svg>
-                        </button>
-                    </h2>
-                    <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
-                        <div class="py-1 border-b border-gray-400">
-                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">B. de Datos</a>
-                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">D. de Sistemas</a>
-                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">R. y Comunicaciones</a>
-                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">S. de los Sistemas</a>
-                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">S. de Inf. Org.</a>
-                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">P. Profesionalizantes 2</a>
-                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">D. y L. Laboral</a>
-                            <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">E. y R. Social</a>
+        <div class="flex mt-2">
+            <aside class=" w-44 bg-gray-200 text-black min-h-screen border-r-2 border-gray-300 p-2">
+                <h2 class="text-xl font-bold mb-4 flex justify-center pb-2 border-b-2 border-gray-400">Sistemas</h2>
+                <ul class="space-y-4">
+                    <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-gray-300 text-gray-900"
+                        data-inactive-classes="text-gray-600">
+                        <h2 id="accordion-flush-heading-1">
+                            <button type="button"
+                                class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
+                                data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
+                                aria-controls="accordion-flush-body-1">
+                                <span>Materias</span>
+                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                    xmlns="" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M9 5 5 1 1 5" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                            <div class="py-1 border-b border-gray-400">
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">B.
+                                    de Datos</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">D.
+                                    de Sistemas</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">R.
+                                    y Comunicaciones</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">S.
+                                    de los Sistemas</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">S.
+                                    de Inf. Org.</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">P.
+                                    Profesionalizantes 2</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">D.
+                                    y L. Laboral</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">E.
+                                    y R. Social</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <h2 id="accordion-flush-heading-2">
-                    <button type="button"
-                        class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
-                        data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
-                        aria-controls="accordion-flush-body-2">
-                        <a href="Asistencias.html">Asistencias</a>
-                    </button>
-                </h2>
+                    <h2 id="accordion-flush-heading-2">
+                        <button type="button"
+                            class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
+                            data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
+                            aria-controls="accordion-flush-body-2">
+                            <a href="Asistencias.html">Asistencias</a>
+                        </button>
+                    </h2>
                     <h2 id="accordion-flush-heading-2">
                         <button type="button"
                             class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
@@ -112,95 +128,96 @@
                             <a href="">Notas</a>
                         </button>
                     </h2>
-            </ul>
-        </aside>
-                <div class="flex-1 justify-center mx-44">
-                    <div class="bg-white shadow-md rounded-lg p-3 mb-6 w-full">
-                        <img src="../images/Materia.png" alt="Imagen de Base de Datos" class="rounded-lg w-full h-56 object-cover mb-4">
-                        <h1 class="text-4xl font-bold text-gray-800">Base De Datos</h1>
-                        <div class="flex items-center mt-4">
-                            <img src="../images/profesor.png" alt="Profesor" class="w-16 h-16 rounded-full mr-4">
-                            <div>
-                                <h2 class="text-lg font-semibold text-gray-700">Profesor Nicolas Rotilli</h2>
-                                <p class="text-gray-600">rotillinicolas@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Lista de Materiales -->
-                    <div class="space-y-4">
-                        <div class="bg-white shadow-md rounded-lg p-4">
-                            <h3 class="text-xl font-semibold text-gray-800">Temario de la materia</h3>
-                            <p class="text-gray-600 mb-2">Nicolas Rotilli - 30 Abril</p>
-                            <p class="text-gray-600">En este PDF está todo el temario de la materia, las modalidades que
-                                hay y demás.</p>
-                            <p><a href="fpdf/indexfpdf.php" class="text-indigo-600 font-bold mt-2 block">Descargar
-                                    PDF</a></p>
-                        </div>
-                        <div class="bg-white shadow-md rounded-lg p-4">
-                            <h3 class="text-xl font-semibold text-gray-800">Material</h3>
-                            <p class="text-gray-600 mb-2">Nicolas Rotilli - 30 Agosto</p>
-                            <p class="text-gray-600">En este PDF está todo el material de la materia.</p>
-                            <a href="material.pdf" class="text-indigo-600 font-bold mt-2 block">Descargar PDF</a>
-                        </div>
-                        <div class="bg-white shadow-md rounded-lg p-4">
-                            <h3 class="text-xl font-semibold text-gray-800">Temario del Parcial</h3>
-                            <p class="text-gray-600 mb-2">Nicolas Rotilli - 18 Agosto</p>
-                            <p class="text-gray-600">En este PDF está el temario para el próximo parcial.</p>
-                            <a href="parcial.pdf" class="text-indigo-600 font-bold mt-2 block">Descargar PDF</a>
+                </ul>
+            </aside>
+            <div class="flex-1 justify-center mx-44">
+                <div class="bg-white shadow-md rounded-lg p-3 mb-6 w-full">
+                    <img src="../images/Materia.png" alt="Imagen de Base de Datos"
+                        class="rounded-lg w-full h-56 object-cover mb-4">
+                    <h1 class="text-4xl font-bold text-gray-800">Base De Datos</h1>
+                    <div class="flex items-center mt-4">
+                        <img src="../images/profesor.png" alt="Profesor" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h2 class="text-lg font-semibold text-gray-700">Profesor Nicolas Rotilli</h2>
+                            <p class="text-gray-600">rotillinicolas@gmail.com</p>
                         </div>
                     </div>
                 </div>
-                
-                <aside class="pr-7">
 
-                    <body class="flex items-center justify-center min-h-screen bg-gray-100">
+                <!-- Lista de Materiales -->
+                <div class="space-y-4">
+                    <div class="bg-white shadow-md rounded-lg p-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Temario de la materia</h3>
+                        <p class="text-gray-600 mb-2">Nicolas Rotilli - 30 Abril</p>
+                        <p class="text-gray-600">En este PDF está todo el temario de la materia, las modalidades que
+                            hay y demás.</p>
+                        <p><a href="fpdf/indexfpdf.php" class="text-indigo-600 font-bold mt-2 block">Descargar
+                                PDF</a></p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Material</h3>
+                        <p class="text-gray-600 mb-2">Nicolas Rotilli - 30 Agosto</p>
+                        <p class="text-gray-600">En este PDF está todo el material de la materia.</p>
+                        <a href="material.pdf" class="text-indigo-600 font-bold mt-2 block">Descargar PDF</a>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Temario del Parcial</h3>
+                        <p class="text-gray-600 mb-2">Nicolas Rotilli - 18 Agosto</p>
+                        <p class="text-gray-600">En este PDF está el temario para el próximo parcial.</p>
+                        <a href="parcial.pdf" class="text-indigo-600 font-bold mt-2 block">Descargar PDF</a>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="w-80 p-4 bg-white rounded-lg shadow-md">
-                            <div class="flex items-center justify-between bg-blue-500 text-white rounded-t-lg p-3">
-                                <button onclick="changeMonth(-1)" class="text-lg">&#10094;</button>
-                                <span id="month-year" class="font-bold"></span>
-                                <button onclick="changeMonth(1)" class="text-lg">&#10095;</button>
-                            </div>
-                            <div class="grid grid-cols-7 text-center mt-2 gap-y-3">
-                                <!-- Días de la semana -->
-                                <div class="font-semibold text-gray-600">Dom</div>
-                                <div class="font-semibold text-gray-600">Lun</div>
-                                <div class="font-semibold text-gray-600">Mar</div>
-                                <div class="font-semibold text-gray-600">Mié</div>
-                                <div class="font-semibold text-gray-600">Jue</div>
-                                <div class="font-semibold text-gray-600">Vie</div>
-                                <div class="font-semibold text-gray-600">Sáb</div>
-                                <!-- Días del mes generados con JavaScript -->
-                            </div>
+            <aside class="pr-7">
 
-                            <div class="flex justify-center w-6/6">
-                                <button
-                                    class="w-1/3 bg-green-500 text-white mt-4 py-2 rounded-md hover:bg-green-600 m-auto"
-                                    onclick="goToCurrentMonth()">
-                                    Mes Actual
-                                </button>
-                            </div>
+                <body class="flex items-center justify-center min-h-screen bg-gray-100">
 
-                            <!-- Acordeón para fechas importantes -->
-                            <div class="mt-4">
-                                <button
-                                    class="w-full bg-gray-200 text-gray-700 py-2 rounded-md font-medium hover:bg-gray-300"
-                                    onclick="toggleAccordion()">
-                                    Fechas Importantes
-                                </button>
-                                <div id="accordion-content" class="hidden mt-2 p-2 bg-gray-200 rounded-lg">
-                                    <ul id="important-dates" class="list-disc list-inside text-gray-600">
-                                        <!-- Fechas importantes generadas dinámicamente -->
-                                    </ul>
-                                </div>
-                            </div>
+                    <div class="w-80 p-4 bg-white rounded-lg shadow-md">
+                        <div class="flex items-center justify-between bg-blue-500 text-white rounded-t-lg p-3">
+                            <button onclick="changeMonth(-1)" class="text-lg">&#10094;</button>
+                            <span id="month-year" class="font-bold"></span>
+                            <button onclick="changeMonth(1)" class="text-lg">&#10095;</button>
+                        </div>
+                        <div class="grid grid-cols-7 text-center mt-2 gap-y-3">
+                            <!-- Días de la semana -->
+                            <div class="font-semibold text-gray-600">Dom</div>
+                            <div class="font-semibold text-gray-600">Lun</div>
+                            <div class="font-semibold text-gray-600">Mar</div>
+                            <div class="font-semibold text-gray-600">Mié</div>
+                            <div class="font-semibold text-gray-600">Jue</div>
+                            <div class="font-semibold text-gray-600">Vie</div>
+                            <div class="font-semibold text-gray-600">Sáb</div>
+                            <!-- Días del mes generados con JavaScript -->
                         </div>
 
-                        <div class="bg-green-100 p-6 rounded-lg text-center mt-4">
-                            <h3 class="text-2xl font-bold text-green-700">85%</h3>
-                            <p class="text-green-600">Asistencia Promedio</p>
+                        <div class="flex justify-center w-6/6">
+                            <button
+                                class="w-1/3 bg-green-500 text-white mt-4 py-2 rounded-md hover:bg-green-600 m-auto"
+                                onclick="goToCurrentMonth()">
+                                Mes Actual
+                            </button>
                         </div>
+
+                        <!-- Acordeón para fechas importantes -->
+                        <div class="mt-4">
+                            <button
+                                class="w-full bg-gray-200 text-gray-700 py-2 rounded-md font-medium hover:bg-gray-300"
+                                onclick="toggleAccordion()">
+                                Fechas Importantes
+                            </button>
+                            <div id="accordion-content" class="hidden mt-2 p-2 bg-gray-200 rounded-lg">
+                                <ul id="important-dates" class="list-disc list-inside text-gray-600">
+                                    <!-- Fechas importantes generadas dinámicamente -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-green-100 p-6 rounded-lg text-center mt-4">
+                        <h3 class="text-2xl font-bold text-green-700">85%</h3>
+                        <p class="text-green-600">Asistencia Promedio</p>
+                    </div>
         </div>
     </div>
     <!-- Script para inicializar FullCalendar -->
@@ -294,20 +311,55 @@
 
         renderCalendar();
     </script>
-    
-        <div
-            class="fixed bottom-6 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="../images/mas.png" alt="Botón 1" class="w-10 h-10">
-        </div>
 
-        <!-- Botón 2 -->
+    <div
+        class="group fixed bottom-6 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
+        <img src="../images/material.png" alt="Botón 1" class="w-10 h-10">
         <div
-            class="fixed bottom-24 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="../images/estudiantes.png" alt="Botón 2" class="w-10 h-10">
-        </div>
+            class="absolute mr-20 mt-1 transform -translate-x-1/2 mb-2 w-48 bg-purple-700 text-white text-center rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Material</div>
     </div>
 
+    <!-- Botón 2 -->
+    <div class="group fixed bottom-24 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300" id="openFormBtn">
+        <img src="../images/examen.png" alt="Botón 2" class="w-10 h-10">
+        <div class="absolute mr-20 mt-1 transform -translate-x-1/2 mb-2 w-48 bg-purple-700 text-white text-center rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Examen</div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+    <!-- Overlay del formulario -->
+    <div id="formOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            <button id="closeFormBtn" class="text-red-500 float-right">Cerrar</button>
+            <h2 class="text-xl mb-4">Formulario</h2>
+            <form>
+                <label for="name" class="block mb-2">Nombre:</label>
+                <input type="text" id="name" name="name" class="border p-2 w-full mb-4 rounded" required>
+
+                <label for="email" class="block mb-2">Correo electrónico:</label>
+                <input type="email" id="email" name="email" class="border p-2 w-full mb-4 rounded" required>
+
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('openFormBtn').addEventListener('click', function() {
+            document.getElementById('formOverlay').classList.remove('hidden');
+        });
+
+        document.getElementById('closeFormBtn').addEventListener('click', function() {
+            document.getElementById('formOverlay').classList.add('hidden');
+        });
+
+        // Opcional: cerrar el overlay al hacer clic fuera del formulario
+        document.getElementById('formOverlay').addEventListener('click', function(event) {
+            if (event.target === this) {
+                document.getElementById('formOverlay').classList.add('hidden');
+            }
+        });
+    </script>
+
 </body>
 
 </html>
