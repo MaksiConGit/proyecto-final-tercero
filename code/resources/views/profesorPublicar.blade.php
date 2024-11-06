@@ -51,14 +51,14 @@
         <div class="flex mt-2">
             <aside class=" w-44 bg-gray-200 text-black min-h-screen border-r-2 border-gray-300 p-2">
                 <h2 class="text-xl font-bold flex justify-center pb-2 border-b-2 border-gray-400">Carreras</h2>
-                <div id="accordion-flush" data-accordion="collapse" data-active-classes="text-gray-500"
+                <div id="accordion-flush" data-accordion="collapse" data-active-classes="text-gray-500 bg-gray-300"
                     data-inactive-classes="text-gray-500">
                     <h2 id="accordion-flush-heading-1">
                         <button type="button"
                             class="flex items-center justify-between w-full py-5 font-medium text-gray-500 border-b border-gray-200 dark:border-gray-400 gap-3"
                             data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
                             aria-controls="accordion-flush-body-1">
-                            <span>Sistemas</span>
+                            <span  class="ml-2">Sistemas</span>
                             <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -84,7 +84,7 @@
                             class="flex items-center justify-between w-full py-5 font-medium text-gray-500 border-b border-gray-200 dark:border-gray-400 gap-3"
                             data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
                             aria-controls="accordion-flush-body-2">
-                            <span>Robotica</span>
+                            <span  class="ml-2">Robotica</span>
                             <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -109,7 +109,7 @@
                             class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-400 gap-3"
                             data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
                             aria-controls="accordion-flush-body-3">
-                            <span>Industrial</span>
+                            <span  class="ml-2">Industrial</span>
                             <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
