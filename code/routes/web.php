@@ -13,7 +13,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profeMateria', function () {
+Route::get('/profe', function () {
     return view('profeMateria');
 });
 
