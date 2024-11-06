@@ -49,83 +49,90 @@
 
     <div class="flex">
         <div class="flex mt-2">
-            {{-- <aside class=" w-44 bg-gray-200 text-black min-h-screen border-r-2 border-gray-300 p-2">
-                <h2 class="text-xl font-bold mb-4 flex justify-center pb-2 border-b-2 border-gray-400">Sistemas</h2>
-                <ul class="space-y-4">
-                    <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-gray-300 text-gray-900"
-                        data-inactive-classes="text-gray-600">
-                        <h2 id="accordion-flush-heading-1">
-                            <button type="button"
-                                class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
-                                data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
-                                aria-controls="accordion-flush-body-1">
-                                <span>Sistema</span>
-                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                    xmlns="" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M9 5 5 1 1 5" />
-                                </svg>
-                            </button>
-                        </h2>
-                        <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
-                            <div class="py-1 border-b border-gray-400">
-                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
-                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
-                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-gray-300 text-gray-900"
-                        data-inactive-classes="text-gray-600">
-                        <h2 id="accordion-flush-heading-2">
-                            <button type="button"
-                                class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
-                                data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
-                                aria-controls="accordion-flush-body-1">
-                                <span>Robotica</span>
-                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                    xmlns="" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M9 5 5 1 1 5" />
-                                </svg>
-                            </button>
-                        </h2>
-                        <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
-                            <div class="py-1 border-b border-gray-400">
-                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
-                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
-                                <a href="materia.html" class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
+            <aside class=" w-44 bg-gray-200 text-black min-h-screen border-r-2 border-gray-300 p-2">
+                <h2 class="text-xl font-bold flex justify-center pb-2 border-b-2 border-gray-400">Carreras</h2>
+                <div id="accordion-flush" data-accordion="collapse" data-active-classes="text-gray-500"
+                    data-inactive-classes="text-gray-500">
+                    <h2 id="accordion-flush-heading-1">
+                        <button type="button"
+                            class="flex items-center justify-between w-full py-5 font-medium text-gray-500 border-b border-gray-200 dark:border-gray-400 gap-3"
+                            data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
+                            aria-controls="accordion-flush-body-1">
+                            <span>Sistemas</span>
+                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M9 5 5 1 1 5" />
+                            </svg>
+                        </button>
+                    </h2>
+                    <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                        <div class="border-b border-gray-200">
+                            <div class="">
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
                             </div>
                         </div>
                     </div>
 
                     <h2 id="accordion-flush-heading-2">
                         <button type="button"
-                            class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
+                            class="flex items-center justify-between w-full py-5 font-medium text-gray-500 border-b border-gray-200 dark:border-gray-400 gap-3"
                             data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
                             aria-controls="accordion-flush-body-2">
-                            <a href="">Industrial</a>
+                            <span>Robotica</span>
+                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M9 5 5 1 1 5" />
+                            </svg>
                         </button>
                     </h2>
-                    <h2 id="accordion-flush-heading-2">
+                    <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+                        <div class="border-b border-gray-200">
+                            <div class="">
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 id="accordion-flush-heading-3">
                         <button type="button"
-                            class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
-                            data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
-                            aria-controls="accordion-flush-body-2">
-                            <a href="">Material</a>
+                            class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-400 gap-3"
+                            data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
+                            aria-controls="accordion-flush-body-3">
+                            <span>Industrial</span>
+                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M9 5 5 1 1 5" />
+                            </svg>
                         </button>
                     </h2>
-                    <h2 id="accordion-flush-heading-2">
-                        <button type="button"
-                            class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
-                            data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
-                            aria-controls="accordion-flush-body-2">
-                            <a href="">Notas</a>
-                        </button>
-                    </h2>
-                </ul>
-            </aside> --}}
+                    <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
+                        <div class="border-b border-gray-200">
+                            <div class="">
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
+                                <a href="materia.html"
+                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
+                            </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
             <div class="flex-1 justify-center mx-44">
                 <div class="bg-white shadow-md rounded-lg p-3 mb-6 w-full">
                     <img src="../images/Materia.png" alt="Imagen de Base de Datos"
@@ -212,8 +219,8 @@
         </div>
     </div>
 
-    <div
-        class="group fixed bottom-6 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300" id="openFormBtn2">
+    <div class="group fixed bottom-6 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300"
+        id="openFormBtn2">
         <img src="../images/material.png" alt="Botón 1" class="w-10 h-10">
         <div
             class="absolute mr-20 mt-1 transform -translate-x-1/2 mb-2 w-48 bg-purple-700 text-white text-center rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -221,12 +228,15 @@
     </div>
 
     <!-- Botón 2 -->
-    <div class="group fixed bottom-24 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300" id="openFormBtn">
+    <div class="group fixed bottom-24 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300"
+        id="openFormBtn">
         <img src="../images/examen.png" alt="Botón 2" class="w-10 h-10">
-        <div class="absolute mr-20 mt-1 transform -translate-x-1/2 mb-2 w-48 bg-purple-700 text-white text-center rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Examen</div>
+        <div
+            class="absolute mr-20 mt-1 transform -translate-x-1/2 mb-2 w-48 bg-purple-700 text-white text-center rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Examen</div>
     </div>
 
-    
+
 
     <!-- Overlay del formulario -->
     <div id="formExamen" class="hidden">
@@ -324,98 +334,97 @@
     </script>
 
     <script>
+        // Fechas importantes con formato "DD/MM/YYYY"
+        const specialDates = {
+            '10/10/2024': 'Día de Ventas Especial',
+        };
 
-            // Fechas importantes con formato "DD/MM/YYYY"
-            const specialDates = {
-                '10/10/2024': 'Día de Ventas Especial',
-            };
-    
-            let currentDate = new Date();
-            let selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    
-            function renderCalendar() {
-                const daysContainer = document.querySelector('.grid-cols-7:nth-child(2)');
-                const monthYearElement = document.getElementById('month-year');
-                daysContainer.innerHTML = '';
-    
-                const year = selectedDate.getFullYear();
-                const month = selectedDate.getMonth();
-    
-                // Actualizar el título con el mes y año actuales
-                monthYearElement.textContent = selectedDate.toLocaleString('es-ES', {
-                    month: 'long',
-                    year: 'numeric'
-                });
-    
-                // Obtener primer día y cantidad de días del mes
-                const firstDayOfMonth = new Date(year, month, 1).getDay();
-                const daysInMonth = new Date(year, month + 1, 0).getDate();
-    
-                // Generar días en blanco hasta el primer día del mes
-                for (let i = 0; i < firstDayOfMonth; i++) {
-                    const blankDay = document.createElement('div');
-                    daysContainer.appendChild(blankDay);
+        let currentDate = new Date();
+        let selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+
+        function renderCalendar() {
+            const daysContainer = document.querySelector('.grid-cols-7:nth-child(2)');
+            const monthYearElement = document.getElementById('month-year');
+            daysContainer.innerHTML = '';
+
+            const year = selectedDate.getFullYear();
+            const month = selectedDate.getMonth();
+
+            // Actualizar el título con el mes y año actuales
+            monthYearElement.textContent = selectedDate.toLocaleString('es-ES', {
+                month: 'long',
+                year: 'numeric'
+            });
+
+            // Obtener primer día y cantidad de días del mes
+            const firstDayOfMonth = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            // Generar días en blanco hasta el primer día del mes
+            for (let i = 0; i < firstDayOfMonth; i++) {
+                const blankDay = document.createElement('div');
+                daysContainer.appendChild(blankDay);
+            }
+
+            // Llenado de días del mes
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('w-6', 'h-6', 'flex', 'items-center', 'justify-center', 'rounded-md', 'text-sm',
+                    'font-medium');
+
+                // Cambiar el formato a DD/MM/YYYY
+                const dateKey = `${String(day).padStart(2, '0')}/${String(month + 1).padStart(2, '0')}/${year}`;
+
+                // Marcar día actual
+                if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate
+                    .getFullYear()) {
+                    dayElement.classList.add('bg-yellow-400', 'text-white', 'font-bold');
                 }
-    
-                // Llenado de días del mes
-                for (let day = 1; day <= daysInMonth; day++) {
-                    const dayElement = document.createElement('div');
-                    dayElement.classList.add('w-6', 'h-6', 'flex', 'items-center', 'justify-center', 'rounded-md', 'text-sm',
-                        'font-medium');
-    
-                    // Cambiar el formato a DD/MM/YYYY
-                    const dateKey = `${String(day).padStart(2, '0')}/${String(month + 1).padStart(2, '0')}/${year}`;
-    
-                    // Marcar día actual
-                    if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate
-                        .getFullYear()) {
-                        dayElement.classList.add('bg-yellow-400', 'text-white', 'font-bold');
-                    }
-                    // Marcar días especiales en azul
-                    else if (specialDates[dateKey]) {
-                        dayElement.classList.add('bg-blue-500', 'text-white');
-                    } else {
-                        dayElement.classList.add('text-gray-700');
-                    }
-    
-                    dayElement.textContent = day;
-                    daysContainer.appendChild(dayElement);
+                // Marcar días especiales en azul
+                else if (specialDates[dateKey]) {
+                    dayElement.classList.add('bg-blue-500', 'text-white');
+                } else {
+                    dayElement.classList.add('text-gray-700');
                 }
-    
-                renderImportantDates();
+
+                dayElement.textContent = day;
+                daysContainer.appendChild(dayElement);
             }
-    
-            function changeMonth(delta) {
-                selectedDate.setMonth(selectedDate.getMonth() + delta);
-                renderCalendar();
-            }
-    
-            function goToCurrentMonth() {
-                selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-                renderCalendar();
-            }
-    
-            function renderImportantDates() {
-                const importantDatesList = document.getElementById('important-dates');
-                importantDatesList.innerHTML = '';
-    
-                for (const [date, description] of Object.entries(specialDates)) {
-                    // Ya está en formato DD/MM/YYYY
-                    const li = document.createElement('li');
-                    li.textContent = `${date}: ${description}`;
-                    importantDatesList.appendChild(li);
-                }
-            }
-    
-            function toggleAccordion() {
-                const accordionContent = document.getElementById('accordion-content');
-                accordionContent.classList.toggle('hidden');
-            }
-    
+
+            renderImportantDates();
+        }
+
+        function changeMonth(delta) {
+            selectedDate.setMonth(selectedDate.getMonth() + delta);
             renderCalendar();
-        </script>
+        }
 
-<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+        function goToCurrentMonth() {
+            selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            renderCalendar();
+        }
+
+        function renderImportantDates() {
+            const importantDatesList = document.getElementById('important-dates');
+            importantDatesList.innerHTML = '';
+
+            for (const [date, description] of Object.entries(specialDates)) {
+                // Ya está en formato DD/MM/YYYY
+                const li = document.createElement('li');
+                li.textContent = `${date}: ${description}`;
+                importantDatesList.appendChild(li);
+            }
+        }
+
+        function toggleAccordion() {
+            const accordionContent = document.getElementById('accordion-content');
+            accordionContent.classList.toggle('hidden');
+        }
+
+        renderCalendar();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 
 </body>
 
