@@ -137,7 +137,7 @@
 
         <!-- Contenido Principal Centrado -->
         <main class="flex-grow flex bg-gray-200 pb-4 pt-4">
-            <div class="flex-1 mx-44">
+            <div class="flex-1 mx-28">
                 <div class="bg-white shadow-md rounded-lg p-3 mb-6 w-full">
                     <img src="../images/Materia.png" alt="Imagen de Base de Datos"
                         class="rounded-lg w-full h-56 object-cover mb-4">
@@ -174,13 +174,13 @@
                     </div>
                 </div>
             </div>
-            <div class="w-3/12 p-1 bg-white rounded-lg shadow-md h-min mr-10">
+            <div class="w-3/12 bg-white rounded-lg shadow-md h-min mr-10 border border-gray-400">
                 <div class="flex items-center justify-between bg-blue-500 text-white rounded-t-lg p-2">
                     <button onclick="changeMonth(-1)" class="text-lg">&#10094;</button>
                     <span id="month-year" class="font-bold"></span>
                     <button onclick="changeMonth(1)" class="text-lg">&#10095;</button>
                 </div>
-                <div class="grid grid-cols-7 text-center mt-2 gap-y-3">
+                <div class="grid grid-cols-7 text-center mt-2 gap-y-2 ml-4">
                     <!-- Días de la semana -->
                     <div class="font-semibold text-gray-600">Dom</div>
                     <div class="font-semibold text-gray-600">Lun</div>
@@ -201,12 +201,12 @@
 
                 <!-- Acordeón para fechas importantes -->
                 <div class="mt-4">
-                    <button class="w-full bg-gray-200 text-gray-700 py-2 rounded-md font-medium hover:bg-gray-300"
+                    <button class="w-full bg-gray-300 text-gray-700 py-2 font-medium hover:bg-gray-400"
                         onclick="toggleAccordion()">
                         Fechas Importantes
                     </button>
-                    <div id="accordion-content" class="hidden mt-2 p-2 bg-gray-200 rounded-lg">
-                        <ul id="important-dates" class="list-disc list-inside text-gray-600">
+                    <div id="accordion-content" class="hidden mt-2 p-2 bg-gray-300 rounded-lg">
+                        <ul id="important-dates" class="list-disc list-inside text-gray-700">
                             <!-- Fechas importantes generadas dinámicamente -->
                         </ul>
                     </div>
@@ -252,13 +252,12 @@
                         required>
 
                     <label for="archivo">Selecciona un archivo:</label>
-                    <input class="mt-2 mb-2 border-b border-gray-400 pb-3" type="file" id="archivo"
-                        name="archivo">
+                    <input class="mt-2 mb-2 border-b border-gray-400 pb-3" type="file" id="archivo" name="archivo">
 
                     <div class="flex justify-evenly w-full pt-1">
                         <button type="submit"
                             class="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded">Enviar</button>
-                        <button id="closeFormBtn"
+                        <button id="closeFormBtn" 
                             class="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded">Cerrar</button>
                     </div>
                 </form>
@@ -369,7 +368,7 @@
             // Llenado de días del mes
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayElement = document.createElement('div');
-                dayElement.classList.add('bg-red-200', 'w-6', 'h-6', 'flex', 'items-center', 'justify-center', 'rounded-md', 'text-sm',
+                dayElement.classList.add('w-6', 'h-6', 'flex', 'items-center', 'justify-center', 'rounded-md', 'text-sm',
                     'font-medium');
 
                 // Cambiar el formato a DD/MM/YYYY
