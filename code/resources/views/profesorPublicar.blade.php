@@ -136,117 +136,20 @@
         </aside>
 
         <!-- Contenido Principal Centrado -->
-        <main class="flex-grow flex items-center justify-evenly bg-gray-50 mt-4 mb-4">
-
-        </main>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-
-</body>
-
-</html>
-
-    <div class="flex">
-        <div class="flex mt-2">
-            <aside class=" w-44 bg-gray-200 text-black min-h-screen border-r-2 border-gray-300 p-2">
-                <h2 class="text-xl font-bold flex justify-center pb-2 border-b-2 border-gray-400">Carreras</h2>
-                <div id="accordion-flush" data-accordion="collapse" data-active-classes="text-gray-500 bg-gray-300"
-                    data-inactive-classes="text-gray-500">
-                    <h2 id="accordion-flush-heading-1">
-                        <button type="button"
-                            class="flex items-center justify-between w-full py-5 font-medium text-gray-500 border-b border-gray-200 dark:border-gray-400 gap-3"
-                            data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
-                            aria-controls="accordion-flush-body-1">
-                            <span  class="ml-2">Sistemas</span>
-                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M9 5 5 1 1 5" />
-                            </svg>
-                        </button>
-                    </h2>
-                    <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
-                        <div class="border-b border-gray-200">
-                            <div class="">
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h2 id="accordion-flush-heading-2">
-                        <button type="button"
-                            class="flex items-center justify-between w-full py-5 font-medium text-gray-500 border-b border-gray-200 dark:border-gray-400 gap-3"
-                            data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
-                            aria-controls="accordion-flush-body-2">
-                            <span  class="ml-2">Robotica</span>
-                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M9 5 5 1 1 5" />
-                            </svg>
-                        </button>
-                    </h2>
-                    <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
-                        <div class="border-b border-gray-200">
-                            <div class="">
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
-                            </div>
-                        </div>
-                    </div>
-                    <h2 id="accordion-flush-heading-3">
-                        <button type="button"
-                            class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-400 gap-3"
-                            data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
-                            aria-controls="accordion-flush-body-3">
-                            <span  class="ml-2">Industrial</span>
-                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M9 5 5 1 1 5" />
-                            </svg>
-                        </button>
-                    </h2>
-                    <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
-                        <div class="border-b border-gray-200">
-                            <div class="">
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
-                                <a href="materia.html"
-                                    class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
-                            </div>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-
-            <div class="flex-1 justify-center mx-44">
+        <main class="flex-grow flex bg-gray-200 pb-4 pt-4">
+            <div class="flex-1 mx-44">
                 <div class="bg-white shadow-md rounded-lg p-3 mb-6 w-full">
                     <img src="../images/Materia.png" alt="Imagen de Base de Datos"
                         class="rounded-lg w-full h-56 object-cover mb-4">
                     <h1 class="text-4xl font-bold text-gray-800">Base De Datos</h1>
                     <div class="flex items-center mt-4">
-                        <img src="../images/profesor.png" alt="Profesor" class="w-16 h-16 rounded-full mr-4">
+                        <img src="../images/icono.png" alt="Profesor" class="w-16 h-16 rounded-full mr-4">
                         <div>
                             <h2 class="text-lg font-semibold text-gray-700">Profesor Nicolas Rotilli</h2>
                             <p class="text-gray-600">rotillinicolas@gmail.com</p>
                         </div>
                     </div>
                 </div>
-
                 <!-- Lista de Materiales -->
                 <div class="space-y-4">
                     <div class="bg-white shadow-md rounded-lg p-4">
@@ -271,53 +174,47 @@
                     </div>
                 </div>
             </div>
+            <div class="w-3/12 p-1 bg-white rounded-lg shadow-md h-min mr-10">
+                <div class="flex items-center justify-between bg-blue-500 text-white rounded-t-lg p-2">
+                    <button onclick="changeMonth(-1)" class="text-lg">&#10094;</button>
+                    <span id="month-year" class="font-bold"></span>
+                    <button onclick="changeMonth(1)" class="text-lg">&#10095;</button>
+                </div>
+                <div class="grid grid-cols-7 text-center mt-2 gap-y-3">
+                    <!-- Días de la semana -->
+                    <div class="font-semibold text-gray-600">Dom</div>
+                    <div class="font-semibold text-gray-600">Lun</div>
+                    <div class="font-semibold text-gray-600">Mar</div>
+                    <div class="font-semibold text-gray-600">Mié</div>
+                    <div class="font-semibold text-gray-600">Jue</div>
+                    <div class="font-semibold text-gray-600">Vie</div>
+                    <div class="font-semibold text-gray-600">Sáb</div>
+                    <!-- Días del mes generados con JavaScript -->
+                </div>
 
-            <aside class="pr-7">
+                <div class="flex justify-center w-6/6">
+                    <button class="w-1/3 bg-green-500 text-white mt-4 py-2 rounded-md hover:bg-green-600 m-auto"
+                        onclick="goToCurrentMonth()">
+                        Mes Actual
+                    </button>
+                </div>
 
-                <body class="flex items-center justify-center min-h-screen bg-gray-100">
-
-                    <div class="w-80 p-4 bg-white rounded-lg shadow-md">
-                        <div class="flex items-center justify-between bg-blue-500 text-white rounded-t-lg p-3">
-                            <button onclick="changeMonth(-1)" class="text-lg">&#10094;</button>
-                            <span id="month-year" class="font-bold"></span>
-                            <button onclick="changeMonth(1)" class="text-lg">&#10095;</button>
-                        </div>
-                        <div class="grid grid-cols-7 text-center mt-2 gap-y-3">
-                            <!-- Días de la semana -->
-                            <div class="font-semibold text-gray-600">Dom</div>
-                            <div class="font-semibold text-gray-600">Lun</div>
-                            <div class="font-semibold text-gray-600">Mar</div>
-                            <div class="font-semibold text-gray-600">Mié</div>
-                            <div class="font-semibold text-gray-600">Jue</div>
-                            <div class="font-semibold text-gray-600">Vie</div>
-                            <div class="font-semibold text-gray-600">Sáb</div>
-                            <!-- Días del mes generados con JavaScript -->
-                        </div>
-
-                        <div class="flex justify-center w-6/6">
-                            <button
-                                class="w-1/3 bg-green-500 text-white mt-4 py-2 rounded-md hover:bg-green-600 m-auto"
-                                onclick="goToCurrentMonth()">
-                                Mes Actual
-                            </button>
-                        </div>
-
-                        <!-- Acordeón para fechas importantes -->
-                        <div class="mt-4">
-                            <button
-                                class="w-full bg-gray-200 text-gray-700 py-2 rounded-md font-medium hover:bg-gray-300"
-                                onclick="toggleAccordion()">
-                                Fechas Importantes
-                            </button>
-                            <div id="accordion-content" class="hidden mt-2 p-2 bg-gray-200 rounded-lg">
-                                <ul id="important-dates" class="list-disc list-inside text-gray-600">
-                                    <!-- Fechas importantes generadas dinámicamente -->
-                                </ul>
-                            </div>
-                        </div>
+                <!-- Acordeón para fechas importantes -->
+                <div class="mt-4">
+                    <button class="w-full bg-gray-200 text-gray-700 py-2 rounded-md font-medium hover:bg-gray-300"
+                        onclick="toggleAccordion()">
+                        Fechas Importantes
+                    </button>
+                    <div id="accordion-content" class="hidden mt-2 p-2 bg-gray-200 rounded-lg">
+                        <ul id="important-dates" class="list-disc list-inside text-gray-600">
+                            <!-- Fechas importantes generadas dinámicamente -->
+                        </ul>
                     </div>
-        </div>
+                </div>
+            </div>
     </div>
+    </div>
+    </main>
 
     <div class="group fixed bottom-6 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300"
         id="openFormBtn2">
@@ -398,6 +295,9 @@
             </div>
         </div>
     </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 
     <script>
         document.getElementById('openFormBtn').addEventListener('click', function() {
@@ -469,7 +369,7 @@
             // Llenado de días del mes
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayElement = document.createElement('div');
-                dayElement.classList.add('w-6', 'h-6', 'flex', 'items-center', 'justify-center', 'rounded-md', 'text-sm',
+                dayElement.classList.add('bg-red-200', 'w-6', 'h-6', 'flex', 'items-center', 'justify-center', 'rounded-md', 'text-sm',
                     'font-medium');
 
                 // Cambiar el formato a DD/MM/YYYY
@@ -523,9 +423,6 @@
 
         renderCalendar();
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-
 </body>
 
-</html> --}}
+</html>
