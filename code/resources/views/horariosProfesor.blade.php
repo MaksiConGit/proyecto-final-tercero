@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo de Layout con Tailwind</title>
+    <title>Profesor: Horarios</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"  rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 
 </head>
-<body class="h-screen flex flex-col">
 
+<body class="h-screen flex flex-col">
 
     <header class="bg-purple-900 text-white px-5 py-2 ">
         <div class="m-0 flex items-center justify-between ">
@@ -41,7 +42,7 @@
                 </svg>
             </li>
             <li>
-                <a href="#" class="text-white hover:underline font-semibold">Base de Datos</a>
+                <a href="#" class="text-white hover:underline font-semibold">Horarios</a>
             </li>
         </ol>
         </div>
@@ -49,89 +50,218 @@
 
     <!-- Layout Principal -->
     <div class="flex flex-grow">
-        
+
         <!-- Aside Izquierdo -->
-        <aside class="bg-gray-300 w-48 p-6 hidden md:block">
-            <h2 class="text-xl font-bold mb-4 flex justify-center pb-2 border-b-2 border-gray-400">Carreras</h2>
-            <ul class="space-y-4">
-                <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-gray-300 text-gray-900"
-                    data-inactive-classes="text-gray-600">
-                    <h2 id="accordion-flush-heading-1">
-                        <button type="button"
-                            class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
-                            data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
-                            aria-controls="accordion-flush-body-1">
-                            <span>Sistemas</span>
-                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                xmlns="" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M9 5 5 1 1 5" />
-                            </svg>
-                        </button>
-                    </h2>
-                    <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
-                        <div class="py-4 border-b border-gray-400">
-                            <p class="mb-1 text-gray-500 flex justify-center">Cursos</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Materias</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Alumnos</p>
-                        </div>
-                    </div>
-                    <h2 id="accordion-flush-heading-2">
-                        <button type="button"
-                            class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
-                            data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
-                            aria-controls="accordion-flush-body-2">
-                            <span>Robotica</span>
-                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M9 5 5 1 1 5" />
-                            </svg>
-                        </button>
-                    </h2>
-                    <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
-                        <div class="py-4 border-b border-gray-400">
-                            <p class="mb-1 text-gray-500 flex justify-center">Cursos</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Materias</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Alumnos</p>
-                        </div>
-                    </div>
-                    <h2 id="accordion-flush-heading-3">
-                        <button button type="button"
-                            class="flex items-center justify-start pl-2 w-full py-3 font-medium rtl:text-right text-gray-500 border-b gap-3 border-gray-600"
-                            data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
-                            aria-controls="accordion-flush-body-3">
-                            <span>Industrial</span>
-                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M9 5 5 1 1 5" />
-                            </svg>
-                        </button>
-                    </h2>
-                    <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
-                        <div class="py-4 border-b border-gray-400">
-                            <p class="mb-1 text-gray-500 flex justify-center">Cursos</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Materias</p>
-                            <p class="mb-1 text-gray-500 flex justify-center">Alumnos</p>
-                            <ul class="ps-5 text-gray-500 list-disc">
-                            </ul>
+        <aside class="bg-gray-200 w-48 p-2 hidden md:block border-r border-gray-400">
+            <h2 class="text-xl font-bold flex justify-center pb-2 border-b-2 border-gray-400">Carreras</h2>
+            <div id="accordion-flush" data-accordion="collapse" data-active-classes="text-gray-500 bg-gray-300"
+                data-inactive-classes="text-gray-500">
+                <h2 id="accordion-flush-heading-1">
+                    <button type="button"
+                        class="flex items-center justify-between w-full py-5 font-medium text-gray-600 border-b border-gray-200 dark:border-gray-400 gap-3"
+                        data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
+                        aria-controls="accordion-flush-body-1">
+                        <span class="ml-2">Sistemas</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5 5 1 1 5" />
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                    <div class="border-b border-gray-200">
+                        <div class="">
+                            <a href="materia.html"
+                                class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
+                            <a href="materia.html"
+                                class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
+                            <a href="materia.html"
+                                class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
                         </div>
                     </div>
                 </div>
-            </ul>
+
+                <h2 id="accordion-flush-heading-2">
+                    <button type="button"
+                        class="flex items-center justify-between w-full py-5 font-medium text-gray-600 border-b border-gray-200 dark:border-gray-400 gap-3"
+                        data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
+                        aria-controls="accordion-flush-body-2">
+                        <span class="ml-2">Robotica</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5 5 1 1 5" />
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+                    <div class="border-b border-gray-200">
+                        <div class="">
+                            <a href="materia.html"
+                                class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
+                            <a href="materia.html"
+                                class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
+                            <a href="materia.html"
+                                class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
+                        </div>
+                    </div>
+                </div>
+                <h2 id="accordion-flush-heading-3">
+                    <button type="button"
+                        class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-600 border-b border-gray-200 dark:border-gray-400 gap-3"
+                        data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
+                        aria-controls="accordion-flush-body-3">
+                        <span class="ml-2">Industrial</span>
+                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M9 5 5 1 1 5" />
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
+                    <div class="border-b border-gray-200">
+                        <div class="">
+                            <a href="materia.html"
+                                class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">1ro</a>
+                            <a href="materia.html"
+                                class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">2do</a>
+                            <a href="materia.html"
+                                class="py-2 border-b hover:bg-gray-300 border-gray-400 text-sm text-gray-500 flex justify-center">3ro</a>
+                        </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </aside>
 
         <!-- Contenido Principal Centrado -->
-        <main class="flex-grow flex items-center justify-center bg-gray-50">
-            <div class="text-center max-w-lg">
-                <h1 class="text-2xl font-bold mb-4">Texto en el Centro</h1>
-                <p class="text-gray-600">Este es un ejemplo de texto centrado en la pantalla usando Tailwind CSS.</p>
+        <main class="flex-grow flex items-center justify-center bg-gray-50 mt-4 mb-4">
+
+            <div class="w-full max-w-3xl bg-gray-100 shadow-xl rounded-lg overflow-hidden">
+                <div class="w-full max-w-3xl bg-gray-100 shadow-xl rounded-lg overflow-hidden border border-gray-600">
+                    <h2 class="text-2xl font-bold p-4 text-center bg-gray-400">Sistema</h2>
+                    <div class="overflow-x-auto border-t border-gray-600">
+                        <table class="min-w-full border border-gray-300 text-center">
+                            <thead>
+                                <tr class="bg-gray-200">
+                                    <th class="p-3 border border-gray-400">Hora</th>
+                                    <th class="p-3 border border-gray-400">Lunes</th>
+                                    <th class="p-3 border border-gray-400">Martes</th>
+                                    <th class="p-3 border border-gray-400">Miercoles</th>
+                                    <th class="p-3 border border-gray-400">Jueves</th>
+                                    <th class="p-3 border border-gray-400">Viernes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Fila de ejemplo -->
+                                <tr>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">7:30 - 8:30</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Sistemas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Programacion</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Diseño</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Practicas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">-</td>
+                                </tr>
+                                <!-- Fila adicional -->
+                                <tr>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">8:40 - 9:40</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Sistemas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Programacion</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">-</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Practicas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Diseño</td>
+                                </tr>
+                                <!-- Agrega más filas según sea necesario -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="w-full max-w-3xl bg-white shadow-xl rounded-lg overflow-hidden border border-gray-600 mt-10">
+                    <h2 class="text-2xl font-bold p-4 text-center bg-gray-400">Robotica</h2>
+                    <div class="overflow-x-auto border-t border-gray-600">
+                        <table class="min-w-full border border-gray-300 text-center">
+                            <thead>
+                                <tr class="bg-gray-200">
+                                    <th class="p-3 border border-gray-400">Hora</th>
+                                    <th class="p-3 border border-gray-400">Lunes</th>
+                                    <th class="p-3 border border-gray-400">Martes</th>
+                                    <th class="p-3 border border-gray-400">Miercoles</th>
+                                    <th class="p-3 border border-gray-400">Jueves</th>
+                                    <th class="p-3 border border-gray-400">Viernes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Fila de ejemplo -->
+                                <tr>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">7:30 - 8:30</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Sistemas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Programacion</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Diseño</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Practicas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">-</td>
+                                </tr>
+                                <!-- Fila adicional -->
+                                <tr>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">8:40 - 9:40</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Sistemas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Programacion</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">-</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Practicas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Diseño</td>
+                                </tr>
+                                <!-- Agrega más filas según sea necesario -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="w-full max-w-3xl bg-white shadow-xl rounded-lg overflow-hidden border border-gray-600 mt-10">
+                    <h2 class="text-2xl font-bold p-4 text-center bg-gray-400">Industrial</h2>
+                    <div class="overflow-x-auto border-t border-gray-600">
+                        <table class="min-w-full border border-gray-300 text-center">
+                            <thead>
+                                <tr class="bg-gray-200">
+                                    <th class="p-3 border border-gray-400">Hora</th>
+                                    <th class="p-3 border border-gray-400">Lunes</th>
+                                    <th class="p-3 border border-gray-400">Martes</th>
+                                    <th class="p-3 border border-gray-400">Miercoles</th>
+                                    <th class="p-3 border border-gray-400">Jueves</th>
+                                    <th class="p-3 border border-gray-400">Viernes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Fila de ejemplo -->
+                                <tr>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">7:30 - 8:30</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Sistemas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Programacion</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Diseño</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Practicas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">-</td>
+                                </tr>
+                                <!-- Fila adicional -->
+                                <tr>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">8:40 - 9:40</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Sistemas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Programacion</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">-</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Practicas</td>
+                                    <td class="p-3 border border-gray-400" contenteditable="true">Diseño</td>
+                                </tr>
+                                <!-- Agrega más filas según sea necesario -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+
         </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 
 </body>
+
 </html>
