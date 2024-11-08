@@ -10,17 +10,20 @@
 
 </head>
 
+
+    {{-- Componente body --}}
 <body class="h-screen flex flex-col">
 
+    {{-- Componente header --}}
     <header class="bg-purple-900 text-white px-5 py-2 ">
         <div class="m-0 flex items-center justify-between ">
-            <h1 class="text-2xl font-bold">Instituto</h1>
+            <h1 class="textS-2xl font-bold">Instituto</h1>
             <div class="w-8 h-8">
-                <img src="../images/usuario_foto.png" alt="Icono de usuario">
+                <img class="rounded-xl border-2 border-white w-8 h-8" src="../images/usuario_foto.png" alt="Icono de usuario">
             </div>
         </div>
     </header>
-    <!-- Barra de Navegación -->
+    <!--Componente nav -->
     <nav class="bg-purple-800 text-white p-4">
         <ol class="flex items-center justify-center space-x-2">
             <li>
@@ -42,18 +45,18 @@
                 </svg>
             </li>
             <li>
-                <a href="#" class="text-white hover:underline font-semibold">Horarios</a>
+                <a href="#" class="text-white hover:underline font-semibold">Materia</a>
             </li>
         </ol>
         </div>
     </nav>
 
-    <!-- Layout Principal -->
+    <!-- Componente layout principal -->
     <div class="flex flex-grow">
         <!-- Aside Izquierdo -->
         <aside class="bg-gray-200 w-48 p-2 hidden md:block border-r border-gray-400">
             <h2 class="text-xl font-bold flex justify-center pb-2 border-b-2 border-gray-400">Carreras</h2>
-            <div id="accordion-flush" data-accordion="collapse" data-active-classes="text-gray-500 bg-gray-300"
+            <div id="accordion-flush" data-accordion="collapse" data-active-classes="text-gray-500 bg-gray-200"
                 data-inactive-classes="text-gray-500">
                 <h2 id="accordion-flush-heading-1">
                     <button type="button"
@@ -143,7 +146,7 @@
                         class="rounded-lg w-full h-56 object-cover mb-4">
                     <h1 class="text-4xl font-bold text-gray-800">Base De Datos</h1>
                     <div class="flex items-center mt-4">
-                        <img src="../images/icono.png" alt="Profesor" class="w-16 h-16 rounded-full mr-4">
+                        <img src="../images/usuario_foto.png" alt="Profesor" class="w-16 h-16 rounded-full mr-4">
                         <div>
                             <h2 class="text-lg font-semibold text-gray-700">Profesor Nicolas Rotilli</h2>
                             <p class="text-gray-600">rotillinicolas@gmail.com</p>
@@ -201,11 +204,11 @@
 
                 <!-- Acordeón para fechas importantes -->
                 <div class="mt-4">
-                    <button class="w-full bg-gray-300 text-gray-700 py-2 font-medium hover:bg-gray-400"
+                    <button class="w-full bg-gray-300 border-t border-slate-400 text-gray-700 py-2 font-medium hover:bg-gray-400"
                         onclick="toggleAccordion()">
                         Fechas Importantes
                     </button>
-                    <div id="accordion-content" class="hidden mt-2 p-2 bg-gray-300 rounded-lg">
+                    <div id="accordion-content" class="hidden mt-2 p-2 bg-gray-300 border-y border-slate-400">
                         <ul id="important-dates" class="list-disc list-inside text-gray-700">
                             <!-- Fechas importantes generadas dinámicamente -->
                         </ul>
@@ -216,6 +219,7 @@
     </div>
     </main>
 
+    {{-- Componente boton 1 --}}
     <div class="group fixed bottom-6 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300"
         id="openFormBtn2">
         <img src="../images/material.png" alt="Botón 1" class="w-10 h-10">
@@ -224,7 +228,7 @@
             Material</div>
     </div>
 
-    <!-- Botón 2 -->
+    <!-- Componente botón 2 -->
     <div class="group fixed bottom-24 right-6 w-16 h-16 bg-purple-700 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300"
         id="openFormBtn">
         <img src="../images/examen.png" alt="Botón 2" class="w-10 h-10">
@@ -233,9 +237,7 @@
             Examen</div>
     </div>
 
-
-
-    <!-- Overlay del formulario -->
+    <!-- Componente overlay del formulario -->
     <div id="formExamen" class="hidden">
         <div class="fixed inset-0 flex bg-black bg-opacity-50 justify-center items-center">
             <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
@@ -247,18 +249,18 @@
                     <input type="text" id="name" name="name" class="border p-2 w-full mb-4 rounded"
                         required>
 
-                    <label for="email" class="block mb-2">Descripcion</label>
-                    <input type="email" id="email" name="email" class="border p-2 w-full mb-4 rounded"
+                    <label for="descripcion" class="block mb-2">Descripcion</label>
+                    <input type="text" id="text" name="text" class="border p-2 w-full mb-4 rounded"
                         required>
 
                     <label for="archivo">Selecciona un archivo:</label>
-                    <input class="mt-2 mb-2 border-b border-gray-400 pb-3" type="file" id="archivo" name="archivo">
+                    <input class="mt-2 mb-2 border-b border-gray-400 pb-3" type="file" id="archivo" name="archivo" required>
 
                     <div class="flex justify-evenly w-full pt-1">
                         <button type="submit"
-                            class="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded">Enviar</button>
+                            class="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded">Enviar</button>
                         <button id="closeFormBtn" 
-                            class="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded">Cerrar</button>
+                            class="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded">Cerrar</button>
                     </div>
                 </form>
             </div>
@@ -298,6 +300,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 
+    {{-- Script overlay --}}
     <script>
         document.getElementById('openFormBtn').addEventListener('click', function() {
             document.getElementById('formExamen').classList.remove('hidden');
@@ -332,10 +335,12 @@
         });
     </script>
 
+    {{-- Script calendario --}}
     <script>
         // Fechas importantes con formato "DD/MM/YYYY"
         const specialDates = {
             '10/10/2024': 'Día de Ventas Especial',
+            '12/10/2024': 'Día de Ventas Especial',
         };
 
         let currentDate = new Date();
