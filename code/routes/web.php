@@ -13,6 +13,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dCursos', function () {
+    return view('directivosCursos');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })
