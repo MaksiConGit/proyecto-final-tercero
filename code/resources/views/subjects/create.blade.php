@@ -1,12 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<x-template-layout>
+    
+    <div class="container">
+        <x-form-horizontal-icon>
+            <x-slot name="titulo">Crear materia</x-slot>
+            <x-slot name="action">{{route('subjects.store')}}</x-slot>
+            <x-slot name="method"></x-slot>
+            <x-slot name="input1"><input
+                type="text"
+                name="name"
+                class="form-control"
+                id="basic-icon-default-fullname"
+                placeholder="Matemática"
+                aria-label="Matemática"
+                aria-describedby="basic-icon-default-fullname2"
+              /></x-slot>
+        </x-form-horizontal-icon>
+    </div>
+
+{{-- 
+    <div class="container">
     <h1>Formulario de Creación de Materia</h1>
     @if ($errors->any())
         <ul>
@@ -25,5 +37,7 @@
         </div>
         <button type="submit"> create </button>
     </form>
-</body>
-</html>
+    </div> --}}
+
+</x-template-layout>
+    

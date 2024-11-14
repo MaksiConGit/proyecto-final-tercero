@@ -1,13 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Formulario de Edicion</h1>
+<x-template-layout>
+    <div class="container">
+        <x-form-horizontal-icon>
+            <x-slot name="titulo">Editar materia</x-slot>
+            <x-slot name="action">{{route('subjects.update', $subject)}}</x-slot>
+            <x-slot name="method">@method('PUT')</x-slot>
+            <x-slot name="input1">
+                <input
+                type="text"
+                name="name"
+                class="form-control"
+                id="basic-icon-default-fullname"
+                placeholder="Matemática"
+                aria-label="Matemática"
+                aria-describedby="basic-icon-default-fullname2"
+                value="{{old('name', $subject->name) }}"
+                required
+              />
+            </x-slot>
+        </x-form-horizontal-icon>
+    </div>
+    {{-- <h1>Formulario de Edicion</h1>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -17,7 +29,6 @@
     @endif
     <form method="POST" action="{{route('subjects.update', $subject)}}">
         @csrf
-        @method('PUT')
 
         <label>
             name:
@@ -26,6 +37,5 @@
 
         </div>
         <button type="submit"> update </button>
-    </form>
-</body>
-</html>
+    </form> --}}
+</x-template-layout>
