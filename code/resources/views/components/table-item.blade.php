@@ -21,8 +21,8 @@
                 <i class="bx bx-dots-vertical-rounded"></i>
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Editar</a>
-                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Quitar profesor</a>
+                <a class="dropdown-item" href="{{$editar_profesor_url}}"><i class="bx bx-edit-alt me-1"></i> Editar</a>
+                {{-- <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Quitar profesor</a> --}}
             </div>
         </div>
     </td>
