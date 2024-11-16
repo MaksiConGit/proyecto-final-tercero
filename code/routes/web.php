@@ -29,6 +29,14 @@ Route::resource('users', UserController::class)->names('users');
 
 require __DIR__ . '/auth.php';
 
+Route::get('/bocetos/asistencias', function () {
+    return view('bocetos.asistencias');
+});
+
+Route::get('/bocetos/materias', function () {
+    return view('bocetos.materias');
+});
+
 Route::resource('subjects', SubjectController::class)
     ->names('subjects');
 
