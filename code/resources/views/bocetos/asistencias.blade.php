@@ -78,12 +78,14 @@
                         <canvas id="doughnutChart4" class="chartjs mb-3" data-height="350"></canvas>
                         <ul class="doughnut-legend d-flex justify-content-around ps-0 mb-2 mt-6 pt-1">
                             <li class="ct-series-0 d-flex flex-column align-items-center">
-                                <span class="badge-dot mb-2" style="background-color: #666ee8; width: 15px; height: 15px; border-radius: 50%;"></span>
+                                <span class="badge-dot mb-2"
+                                    style="background-color: #666ee8; width: 15px; height: 15px; border-radius: 50%;"></span>
                                 <h6 class="mb-0">Asistencia</h6>
                                 <div class="text-muted">68 %</div>
                             </li>
                             <li class="ct-series-1 d-flex flex-column align-items-center">
-                                <span class="badge-dot mb-2" style="background-color: #D3D3D3; width: 15px; height: 15px; border-radius: 50%;"></span>
+                                <span class="badge-dot mb-2"
+                                    style="background-color: #D3D3D3; width: 15px; height: 15px; border-radius: 50%;"></span>
                                 <h6 class="mb-0">Inasistencia</h6>
                                 <div class="text-muted">32 %</div>
                             </li>
@@ -98,12 +100,14 @@
                         <canvas id="doughnutChart5" class="chartjs mb-3" data-height="350"></canvas>
                         <ul class="doughnut-legend d-flex justify-content-around ps-0 mb-2 mt-6 pt-1">
                             <li class="ct-series-0 d-flex flex-column align-items-center">
-                                <span class="badge-dot mb-2" style="background-color: #666ee8; width: 15px; height: 15px; border-radius: 50%;"></span>
+                                <span class="badge-dot mb-2"
+                                    style="background-color: #666ee8; width: 15px; height: 15px; border-radius: 50%;"></span>
                                 <h6 class="mb-0">Asistencia</h6>
                                 <div class="text-muted">0 %</div>
                             </li>
                             <li class="ct-series-1 d-flex flex-column align-items-center">
-                                <span class="badge-dot mb-2" style="background-color: #D3D3D3; width: 15px; height: 15px; border-radius: 50%;"></span>
+                                <span class="badge-dot mb-2"
+                                    style="background-color: #D3D3D3; width: 15px; height: 15px; border-radius: 50%;"></span>
                                 <h6 class="mb-0">Inasistencia</h6>
                                 <div class="text-muted">100 %</div>
                             </li>
@@ -118,12 +122,14 @@
                         <canvas id="doughnutChart6" class="chartjs mb-3" data-height="350"></canvas>
                         <ul class="doughnut-legend d-flex justify-content-around ps-0 mb-2 mt-6 pt-1">
                             <li class="ct-series-0 d-flex flex-column align-items-center">
-                                <span class="badge-dot mb-2" style="background-color: #666ee8; width: 15px; height: 15px; border-radius: 50%;"></span>
+                                <span class="badge-dot mb-2"
+                                    style="background-color: #666ee8; width: 15px; height: 15px; border-radius: 50%;"></span>
                                 <h6 class="mb-0">Asistencia</h6>
                                 <div class="text-muted">100 %</div>
                             </li>
                             <li class="ct-series-1 d-flex flex-column align-items-center">
-                                <span class="badge-dot mb-2" style="background-color: #D3D3D3; width: 15px; height: 15px; border-radius: 50%;"></span>
+                                <span class="badge-dot mb-2"
+                                    style="background-color: #D3D3D3; width: 15px; height: 15px; border-radius: 50%;"></span>
                                 <h6 class="mb-0">Inasistencia</h6>
                                 <div class="text-muted">0 %</div>
                             </li>
@@ -132,13 +138,13 @@
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 
-      <script>
-        const primaryColor = '#666ee8';  // Color para Asistencia
+    <script>
+        const primaryColor = '#666ee8'; // Color para Asistencia
         const lightGreyColor = '#D3D3D3'; // Gris claro para Inasistencia
         const orangeLightColor = '#FDAC34';
-    
+
         // Script para doughnutChart1
         const ctx1 = document.getElementById('doughnutChart1').getContext('2d');
         const doughnutChart1 = new Chart(ctx1, {
