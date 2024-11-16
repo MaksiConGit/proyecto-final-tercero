@@ -33,6 +33,10 @@ Route::get('/bocetos/asistencias', function () {
     return view('bocetos.asistencias');
 });
 
+Route::get('/bocetos/horarios', function () {
+    return view('bocetos.horarios');
+});
+
 Route::get('/bocetos/materias', function () {
     return view('bocetos.materias');
 });
