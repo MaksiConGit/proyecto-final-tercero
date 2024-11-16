@@ -33,6 +33,14 @@ Route::get('/bocetos/asistencias', function () {
     return view('bocetos.asistencias');
 });
 
+Route::get('/bocetos/materias', function () {
+    return view('bocetos.materias');
+});
+
+Route::get('/bocetos/asistencias', function () {
+    return view('bocetos.asistencias');
+});
+
 Route::get('/bocetos/profesores_index', function () {
     return view('bocetos.profesores_index');
 });
