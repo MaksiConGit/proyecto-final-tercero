@@ -45,28 +45,9 @@
             <input type="date" name="birthdate" value="{{ old('birthdate', $student->birthdate) }}" required />
         </label>
         <br>
-        <label>
-            city_id:
+        
+        @livewire('DependantSelectCity', ['selectedCity' => $student->city_id])
 
-            <select id="city_id" name="city_id" required>
-                <option value="">Selecciona una ciudad</option>
-
-                {{-- Mostrar la ciudad actual del estudiante --}}
-                @if ($student->city)
-                    <option value="{{ $student->city->id }}" selected>
-                        {{ $student->city->name }} (Actual)
-                    </option>
-                @endif
-                {{-- Mostrar la ciudades restantes y no repite la ciudad actual del estudiante --}}
-                @foreach ($cities as $city)
-                    @if ($city->id != $student->city_id)
-                        <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>
-                            {{ $city->name }}
-                        </option>
-                    @endif
-                @endforeach
-            </select>
-        </label>
         <br>
         <label>
             (opcional) user_id:
