@@ -39,3 +39,6 @@ Route::resource('teachers', TeacherController::class)->names('teachers');
 
 Route::resource('students', StudentController::class)->names('students');
 
+Route::get('/provinces/{country_id}', [StudentController::class, 'getProvinces']);
+Route::get('/cities/{province_id}', [StudentController::class, 'getCities']);
+

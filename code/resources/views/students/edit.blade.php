@@ -82,7 +82,7 @@
 
 
                 {{-- Mostrar los usuarios libres --}}
-                @foreach ($studentsThatHasNoUser as $user)
+                @foreach ($studentsWithNoUser as $user)
                     {{-- Verifica que user no sea null --}}
                     @if ($user)
                         <option value="{{ $user->id }}" {{-- Verifica que exista un user dentro de student.

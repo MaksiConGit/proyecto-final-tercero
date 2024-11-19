@@ -47,4 +47,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function institution()
+    {
+        return $this->belongsTo(Institution::class);
+    }
 }

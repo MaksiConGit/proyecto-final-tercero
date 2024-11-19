@@ -45,12 +45,26 @@
         </label>
         <br>
         <label>
+            country_id:
+            <select id="country_id" name="country_id" required>
+                <option value="">Selecciona un País</option>
+                @foreach ($countries as $country)
+                    <option value="{{ $country->id }}" {{ old('country_id') == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
+                @endforeach
+            </select>
+        </label>
+        <br>
+        <label>
+            province_id:
+            <select id="province_id" name="province_id" required>
+                <option value="">Selecciona una Provincia</option>
+            </select>
+        </label>
+        <br>
+        <label>
             city_id:
             <select id="city_id" name="city_id" required>
                 <option value="">Selecciona una Ciudad</option>
-                @foreach ($cities as $city)
-                    <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
-                @endforeach
             </select>
         </label>
         <br>
@@ -58,7 +72,7 @@
             (opcional) user_id:
             <select id="user_id" name="user_id">
                 <option value="">Selecciona una cuenta de usuario libre</option>
-                @foreach ($studentsThatHasNoUser as $user)
+                @foreach ($studentsWithNoUser as $user)
                     <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                 @endforeach
             </select>
@@ -67,6 +81,42 @@
         </div>
         <button type="submit"> create </button>
     </form>
+
+    <script>
+        document.getElementById('country_id').addEventListener('change', function() {
+    const countryId = this.value;
+    const provinceSelect = document.getElementById('province_id');
+    provinceSelect.innerHTML = '<option value="">Selecciona una Provincia</option>'; // Limpia provincias
+
+    if (countryId) {
+        fetch(`/provinces/${countryId}`)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(province => {
+                    const option = new Option(province.name, province.id);
+                    provinceSelect.add(option);
+                });
+            });
+    }
+});
+
+document.getElementById('province_id').addEventListener('change', function() {
+    const provinceId = this.value;
+    const citySelect = document.getElementById('city_id');
+    citySelect.innerHTML = '<option value="${city.id}">Selecciona una Ciudad</option>'; // Limpia ciudades
+
+    if (provinceId) {
+        fetch(`/cities/${provinceId}`)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(city => {
+                    const option = new Option(city.name, city.id);
+                    citySelect.add(option);
+                });
+            });
+    }
+});
+    </script>
 </body>
 
 </html>
