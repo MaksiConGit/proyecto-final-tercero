@@ -24,12 +24,12 @@ class StudentController extends Controller
         $cities = City::orderBy('name', 'asc')->get();;
         $roles = Role::all();
         //Trae todos los registros que no sean nulos de la columna "user_id" de la tabla "students" y crea un array de solo la columna "user_id". Entonces trae todos las user_id que si estan asignados.
-        $studentsThatHasUser = Student::whereNotNull('user_id')->pluck('user_id');
-        //Busca las user_id que no estén dentro del array $studentsThatHasUser el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
-        $studentsThatHasNoUser = User::whereNotIn('id', $studentsThatHasUser)
+        $takenUserID = Student::whereNotNull('user_id')->pluck('user_id');
+        //Busca las user_id que no estén dentro del array $takenUserID el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
+        $availableUserID = User::whereNotIn('id', $takenUserID)
             ->orderBy('name', 'asc')
             ->get();
-        return view('students.create', compact('cities', 'roles', 'studentsThatHasNoUser'));
+        return view('students.create', compact('cities', 'roles', 'availableUserID'));
     }
 
     public function store(StoreStudentRequest $request)
@@ -48,13 +48,13 @@ class StudentController extends Controller
         $cities = City::orderBy('name', 'asc')->get();;
         $roles = Role::all();
         //Trae todos los registros que no sean nulos de la columna "user_id" de la tabla "students" y crea un array de solo la columna "user_id". Entonces trae todos las user_id que si estan asignados.
-        $studentsThatHasUser = Student::whereNotNull('user_id')->pluck('user_id');
-        //Busca las user_id que no estén dentro del array $studentsThatHasUser el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
-        $studentsThatHasNoUser = User::whereNotIn('id', $studentsThatHasUser)
+        $takenUserID = Student::whereNotNull('user_id')->pluck('user_id');
+        //Busca las user_id que no estén dentro del array $takenUserID el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
+        $availableUserID = User::whereNotIn('id', $takenUserID)
             ->orderBy('name', 'asc')
             ->get();
         $usersTrashed = User::withTrashed()->find($student->user_id);
-        return view('students.edit', compact('student', 'cities', 'roles', 'studentsThatHasNoUser', 'usersTrashed'));
+        return view('students.edit', compact('student', 'cities', 'roles', 'availableUserID', 'usersTrashed'));
     }
 
     public function update(UpdateStudentRequest $request, Student $student)

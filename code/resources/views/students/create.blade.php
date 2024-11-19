@@ -52,7 +52,7 @@
             (opcional) user_id:
             <select id="user_id" name="user_id">
                 <option value="">Selecciona una cuenta de usuario libre</option>
-                @foreach ($studentsThatHasNoUser as $user)
+                @foreach ($availableUserID as $user)
                     <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                 @endforeach
             </select>
