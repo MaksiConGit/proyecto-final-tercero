@@ -34,6 +34,14 @@ Route::get('/bocetos/asistencias', function () {
     return view('bocetos.asistencias');
 });
 
+Route::get('/bocetos/profesores_index', function () {
+    return view('bocetos.profesores_index');
+});
+
+Route::get('/bocetos/alumnos', function () {
+    return view('bocetos.alumnos    ');
+});
+
 Route::get('/bocetos/horarios', function () {
     return view('bocetos.horarios');
 });
