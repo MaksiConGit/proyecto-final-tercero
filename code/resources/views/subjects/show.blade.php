@@ -1,12 +1,49 @@
 <x-template-layout>
 
     <div class="container">
-        <x-icon-dropdown>
-            <x-slot name="titulo">{{$subject->name}}</x-slot>
-            <x-slot name="url_editar">{{route('subjects.edit', $subject)}}</x-slot>
-            <x-slot name="url_eliminar">{{route('subjects.destroy', $subject)}}</x-slot>
-        </x-icon-dropdown>
-        
+
+        <div class="col-md-6 col-lg-8 mb-3">
+            <x-card>
+                <x-slot name="objeto">{{$subject->id}}</x-slot>
+                <x-slot name="titulo"></x-slot>
+                <x-slot name="subtitulo"></x-slot>
+                <x-slot name="img">
+                    <img class="card-img-top" src="../template_files/assets/img/reyo/programacion-2-e1551291144973.jpg" alt="materia" />
+                </x-slot>
+                <x-slot name="texto">
+                    <x-icon-dropdown>
+                        <x-slot name="titulo">{{$subject->name}}</x-slot>
+                        <x-slot name="url_editar">{{route('subjects.edit', $subject)}}</x-slot>
+                        <x-slot name="url_eliminar">{{route('subjects.destroy', $subject)}}</x-slot>
+                    </x-icon-dropdown>
+                </x-slot>
+                <x-slot name="footer"></x-slot>
+            </x-card>
+            
+        </div>
+
+        <div class="col-md-6 col-lg-8 mb-3">
+            <x-card>
+                <x-slot name="objeto">{{$subject->id}}</x-slot>
+                <x-slot name="titulo">Nicolás Rotili</x-slot>
+                <x-slot name="img"></x-slot>
+                <x-slot name="texto">Buenas noches, para los que no acceden a promoción y vienen a rendir en instancia de regulares.Para el día del examen deben venir a defender el trabajo, previamente corregido y mostrado su funcionamiento.
+                    Alta, baja y modificación de profesores.
+                    Alta, baja y modificación de alumnos.
+                    Alta, baja y modificación de materias.
+                    Dashboard de ingreso con información que consideren relevante (alumnos registrados, docentes registrados, materias registradas, etc)
+                    Cada formulario, debe permitir generar las relaciones correspondientes, es decir que al dar de alta un profesor, me debe dejar asignarlo a una materia; cada alumno me debe permitir asignarlo a muchas materias, etc.
+                    Pueden utilizar templates para el frontend.
+                    + TEORÍA DE TODO EL AÑO.
+                    Cualquier duda, consulten.</x-slot>
+                <x-slot name="footer">
+                    <div class="card-footer">Comentar...</div>
+                </x-slot>
+            </x-card> 
+        </div>
+
+
+
         @if ($subject->teacherSubject->isNotEmpty())
         <x-table>
 
