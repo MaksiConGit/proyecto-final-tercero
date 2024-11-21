@@ -19,4 +19,12 @@ class Course extends Model
     public function career(){
         return $this->belongsTo(Career::class);
     }
+
+    public function subjects(){
+        return $this->belongsToMany(Subject::class, 'course_subjects');
+    }
+
+    public function exams(){
+        return $this->belongsToMany(Exam::class, 'course_exams');
+    }
 }

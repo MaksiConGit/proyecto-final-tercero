@@ -38,4 +38,6 @@ Route::resource('courses', CourseController::class)->names('courses');
 Route::resource('teachers', TeacherController::class)->names('teachers');
 
 Route::resource('students', StudentController::class)->names('students');
+Route::get('/students/{student}/courses/{course}', [StudentController::class, 'courseDetail'])->name('students.courseDetail');
+Route::get('/students/{student}/courses/{course}/exams/{exam}', [StudentController::class, 'examDetail'])->name('students.examDetail');
 

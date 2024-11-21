@@ -33,4 +33,5 @@ class Student extends Model
     public function courses(){
         return $this->belongsToMany(Course::class, 'course_students', 'student_id','course_id');
     }
+
 }

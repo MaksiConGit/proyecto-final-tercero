@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\City;
+use App\Models\Course;
+use App\Models\Exam;
 use App\Models\Role;
 use App\Models\Student;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -68,5 +69,34 @@ class StudentController extends Controller
     {
         $student->delete();
         return redirect(route('students.index'));
+    }
+
+    public function courseDetail(Student $student, Course $course)
+    {
+        // Verificar que el curso pertenece al estudiante
+        if (!$student->courses->contains($course)) {
+            abort(404, 'El curso no pertenece al estudiante.');
+        }
+
+        $exams = $course->exams;
+
+        // Agrupar los exámenes por materia
+        $examsBySubject = $exams->mapToGroups(function ($exam) {
+            return [$exam->teacherSubject->subject->name => $exam];
+        });
+
+        return view('students.courseDetail', compact('student', 'course', 'examsBySubject'));
+    }
+
+    public function examDetail(Student $student, Course $course, Exam $exam)
+    {
+        // Verificar que el examen está relacionado con el curso
+        if (!$course->exams->contains($exam)) {
+            abort(404, 'El examen no pertenece al curso.');
+        }
+
+        $grades = $exam->grades->where('student_id', $student->id);
+
+        return view('students.examDetail', compact('grades', 'exam', 'student'));
     }
 }

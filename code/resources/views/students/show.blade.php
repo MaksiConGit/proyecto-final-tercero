@@ -31,7 +31,7 @@
         <h4>Carrera: {{ $careerName }}</h4>
         <ul> Cursos
             @foreach ($courses as $course)
-                <li><a href="{{ route('courses.show', [$course]) }}">{{ $course->course_number . '° ' . $course->section}}</a></li>
+                <li><a href="{{ route('students.courseDetail', [$student, $course]) }}">{{ $course->course_number . '° ' . $course->section}}</a></li>
             @endforeach
         </ul>
     @endforeach
