@@ -41,6 +41,7 @@
                                 @endif
                             
                             </x-slot>
+                            <x-slot name="footer"></x-slot>
                         </x-card>
                     </a>
                 </div>
