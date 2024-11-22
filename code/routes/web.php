@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
@@ -34,6 +35,8 @@ Route::resource('subjects', SubjectController::class)->names('subjects');
 Route::resource('careers', CareerController::class)->names('careers');
 
 Route::resource('courses', CourseController::class)->names('courses');
+
+Route::resource('principals', PrincipalController::class)->names('principals');
 
 Route::resource('teachers', TeacherController::class)->names('teachers');
 

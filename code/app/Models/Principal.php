@@ -10,4 +10,23 @@ class Principal extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'name',
+        'lastname',
+        'dni',
+        'phone',
+        'birthdate',
+        'city_id',
+        'user_id',
+    ];
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
