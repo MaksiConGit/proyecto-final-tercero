@@ -1,11 +1,12 @@
 <x-template-layout>
-    <div class="d-block m-auto mt-0">
-
-        <h1>Lista de exámenes</h1>
+    <div class="container">
 
         <!-- Tabla con lista de exámenes -->
-        <div class="table-responsive text-nowrap">
-            <table class="table card-table">
+        <x-table>
+
+            <x-slot name="titulo_tabla">Lista de Examen</x-slot>
+
+            <x-slot name="table_head">
                 <thead>
                     <tr>
                         <th>Examen</th>
@@ -15,7 +16,10 @@
                         <th>Fecha</th>
                     </tr>
                 </thead>
-                <tbody class="table-border-bottom-0">
+            </x-slot>
+
+            <x-slot name="table_body">
+                <tbody class="table-borde-bottom-0">
                     @foreach ($exams as $exam)
                         <tr class="table-hover-row">
                             <!-- Columna de Examen -->
@@ -26,7 +30,7 @@
                             </td>
                             <!-- Columna de Materia -->
                             <td>
-                                
+
                             </td>
                             <!-- Columna de Profesor -->
                             <td>
@@ -50,8 +54,8 @@
                         </tr>
                     @endforeach
                 </tbody>
-            </table>
-        </div>
+            </x-slot>
+        </x-table>
 
 
 
