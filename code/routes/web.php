@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('users', UserController::class)->names('users');
 
+Route::get('/teachers/{id}', [TeacherController::class, 'show'])->name('teachers.profile');
+
 require __DIR__ . '/auth.php';
 
 Route::resource('subjects', SubjectController::class)->names('subjects');
