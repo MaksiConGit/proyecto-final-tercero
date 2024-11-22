@@ -9,17 +9,35 @@
 </head>
 
 <body>
-    <h1>Alumno {{ $student->name . ' ' . $student->lastname }}ID {{$student->id}}</h1>
+    <h1>Alumno {{ $student->name . ' ' . $student->lastname }}ID {{ $student->id }}</h1>
     <h2>Carrera: {{ $course->career->name }} <br> Curso: {{ $course->course_number . '° ' . $course->section }} </h2>
+
+    @if ($absentDays->isEmpty())
+        <p><b>El alumno no cuenta con ausencias.</b></p>
+    @else
+        <ol><b>Ausencias</b>
+
+            @foreach ($absentDays as $day)
+                <li>
+                    <p>Día: {{ \Carbon\Carbon::parse($day->date)->toFormattedDateString() }}</p>
+                </li>
+            @endforeach
+        </ol>
+    @endif
+
+    <hr>
 
     @foreach ($examsBySubject as $subject => $exams)
         <h3>{{ $subject }}</h3>
         <ul>Exámenes
             @foreach ($exams as $exam)
-                <li><a href="{{route('students.examDetail', [$student, $course, $exam])}}">Examen N°{{ $exam->exam_number . ' - ' . \Carbon\Carbon::parse($exam->date)->toFormattedDateString() }}</a></li>
+                <li><a href="{{ route('students.examDetail', [$student, $course, $exam]) }}">Examen
+                        N°{{ $exam->exam_number . ' - ' . \Carbon\Carbon::parse($exam->date)->toFormattedDateString() }}</a>
+                </li>
             @endforeach
         </ul>
     @endforeach
+
 
 </body>
 

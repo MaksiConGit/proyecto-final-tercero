@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Models\AttendanceRecord;
 use App\Models\City;
 use App\Models\Course;
 use App\Models\Exam;
@@ -80,12 +81,23 @@ class StudentController extends Controller
 
         $exams = $course->exams;
 
+        // Verificar si el estudiante está relacionado con el curso
+        $relatedCourse = $student
+            ->courses()
+            ->where('course_id', $course->id)
+            ->first();
+
+
+        // Acceder al ID de la tabla intermedia
+        $courseStudentId = $relatedCourse->pivot->id;
+        
+        $absentDays = AttendanceRecord::where('course_student_id', $courseStudentId)->where('has_attended', 0)->get();
         // Agrupar los exámenes por materia
         $examsBySubject = $exams->mapToGroups(function ($exam) {
             return [$exam->teacherSubject->subject->name => $exam];
         });
 
-        return view('students.courseDetail', compact('student', 'course', 'examsBySubject'));
+        return view('students.courseDetail', compact('student', 'course', 'examsBySubject', 'absentDays'));
     }
 
     public function examDetail(Student $student, Course $course, Exam $exam)

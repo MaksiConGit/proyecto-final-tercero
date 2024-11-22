@@ -31,7 +31,13 @@ class Student extends Model
     }
 
     public function courses(){
-        return $this->belongsToMany(Course::class, 'course_students', 'student_id','course_id');
+        return $this->belongsToMany(Course::class, 'course_students', 'student_id','course_id')
+            ->withPivot('id'); // Incluye el campo 'id' de la tabla intermedia
+        ;
+    }
+
+    public function attendances(){
+        return $this->hasManyThrough(AttendanceRecord::class, CourseStudent::class);
     }
 
 }

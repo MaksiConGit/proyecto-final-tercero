@@ -10,21 +10,25 @@ class Course extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'course_number',
-        'section',
-        'career_id',
-    ];
+    protected $fillable = ['course_number', 'section', 'career_id'];
 
-    public function career(){
+    public function career()
+    {
         return $this->belongsTo(Career::class);
     }
 
-    public function subjects(){
+    public function subjects()
+    {
         return $this->belongsToMany(Subject::class, 'course_subjects');
     }
 
-    public function exams(){
+    public function exams()
+    {
         return $this->belongsToMany(Exam::class, 'course_exams');
+    }
+
+    public function attendanceRecords()
+    {
+        return $this->hasManyThrough(AttendanceRecord::class, CourseStudent::class, 'course_id', 'course_student_id');
     }
 }
