@@ -39,8 +39,13 @@ Route::get('/bocetos/profesores_index', function () {
 });
 
 Route::get('/bocetos/alumnos', function () {
-    return view('bocetos.alumnos    ');
+    return view('bocetos.alumnos');
 });
+
+Route::get('/bocetos/material', function () {
+    return view('bocetos.material');
+});
+
 
 Route::get('/bocetos/horarios', function () {
     return view('bocetos.horarios');
