@@ -45,17 +45,9 @@
             <input type="date" name="birthdate" value="{{ old('birthdate', $teacher->birthdate) }}" required />
         </label>
         <br>
-        <label>
-            city_id:
-            <select id="city_id" name="city_id" required>
-                @foreach ($cities as $city)
-                    <option value="{{ $city->id }}"
-                        {{ old('city_id', $teacher->city_id) == $city->id ? 'selected' : '' }}>
-                        {{ $city->name }}
-                    </option>
-                @endforeach
-            </select>
-        </label>
+
+        @livewire('DependantSelectCity', ['selectedCity' => $teacher->city_id])
+
         <br>
         <label>
             (opcional) user_id:
