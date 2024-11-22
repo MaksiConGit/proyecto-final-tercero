@@ -14,6 +14,8 @@
         <li>DNI: {{ $teacher->dni }}</li>
         <li>Phone: {{ $teacher->phone }}</li>
         <li>Birhtdate: {{ $teacher->birthdate }}</li>
+        <li>Country: {{ $teacher->city->province->country->name }}</li>
+        <li>Province: {{ $teacher->city->province->name }}</li>
         <li>City: {{ $teacher->city->name }}</li>
         <li>
             @if ($teacher->user)
@@ -23,6 +25,9 @@
             @endif
         </li>
     </ul>
+
+    <h2>Institucion: {{ $teacher->user->institution->name }}</h2>
+
     <a href="{{ route('teachers.edit', $teacher) }}">Edit</a>
 
     <form method="POST" action="{{ route('teachers.destroy', $teacher) }}">
