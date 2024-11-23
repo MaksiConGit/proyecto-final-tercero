@@ -1,7 +1,7 @@
 
 <div class="buy-now">
     <a        
-        href="{{route('subjects.create')}}"
+        href="{{$url}}"
         class="btn btn-primary btn-buy-now"
         >+</a
     >

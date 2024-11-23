@@ -19,4 +19,9 @@ class Course extends Model
     public function career(){
         return $this->belongsTo(Career::class);
     }
+
+    public function courseTeachers(){
+        return $this->hasMany(CourseTeacher::class);
+    }
+
 }
