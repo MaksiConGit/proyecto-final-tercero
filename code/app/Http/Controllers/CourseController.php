@@ -16,17 +16,21 @@ class CourseController extends Controller
     }
 
     public function create(Career $career){
-        $careers = Career::all();
+        
+        $careers = Career::where('institution_id', $career->institution->id)->get();
         return view ('courses.create', compact('careers', 'career'));
     }
 
     public function store(StoreCourseRequest $request){
         Course::create($request->all());
-        return redirect(route('courses.index'));
+        return redirect()->back()->with('success', '¡Curso creado correctamente!');
     }
     
     public function show(Course $course){
-        return view ('courses.show', compact('course'));
+        $students = $course->students;
+        $teachers = $course->teachers;
+        $subjects = $course->subjects;
+        return view ('courses.show', compact('course', 'students', 'teachers', 'subjects'));
     }
 
     public function edit(Course $course){

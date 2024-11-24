@@ -47,7 +47,7 @@
                         <td>{{ $teacher->user->name }}</td>
                         <td>{{ $teacher->user->name }}</td>
                         <td>
-                            <a href="{{ route('teachers.edit', $teacher) }}">Edit ></a>
+                            <a href="{{ route('teachers.edit', [$teacher, $course]) }}">Edit ></a>
 
                             <form method="POST" action="{{ route('teachers.destroy', $teacher) }}">
                                 @csrf
@@ -82,7 +82,7 @@
                         <td>{{ $student->user->name }}</td>
                         <td>{{ $student->user->name }}</td>
                         <td>
-                            <a href="{{ route('students.edit', $student) }}">Edit ></a>
+                            <a href="{{ route('students.edit', [$student, $course]) }}">Edit ></a>
 
                             <form method="POST" action="{{ route('students.destroy', $student) }}">
                                 @csrf

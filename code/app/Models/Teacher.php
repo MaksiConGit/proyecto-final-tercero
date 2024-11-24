@@ -32,6 +32,6 @@ class Teacher extends Model
 
     public function courses()
     {
-        return $this->belongsToMany(Course::class, 'course_teachers');
+        return $this->belongsToMany(Course::class, 'course_teachers', 'teacher_id','course_id');
     }
 }

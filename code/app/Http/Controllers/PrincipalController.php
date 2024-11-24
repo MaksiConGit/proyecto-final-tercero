@@ -28,12 +28,11 @@ class PrincipalController extends Controller
     public function create()
     {
         $cities = City::all();
-        $roles = Role::all();
         //Trae todos los registros que no sean nulos de la columna "user_id" de la tabla "principals" y crea un array de solo la columna "user_id". Entonces trae todos las user_id que si estan asignados.
         $takenUserID = Principal::whereNotNull('user_id')->pluck('user_id');
         //Busca las user_id que no estén dentro del array $takenUserID el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
         $availableUserID = User::whereNotIn('id', $takenUserID)->get();
-        return view('principals.create', compact('cities', 'roles', 'availableUserID'));
+        return view('principals.create', compact('cities', 'availableUserID'));
     }
 
     /**
