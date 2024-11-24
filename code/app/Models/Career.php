@@ -10,16 +10,21 @@ class Career extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'name',
-        'institution_id',
-    ];
+    protected $fillable = ['name', 'institution_id'];
 
-    public function institution(){
+    public function institution()
+    {
         return $this->belongsTo(Institution::class);
     }
 
-    public function courses(){
+    public function courses()
+    {
         return $this->hasMany(Course::class);
     }
+
+    public function subjects()
+    {
+        return $this->hasManyThrough(Subject::class, CourseSubject::class);
+    }
+
 }

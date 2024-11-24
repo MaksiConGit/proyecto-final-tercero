@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
@@ -29,6 +30,8 @@ Route::middleware('auth')->group(function () {
 Route::resource('users', UserController::class)->names('users');
 
 require __DIR__ . '/auth.php';
+
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
 Route::resource('subjects', SubjectController::class)->names('subjects');
 

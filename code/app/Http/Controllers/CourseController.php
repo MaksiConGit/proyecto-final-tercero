@@ -15,9 +15,9 @@ class CourseController extends Controller
         return view ('courses.index', compact('courses', 'trashed'));
     }
 
-    public function create(){
+    public function create(Career $career){
         $careers = Career::all();
-        return view ('courses.create', compact('careers'));
+        return view ('courses.create', compact('careers', 'career'));
     }
 
     public function store(StoreCourseRequest $request){

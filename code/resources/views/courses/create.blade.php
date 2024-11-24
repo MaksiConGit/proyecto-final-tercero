@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Formulario de Creación de Cursos</h1>
+    <h1>Formulario de Creación de Cursos para {{$career}}</h1>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -27,7 +27,7 @@
             <input type="text" name="section" value="{{old('section') }}"  required />
         </label>
         <br>
-        <label>
+        {{-- <label>
             career:
             <select id="career_id" name="career_id" required>
                 <option value="">Selecciona una Carrera</option>
@@ -35,7 +35,7 @@
                     <option value="{{ $career->id }}">{{ $career->name }}</option>
                 @endforeach
             </select>
-        </label>
+        </label> --}}
 
         </div>
         <button type="submit"> create </button>

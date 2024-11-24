@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
                     <br>
-                    <a href={{route('teachers.index')}}>Ir a Profesores ></a>
+                    <a href={{route('home.index')}}>Home ></a>
                 </div>
             </div>
         </div>

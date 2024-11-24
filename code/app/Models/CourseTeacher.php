@@ -6,12 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Institution extends Model
+class CourseTeacher extends Model
 {
     use HasFactory, SoftDeletes;
-
-    public function careers(){
-        return $this->hasMany(Career::class);
-    }
-
 }

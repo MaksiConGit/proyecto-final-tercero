@@ -31,4 +31,14 @@ class Course extends Model
     {
         return $this->hasManyThrough(AttendanceRecord::class, CourseStudent::class, 'course_id', 'course_student_id');
     }
+
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class, 'course_teachers');
+    }
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'course_students');
+    }
+
 }

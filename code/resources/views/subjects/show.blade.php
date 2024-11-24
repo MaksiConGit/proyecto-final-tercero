@@ -1,20 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Materia: {{$subject->name}}</h1>
-    <a href="{{route('subjects.edit', $subject)}}">Edit</a>
+<x-app-layout>
 
-    <form method="POST" action="{{route('subjects.destroy', $subject)}}">
-        @csrf
-        @method('DELETE')
-        <button type="submit">Delete</button>
-    </form>
+    <body>
+        <h1><strong>Materia: {{ $subject->name }}</strong></h1>
+        
+        <hr>
+        <h2>Profesores</h2>
+        <table>
+            <tr>
+                <th>Nombre completo del profesor</th>
+                <th>Usuario</th>
+                <th>Acciones</th>
+            </tr>
+            
+                @foreach ($subject->teachers as $teacher)
+                <tr>
+                    <td>{{$teacher->name . " " . $teacher->lastname}}</td>
+                    <td><a href="">{{$teacher->user->name}} ></a></td>
+                    <td>
+                        <a href="{{ route('subjects.edit', $subject) }}">Edit ></a>
 
-</body>
-</html>
+                        <form method="POST" action="{{ route('subjects.destroy', $subject) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete ></button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+
+        </table>
+        <hr>
+        <h2>Profesores</h2>
+    </body>
+</x-app-layout>
