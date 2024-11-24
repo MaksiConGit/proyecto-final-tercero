@@ -25,7 +25,9 @@
         <div class="col-md-6 col-lg-8 mb-3">
             <x-card>
                 <x-slot name="objeto">{{$subject->id}}</x-slot>
-                <x-slot name="titulo">Nicolás Rotili</x-slot>
+                <x-slot name="titulo">
+                    <x-user></x-user>
+                </x-slot>
                 <x-slot name="img"></x-slot>
                 <x-slot name="texto">Buenas noches, para los que no acceden a promoción y vienen a rendir en instancia de regulares.Para el día del examen deben venir a defender el trabajo, previamente corregido y mostrado su funcionamiento.
                     Alta, baja y modificación de profesores.
@@ -37,7 +39,9 @@
                     + TEORÍA DE TODO EL AÑO.
                     Cualquier duda, consulten.</x-slot>
                 <x-slot name="footer">
-                    <div class="card-footer">Comentar...</div>
+                    <div class="card-footer">
+                        <x-search></x-search>
+                    </div>
                 </x-slot>
             </x-card> 
         </div>
