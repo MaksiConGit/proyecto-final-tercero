@@ -4,6 +4,7 @@
 
         <x-icon-dropdown>
             <x-slot name="titulo">{{$career->name}}</x-slot>
+            <x-slot name="subtitulo"><p class="mb-4" style="white-space: nowrap;">{{$career->institution->name}}</p></x-slot>
             <x-slot name="url_editar">{{route('careers.edit', $career)}}</x-slot>
             <x-slot name="url_eliminar">{{route('careers.destroy', $career)}}</x-slot>
         </x-icon-dropdown>

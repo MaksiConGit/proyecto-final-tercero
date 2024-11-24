@@ -20,8 +20,9 @@
                         <button type="submit" class="dropdown-item text-danger">Eliminar</button>
                     </form>
                 </li>
-                
+
             </ul>
         </div>
     </div>
+    {{$subtitulo}}
 </div>
