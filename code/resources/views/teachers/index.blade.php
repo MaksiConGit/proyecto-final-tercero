@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-app-layout>
 
 <head>
     <meta charset="UTF-8">
@@ -9,8 +8,11 @@
 </head>
 
 <body>
-    <h1>Lista de profesores</h1>
-    <a href="{{ route('teachers.create') }}">create</a>
+    <h1><strong>Lista de profesores</strong></h1>
+    @can('teachers.create')
+        <a href="{{ route('teachers.create') }}">create ></a>
+    @endcan
+    
     <ul>
         @foreach ($teachers as $teacher)
             <li><a href="{{ route('teachers.show', [$teacher]) }}"> {{ $teacher->name . ' ' . $teacher->lastname }}</a>
@@ -26,4 +28,5 @@
     </ul>
 </body>
 
-</html>
+</x-app-layout>
+

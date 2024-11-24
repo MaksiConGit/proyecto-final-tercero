@@ -18,14 +18,15 @@ class DatabaseSeeder extends Seeder
         $this->call([
             Institution_Career_CourseSeeder::class,
             Country_Province_CitySeeder::class,
-            Role_Permission_RoleHasPermissionSeeder::class,
+            RoleSeeder::class,
             UserSeeder::class,
+            //Role_Permission_RoleHasPermissionSeeder::class,
             PrincipalTeacherStudentSeeder::class,
             SubjectSeeder::class,
             Days_Timetable_TimeSlotSeeder::class,
             Material_Exam_GradeSeeder::class,
             CourseTablesSeeder::class,
-            AttendanceSeeder::class
+            AttendanceSeeder::class,
         ]);
     }
 }

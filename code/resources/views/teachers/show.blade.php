@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<x-app-layout>
 
 <body>
     <h1>Profesor: {{ $teacher->name }}</h1>
@@ -28,13 +20,20 @@
 
     <h2>Institucion: {{ $teacher->user->institution->name }}</h2>
 
-    <a href="{{ route('teachers.edit', $teacher) }}">Edit</a>
+    <hr>
+    
+    @can('teachers.edit')
+        <a href="{{ route('teachers.edit', $teacher) }}">Edit ></a>
+    @endcan
 
-    <form method="POST" action="{{ route('teachers.destroy', $teacher) }}">
-        @csrf
-        @method('DELETE')
-        <button type="submit">Delete</button>
-    </form>
+    @can('teachers.destroy')
+        <form method="POST" action="{{ route('teachers.destroy', $teacher) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete ></button>
+        </form>
+    @endcan
+
 </body>
 
-</html>
+</x-app-layout>

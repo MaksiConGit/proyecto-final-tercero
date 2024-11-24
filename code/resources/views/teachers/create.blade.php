@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<x-app-layout>
 
 <body>
     <h1>Formulario de Creación de Profesores</h1>
@@ -60,8 +52,9 @@
         </label>
         <br>
         </div>
-        <button type="submit"> create </button>
+        <button type="submit"> create ></button>
     </form>
 </body>
 
-</html>
+</x-app-layout>
+

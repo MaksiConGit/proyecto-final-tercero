@@ -23,12 +23,11 @@ class TeacherController extends Controller
     public function create()
     {
         $cities = City::all();
-        $roles = Role::all();
         //Trae todos los registros que no sean nulos de la columna "user_id" de la tabla "teachers" y crea un array de solo la columna "user_id". Entonces trae todos las user_id que si estan asignados.
         $teachersThatHasUser = Teacher::whereNotNull('user_id')->pluck('user_id');
         //Busca las user_id que no estén dentro del array $teachersThatHasUser el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
         $teachersThatHasNoUser = User::whereNotIn('id', $teachersThatHasUser)->get();
-        return view('teachers.create', compact('cities', 'roles', 'teachersThatHasNoUser'));
+        return view('teachers.create', compact('cities', 'teachersThatHasNoUser'));
     }
 
     public function store(StoreTeacherRequest $request)
