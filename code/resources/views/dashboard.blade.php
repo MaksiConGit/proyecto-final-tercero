@@ -11,7 +11,11 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
                     <br>
-                    <a href={{route('home.index')}}>Home ></a>
+                    <a href={{ route('home.index') }}>Home ></a>
+                    <br>
+                    @can('students.create')
+                        <a href={{ route('students.create') }}>Agregar Alumno ></a>
+                    @endcan
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <body>
-        <h1>Formulario de Creación de Cursos para {{ $career }}</h1>
+        <h1>Formulario de Creación de Cursos</h1>
         @if ($errors->any())
             <ul>
                 @foreach ($errors->all() as $error)

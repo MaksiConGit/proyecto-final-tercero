@@ -2,91 +2,131 @@
 
     <body>
         <h1>Curso: {{ $course->course_number . '° ' . $course->section }}</h1>
-        <a href="{{ route('courses.edit', $course) }}"><strong>Edit ></strong></a>
+        @can('courses.edit')
+            <a href="{{ route('courses.edit', $course) }}"><strong>Edit ></strong></a>
+        @endcan
 
-        <form method="POST" action="{{ route('courses.destroy', $course) }}">
-            @csrf
-            @method('DELETE')
-            <button type="submit"><strong>Delete ></strong></button>
-        </form>
+        @can('courses.destroy')
+            <form method="POST" action="{{ route('courses.destroy', $course) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit"><strong>Delete ></strong></button>
+            </form>
+        @endcan
+
         <hr>
-        <h2>Alumnos</h2>
-        <a href="{{ route('students.create') }}"><strong>Agregar Alumno ></strong></a>
+        <h2><strong>Alumnos</strong></h2>
+        @can('students.assignCourse')
+            <a href="{{ route('students.assignCourse', $course) }}"><strong>Asignar Alumno ></strong></a>
+        @endcan
         <div>
             <table>
                 <tr>
                     <td>Nombre</td>
                     <td>Apellido</td>
-                    <td>Usuario</td>
-                    <td>Acciones</td>
+
+                    @can('see.info')
+                        <td>Usuario</td>
+                        <td>Acciones</td>
+                    @endcan
+
                 </tr>
                 @foreach ($students as $student)
                     <tr>
                         <td>{{ $student->name }}</td>
                         <td>{{ $student->lastname }}</td>
+                        @can('see.info')
                         <td>{{ $student->user->email }}</td>
                         <td>
-                            <a href="{{ route('students.edit', $student) }}">Edit ></a>
+                            @can('students.edit')
+                                <a href="{{ route('students.edit', $student) }}">Edit ></a>
+                            @endcan
+                            @can('students.destroy')
+                                <form method="POST" action="{{ route('students.destroy', $student) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Delete ></button>
+                                </form>
+                            @endcan
 
-                            <form method="POST" action="{{ route('students.destroy', $student) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Delete ></button>
-                            </form>
                         </td>
+                        @endcan
+                        
                     </tr>
                 @endforeach
             </table>
         </div>
         <hr>
-        <h2>Profesores</h2>
-        <a href="{{ route('teachers.create') }}"><strong>Agregar Profesor ></strong></a>
+        <h2><strong>Profesores</strong></h2>
+        @can('teachers.create')
+            <a href="{{ route('teachers.create') }}"><strong>Agregar Profesor ></strong></a>
+        @endcan
 
         <div>
             <table>
                 <tr>
                     <td>Nombre</td>
                     <td>Apellido</td>
-                    <td>Usuario</td>
-                    <td>Acciones</td>
+
+                    @can('see.info')
+                        <td>Usuario</td>
+                        <td>Acciones</td>
+                    @endcan
                 </tr>
                 @foreach ($teachers as $teacher)
                     <tr>
                         <td>{{ $teacher->name }}</td>
                         <td>{{ $teacher->lastname }}</td>
-                        <td>{{ $teacher->user->email }}</td>
-                        <td>
-                            <a href="{{ route('teachers.edit', $teacher) }}">Edit ></a>
+                        @can('see.info')
+                            <td>{{ $teacher->user->email }}</td>
+                            <td>
+                                @can('teachers.edit')
+                                    <a href="{{ route('teachers.edit', $teacher) }}">Edit ></a>
+                                @endcan
 
-                            <form method="POST" action="{{ route('teachers.destroy', $teacher) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Delete ></button>
-                            </form>
-                        </td>
+                                @can('teachers.destory')
+                                    <form method="POST" action="{{ route('teachers.destroy', $teacher) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Delete ></button>
+                                    </form>
+                                @endcan
+
+                            </td>
+                        @endcan
+
+
                     </tr>
                 @endforeach
             </table>
         </div>
-
-        <h2>Materias</h2>
+        <hr>
+        <h2><strong>Materias</strong></h2>
         <div>
             <table>
                 <tr>
                     <td>Nombre</td>
-                    <td>Acciones</td>
+                    @can('see.info')
+                        <td>Acciones</td>
+                    @endcan
                 </tr>
                 @foreach ($subjects as $subject)
                     <tr>
                         <td>{{ $subject->name }}</td>
                         <td>
-                            <a href="{{ route('subjects.edit', $subject) }}">Edit ></a>
+                            @can('subjects.edit')
+                                <a href="{{ route('subjects.edit', $subject) }}">Edit ></a>
+                            @endcan
 
-                            <form method="POST" action="{{ route('subjects.destroy', $subject) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Delete ></button>
-                            </form>
+                            @can('subjects.destroy')
+                                <form method="POST" action="{{ route('subjects.destroy', $subject) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Delete ></button>
+                                </form>
+                            @endcan
+
+
                         </td>
                     </tr>
                 @endforeach

@@ -101,4 +101,8 @@ class StudentController extends Controller
 
         return view('students.examDetail', compact('grades', 'exam', 'student'));
     }
+
+    public function assignCourse(Course $course){
+        return view('students.assignCourse');
+    }
 }

@@ -2,7 +2,9 @@
 
     <h1><strong>Institución: {{ $institution->name }}</strong></h1>
 
-    <a href="{{route('careers.create')}}">Añadir Carrera ></a>
+    @can('careers.create')
+        <a href="{{route('careers.create')}}">Añadir Carrera ></a>
+    @endcan
 
     <hr>
 

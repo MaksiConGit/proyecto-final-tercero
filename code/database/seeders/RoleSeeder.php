@@ -20,6 +20,9 @@ class RoleSeeder extends Seeder
         $roleTeacher = Role::create(['name' => 'teacher']);
         $roleStudent = Role::create(['name' => 'student']);
 
+        Permission::create(['name' => 'see.info'])->syncRoles([$roleAdmin, $rolePrincipal]);
+
+
         Permission::create(['name' => 'students.index'])->syncRoles([$roleAdmin, $rolePrincipal, $roleTeacher, $roleStudent]);
         Permission::create(['name' => 'students.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
         Permission::create(['name' => 'students.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
@@ -34,5 +37,21 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'principals.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
         Permission::create(['name' => 'principals.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
         Permission::create(['name' => 'principals.destroy'])->syncRoles([$roleAdmin, $rolePrincipal]);
+
+        Permission::create(['name' => 'careers.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'careers.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'careers.destroy'])->syncRoles([$roleAdmin, $rolePrincipal]);
+
+        Permission::create(['name' => 'courses.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'courses.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'courses.destroy'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'courses.assignCourse'])->syncRoles([$roleAdmin, $rolePrincipal]);
+
+        Permission::create(['name' => 'subjects.index'])->syncRoles([$roleAdmin, $rolePrincipal, $roleTeacher, $roleStudent]);
+        Permission::create(['name' => 'subjects.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'subjects.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'subjects.destroy'])->syncRoles([$roleAdmin, $rolePrincipal]);
+
+
     }
 }
