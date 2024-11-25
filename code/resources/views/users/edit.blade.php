@@ -14,19 +14,19 @@
             @method('PUT')
             <label>Nombre:<input type="text" name="name" value="{{ old('name', $user->name) }}" required /></label>
             <br>
-
+            <br>
             <label>Apellido:<input type="text" name="email" value="{{ old('email', $user->email) }}" required /></label>
             <br>
-
+            <br>
             <label>Contraseña:<input type="text" name="password" value="{{ old('password', $user->password) }}" required /></label>
             <br>
-
+            <br>
             <label>role_id:<input type="text" name="role_id" value="{{ old('role_id', $user->role_id) }}" required /></label>
             <br>
-
+            <br>
             <label>institution_id:<input type="text" name="institution_id" value="{{ old('institution_id', $user->institution_id) }}"required /></label>
             <br>
-
+            <br>
             <button type="submit" class="btn btn-primary">Actualizar</button>
             <a href="{{route('users.index')}}" class="btn btn-secondary">Volver</a>
         </form>

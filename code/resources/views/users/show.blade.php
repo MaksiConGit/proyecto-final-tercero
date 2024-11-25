@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<x-template-layout>
+    <div class="card mx-4 p-4">
     <h1>Usuario: {{$user->name}}</h1>
-    <a href="{{route('users.edit', $user)}}">Edit</a>
+    
 
     <form method="POST" action="{{route('users.destroy', $user)}}">
         @csrf
         @method('DELETE')
-        <button type="submit">Delete</button>
+        <a href="{{route('users.edit', $user)}}" class="btn btn-primary">Editar</a>
+        <button type="submit" class="btn btn-primary">Eliminar</button>
+        <a href="{{route('users.index')}}" class="btn btn-secondary">Volver</a>
     </form>
-</body>
-</html>
+</div>
+</x-template-layout>
