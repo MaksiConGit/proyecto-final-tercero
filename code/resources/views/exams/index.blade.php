@@ -24,13 +24,14 @@
                         <tr class="table-hover-row">
                             <!-- Columna de Examen -->
                             <td>
+                                <a> Parcial I</a>
+                            </td>
+                            <!-- Columna de Materia -->
+                            
+                            <td>
                                 <a href="{{ route('exams.show', [$exam]) }}" class="text-decoration-none text-dark">
                                     {{ $exam->teacherSubject->subject->name }}
                                 </a>
-                            </td>
-                            <!-- Columna de Materia -->
-                            <td>
-
                             </td>
                             <!-- Columna de Profesor -->
                             <td>
@@ -45,7 +46,7 @@
                             </td>
                             <!-- Columna de Curso -->
                             <td>
-                                {{ $exam->teacherSubject->course->name ?? 'No especificado' }}
+                                4A
                             </td>
                             <!-- Columna de Fecha -->
                             <td>
@@ -57,26 +58,12 @@
             </x-slot>
         </x-table>
 
+        {{-- <!-- Controles de paginación -->
+        <div class="mt-4">
+            {{ $exams->links() }}
+        </div> --}}
 
-
-        {{-- <hr> --}}
-        {{-- <h4>Exámenes Eliminados</h4> --}}
-        {{-- <ul> --}}
-        {{-- @foreach ($trashed as $trash) --}}
-
-        {{-- Obtiene la materia del examen aunque estuviera eliminada  --}}
-        {{-- @php
-            $subject = $trash->teacherSubject->subject()->withTrashed()->first();
-        @endphp --}}
-
-        {{-- Si la materia está eliminada, lo escribe igual y especifica que así es --}}
-        {{-- <li>
-            {{ $subject->name . ' ' . $trash->number }}
-            {{ $subject && $subject->trashed() ? '(materia eliminada)' : '' }}
-        </li>
-
-        @endforeach
-    </ul> --}}
     </div>
     <x-floating-icon-exams></x-floating-icon-exams>
 </x-template-layout>
+
