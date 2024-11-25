@@ -3,6 +3,7 @@
     <div class="container">
         <x-icon-dropdown>
             <x-slot name="titulo">{{$subject->name}}</x-slot>
+            <x-slot name="subtitulo"></x-slot>
             <x-slot name="url_editar">{{route('subjects.edit', $subject)}}</x-slot>
             <x-slot name="url_eliminar">{{route('subjects.destroy', $subject)}}</x-slot>
         </x-icon-dropdown>
