@@ -8,6 +8,7 @@ use App\Models\AttendanceRecord;
 use App\Models\Career;
 use App\Models\City;
 use App\Models\Course;
+use App\Models\CourseStudent;
 use App\Models\Exam;
 use App\Models\Role;
 use App\Models\Student;
@@ -41,7 +42,6 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
-
         $courses = $student->courses->groupBy('career_id');
 
         return view('students.show', compact('student', 'courses'));
@@ -74,28 +74,22 @@ class StudentController extends Controller
     public function courseDetail(Student $student, Course $course)
     {
         // Verificar que el curso pertenece al estudiante
-        if (!$student->courses->contains($course)) {
-            abort(404, 'El curso no pertenece al estudiante.');
-        }
+        abort_unless($student->courses->contains($course), 404, 'El curso no pertenece al estudiante.');
 
-        $exams = $course->exams;
-
-        // Verificar si el estudiante está relacionado con el curso
-        $relatedCourse = $student
-            ->courses()
+        // Obtener el ID de course_students de la relación entre estudiante y curso
+        $course_student = CourseStudent::where('student_id', $student->id)
             ->where('course_id', $course->id)
-            ->first();
+            ->firstOrFail();
 
-        // Acceder al ID de la tabla intermedia
-        $courseStudentId = $relatedCourse->pivot->id;
+        // Días de inasistencia
+        $absentDays = AttendanceRecord::where('course_student_id', $course_student->id)
+            ->where('has_attended', 0)
+            ->get();
 
-        $absentDays = AttendanceRecord::where('course_student_id', $courseStudentId)->where('has_attended', 0)->get();
-        // Agrupar los exámenes por materia
-        $examsBySubject = $exams->mapToGroups(function ($exam) {
-            return [$exam->teacherSubject->subject->name => $exam];
-        });
+        // Agrupar exámenes por materia
+        $courseExams = $course->exams->groupBy(fn($exam) => $exam->teacherSubject->subject->name);
 
-        return view('students.courseDetail', compact('student', 'course', 'examsBySubject', 'absentDays'));
+        return view('students.courseDetail', compact('student', 'course', 'courseExams', 'absentDays'));
     }
 
     public function examDetail(Student $student, Course $course, Exam $exam)

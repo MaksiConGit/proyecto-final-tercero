@@ -27,12 +27,16 @@
 
     <hr>
 
-    @foreach ($examsBySubject as $subject => $exams)
-        <h3>{{ $subject }}</h3>
-        <ul>Exámenes
+    <h3>Exámenes: </h3>
+    @foreach ($courseExams as $subject => $exams)
+        <p>Materia: {{ $subject}}</p>
+        <ul>
             @foreach ($exams as $exam)
-                <li><a href="{{ route('students.examDetail', [$student, $course, $exam]) }}">Examen
-                        N°{{ $exam->exam_number . ' - ' . \Carbon\Carbon::parse($exam->date)->toFormattedDateString() }}</a>
+                <li>
+                    <a href="{{ route('students.examDetail', [$student, $course, $exam]) }}">
+                        Examen N°{{ $exam->exam_number }} -
+                        {{ \Carbon\Carbon::parse($exam->date)->toFormattedDateString() }}
+                    </a>
                 </li>
             @endforeach
         </ul>

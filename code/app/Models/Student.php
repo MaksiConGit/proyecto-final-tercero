@@ -40,4 +40,8 @@ class Student extends Model
         return $this->hasManyThrough(AttendanceRecord::class, CourseStudent::class);
     }
 
+    public function course_student(){
+        return $this->hasMany(CourseStudent::class);
+    }
+
 }
