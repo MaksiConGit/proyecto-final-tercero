@@ -17,5 +17,5 @@
         </ul>
     </div>
 
-    <x-floating-icon></x-floating-icon>
+    <x-floating-icon-courses></x-floating-icon-courses>
 </x-template-layout>
