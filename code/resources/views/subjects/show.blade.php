@@ -6,7 +6,6 @@
             <x-card>
                 <x-slot name="objeto">{{$subject->id}}</x-slot>
                 <x-slot name="titulo"></x-slot>
-                <x-slot name="subtitulo"></x-slot>
                 <x-slot name="img">
                     <img class="card-img-top" src="../template_files/assets/img/reyo/programacion-2-e1551291144973.jpg" alt="materia" />
                 </x-slot>
