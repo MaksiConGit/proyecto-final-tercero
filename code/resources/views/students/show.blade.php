@@ -27,13 +27,18 @@
     </ul>
 
     <h2>Institucion: {{ $student->user->institution->name }}</h2>
-    @foreach ($coursesByCareer as $careerName => $courses)
-        <h4>Carrera: {{ $careerName }}</h4>
-        <ul> Cursos
-            @foreach ($courses as $course)
-                <li><a href="{{ route('students.courseDetail', [$student, $course]) }}">{{ $course->course_number . '° ' . $course->section}}</a></li>
-            @endforeach
-        </ul>
+
+    <hr>
+
+    @foreach ($courses as $careerId => $careerCourses)
+        <h2><strong>Carrera: {{ $careerCourses->first()->career->name }}</strong></h2>
+        <p>Cursos:</p>
+        @foreach ($careerCourses as $course)
+            <a href="{{ route('courses.show', $course) }}">{{ $course->course_number . '° ' . $course->section }}</a>
+            <br>
+        @endforeach
+        <br>
+        <hr>
     @endforeach
 
     <a href="{{ route('students.edit', $student) }}">Edit</a>

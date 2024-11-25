@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\AttendanceRecord;
+use App\Models\Career;
 use App\Models\City;
 use App\Models\Course;
 use App\Models\Exam;
@@ -40,12 +41,10 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
-        // Agrupar los cursos por carrera
-        $coursesByCareer = $student->courses->groupBy(function ($course) {
-            return $course->career->name; // Agrupar por el nombre de la carrera
-        });
 
-        return view('students.show', compact('student', 'coursesByCareer'));
+        $courses = $student->courses->groupBy('career_id');
+
+        return view('students.show', compact('student', 'courses'));
     }
 
     public function edit(Student $student)
@@ -87,10 +86,9 @@ class StudentController extends Controller
             ->where('course_id', $course->id)
             ->first();
 
-
         // Acceder al ID de la tabla intermedia
         $courseStudentId = $relatedCourse->pivot->id;
-        
+
         $absentDays = AttendanceRecord::where('course_student_id', $courseStudentId)->where('has_attended', 0)->get();
         // Agrupar los exámenes por materia
         $examsBySubject = $exams->mapToGroups(function ($exam) {

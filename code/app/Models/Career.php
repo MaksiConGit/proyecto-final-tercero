@@ -18,4 +18,8 @@ class Career extends Model
     public function institution(){
         return $this->belongsTo(Institution::class);
     }
+
+    public function courses(){
+        return $this->hasMany(Course::class);
+    }
 }
