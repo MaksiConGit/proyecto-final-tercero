@@ -49,5 +49,7 @@
         </div>
     </div>
 
-    <x-floating-icon></x-floating-icon>
+    <x-floating-icon>
+        <x-slot name="url">{{route('subjects.create')}}</x-slot>
+    </x-floating-icon>
 </x-template-layout>
