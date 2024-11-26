@@ -13,10 +13,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profesor', function () {
-    return view('../bocetos/profesorMaterias');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })
