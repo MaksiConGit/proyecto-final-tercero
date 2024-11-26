@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             //Role_Permission_RoleHasPermissionSeeder::class,
-            PrincipalTeacherStudentSeeder::class,
-            SubjectSeeder::class,
-            Days_Timetable_TimeSlotSeeder::class,
-            Material_Exam_GradeSeeder::class,
-            CourseTablesSeeder::class,
-            AttendanceSeeder::class,
+            //PrincipalTeacherStudentSeeder::class,
+            //SubjectSeeder::class,
+            //Days_Timetable_TimeSlotSeeder::class,
+            //Material_Exam_GradeSeeder::class,
+            //CourseTablesSeeder::class,
+            //AttendanceSeeder::class,
         ]);
     }
 }

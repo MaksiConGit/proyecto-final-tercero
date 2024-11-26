@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<x-app-layout>
 
 <body>
-    <h1>Formulario de Edición de Estudiantes</h1>
+    <h1>Datos de {{$student->name . " " . $student->lastname}}</h1>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -20,6 +12,9 @@
     <form method="POST" action="{{ route('students.update', $student) }}">
         @csrf
         @method('PUT')
+
+        @livewire('CheckboxCourses')
+        <hr>
         <label>
             name:
             <input type="text" name="name" value="{{ old('name', $student->name) }}" required />
@@ -45,7 +40,7 @@
             <input type="date" name="birthdate" value="{{ old('birthdate', $student->birthdate) }}" required />
         </label>
         <br>
-        
+
         @livewire('DependantSelectCity', ['selectedCity' => $student->city_id])
 
         <br>
@@ -82,4 +77,4 @@
     </form>
 </body>
 
-</html>
+</x-app-layout>

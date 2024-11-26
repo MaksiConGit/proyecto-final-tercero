@@ -35,7 +35,13 @@ class StudentController extends Controller
 
     public function store(StoreStudentRequest $request)
     {
-        Student::create($request->all());
+        $student = Student::create($request->only(['name', 'lastname', 'dni', 'phone', 'birthdate', 'city_id', 'user_id']));
+
+        // Usar la relación para guardar los cursos seleccionados
+        $student->courses()->attach($request->input('course'));
+
+        return redirect()->back()->with('success', '¡Alumno creado correctamente!');
+
         return redirect(route('students.index'));
     }
 
@@ -102,7 +108,8 @@ class StudentController extends Controller
         return view('students.examDetail', compact('grades', 'exam', 'student'));
     }
 
-    public function assignCourse(Course $course){
+    public function assignCourse(Course $course)
+    {
         return view('students.assignCourse');
     }
 }

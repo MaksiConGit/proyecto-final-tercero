@@ -1,60 +1,66 @@
 <x-app-layout>
 
-<body>
-    <h1>Formulario de Creación de Estudiantes</h1>
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-    <form method="POST" action="{{ route('students.store') }}">
-        @csrf
-        <label>
-            name:
-            <input type="text" name="name" value="{{ old('name') }}" required />
-        </label>
-        <br>
-        <label>
-            lastname:
-            <input type="text" name="lastname" value="{{ old('lastname') }}" required />
-        </label>
-        <br>
-        <label>
-            dni:
-            <input type="text" name="dni" value="{{ old('dni') }}" required />
-        </label>
-        <br>
-        <label>
-            phone:
-            <input type="text" name="phone" value="{{ old('phone') }}" required />
-        </label>
-        <br>
-        <label>
-            birthdate:
-            <input type="date" name="birthdate" value="{{ old('birthdate') }}" required />
-        </label>
-        <br>
-        
-        @livewire('DependantSelectCity')
+    <body>
 
-        <br>
-        <label>
-            (opcional) user_id:
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+        <form method="POST" action="{{ route('students.store') }}">
+            <h1>Inscripción</h1>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            
+            @livewire('CheckboxCourses')
+
+            <hr>
+
+            <h2>Formulario de Datos del Estudiante</h2>
+            @csrf
+            <label for="name">name:</label>
+            <input type="text" name="name" value="{{ old('name') }}" required />
+            <br>
+
+            <label for="lastname">lastname:</label>
+            <input type="text" name="lastname" value="{{ old('lastname') }}" required />
+            <br>
+
+            <label for="dni">dni:</label>
+            <input type="text" name="dni" value="{{ old('dni') }}" required />
+            <br>
+
+            <label for="phone">phone:</label>
+            <input type="text" name="phone" value="{{ old('phone') }}" required />
+            <br>
+
+            <label for="birthdate">birthdate:</label>
+            <input type="date" name="birthdate" value="{{ old('birthdate') }}" required />
+
+            <br>
+
+            @livewire('DependantSelectCity')
+
+            <br>
+            <label for="user_id">(opcional) user_id:</label>
+
             <select id="user_id" name="user_id">
                 <option value="">Selecciona una cuenta de usuario libre</option>
                 @foreach ($availableUserID as $user)
-                    <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                    <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                        {{ $user->name }}</option>
                 @endforeach
             </select>
-        </label>
-        <br>
-        </div>
-        <button type="submit"> create </button>
-    </form>
-</body>
-    
+
+            <br>
+            </div>
+            <button type="submit"> create </button>
+        </form>
+    </body>
+
 </x-app-layout>
-
-
