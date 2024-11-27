@@ -56,6 +56,31 @@ Route::get('/bocetos/materias', function () {
     return view('bocetos.materias');
 });
 
+Route::get('/bocetos/asistencias', function () {
+    return view('bocetos.asistencias');
+});
+
+Route::get('/bocetos/profesores_index', function () {
+    return view('bocetos.profesores_index');
+});
+
+Route::get('/bocetos/alumnos', function () {
+    return view('bocetos.alumnos');
+});
+
+Route::get('/bocetos/material', function () {
+    return view('bocetos.material');
+});
+
+
+Route::get('/bocetos/horarios', function () {
+    return view('bocetos.horarios');
+});
+
+Route::get('/bocetos/materias', function () {
+    return view('bocetos.materias');
+});
+
 Route::resource('subjects', SubjectController::class)
     ->names('subjects');
 
