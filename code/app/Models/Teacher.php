@@ -29,4 +29,16 @@ class Teacher extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function subjects()
+    {
+        return $this->hasManyThrough(
+            Subject::class,          // Modelo final (Subject)
+            TeacherSubject::class,   // Modelo intermedio (TeacherSubject)
+            'teacher_id',            // Clave foránea en TeacherSubject
+            'id',                    // Clave primaria en Subject
+            'id',                    // Clave primaria en Teacher
+            'subject_id'             // Clave foránea en Subject
+        );
+    }
 }
