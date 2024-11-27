@@ -37,9 +37,13 @@
                                             @endif
                                             <br>
                                             Usuario:
-                                            <a href="{{ route('users.show', [$teacher->user->id]) }}" class="internal-link">
-                                                {{ $teacher->user->name }}
-                                            </a>
+                                            @if ($teacher->user)
+                                                <a href="{{ route('users.show', [$teacher->user->id]) }}" class="internal-link">
+                                                    {{ $teacher->user->name }}
+                                                </a>
+                                            @else
+                                                Sin asignar.
+                                            @endif
                                         </p>
                                     </div>
                                 </div>
@@ -50,6 +54,9 @@
             @endforeach
         </div>
     </div>
+    <x-floating-icon>
+        <x-slot name="url">{{ route('teachers.create') }}</x-slot>
+    </x-floating-icon>
 </x-template-layout>
 
 
