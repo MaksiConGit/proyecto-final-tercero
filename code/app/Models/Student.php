@@ -19,4 +19,22 @@ class Student extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // public function attendanceRecords()
+    // {
+    //     return $this->hasMany(AttendanceRecord::class);
+    // }
+
+    public function attendanceRecords()
+    {
+        return $this->hasManyThrough(
+            AttendanceRecord::class, // El modelo final
+            CourseStudent::class,   // El modelo intermedio
+            'student_id',           // Llave foránea en la tabla intermedia (course_students)
+            'course_student_id',    // Llave foránea en la tabla final (attendance_records)
+            'id',                   // Llave primaria en el modelo de estudiante
+            'id'                    // Llave primaria en el modelo intermedio (course_students)
+    );
+}
+
 }

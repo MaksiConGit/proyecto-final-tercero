@@ -18,4 +18,9 @@ class CourseStudent extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function attendanceRecords()
+    {
+        return $this->hasMany(AttendanceRecord::class);
+    }
 }
