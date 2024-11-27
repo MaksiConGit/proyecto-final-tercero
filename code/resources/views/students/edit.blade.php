@@ -13,7 +13,7 @@
         @csrf
         @method('PUT')
 
-        @livewire('CheckboxCourses')
+        @livewire('CheckboxCourses' , ['student' => $student])
         <hr>
         <label>
             name:

@@ -77,7 +77,28 @@ class StudentController extends Controller
 
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        $student->update($request->all());
+        // Validar y actualizar los datos básicos del estudiante
+        $validatedData = $request->validated();
+        $student->update($validatedData);
+
+        // Limpiar relaciones previas en course_students
+        CourseStudent::where('student_id', $student->id)->delete();
+
+        // Verificar si hay datos para las nuevas relaciones
+        if ($request->has('selectedData')) {
+            foreach ($request->input('selectedData') as $data) {
+                if (isset($data['courses'])) {
+                    foreach ($data['courses'] as $courseId) {
+                        // Crear las nuevas relaciones
+                        CourseStudent::create([
+                            'student_id' => $student->id,
+                            'course_id' => $courseId,
+                        ]);
+                    }
+                }
+            }
+        }
+
         return redirect(route('students.show', $student));
     }
 
