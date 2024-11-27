@@ -36,7 +36,18 @@ class Teacher extends Model
     }
 
     public function courses(){
-        return $this->belongsToMany(Course::class, 'course_teachers')
-        ;
+        return $this->belongsToMany(Course::class, 'course_teachers');
+    }
+    
+    public function subjects()
+    {
+        return $this->hasManyThrough(
+            Subject::class,          // Modelo final (Subject)
+            TeacherSubject::class,   // Modelo intermedio (TeacherSubject)
+            'teacher_id',            // Clave foránea en TeacherSubject
+            'id',                    // Clave primaria en Subject
+            'id',                    // Clave primaria en Teacher
+            'subject_id'             // Clave foránea en Subject
+        );
     }
 }

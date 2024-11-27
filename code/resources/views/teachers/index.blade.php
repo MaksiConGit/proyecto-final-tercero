@@ -1,14 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-template-layout>
+    <style>
+        .stretched-link {
+            z-index: 1;
+        }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+        .internal-link {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+    <div class="container">
+        <div class="d-flex flex-column align-items-stretch gap-3">
+            @foreach ($teachers as $teacher)
+                <div class="row mb-1">
+                    <div class="col-md">
+                        <div class="card position-relative">
+                            <a href="{{ route('teachers.show', [$teacher->id]) }}" class="stretched-link"></a>
+                            <div class="row g-8">
+                                <div class="col-md-2">
+                                    <img class="card-img card-img-left" src="../../template_files/assets/img/elements/12.jpg"
+                                        alt="Card image" />
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $teacher->name . ', ' . $teacher->lastname }}</h5>
+                                        <p class="card-text">
+                                            Materias:
+                                            @if ($teacher->subjects->isNotEmpty())
+                                                @foreach ($teacher->subjects as $subject)
+                                                    <a href="{{ route('subjects.show', [$subject->id]) }}" class="internal-link">
+                                                        {{ $subject->name }}
+                                                    </a>
+                                                @endforeach
+                                            @else
+                                                Sin asignar.
+                                            @endif
+                                            <br>
+                                            Usuario:
+                                            <a href="{{ route('users.show', [$teacher->user->id]) }}" class="internal-link">
+                                                {{ $teacher->user->name }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</x-template-layout>
 
-<body>
+
+
+{{--
     <h1>Lista de profesores</h1>
     <a href="{{ route('teachers.create') }}">create</a>
     <ul>
@@ -24,6 +70,4 @@
             <li>{{ $trash->name . ' ' . $trash->lastname }}</li>
         @endforeach
     </ul>
-</body>
-
-</html>
+--}}
