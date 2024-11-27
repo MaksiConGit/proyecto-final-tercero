@@ -38,7 +38,19 @@ class StudentController extends Controller
         $student = Student::create($request->only(['name', 'lastname', 'dni', 'phone', 'birthdate', 'city_id', 'user_id']));
 
         // Usar la relación para guardar los cursos seleccionados
-        $student->courses()->attach($request->input('course'));
+        //$student->courses()->attach($request->input('course'));
+        // Procesar las carreras y cursos seleccionados
+        foreach ($request->input('selectedData') as $data) {
+            $careerId = $data['career'];
+            $courseIds = $data['courses'] ?? [];
+
+            foreach ($courseIds as $courseId) {
+                CourseStudent::create([
+                    'student_id' => $student->id,
+                    'course_id' => $courseId,
+                ]);
+            }
+        }
 
         return redirect()->back()->with('success', '¡Alumno creado correctamente!');
 
