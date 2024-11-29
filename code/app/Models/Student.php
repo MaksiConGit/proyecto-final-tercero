@@ -32,7 +32,7 @@ class Student extends Model
 
     public function courses(){
         return $this->belongsToMany(Course::class, 'course_students', 'student_id','course_id')
-            ->withPivot('id'); // Incluye el campo 'id' de la tabla intermedia
+            ->withPivot('id')->withTimestamps(); // Incluye el campo 'id' de la tabla intermedia
         ;
     }
 

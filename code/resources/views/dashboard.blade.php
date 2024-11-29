@@ -19,6 +19,10 @@
                     @endcan
                     @can('teachers.create')
                         <a href={{ route('teachers.create') }}>Agregar Profesor ></a>
+                        <br>
+                    @endcan
+                    @can('principals.create')
+                        <a href={{ route('principals.create') }}>Agregar Directivo ></a>
                     @endcan
                 </div>
             </div>

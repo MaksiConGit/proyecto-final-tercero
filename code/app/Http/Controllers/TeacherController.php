@@ -5,13 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use App\Models\City;
-use App\Models\CourseTeacher;
-use App\Models\Role;
 use App\Models\Teacher;
-use App\Models\TeacherSubject;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+
 
 class TeacherController extends Controller
 {
@@ -26,34 +22,28 @@ class TeacherController extends Controller
     {
         $cities = City::all();
         //Trae todos los registros que no sean nulos de la columna "user_id" de la tabla "teachers" y crea un array de solo la columna "user_id". Entonces trae todos las user_id que si estan asignados.
-        $teachersThatHasUser = Teacher::whereNotNull('user_id')->pluck('user_id');
-        //Busca las user_id que no estén dentro del array $teachersThatHasUser el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
-        $teachersThatHasNoUser = User::whereNotIn('id', $teachersThatHasUser)->get();
-        return view('teachers.create', compact('cities', 'teachersThatHasNoUser'));
+        $takenUserId = Teacher::whereNotNull('user_id')->pluck('user_id');
+        //Busca las user_id que no estén dentro del array $takenUserId el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
+        $availableUserId = User::whereNotIn('id', $takenUserId)->get();
+        return view('teachers.create', compact('cities', 'availableUserId'));
     }
 
     public function store(StoreTeacherRequest $request)
     {
-        $teacher = Teacher::create($request->only(['name', 'lastname', 'dni', 'phone', 'birthdate', 'city_id', 'user_id']));
+        $teacher = Teacher::create($request->validated());
 
-        foreach ($request->input('selectedData') as $data) {
-            $careerId = $data['career'];
-            $courseIds = $data['courses'] ?? [];
-            $subjectIds = $data['subjects'] ?? [];
-            
-            foreach ($subjectIds as $subjectId) {
-                TeacherSubject::create([
-                    'teacher_id' => $teacher->id,
-                    'subject_id' => $subjectId,
-                ]);
-            }
+        // Procesar las relaciones con carreras, cursos y materias
+        $selectedData = $request->input('selectedData', []);
 
-            foreach ($courseIds as $courseId) {
-                CourseTeacher::create([
-                    'teacher_id' => $teacher->id,
-                    'course_id' => $courseId,
-                ]);
-            }
+        foreach ($selectedData as $data) {
+            $courses = $data['courses'] ?? [];
+            $subjects = $data['subjects'] ?? [];
+
+            // Crear las relaciones en teacher_subjects
+            $teacher->subjects()->attach($subjects);
+
+            // Crear las relaciones en course_teachers
+            $teacher->courses()->attach($courses);
         }
 
         return redirect()->back()->with('success', 'Profesor creado correctamente!');
@@ -68,21 +58,42 @@ class TeacherController extends Controller
     {
         $cities = City::all();
         //Trae todos los registros que no sean nulos de la columna "user_id" de la tabla "teachers" y crea un array de solo la columna "user_id". Entonces trae todos las user_id que si estan asignados.
-        $teachersThatHasUser = Teacher::whereNotNull('user_id')->pluck('user_id');
-        //Busca las user_id que no estén dentro del array $teachersThatHasUser el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
-        $teachersThatHasNoUser = User::whereNotIn('id', $teachersThatHasUser)->get();
-        $usersTrashed = User::withTrashed()->find($teacher->user_id);
-        return view('teachers.edit', compact('teacher', 'cities', 'teachersThatHasNoUser', 'usersTrashed'));
+        $takenUserId = Teacher::whereNotNull('user_id')->pluck('user_id');
+        //Busca las user_id que no estén dentro del array $takenUserId el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
+        $availableUserId = User::whereNotIn('id', $takenUserId)->get();
+        return view('teachers.edit', compact('teacher', 'cities', 'availableUserId'));
     }
 
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {
-        $teacher->update($request->all());
+        $teacher->update($request->validated());
+
+        // Actualizar los datos básicos del estudiante
+        $teacher->update($request->validated());
+
+        // Manejar las relaciones de courses con el estudiante
+        $selectedCourses = collect($request->input('selectedData', []))
+            ->flatMap(function ($data) {
+                return $data['courses'] ?? [];
+            })
+            ->unique()
+            ->toArray();
+
+        $selectedSubjects = collect($request->input('selectedData', []))
+            ->flatMap(function ($data) {
+                return $data['subjects'] ?? [];
+            })
+            ->unique()
+            ->toArray();
+
+        // Sincronizar las relaciones en course_students
+        $teacher->courses()->sync($selectedCourses);
+        $teacher->subjects()->sync($selectedSubjects);
         return redirect(route('teachers.show', $teacher));
     }
 
     public function destroy(Teacher $teacher)
-    {   
+    {
         $teacher->delete();
         return redirect(route('teachers.index'));
     }

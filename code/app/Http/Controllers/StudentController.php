@@ -35,20 +35,17 @@ class StudentController extends Controller
 
     public function store(StoreStudentRequest $request)
     {
-        $student = Student::create($request->only(['name', 'lastname', 'dni', 'phone', 'birthdate', 'city_id', 'user_id']));
+        // Crear el estudiante con los datos validados
+        $student = Student::create($request->validated());
 
-        // Procesar las carreras y cursos seleccionados
-        foreach ($request->input('selectedData') as $data) {
-            $careerId = $data['career'];
-            $courseIds = $data['courses'] ?? [];
+        // Procesar carreras y cursos seleccionados si existen
+        $selectedCourses = collect($request->input('selectedData', []))
+            ->flatMap(function ($data) {
+                return $data['courses'] ?? [];
+            })->unique()->toArray();
 
-            foreach ($courseIds as $courseId) {
-                CourseStudent::create([
-                    'student_id' => $student->id,
-                    'course_id' => $courseId,
-                ]);
-            }
-        }
+        // Sincronizar los cursos con el estudiante
+        $student->courses()->sync($selectedCourses);
 
         return redirect()->back()->with('success', '¡Alumno creado correctamente!');
     }
@@ -67,35 +64,24 @@ class StudentController extends Controller
         $takenUserID = Student::whereNotNull('user_id')->pluck('user_id');
         //Busca las user_id que no estén dentro del array $takenUserID el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
         $availableUserID = User::whereNotIn('id', $takenUserID)->orderBy('name', 'asc')->get();
-        $usersTrashed = User::withTrashed()->find($student->user_id);
-        return view('students.edit', compact('student', 'cities', 'availableUserID', 'usersTrashed'));
+        return view('students.edit', compact('student', 'cities', 'availableUserID'));
     }
 
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        // Validar y actualizar los datos básicos del estudiante
-        $validatedData = $request->validated();
-        $student->update($validatedData);
+        // Actualizar los datos básicos del estudiante
+        $student->update($request->validated());
 
-        // Limpiar relaciones previas en course_students
-        CourseStudent::where('student_id', $student->id)->delete();
+        // Manejar las relaciones de courses con el estudiante
+        $selectedCourses = collect($request->input('selectedData', []))
+            ->flatMap(function ($data) {
+                return $data['courses'] ?? [];
+            })->unique()->toArray();
 
-        // Verificar si hay datos para las nuevas relaciones
-        if ($request->has('selectedData')) {
-            foreach ($request->input('selectedData') as $data) {
-                if (isset($data['courses'])) {
-                    foreach ($data['courses'] as $courseId) {
-                        // Crear las nuevas relaciones
-                        CourseStudent::create([
-                            'student_id' => $student->id,
-                            'course_id' => $courseId,
-                        ]);
-                    }
-                }
-            }
-        }
+        // Sincronizar las relaciones en course_students
+        $student->courses()->sync($selectedCourses);
 
-        return redirect(route('students.show', $student));
+        return redirect()->route('students.show', $student)->with('success', 'Estudiante actualizado correctamente.');
     }
 
     public function destroy(Student $student)

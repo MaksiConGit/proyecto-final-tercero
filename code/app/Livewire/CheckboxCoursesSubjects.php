@@ -6,6 +6,7 @@ use App\Models\Career;
 use App\Models\Course;
 use App\Models\Institution;
 use App\Models\Subject;
+use App\Models\User;
 use Livewire\Component;
 
 class CheckboxCoursesSubjects extends Component

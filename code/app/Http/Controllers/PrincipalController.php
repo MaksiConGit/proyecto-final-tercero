@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePrincipalRequest;
 use App\Http\Requests\UpdatePrincipalRequest;
 use App\Models\City;
+use App\Models\Institution;
 use App\Models\Principal;
 use App\Models\Role;
 use App\Models\User;
@@ -28,11 +29,12 @@ class PrincipalController extends Controller
     public function create()
     {
         $cities = City::all();
+        $institutions = Institution::all();
         //Trae todos los registros que no sean nulos de la columna "user_id" de la tabla "principals" y crea un array de solo la columna "user_id". Entonces trae todos las user_id que si estan asignados.
         $takenUserID = Principal::whereNotNull('user_id')->pluck('user_id');
         //Busca las user_id que no estén dentro del array $takenUserID el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
         $availableUserID = User::whereNotIn('id', $takenUserID)->get();
-        return view('principals.create', compact('cities', 'availableUserID'));
+        return view('principals.create', compact('cities', 'availableUserID', 'institutions'));
     }
 
     /**
@@ -57,14 +59,13 @@ class PrincipalController extends Controller
      */
     public function edit(Principal $principal)
     {
+        $institutions = Institution::all();
         $cities = City::all();
-        $roles = Role::all();
         //Trae todos los registros que no sean nulos de la columna "user_id" de la tabla "principals" y crea un array de solo la columna "user_id". Entonces trae todos las user_id que si estan asignados.
         $takenUserID = Principal::whereNotNull('user_id')->pluck('user_id');
         //Busca las user_id que no estén dentro del array $takenUserID el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
         $availableUserID = User::whereNotIn('id', $takenUserID)->get();
-        $usersTrashed = User::withTrashed()->find($principal->user_id);
-        return view('principals.edit', compact('principal', 'cities', 'roles', 'availableUserID', 'usersTrashed'));
+        return view('principals.edit', compact('principal', 'cities', 'availableUserID', 'institutions'));
     }
 
     /**
