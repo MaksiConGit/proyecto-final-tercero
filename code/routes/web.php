@@ -4,6 +4,7 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
@@ -103,3 +104,5 @@ Route::get('/redirect/{user}', function (App\Models\User $user) {
 
     abort(404, 'Tipo de cuenta no reconocido.');
 })->name('accountable.redirect');
+Route::resource('students', StudentController::class)
+    ->names('students');
