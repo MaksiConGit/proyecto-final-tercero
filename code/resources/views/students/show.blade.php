@@ -129,6 +129,5 @@
             </div>
           </form>
         </div>
-        <!-- /Account -->
-      </div>
+    </div>
 </x-template-layout>
