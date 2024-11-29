@@ -1,5 +1,6 @@
 <x-template-layout>
-    <div class="container">
+    
+    {{-- <div class="container">
         <h1>Profesor: {{ $student->name }}</h1>
         <ul>
             <li>DNI: {{ $student->dni }}</li>
@@ -21,5 +22,8 @@
             @method('DELETE')
             <button type="submit">Delete</button>
         </form>
-    </div>
+    </div> --}}
+
+<x-account-settings>
+</x-account-settings>
 </x-template-layout>
