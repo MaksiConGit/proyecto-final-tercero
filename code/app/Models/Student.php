@@ -10,6 +10,16 @@ class Student extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'name',
+        'lastname',
+        'dni',
+        'phone',
+        'birthdate',
+        'city_id',
+        'user_id',
+    ];
+
     public function courseStudents()
     {
         return $this->hasMany(CourseStudent::class);

@@ -4,6 +4,7 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
@@ -94,3 +95,5 @@ Route::resource('courses', CourseController::class)
 Route::resource('exams', ExamController::class)
     ->names('exams');
 
+Route::resource('students', StudentController::class)
+    ->names('students');
