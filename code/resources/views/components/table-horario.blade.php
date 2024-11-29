@@ -1,59 +1,36 @@
 <style>
-    table td[contenteditable="true"] {
+    table td] {
         background-color: #ffffff;
         outline: none;
         cursor: text;
     }
 
-    table td[contenteditable="true"]:focus {
+    table td]:focus {
         background-color: #c9d7de;
-        /* Color amarillo claro para la celda activa */
+    }
+
+    /* Ajustes para pantallas pequeñas */
+    @media (max-width: 576px) {
+        table th, table td {
+            font-size: 0.75rem; /* Tamaño de fuente reducido */
+        }
     }
 </style>
 
 <body>
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Horarios</h2>
+        <h2 class="text-center mb-4">{{$titulo}}</h2>
         <div class="table-responsive rounded-2">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped table-hover">
                 <thead class="table-primary">
                     <tr>
-                        <th class="text-center fs-6">Hora</th>
-                        <th class="text-center fs-6">Lunes</th>
-                        <th class="text-center fs-6">Martes</th>
-                        <th class="text-center fs-6">Miércoles</th>
-                        <th class="text-center fs-6">Jueves</th>
-                        <th class="text-center fs-6">Viernes</th>
+                        {{$th}}
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- Filas de ejemplo -->
-                    <tr>
-                        <th scope="row" class="d-flex justify-content-center fs-6">8:00 - 9:00</th>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="d-flex justify-content-center fs-6">9:00 - 10:00</th>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="d-flex justify-content-center fs-6">10:00 - 11:00</th>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                    </tr>
-                    <!-- Agrega más filas según sea necesario -->
+                <tbody id="table-rows">
+                    {{$tr}}
                 </tbody>
             </table>
         </div>
     </div>
+</body>

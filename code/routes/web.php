@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TimetableController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -69,3 +70,5 @@ Route::resource('courses', CourseController::class)
 Route::resource('exams', ExamController::class)
     ->names('exams');
 
+Route::resource('timetables', TimetableController::class)
+    ->names('timetables');

@@ -28,7 +28,7 @@ class Days_Timetable_TimeSlotSeeder extends Seeder
         Time_slot::create([
             'start_time' => '1',
             'end_time' => '1',
-            'course_id' => '1',
+            'subject_id' => '1',
             'days_of_week_id' => '1',
             'deleted_at' => Carbon::now(),
         ]);
