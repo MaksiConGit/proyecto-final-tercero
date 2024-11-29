@@ -37,8 +37,6 @@ class StudentController extends Controller
     {
         $student = Student::create($request->only(['name', 'lastname', 'dni', 'phone', 'birthdate', 'city_id', 'user_id']));
 
-        // Usar la relación para guardar los cursos seleccionados
-        //$student->courses()->attach($request->input('course'));
         // Procesar las carreras y cursos seleccionados
         foreach ($request->input('selectedData') as $data) {
             $careerId = $data['career'];
@@ -53,8 +51,6 @@ class StudentController extends Controller
         }
 
         return redirect()->back()->with('success', '¡Alumno creado correctamente!');
-
-        return redirect(route('students.index'));
     }
 
     public function show(Student $student)

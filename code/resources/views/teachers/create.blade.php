@@ -1,7 +1,6 @@
 <x-app-layout>
 
 <body>
-    <h1>Formulario de Creación de Profesores</h1>
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -11,6 +10,17 @@
     @endif
     <form method="POST" action="{{ route('teachers.store') }}">
         @csrf
+
+        @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+        @livewire('CheckboxCoursesSubjects')
+
+        <hr>
+        <h2>Formulario de Datos del Profesor</h2>
         <label>
             name:
             <input type="text" name="name" value="{{ old('name') }}" required />

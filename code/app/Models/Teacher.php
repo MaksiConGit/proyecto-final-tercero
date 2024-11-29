@@ -34,4 +34,8 @@ class Teacher extends Model
     {
         return $this->belongsToMany(Course::class, 'course_teachers', 'teacher_id','course_id');
     }
+
+    public function subjects(){
+        return $this->belongsToMany(Subject::class, 'teacher_subjects', 'teacher_id' , 'subject_id');
+    }
 }

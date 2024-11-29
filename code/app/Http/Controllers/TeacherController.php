@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use App\Models\City;
+use App\Models\CourseTeacher;
 use App\Models\Role;
 use App\Models\Teacher;
+use App\Models\TeacherSubject;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -32,8 +34,29 @@ class TeacherController extends Controller
 
     public function store(StoreTeacherRequest $request)
     {
-        Teacher::create($request->all());
-        return redirect(route('teachers.index'));
+        $teacher = Teacher::create($request->only(['name', 'lastname', 'dni', 'phone', 'birthdate', 'city_id', 'user_id']));
+
+        foreach ($request->input('selectedData') as $data) {
+            $careerId = $data['career'];
+            $courseIds = $data['courses'] ?? [];
+            $subjectIds = $data['subjects'] ?? [];
+            
+            foreach ($subjectIds as $subjectId) {
+                TeacherSubject::create([
+                    'teacher_id' => $teacher->id,
+                    'subject_id' => $subjectId,
+                ]);
+            }
+
+            foreach ($courseIds as $courseId) {
+                CourseTeacher::create([
+                    'teacher_id' => $teacher->id,
+                    'course_id' => $courseId,
+                ]);
+            }
+        }
+
+        return redirect()->back()->with('success', 'Profesor creado correctamente!');
     }
 
     public function show(Teacher $teacher)

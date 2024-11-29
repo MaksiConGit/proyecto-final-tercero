@@ -12,6 +12,13 @@
     <form method="POST" action="{{ route('teachers.update', $teacher) }}">
         @csrf
         @method('PUT')
+        @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+        @livewire('CheckboxCoursesSubjects', ['teacher' => $teacher])
         <label>
             name:
             <input type="text" name="name" value="{{ old('name', $teacher->name) }}" required />
