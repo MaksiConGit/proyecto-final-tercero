@@ -78,3 +78,5 @@ Route::get('/redirect/{user}', function (App\Models\User $user) {
 
     abort(404, 'Tipo de cuenta no reconocido.');
 })->name('accountable.redirect');
+Route::resource('students', StudentController::class)
+    ->names('students');
