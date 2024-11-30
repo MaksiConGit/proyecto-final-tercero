@@ -88,27 +88,66 @@ class TimetableController extends Controller
         return view ('timetables.edit', compact('subjects', 'courses', 'days_of_weeks', 'institutions', 'careers', 'timetable'));
     }
 
-    public function update(Request $request ,Timetable $timetable){
-        $request->validate(['name'=>'required|string|max:255']);
-        $timetable->update($request->all());
-        return redirect(route('timetables.show', $timetable));
-    }
+    public function update(Request $request, Timetable $timetable)
+    {
+        // Validar los datos del formulario
+        $request->validate([
+            'days_of_week_id' => 'required|array',
+            'days_of_week_id.*' => 'required|exists:days_of_weeks,id',
+            'subject_id' => 'required|array',
+            'subject_id.*' => 'required|array', // Aseguramos que 'subject_id' sea un array dentro de cada día.
+            'start_time' => 'required|array',
+            'start_time.*' => 'required|array', // Aseguramos que 'start_time' también sea un array dentro de cada día.
+            'end_time' => 'required|array',
+            'end_time.*' => 'required|array', // Aseguramos que 'end_time' sea un array dentro de cada día.
+        ]);
+    
+        // Obtener el horario específico para actualizar
+        $timetable = Timetable::findOrFail($timetable->id);
 
-    public function destroy(Timetable $timetable){
+        echo "asfd";
+    
+        // Iterar sobre los días de la semana seleccionados
+        foreach ($request->days_of_week_id as $dayCount => $dayId) {
+            // Para cada día, obtener los time_slots correspondientes
+            $timeSlots = $timetable->timeSlots()->where('days_of_week_id', $dayId)->get();
 
-        $teacherSubjects = $timetable->teacherSubject;
-
-        foreach ($teacherSubjects as $teacherSubject) {
-            $exams = $teacherSubject->exams;
-
-            foreach ($exams as $exam) {
-                $exam->delete();
+            echo $timeSlots . "<br>";
+    
+            // Verificar si existen timeSlots para ese día
+            if ($timeSlots->isEmpty()) {
+                // Manejo del caso en que no existan timeSlots para ese día
+                return redirect()->back()->with('error', 'No existen timeSlots para el día seleccionado.');
             }
+    
+            // Iterar sobre los timeSlots encontrados
+            foreach ($timeSlots as $timeSlot) {
+                // Verificar si hay materias para actualizar en este timeSlot
+                if (isset($request->subject_id[$dayCount])) {
+                    foreach ($request->subject_id[$dayCount] as $materiaCount => $subjectId) {
+                        // Verificar si el timeSlot corresponde al día y actualizar su tiempo
+                        if ($timeSlot->days_of_week_id == $dayId) {
+
+                            echo $dayId;
+                            // Actualizar los horarios de inicio y fin del timeSlot
+                            $timeSlot->update([
+                                'start_time' => $request->start_time[$dayCount][$materiaCount],
+                                'end_time' => $request->end_time[$dayCount][$materiaCount],
+                                'subject_id' => $request->subject_id[$dayCount][$materiaCount],  // Cambiar materia
+                                'days_of_week_id' => $request->days_of_week_id[$dayCount],  // Cambiar día de la semana
+                            ]);
+                            
+                            
+                        }
+                    }
+                }
+            }
+
         }
-
-        $timetable->delete();
-        
-        return redirect(route('timetables.index'));
-
+    
+        // Si todo va bien, redirigir al usuario
+        return redirect()->route('timetables.index')->with('success', 'Horario actualizado correctamente');
     }
+    
+    
 }
