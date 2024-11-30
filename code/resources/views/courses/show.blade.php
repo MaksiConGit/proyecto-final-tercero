@@ -1,25 +1,5 @@
-{{-- <x-template-layout>
-    <div class="card mx-4 p-4">
-    <h1>Curso: {{$course->course_number . "° " . $course->section}}</h1>
-    <p>Carrera "{{$course->course->name}}"</p>
-
-    <form method="POST" action="{{route('courses.destroy', $course)}}">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-primary">Delete</button>
-        <button type="submit" class="btn btn-primary">Editar</button>
-        <a href="{{route('courses.index')}}" class="btn btn-secondary">Volver</a>
-        <br>
-        <br>
-        <p>Alumnos: <a href="">Joaquin, Lucas, David, Maximiliano, Estefi</a></p>
-    </form>
-</div>
-</x-template-layout> --}}
-
 <x-template-layout>
-
     <div class="container">
-
         <x-icon-dropdown>
             <x-slot name="titulo">{{$course->course_number}}°{{$course->section}}</x-slot>
             <x-slot name="subtitulo"><p class="mb-4" style="white-space: nowrap;">{{$course->career->name}}</p></x-slot>

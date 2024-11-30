@@ -57,32 +57,3 @@
         @endif
     </div>
 </x-template-layout>
-
-{{-- <x-template-layout>
-
-    <div class="card mx-4 p-4">
-        <h5>Formulario de Edición de Curso</h5>
-        @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        @endif
-        <form method="POST" action="{{route('courses.update', $course)}}">
-            @csrf
-            @method('PUT')
-            <label>Numero de Curso: <input type="text" name="course_number"/></label>
-            <br>
-            <br>
-            <label>Seccion: <input type="text" name="section"/></label>
-            <br>
-            <br>
-            <label></label>
-            <br>
-            <br>
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-            <a href="{{route('courses.index')}}" class="btn btn-secondary">Volver</a>
-        </form>
-    </div>
-</x-template-layout> --}}
