@@ -10,6 +10,8 @@ class AttendanceRecord extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = ['course_student_id', 'has_attended', 'date'];
+
     public function courseStudent(){
         return $this->belongsTo(CourseStudent::class);
     }

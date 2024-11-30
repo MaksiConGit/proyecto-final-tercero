@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceRecordController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Models\AttendanceRecord;
 use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +50,9 @@ Route::resource('principals', PrincipalController::class)->names('principals');
 
 Route::resource('teachers', TeacherController::class)
     ->names('teachers');
+
+Route::resource('attendances', AttendanceRecordController::class)
+    ->names('attendances');
 
 Route::get('students/assignCourse/{course}', [StudentController::class, 'assignCourse'])->name('students.assignCourse');
 Route::resource('students', StudentController::class)
