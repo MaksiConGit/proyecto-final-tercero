@@ -18,4 +18,10 @@ class Subject extends Model
         return $this->hasMany(TeacherSubject::class);
     }
 
+    public function timeSlots()
+    {
+        return $this->hasMany(Time_slot::class);
+    }
+
+
 }

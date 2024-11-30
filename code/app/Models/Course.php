@@ -24,4 +24,8 @@ class Course extends Model
         return $this->hasMany(CourseTeacher::class);
     }
 
+    public function timetables(){
+        return $this->hasMany(Timetable::class);
+    }
+
 }
