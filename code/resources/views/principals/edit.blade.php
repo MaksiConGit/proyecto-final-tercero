@@ -6,25 +6,26 @@
         <form method="POST" action="{{ route('principals.update', $principal) }}">
             @csrf
             @method('PUT')
+            <h1>Formulario de Edición de Directivos</h1>
+
             <div>
-                <label for="institution">Institution:</label>
+                <label for="institution">* Institution:</label>
                 <select name="institution">
                     <option value="">Selecciona una institución</option>
 
-                    @if ($principal->user->institution)
-                        <option value="{{ $principal->user->institution->id }}" selected>
-                            {{ $principal->user->institution->name }} (Actual)
-                        </option>
-                    @endif
-
                     @foreach ($institutions as $institution)
-                        <option value="{{ $institution->id }}">{{ $institution->name }}</option>
+                        <option value="{{ $institution->id }}"
+                            {{ old('institution', $principal->user->institution->id ?? null) == $institution->id ? 'selected' : '' }}>
+                            {{ $institution->name }}
+                            @if ($principal->user && $principal->user->institution && $institution->id == $principal->user->institution->id)
+                                (Actual)
+                            @endif
+                        </option>
                     @endforeach
 
 
                 </select>
             </div>
-            <h1>Formulario de Edición de Directivos</h1>
             @if ($errors->any())
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -33,29 +34,33 @@
                 </ul>
             @endif
             <label>
-                name:
+                * name:
                 <input type="text" name="name" value="{{ old('name', $principal->name) }}" required />
             </label>
             <br>
             <label>
-                lastname:
+                * lastname:
                 <input type="text" name="lastname" value="{{ old('lastname', $principal->lastname) }}" required />
             </label>
             <br>
             <label>
-                dni:
+                * email:
+                <input type="email" name="email" value="{{ old('email', $principal->user->email) }}" required />
+            </label>
+            <br>
+            <label>
+                * dni:
                 <input type="text" name="dni" value="{{ old('dni', $principal->dni) }}" required />
             </label>
             <br>
             <label>
-                phone:
+                * phone:
                 <input type="text" name="phone" value="{{ old('phone', $principal->phone) }}" required />
             </label>
             <br>
             <label>
-                birthdate:
-                <input type="date" name="birthdate" value="{{ old('birthdate', $principal->birthdate) }}"
-                    required />
+                * birthdate:
+                <input type="date" name="birthdate" value="{{ old('birthdate', $principal->birthdate) }}" required />
             </label>
             <br>
 
@@ -63,7 +68,7 @@
 
             <br>
             <label>
-                (opcional) user_id:
+                * user:
                 <select id="user_id" name="user_id">
                     <option value="">Selecciona una cuenta de usuario libre</option>
 
@@ -82,14 +87,17 @@
                             <option value="{{ $user->id }}" {{-- Verifica que exista un user dentro de principal.
                             (Esto es para evitar una dato fantasma cuando a un principal se le asigna una user_id y luego esa user_id es borrada) --}}
                                 {{ old('user_id', isset($principal->user) ? $principal->user->id : null) == $user->id ? 'selected' : '' }}>
-
                                 {{ $user->name }}
                             </option>
                         @endif
                     @endforeach
                 </select>
             </label>
-            <br>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             </div>
             <button type="submit"> update </button>
         </form>

@@ -7,9 +7,9 @@ use App\Http\Requests\UpdatePrincipalRequest;
 use App\Models\City;
 use App\Models\Institution;
 use App\Models\Principal;
-use App\Models\Role;
+use Illuminate\Support\Str;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PrincipalController extends Controller
 {
@@ -42,8 +42,38 @@ class PrincipalController extends Controller
      */
     public function store(StorePrincipalRequest $request)
     {
-        Principal::create($request->all());
-        return redirect(route('principals.index'));
+
+        // Generar un username único
+        $generatedUsername = strtolower(Str::slug(substr($request->input('name'), 0, 1) . str_replace(' ', '', $request->input('lastname'))));
+        $username = $generatedUsername;
+        $counter = 1;
+
+        while (User::where('name', $username)->exists()) {
+            $username = $generatedUsername . $counter;
+            $counter++;
+        }
+
+        //Almacenar datos de inicio de sesion para ver email y contraseña sin hashear
+        $password = Str::random(12);
+        DB::table('logindata')->insert([
+            'email' => $request->input('email'),
+            'password' => $password
+        ]);
+
+        // Crear el usuario relacionado
+        $user = User::create([
+            'name' => $username,
+            'institution_id' => $request->input('institution'),
+            'email' => $request->input('email'),
+            'password' => $password,
+        ])->assignRole('principal');
+        
+        $request = $request->validated();
+        $request['user_id'] = $user->id;
+        Principal::create($request);
+
+
+        return redirect()->back()->with('success', '¡Directivo y usuario creado correctamente!');
     }
 
     /**
@@ -74,7 +104,12 @@ class PrincipalController extends Controller
     public function update(UpdatePrincipalRequest $request, Principal $principal)
     {
         $principal->update($request->all());
-        return redirect(route('principals.show', $principal));
+        $principal->user->update([
+            'institution_id' => $request->input('institution'),
+            'email' => $request->input('email'),
+        ]);
+        return redirect()->back()->with('success', '¡Datos actualizados correctamente!');
+
     }
 
     /**

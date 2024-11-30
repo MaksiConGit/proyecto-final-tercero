@@ -1,5 +1,5 @@
 <div>
-    <label for="country">Country:</label>
+    <label for="country">* Country:</label>
     <select wire:model.live="selectedCountry" name="country" id="country" required>
         <option value="">Choose Country</option>
         @foreach ($countries as $country)
@@ -9,7 +9,7 @@
 
     <br>
 
-    <label for="province">Province:</label>
+    <label for="province">* Province:</label>
     <select wire:model.live="selectedProvince" name="province" id="province" required>
         <option value="">Choose Province</option>
 
@@ -22,7 +22,7 @@
 
     <br>
 
-    <label for="city_id">City:</label>
+    <label for="city_id">* City:</label>
     <select wire:model="selectedCity" name="city_id" id="city_id" required>
         <option value="">Choose City</option>
         @if ($cities)

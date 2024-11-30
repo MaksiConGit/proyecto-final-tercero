@@ -25,11 +25,10 @@ class UpdatePrincipalRequest extends FormRequest
         return [
             'name' => 'required|string|min:2|max:255',
             'lastname' => 'required|string|min:2|max:255',
-            'dni' => ['required', 'string', 'max:255', Rule::unique('principals')->ignore($this->principal->id)],
+            'dni' => 'required|string|min:2|unique:principals,dni,'. $this->principal->id ,
             'phone' => 'required|string|max:14',
             'birthdate' => 'required|date|before:today',
             'city_id' => 'required|exists:cities,id',
-            'user_id' => ['nullable', Rule::unique('principals')->ignore($this->principal->id)],
         ];
     }
 }

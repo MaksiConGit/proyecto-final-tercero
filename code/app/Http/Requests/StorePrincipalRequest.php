@@ -22,14 +22,14 @@ class StorePrincipalRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'institution' =>  'required|integer|exists:institutions,id',
             'name' =>  'required|string|min:2|max:255',
             'lastname' => 'required|string|min:2|max:255',
+            'email' => 'required|email|unique:users,email',
             'dni' => 'required|string|max:255|unique:principals,dni',
             'phone' => 'required|string|max:14',
             'birthdate' => 'required|date|before:today',
-            'city_id' => 'required|exists:cities,id',
-            'user_id' => 'required|exists:users,id',
-            'is_deleted' => 'boolean'
+            'city_id' => 'required|exists:cities,id'
         ];
     }
 }
