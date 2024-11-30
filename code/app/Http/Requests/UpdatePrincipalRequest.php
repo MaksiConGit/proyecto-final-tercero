@@ -32,4 +32,13 @@ class UpdatePrincipalRequest extends FormRequest
             'user_id' => ['nullable', Rule::unique('principals')->ignore($this->principal->id)],
         ];
     }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'dni' => str_replace([' ', '.'], '', $this->dni),
+            'phone' => preg_replace('/[^\d]/', '', $this->phone),
+            'email' => str_replace(' ', '', trim($this->email)),
+        ]);
+    }
 }

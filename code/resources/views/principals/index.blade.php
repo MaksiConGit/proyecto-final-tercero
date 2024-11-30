@@ -10,6 +10,7 @@
         }
     </style>
     <div class="container">
+        {{ $principals->links() }}
         <div class="d-flex flex-column align-items-stretch gap-3">
             @foreach ($principals as $principal)
                 <div class="row mb-1">
@@ -57,6 +58,7 @@
     <x-floating-icon>
         <x-slot name="url">{{ route('principals.create') }}</x-slot>
     </x-floating-icon>
+    {{ $principals->links() }}
 </x-template-layout>
 
 

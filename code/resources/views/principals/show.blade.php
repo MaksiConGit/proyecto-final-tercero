@@ -2,6 +2,7 @@
     <div class="container">
         <h1>Directivo: {{ $principal->name }}</h1>
         <ul>
+            <li>Email: {{ $principal->user->email }}</li>
             <li>DNI: {{ $principal->dni }}</li>
             <li>Phone: {{ $principal->phone }}</li>
             <li>Birhtdate: {{ $principal->birthdate }}</li>
