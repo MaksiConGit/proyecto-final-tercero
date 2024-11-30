@@ -24,4 +24,9 @@ class Course extends Model
         return $this->hasMany(CourseTeacher::class);
     }
 
+    public function students()
+    {
+        return $this->hasManyThrough(Student::class, CourseStudent::class, 'course_id', 'id', 'id', 'student_id');
+    }
+
 }

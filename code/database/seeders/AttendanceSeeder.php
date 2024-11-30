@@ -15,7 +15,7 @@ class AttendanceSeeder extends Seeder
     public function run(): void
     {
         AttendanceRecord::create([
-            'student_id' => '1',
+            'course_student_id' => '1',
             'has_attended' => '1',
             'date' => Carbon::yesterday(),
             'deleted_at' => Carbon::now(),

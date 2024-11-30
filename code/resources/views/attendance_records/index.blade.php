@@ -9,6 +9,7 @@
                         $absence_percentage = 100 - $attendance_percentage;
                     @endphp
                     <x-slot name="titulo">{{$student->name}}, {{$student->lastname}}</x-slot>
+                    <x-slot name="url">{{route('students.show', [$student->id])}}</x-slot>
                     <x-slot name="id">{{ $student->id }}</x-slot>
                     <x-slot name="porcentaje_asistencia">{{ $attendance_percentage }}</x-slot>
                     <x-slot name="porcentaje_inasistencia">{{ $absence_percentage }}</x-slot>
@@ -67,4 +68,7 @@
             @endforeach
         });
     </script>
+    <x-floating-icon>
+        <x-slot name="url">{{route('attendance_records.create')}}</x-slot>
+    </x-floating-icon>
 </x-template-layout>

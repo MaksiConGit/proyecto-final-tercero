@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('attendance_records', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained()
+            $table->foreignId('course_student_id')->constrained()
                                             ->onDelete('restrict')
                                             ->onUpdate('cascade');
             $table->boolean('has_attended');

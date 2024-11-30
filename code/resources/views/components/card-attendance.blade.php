@@ -1,5 +1,6 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
     <div class="card h-100" style="max-width: 100%; margin: auto;">
+        <a href="{{$url}}">
         <h5 class="card-header text-center">{{$titulo}}</h5>
         <div class="card-body d-flex flex-column align-items-center">
             <canvas id="doughnutChart{{$id}}" class="chartjs mb-3" data-height="350" style="max-width: 100%;"></canvas>
@@ -18,5 +19,6 @@
                 </li>
             </ul>
         </div>
+        </a>
     </div>
 </div>
