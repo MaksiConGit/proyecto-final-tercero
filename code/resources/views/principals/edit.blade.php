@@ -20,6 +20,13 @@
                     <x-slot name="placeholder">Apellido</x-slot>
                     <x-slot name="value">{{ old('lastname', $principal->lastname) }}</x-slot>
                 </x-input-text>
+                <x-input-email>
+                    <x-slot name="icon">bx bx-buildings</x-slot>
+                    <x-slot name="titulo">Correo Electrónico</x-slot>
+                    <x-slot name="name">email</x-slot>
+                    <x-slot name="placeholder">ejemplo@ejemplo.com</x-slot>
+                    <x-slot name="value">{{ old('email', $principal->user?->email ?? null ) }}</x-slot>
+                </x-input-email>
                 <x-input-text>
                     <x-slot name="icon">bx bx-buildings</x-slot>
                     <x-slot name="titulo">DNI</x-slot>
@@ -39,18 +46,8 @@
                     <x-slot name="name">birthdate</x-slot>
                     <x-slot name="value">{{old('birthdate', $principal->birthdate)}}</x-slot>
                 </x-input-date>
-                <x-input-select>
-                    <x-slot name="titulo">Ciudad</x-slot>
-                    <x-slot name="name">city_id</x-slot>
-                    <x-slot name="opciones">
-                        <option value="" selected hidden>Seleccione una ciudad</option>
-                        @foreach ($cities as $city)
-                            <option value="{{ $city->id }}" {{ old('city_id', $principal->city_id) == $city->id ? 'selected' : '' }}>
-                                {{ $city->name }}
-                            </option>
-                        @endforeach
-                    </x-slot>
-                </x-input-select>
+
+                @livewire('CitySelect', ['selectedCity' => $principal->city_id])
 
                 <x-input-select>
                     <x-slot name="titulo">Usuario</x-slot>
@@ -77,6 +74,22 @@
                                 </option>
                             @endif
                         @endforeach
+                    </x-slot>
+                </x-input-select>
+                <x-input-select>
+                    <x-slot name="titulo">Institución</x-slot>
+                    <x-slot name="name">institution</x-slot>
+                    <x-slot name="opciones">
+                        <option value="">Selecciona una institución</option>
+                        @foreach ($institutions as $institution)
+                        <option value="{{ $institution->id}}" 
+                            {{ old('institution', $principal->user->institution_id ?? null) == $institution->id ? 'selected' : '' }}>
+                            {{ $institution->name  }}
+                            @if ($institution->id == $principal->user->institution_id)
+                                (Actual)
+                            @endif
+                        </option>
+                    @endforeach
                     </x-slot>
                 </x-input-select>
             </x-slot>

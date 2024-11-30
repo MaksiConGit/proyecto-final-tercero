@@ -22,13 +22,21 @@ class StorePrincipalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' =>  'required|string|min:2|max:255',
+            'name' => 'required|string|min:2|max:255',
             'lastname' => 'required|string|min:2|max:255',
-            'dni' => 'required|string|max:255|unique:students,dni',
+            'dni' => 'required|string|max:255|unique:principals,dni',
             'phone' => 'required|string|max:14',
             'birthdate' => 'required|date|before:today',
             'city_id' => 'required|exists:cities,id',
-            'user_id' => 'nullable|exists:users,id',
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'dni' => str_replace([' ', '.'], '', $this->dni),
+            'phone' => preg_replace('/[^\d]/', '', $this->phone),
+            'email' => str_replace(' ', '', trim($this->email)),
+        ]);
     }
 }
