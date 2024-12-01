@@ -10,74 +10,83 @@
 
 
         <!-- User -->
-        <li class="nav-item navbar-dropdown dropdown-user dropdown">
-          <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-            <div class="avatar avatar-online">
-              <img src="../template_files/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-            </div>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li>
-              <a class="dropdown-item" href="{{ route('accountable.redirect', Auth::user()->id) }}">
-                <div class="d-flex">
-                  <div class="flex-shrink-0 me-3">
-                    <div class="avatar avatar-online">
-                        <img src="../template_files/assets/img/avatars/1.png" alt
-                            class="w-px-40 h-auto rounded-circle" />
-                    </div>
-                  </div>
-                  <div class="flex-grow-1">
-                    <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
-                    <!-- Nombre completo del modelo relacionado -->
-                    <small class="text-muted">
-                      @if (Auth::user()->accountable)
-                          {{ Auth::user()->accountable->name ?? '' }} {{ Auth::user()->accountable->lastname ?? '' }}
-                      @else
-                          No asignado
-                      @endif
-                    </small>
-                  </div>
+        @if (Route::has('login'))
+        <nav class="-mx-3 flex flex-1 justify-end">
+            @auth
+            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+              <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                <div class="avatar avatar-online">
+                  <img src="../template_files/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                 </div>
               </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="{{ route('accountable.redirect', Auth::user()->id) }}">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0 me-3">
+                        <div class="avatar avatar-online">
+                          <img src="../template_files/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                        </div>
+                      </div>
+                      <div class="flex-grow-1">
+                        <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                        <!-- Nombre completo del modelo relacionado -->
+                        <small class="text-muted">
+                          @if (Auth::user()->accountable)
+                              {{ Auth::user()->accountable->name ?? '' }} {{ Auth::user()->accountable->lastname ?? '' }}
+                          @else
+                              No asignado
+                          @endif
+                        </small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{{ route('users.show', Auth::user()->id)}}">
+                    <i class="bx bx-user me-2"></i>
+                    <span class="align-middle">Mi perfil</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{{route('profile.edit')}}">
+                    <i class="bx bx-cog me-2"></i>
+                    <span class="align-middle">Opciones</span>
+                  </a>
+                </li>
+    
+                <li>
+                  <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">
+                    <i class="bx bx-power-off me-2"></i>
+                    <span class="align-middle">Salir</span>
+                    </a>
+                  </form>
+                </li>
+              </ul>
             </li>
-            <li>
-              <div class="dropdown-divider"></div>
-            </li>
-            <li>
-              <a class="dropdown-item" href="{{ route('users.show', Auth::user()->id)}}">
-                <i class="bx bx-user me-2"></i>
-                <span class="align-middle">Mi perfil</span>
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="{{route('profile.edit')}}">
-                <i class="bx bx-cog me-2"></i>
-                <span class="align-middle">Opciones</span>
-              </a>
-            </li>
-
-                    <li>
-                        <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
-                            <i class="bx bx-power-off me-2"></i>
-                            <span class="align-middle">Salir</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-              <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">
-                <i class="bx bx-power-off me-2"></i>
-                <span class="align-middle">Salir</span>
+            @else
+                <a href="{{ route('login') }}">
+                    Log in
                 </a>
-              </form>
-            </li>
-          </ul>
-        </li>
+
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}">
+                        Register
+                    </a>
+                @endif
+            @endauth
+        </nav>
+    @endif
+
+        
         <!--/ User -->
       </ul>
     </div>
