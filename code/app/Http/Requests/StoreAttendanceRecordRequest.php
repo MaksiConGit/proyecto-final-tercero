@@ -22,11 +22,11 @@ class StoreAttendanceRecordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'attendance_records' => 'required|array',
-            'attendance_records.*.course_student_id' => 'required|exists:course_students,id',
-            'attendance_records.*.has_attended' => 'required|boolean',
-            'attendance_records.*.date' => 'required|date',
+            'date' => 'required|date',
+            // Validar que attendance sea un array
+            'attendance' => 'required|array',
+            // Validar que cada clave dentro de attendance corresponda a un número (ID de curso)
+            'attendance.*' => 'required|in:0,1', // Cada valor debe ser 0 o 1
         ];
     }
-    
 }

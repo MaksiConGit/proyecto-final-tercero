@@ -14,7 +14,7 @@ class Student extends Model
     {
         return $this->hasMany(CourseStudent::class);
     }
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -29,12 +29,18 @@ class Student extends Model
     {
         return $this->hasManyThrough(
             AttendanceRecord::class, // El modelo final
-            CourseStudent::class,   // El modelo intermedio
-            'student_id',           // Llave foránea en la tabla intermedia (course_students)
-            'course_student_id',    // Llave foránea en la tabla final (attendance_records)
-            'id',                   // Llave primaria en el modelo de estudiante
-            'id'                    // Llave primaria en el modelo intermedio (course_students)
-    );
-}
+            CourseStudent::class, // El modelo intermedio
+            'student_id', // Llave foránea en la tabla intermedia (course_students)
+            'course_student_id', // Llave foránea en la tabla final (attendance_records)
+            'id', // Llave primaria en el modelo de estudiante
+            'id', // Llave primaria en el modelo intermedio (course_students)
+        );
+    }
 
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_students', 'student_id', 'course_id')
+            ->withPivot('id')
+            ->withTimestamps(); // Incluye el campo 'id' de la tabla intermedia
+    }
 }
