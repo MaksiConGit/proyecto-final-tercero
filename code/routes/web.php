@@ -29,17 +29,26 @@ Route::resource('users', UserController::class)->names('users');
 
 require __DIR__ . '/auth.php';
 
-Route::resource('subjects', SubjectController::class)
-    ->names('subjects');
+Route::resource('subjects', SubjectController::class)->names('subjects');
 
-Route::resource('careers', CareerController::class)
-    ->names('careers');
+Route::resource('careers', CareerController::class)->names('careers');
 
-Route::resource('teachers', TeacherController::class)
-    ->names('teachers');
+Route::resource('teachers', TeacherController::class)->names('teachers');
 
-Route::resource('courses', CourseController::class)
-    ->names('courses');
+Route::resource('courses', CourseController::class)->names('courses');
 
-Route::resource('exams', ExamController::class)
-    ->names('exams');
+Route::resource('exams', ExamController::class)->names('exams');
+
+Route::get('/redirect/{user}', function (App\Models\User $user) {
+    $accountable = $user->accountable;
+
+    if ($accountable instanceof App\Models\Principal) {
+        return redirect()->route('principals.show', $user->accountable_id);
+    } elseif ($accountable instanceof App\Models\Student) {
+        return redirect()->route('students.show', $user->accountable_id);
+    } elseif ($accountable instanceof App\Models\Teacher) {
+        return redirect()->route('teachers.show', $user->accountable_id);
+    }
+
+    abort(404, 'Tipo de cuenta no reconocido.');
+})->name('accountable.redirect');

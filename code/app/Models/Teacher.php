@@ -29,4 +29,9 @@ class Teacher extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function user_()
+    {
+        return $this->morphOne(User::class, 'accountable');
+    }
 }
