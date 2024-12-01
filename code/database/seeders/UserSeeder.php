@@ -19,12 +19,41 @@ class UserSeeder extends Seeder
             'email' => '',
             'email_verified_at' => Carbon::yesterday(),
             'password' => '',
-            'role_id' => '1',
             'institution_id' => '1',
             'deleted_at' => Carbon::now(),
             'remember_token' => '',
         ]);
 
-        User::factory(10)->create();
+        User::create([
+            'name' => 'Role Principal',
+            'email' => 'principal@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '2',
+            'accountable_type' => 'App\Models\Principal',
+            'accountable_id' => '2',
+        ])->assignRole('Principal');
+
+        User::create([
+            'name' => 'Role Teacher',
+            'email' => 'teacher@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '2',
+            'accountable_type' => 'App\Models\Teacher',
+            'accountable_id' => '2',
+        ])->assignRole('Teacher');
+        
+        User::create([
+            'name' => 'Role Student',
+            'email' => 'student@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '2',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '2',
+        ])->assignRole('Student');
+
+        User::factory(70)->create();
     }
 }

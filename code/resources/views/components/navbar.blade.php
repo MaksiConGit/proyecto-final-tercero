@@ -25,7 +25,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="{{ route('accountable.redirect', Auth::user()->id) }}">
                 <div class="d-flex">
                   <div class="flex-shrink-0 me-3">
                     <div class="avatar avatar-online">
@@ -33,8 +33,15 @@
                     </div>
                   </div>
                   <div class="flex-grow-1">
-                    <span class="fw-semibold d-block">Joako</span>
-                    <small class="text-muted">Rodriguez</small>
+                    <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                    <!-- Nombre completo del modelo relacionado -->
+                    <small class="text-muted">
+                      @if (Auth::user()->accountable)
+                          {{ Auth::user()->accountable->name ?? '' }} {{ Auth::user()->accountable->lastname ?? '' }}
+                      @else
+                          No asignado
+                      @endif
+                    </small>
                   </div>
                 </div>
               </a>
@@ -43,13 +50,13 @@
               <div class="dropdown-divider"></div>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="{{ route('users.show', Auth::user()->id)}}">
                 <i class="bx bx-user me-2"></i>
                 <span class="align-middle">Mi perfil</span>
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="{{route('profile.edit')}}">
                 <i class="bx bx-cog me-2"></i>
                 <span class="align-middle">Opciones</span>
               </a>
@@ -59,10 +66,13 @@
               <div class="dropdown-divider"></div>
             </li>
             <li>
-              <a class="dropdown-item" href="auth-login-basic.html">
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">
                 <i class="bx bx-power-off me-2"></i>
                 <span class="align-middle">Salir</span>
-              </a>
+                </a>
+              </form>
             </li>
           </ul>
         </li>
