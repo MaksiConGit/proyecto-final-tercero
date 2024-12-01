@@ -45,6 +45,17 @@ Route::get('/bocetos/material', function () {
     return view('bocetos.material');
 });
 
+Route::get('/bocetos/alumnos_home', function () {
+    return view('bocetos.alumnos_home');
+});
+
+Route::get('/bocetos/profesores_home', function () {
+    return view('bocetos.profesores_home');
+});
+
+Route::get('/bocetos/directivos_home', function () {
+    return view('bocetos.directivos_home');
+});
 
 Route::get('/bocetos/horarios', function () {
     return view('bocetos.horarios');
