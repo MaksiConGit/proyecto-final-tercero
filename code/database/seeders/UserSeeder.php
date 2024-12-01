@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Role Principal',
+            'name' => 'Role Principal', //PRINCIPAL
             'email' => 'principal@gmail.com',
             'email_verified_at' => Carbon::yesterday(),
             'password' => '1234',
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
         ])->assignRole('Principal');
 
         User::create([
-            'name' => 'Role Teacher',
+            'name' => 'Role Teacher', //TEACHER
             'email' => 'teacher@gmail.com',
             'email_verified_at' => Carbon::yesterday(),
             'password' => '1234',
@@ -45,13 +45,23 @@ class UserSeeder extends Seeder
         ])->assignRole('Teacher');
         
         User::create([
-            'name' => 'Role Student',
+            'name' => 'Role Student', //ESTUDIANTE
             'email' => 'student@gmail.com',
             'email_verified_at' => Carbon::yesterday(),
             'password' => '1234',
             'institution_id' => '2',
             'accountable_type' => 'App\Models\Student',
             'accountable_id' => '2',
+        ])->assignRole('Student');
+
+        User::create([
+            'name' => 'Joako343', //ESTUDIANTE
+            'email' => 'joaquinborras0343@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '3'
         ])->assignRole('Student');
 
         User::factory(70)->create();

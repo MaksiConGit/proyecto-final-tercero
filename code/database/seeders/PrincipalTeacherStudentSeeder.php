@@ -75,7 +75,15 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'city_id' => '2',
             'user_id' => '4',
         ]);
-
+        Student::create([
+            'name' => 'Joaquin',
+            'lastname' => 'Borras',
+            'dni' => '44867203',
+            'phone' => '543364544144',
+            'birthdate' => '2003-06-27',
+            'city_id' => '1',
+            'user_id' => '5',
+        ]);
         Principal::factory(10)->create();
         Teacher::factory(10)->create();
         Student::factory(10)->create();
