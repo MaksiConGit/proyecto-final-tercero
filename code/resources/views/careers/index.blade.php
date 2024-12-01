@@ -1,6 +1,5 @@
 <x-template-layout>
     <div class="container">
-
         <div class="row">
             @foreach ($careers as $career)
                 <div class="col-md-6 col-lg-4 mb-3 d-flex">
@@ -17,22 +16,6 @@
                 </div>
             @endforeach
         </div>
-
-{{-- 
-        <h1>Carreras</h1>
-        <a href="{{route('careers.create')}}">create</a>
-        <ul>
-            @foreach ($careers as $career)
-            <li><a href="{{route('careers.show', [$career])}}"> {{$career->name}}</a></li>
-            @endforeach
-        </ul>
-        <hr>
-        <h4>Carreras Eliminadas</h4>
-        <ul>
-            @foreach ($trashed as $trash)
-                <li>{{$trash->name}}</li>
-            @endforeach
-        </ul> --}}
     </div>
     <x-floating-icon>
         <x-slot name="url">{{route('careers.create')}}</x-slot>

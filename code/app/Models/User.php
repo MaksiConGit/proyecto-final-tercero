@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -52,17 +54,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-    
-    public function student(){
-        return $this->hasOne(Student::class, 'user_id');  // 'user_id' es la clave foránea
+
+    public function accountable()
+    {
+        return $this->morphTo();
     }
-    
-    public function principal(){
-        return $this->hasOne(Principal::class, 'user_id');  // 'user_id' es la clave foránea
-    }
-    
-    public function teacher(){
-        return $this->hasOne(Teacher::class, 'user_id');  // 'user_id' es la clave foránea
-    }
-    
 }

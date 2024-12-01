@@ -26,6 +26,16 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'user_id' => '1',
             'deleted_at' => Carbon::now(),
         ]);
+        Principal::create([
+            'name' => 'Nicolás',
+            'lastname' => 'Rotili',
+            'dni' => '11111111',
+            'phone' => '111111111111',
+            'birthdate' => Carbon::yesterday(),
+            'city_id' => '2',
+            'user_id' => '2',
+        ]);
+
         Teacher::create([
             'name' => 'No deberias ver esto',
             'lastname' => '',
@@ -36,6 +46,16 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'user_id' => '1',
             'deleted_at' => Carbon::now(),
         ]);
+        Teacher::create([
+            'name' => 'Karina',
+            'lastname' => 'Gigli',
+            'dni' => '11111111',
+            'phone' => '11111111111',
+            'birthdate' => Carbon::yesterday(),
+            'city_id' => '2',
+            'user_id' => '3',
+        ]);
+
         Student::create([
             'name' => 'No deberias ver esto',
             'lastname' => '',
@@ -45,6 +65,15 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'city_id' => '1',
             'user_id' => '1',
             'deleted_at' => Carbon::now(),
+        ]);
+        Student::create([
+            'name' => 'Lucas',
+            'lastname' => 'Del Labo',
+            'dni' => '44867176',
+            'phone' => '5493364017202',
+            'birthdate' => '2003-05-03',
+            'city_id' => '2',
+            'user_id' => '3',
         ]);
 
         Principal::factory(10)->create();

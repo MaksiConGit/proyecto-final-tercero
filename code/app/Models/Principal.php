@@ -10,4 +10,8 @@ class Principal extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public function user()
+    {
+        return $this->morphOne(User::class, 'accountable');
+    }
 }
