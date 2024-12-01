@@ -12,7 +12,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-
 class PrincipalController extends Controller
 {
     public function index()
@@ -25,7 +24,7 @@ class PrincipalController extends Controller
     public function create()
     {
         $cities = City::all();
-        $institutions = Institution::all();        
+        $institutions = Institution::all();
 
         return view('principals.create', compact('cities', 'institutions'));
     }
@@ -46,7 +45,7 @@ class PrincipalController extends Controller
         $password = Str::random(12);
         DB::table('logindata')->insert([
             'email' => $request->input('email'),
-            'password' => $password
+            'password' => $password,
         ]);
 
         // Crear el usuario relacionado
@@ -56,10 +55,13 @@ class PrincipalController extends Controller
             'email' => $request->input('email'),
             'password' => $password,
         ]);
-        
+
         $request = $request->validated();
         $request['user_id'] = $user->id;
-        Principal::create($request);
+        $principal = Principal::create($request);
+
+        $user->accountable()->associate($principal); // Asociar polimórficamente
+        $user->save();
 
         return redirect(route('principals.index'));
     }
@@ -71,7 +73,7 @@ class PrincipalController extends Controller
 
     public function edit(Principal $principal)
     {
-        $institutions = Institution::all();        
+        $institutions = Institution::all();
         $cities = City::all();
         //Trae todos los registros que no sean nulos de la columna "user_id" de la tabla "principal" y crea un array de solo la columna "user_id". Entonces trae todos las user_id que si estan asignados.
         $studentsThatHasUser = Principal::whereNotNull('user_id')->pluck('user_id');

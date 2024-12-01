@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Principal extends Model
@@ -20,7 +21,7 @@ class Principal extends Model
         'user_id',
     ];
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
@@ -29,4 +30,8 @@ class Principal extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function user(): MorphOne
+    {
+        return $this->morphOne(User::class, 'accountable');
+    }
 }
