@@ -73,7 +73,7 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'phone' => '5493364017202',
             'birthdate' => '2003-05-03',
             'city_id' => '2',
-            'user_id' => '3',
+            'user_id' => '4',
         ]);
 
         Principal::factory(10)->create();
