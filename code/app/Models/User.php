@@ -52,4 +52,17 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+    
+    public function student(){
+        return $this->hasOne(Student::class, 'user_id');  // 'user_id' es la clave foránea
+    }
+    
+    public function principal(){
+        return $this->hasOne(Principal::class, 'user_id');  // 'user_id' es la clave foránea
+    }
+    
+    public function teacher(){
+        return $this->hasOne(Teacher::class, 'user_id');  // 'user_id' es la clave foránea
+    }
+    
 }

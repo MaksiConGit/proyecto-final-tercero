@@ -1,4 +1,4 @@
-<x-template-layout>
+{{-- <x-template-layout>
 
     <div class="card mx-4 p-4">
         <h5>Formulario de Creacion de Usuario</h5>
@@ -47,4 +47,6 @@
         </form>
     </div>
 
-</x-template-layout>
+</x-template-layout> --}}
+
+<h2>No deberías estar aquí</h2>

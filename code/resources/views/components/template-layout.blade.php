@@ -45,7 +45,7 @@
 
         <x-navbar></x-navbar>
 
-        <x-breadcrumb></x-breadcrumb>
+        {{-- <x-breadcrumb></x-breadcrumb> --}}
 
         {{ $slot }}
 
