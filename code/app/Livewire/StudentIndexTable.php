@@ -16,6 +16,7 @@ class StudentIndexTable extends Component
     public $selectedInstitution = null;
     public $selectedCareer = null;
     public $selectedCourse = null;
+    public $searchTerm = '';
 
     public function render()
     {
@@ -44,6 +45,11 @@ class StudentIndexTable extends Component
             ->when($this->selectedCourse, function ($query) {
                 $query->whereHas('courses', function ($q) {
                     $q->where('courses.id', $this->selectedCourse); // Especifica la tabla de cursos
+                });
+            })
+            ->when($this->searchTerm, function ($query) {
+                $query->where(function ($q) {
+                    $q->where('name', 'like', '%' . $this->searchTerm . '%')->orWhere('lastname', 'like', '%' . $this->searchTerm . '%');
                 });
             })
             ->with('courses')
