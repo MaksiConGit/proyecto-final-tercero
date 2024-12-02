@@ -1,8 +1,7 @@
 <x-template-layout>
-
     <div class="container">
         <x-form-horizontal-icon>
-            <x-slot name="titulo">Crear profesor</x-slot>
+            <x-slot name="titulo">Editar alumno</x-slot>
             <x-slot name="action">{{route('students.update', $student)}}</x-slot>
             <x-slot name="method">@method('PUT')</x-slot>
             <x-slot name="inputs">
@@ -20,6 +19,13 @@
                     <x-slot name="placeholder">Apellido</x-slot>
                     <x-slot name="value">{{ old('lastname', $student->lastname) }}</x-slot>
                 </x-input-text>
+                <x-input-email>
+                    <x-slot name="icon">bx bx-buildings</x-slot>
+                    <x-slot name="titulo">Correo Electrónico</x-slot>
+                    <x-slot name="name">email</x-slot>
+                    <x-slot name="placeholder">ejemplo@ejemplo.com</x-slot>
+                    <x-slot name="value">{{ old('email', $student->user->email) }}</x-slot>
+                </x-input-email>
                 <x-input-text>
                     <x-slot name="icon">bx bx-buildings</x-slot>
                     <x-slot name="titulo">DNI</x-slot>
@@ -40,50 +46,29 @@
                     <x-slot name="value">{{old('birthdate', $student->birthdate)}}</x-slot>
                 </x-input-date>
                 <x-input-select>
-                    <x-slot name="titulo">Ciudad</x-slot>
-                    <x-slot name="name">city_id</x-slot>
+                    <x-slot name="titulo">Institución del Alumno</x-slot>
+                    <x-slot name="name">institution</x-slot>
                     <x-slot name="opciones">
-                        <option value="" selected hidden>Seleccione una ciudad</option>
-                        @foreach ($cities as $city)
-                            <option value="{{ $city->id }}" {{ old('city_id', $student->city_id) == $city->id ? 'selected' : '' }}>
-                                {{ $city->name }}
-                            </option>
+                        <option value="">Selecciona una institución</option>
+                        @foreach ($institutions as $institution)
+                        <option value="{{ $institution->id }}" 
+                            @if ($student && $student->user->institution_id === $institution->id) selected @endif>
+                            {{ $institution->name }} 
+                            @if ($student && $student->user->institution_id === $institution->id) (Actual) @endif
+                        </option>
                         @endforeach
                     </x-slot>
                 </x-input-select>
 
-                <x-input-select>
-                    <x-slot name="titulo">Usuario</x-slot>
-                    <x-slot name="name">user_id</x-slot>
-                    <x-slot name="opciones">
-                        <option value="">Selecciona una cuenta de usuario libre</option>
-
-                        {{-- Mostrar el usuario ya asignado al profesor si existe --}}
-                        @if ($student->user)
-                            <option value="{{ $student->user->id }}" selected>
-                                {{ $student->user->name }} (Actual)
-                            </option>
-                        @endif
-    
-    
-                        {{-- Mostrar los usuarios libres --}}
-                        @foreach ($studentsThatHasNoUser as $user)
-                            {{-- Verifica que user no sea null --}}
-                            @if ($user)
-                                <option value="{{ $user->id }}" {{-- Verifica que exista un user dentro de student.
-                                    (Esto es para evitar una dato fantasma cuando a un student se le asigna una user_id y luego esa user_id es borrada) --}}
-                                    {{ isset($student->user) && $user->id == $student->user->id ? 'selected' : '' }}>
-                                    {{ $user->name }}
-                                </option>
-                            @endif
-                        @endforeach
-                    </x-slot>
-                </x-input-select>
+                @livewire('CitySelect', ['selectedCity' => $student->city_id])
+                <hr>
+                <h5>Asignar Cursos</h5>
+                @livewire('CheckboxCourses' , ['student' => $student])
             </x-slot>
             <x-slot name="modal">
                 <x-modal_template>
-                    <x-slot name="titulo">¿Estás seguro que quiere editar esta profesor?</x-slot>
-                    <x-slot name="contenido">Los datos se pordrán modificar más adelante.</x-slot>
+                    <x-slot name="titulo">¿Estás seguro que quiere editar esta estudiante?</x-slot>
+                    <x-slot name="contenido">Los datos se podrán modificar más adelante.</x-slot>
                 </x-modal_template>
             </x-slot>
             <x-slot name="volver_url">{{route('students.index')}}</x-slot>
