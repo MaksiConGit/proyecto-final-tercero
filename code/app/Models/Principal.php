@@ -21,10 +21,10 @@ class Principal extends Model
         'user_id',
     ];
 
-    public function users()
-    {
-        return $this->belongsTo(User::class);
-    }
+    // public function users()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
     public function city(){
         return $this->belongsTo(City::class);
@@ -34,4 +34,5 @@ class Principal extends Model
     {
         return $this->morphOne(User::class, 'accountable');
     }
+
 }

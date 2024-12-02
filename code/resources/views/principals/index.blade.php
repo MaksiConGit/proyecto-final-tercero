@@ -11,7 +11,8 @@
     </style>
     <div class="container">
         {{ $principals->links() }}
-        <div class="d-flex flex-column align-items-stretch gap-3">
+        @livewire('PrincipalIndexTable')
+        {{-- <div class="d-flex flex-column align-items-stretch gap-3">
             @foreach ($principals as $principal)
                 <div class="row mb-1">
                     <div class="col-md">
@@ -26,17 +27,6 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $principal->name . ', ' . $principal->lastname }}</h5>
                                         <p class="card-text">
-                                            {{-- Materias:
-                                            @if ($principals->subjects->isNotEmpty())
-                                                @foreach ($principals->subjects as $subject)
-                                                    <a href="{{ route('subjects.show', [$subject->id]) }}" class="internal-link">
-                                                        {{ $subject->name }}
-                                                    </a>
-                                                @endforeach
-                                            @else
-                                                Sin asignar.
-                                            @endif
-                                            <br> --}}
                                             Usuario:
                                             @if ($principal->user)
                                                 <a href="{{ route('users.show', [$principal->user->id]) }}" class="internal-link">
@@ -53,12 +43,13 @@
                     </div>
                 </div>
             @endforeach
-        </div>
+        </div> --}}
+        {{ $principals->links() }}
+
     </div>
     <x-floating-icon>
         <x-slot name="url">{{ route('principals.create') }}</x-slot>
     </x-floating-icon>
-    {{ $principals->links() }}
 </x-template-layout>
 
 

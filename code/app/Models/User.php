@@ -45,4 +45,8 @@ class User extends Authenticatable
     {
         return $this->morphTo();
     }
+
+    public function institution(){
+        return $this->belongsTo(Institution::class);
+    }
 }

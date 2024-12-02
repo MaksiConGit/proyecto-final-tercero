@@ -1,6 +1,11 @@
 <x-template-layout>
     <div class="container">
-        <h1>Directivo: {{ $principal->name }}</h1>
+        <x-icon-dropdown>
+            <x-slot name="titulo">Directivo: {{$principal->name . " " . $principal->lastname}}</x-slot>
+            <x-slot name="subtitulo"><p class="mb-4" style="white-space: nowrap;"></p></x-slot>
+            <x-slot name="url_editar">{{route('principals.edit', $principal)}}</x-slot>
+            <x-slot name="url_eliminar">{{route('principals.destroy', $principal)}}</x-slot>
+        </x-icon-dropdown>
         <ul>
             <li>Email: {{ $principal->user->email }}</li>
             <li>DNI: {{ $principal->dni }}</li>
@@ -15,12 +20,5 @@
                 @endif
             </li>
         </ul>
-        <a href="{{ route('principals.edit', $principal) }}">Edit</a>
-
-        <form method="POST" action="{{ route('principals.destroy', $principal) }}">
-            @csrf
-            @method('DELETE')
-            <button type="submit">Delete</button>
-        </form>
     </div>
 </x-template-layout>
