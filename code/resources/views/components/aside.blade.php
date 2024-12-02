@@ -56,48 +56,61 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <!-- Dashboard -->
+        {{$li}}
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Utilidades</span></li>
+    
         <li class="menu-item">
-            <a href="index.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Home</div>
-            </a>
-        </li>
-
-        <!-- Layouts -->
-        <li class="menu-item active">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Carreras</div>
-            </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
-                        <div data-i18n="Without menu">Electromecánica</div>
-                    </a>
-                </li>
-                <li class="menu-item active">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">Informática</div>
-                    </a>
-            </ul>
-        </li>
-        <!-- Components -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Secciones</span></li>
-        <!-- Cards -->
-        <li class="menu-item">
-            <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
+            <a href="{{ route('timetables.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-calendar"></i>
                 <div data-i18n="Basic">Horarios</div>
             </a>
         </li>
         <li class="menu-item">
-            <a href="asistencia.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Asistencia</div>
+            <a href="{{ route('subjects.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book"></i>
+                <div data-i18n="Basic">Materias</div>
             </a>
         </li>
-
+        <li class="menu-item">
+            <a href="{{ route('attendance_records.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-check-circle"></i>
+                <div data-i18n="Basic">Asistencias</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('courses.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book-reader"></i>
+                <div data-i18n="Basic">Cursos</div>
+            </a>
+        </li>
+    
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Personas</span></li>
+    
+        <li class="menu-item">
+            <a href="{{ route('students.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Basic">Estudiantes</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('teachers.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chalkboard"></i>
+                <div data-i18n="Basic">Profesores</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('principals.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <div data-i18n="Basic">Directivos</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('users.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-group"></i>
+                <div data-i18n="Basic">Usuarios</div>
+            </a>
+        </li>
+    
     </ul>
+    
 </aside>

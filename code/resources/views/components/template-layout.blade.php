@@ -38,7 +38,9 @@
 
       <div class="layout-container">
 
-        <x-aside></x-aside>
+        <x-aside>
+          <x-slot name="li">{{$li}}</x-slot>
+        </x-aside>
 
         <div class="layout-page">
 

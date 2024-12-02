@@ -1,13 +1,18 @@
 <?php
 
+use App\Http\Controllers\AttendanceRecordController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\InstitutionController;
+use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TimetableController;
+use App\Models\AttendanceRecord;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,29 +40,21 @@ Route::resource('subjects', SubjectController::class)
 
 Route::resource('careers', CareerController::class)->names('careers');
 
+Route::resource('institutions', InstitutionController::class)->names('institutions');
+
 Route::resource('teachers', TeacherController::class)->names('teachers');
 
 Route::resource('courses', CourseController::class)->names('courses');
 
 Route::resource('exams', ExamController::class)->names('exams');
 
-Route::get('/redirect/{user}', function (App\Models\User $user) {
-    $accountable = $user->accountable;
-
-    if ($accountable instanceof App\Models\Principal) {
-        return redirect()->route('principals.show', $user->accountable_id);
-    } elseif ($accountable instanceof App\Models\Student) {
-        return redirect()->route('students.show', $user->accountable_id);
-    } elseif ($accountable instanceof App\Models\Teacher) {
-        return redirect()->route('teachers.show', $user->accountable_id);
-    }
-
-    abort(404, 'Tipo de cuenta no reconocido.');
-})->name('accountable.redirect');
-Route::resource('students', StudentController::class)
-    ->names('students');
+Route::resource('timetables', TimetableController::class)->names('timetables');
 
 Route::resource('students', StudentController::class)->names('students');
+
+Route::resource('principals', PrincipalController::class)->names('principals');
+
+Route::resource('attendance_records', AttendanceRecordController::class)->names('attendance_records');
 
 Route::get('/redirect/{user}', function (App\Models\User $user) {
     $accountable = $user->accountable;

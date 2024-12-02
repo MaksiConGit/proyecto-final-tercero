@@ -1,4 +1,5 @@
 <x-template-layout>
+  <x-slot name="li"></x-slot>
   <x-slot name="titulo">Detalles del Estudiante</x-slot>
   <div class="container-xxl flex-grow-1 container">
       <h4 class="fw-bold py-3 mb-4">
