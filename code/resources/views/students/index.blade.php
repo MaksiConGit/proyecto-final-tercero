@@ -76,6 +76,7 @@
             
             @endforeach
         </div>
+
     </div>
     <x-floating-icon>
         <x-slot name="url">{{ route('students.create') }}</x-slot>
