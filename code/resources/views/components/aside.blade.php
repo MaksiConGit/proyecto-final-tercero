@@ -57,60 +57,6 @@
 
     <ul class="menu-inner py-1">
         {{$li}}
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Utilidades</span></li>
-    
-        <li class="menu-item">
-            <a href="{{ route('timetables.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-calendar"></i>
-                <div data-i18n="Basic">Horarios</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('subjects.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-book"></i>
-                <div data-i18n="Basic">Materias</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('attendance_records.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-check-circle"></i>
-                <div data-i18n="Basic">Asistencias</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('courses.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-book-reader"></i>
-                <div data-i18n="Basic">Cursos</div>
-            </a>
-        </li>
-    
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Personas</span></li>
-    
-        <li class="menu-item">
-            <a href="{{ route('students.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="Basic">Estudiantes</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('teachers.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-chalkboard"></i>
-                <div data-i18n="Basic">Profesores</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('principals.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
-                <div data-i18n="Basic">Directivos</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('users.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-group"></i>
-                <div data-i18n="Basic">Usuarios</div>
-            </a>
-        </li>
-    
     </ul>
     
 </aside>
