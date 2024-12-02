@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\City;
+use App\Models\Institution;
 use App\Models\Role;
 use App\Models\Student;
 use App\Models\User;
@@ -89,18 +90,29 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         $cities = City::all();
-        $roles = Role::all();
-        //Trae todos los registros que no sean nulos de la columna "user_id" de la tabla "students" y crea un array de solo la columna "user_id". Entonces trae todos las user_id que si estan asignados.
-        $studentsThatHasUser = Student::whereNotNull('user_id')->pluck('user_id');
-        //Busca las user_id que no estén dentro del array $teachersThatHasUser el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
-        $studentsThatHasNoUser = User::whereNotIn('id', $studentsThatHasUser)->get();
-        $usersTrashed = User::withTrashed()->find($student->user_id);
-        return view('students.edit', compact('student', 'cities', 'roles', 'studentsThatHasNoUser', 'usersTrashed'));
+        $institutions = Institution::all();
+
+        return view('students.edit', compact('student', 'cities', 'institutions'));
     }
 
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        $student->update($request->all());
+        // Actualizar los datos básicos del estudiante
+        $student->update($request->validated());
+
+        $student->user->update([
+            'institution_id' => $request->input('institution'),
+            'email' => $request->input('email'),
+        ]);
+
+        // Manejar las relaciones de courses con el estudiante
+        $selectedCourses = collect($request->input('selectedData', []))
+            ->flatMap(function ($data) {
+                return $data['courses'] ?? [];
+            })->unique()->toArray();
+
+        // Sincronizar las relaciones en course_students
+        $student->courses()->sync($selectedCourses);
         return redirect(route('students.show', $student));
     }
 

@@ -48,6 +48,7 @@ class CheckboxCourses extends Component
                 'selectedCareer' => null,
                 'selectedCourses' => [],
             ];
+
         }
     }
 
