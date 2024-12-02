@@ -8,6 +8,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,6 +38,8 @@ Route::resource('subjects', SubjectController::class)->names('subjects');
 Route::resource('careers', CareerController::class)->names('careers');
 
 Route::resource('teachers', TeacherController::class)->names('teachers');
+
+Route::resource('students', StudentController::class)->names('students');
 
 Route::resource('courses', CourseController::class)->names('courses');
 

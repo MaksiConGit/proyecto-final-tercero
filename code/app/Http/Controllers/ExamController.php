@@ -42,20 +42,17 @@ class ExamController extends Controller
             ]
         );
     
-        // Crear el examen y almacenar su ID en la variable $exam
         $exam = Exam::create([
             'number' => $request->number,
             'date' => $request->date,
             'teacher_subject_id' => $teacherSubject->id,
         ]);
     
-        // Crear el registro en la tabla pivot CourseExam, utilizando el ID del examen recién creado
         CourseExam::create([
             'course_id' => $request->course_id,
-            'exam_id' => $exam->id,  // Aquí utilizas el ID del examen recién creado
+            'exam_id' => $exam->id,
         ]);
     
-        // Redirigir a la vista de exámenes
         return redirect(route('exams.index'));
     }
     
@@ -67,9 +64,12 @@ class ExamController extends Controller
 
     public function edit(Exam $exam)
     {
+        $institutions = Institution::all();
+        $careers = Career::all();
+        $courses = Course::all();
         $teachers = Teacher::all();
         $subjects = Subject::all();
-        return view ('exams.edit', compact('exam', 'teachers', 'subjects'));
+        return view ('exams.edit', compact('exam', 'institutions', 'careers', 'courses', 'teachers', 'subjects'));
     }
 
     public function update(StoreExamRequest $request, Exam $exam)
