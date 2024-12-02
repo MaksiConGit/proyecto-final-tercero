@@ -10,4 +10,9 @@ class Institution extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public function career()
+    {
+        return $this->hasOne(Career::class, 'institution_id');
+    }
+
 }

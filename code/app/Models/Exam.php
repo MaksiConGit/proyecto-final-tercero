@@ -29,4 +29,5 @@ class Exam extends Model
     {
         return $this->belongsToMany(Course::class, 'course_exams');
     }
+    
 }

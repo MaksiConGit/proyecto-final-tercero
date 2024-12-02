@@ -19,7 +19,73 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::orderBy('id')->paginate(5);
+        $user = auth()->user();
+
+        if ($user->hasRole('Admin')) {
+            $students = Student::all();
+        }
+
+        elseif ($user->hasRole('Principal')) {
+    
+            // Inicializamos una colección vacía para los estudiantes
+            $students = collect();
+        
+            // Recorrer las instituciones principales relacionadas con el principal
+            foreach ($user->accountable->institutionPrincipals as $institutionPrincipal) {
+                if ($institutionPrincipal->institution->career) {
+                    // Iteramos sobre los cursos relacionados con la carrera
+                    foreach ($institutionPrincipal->institution->career->courses as $course) {
+                        // Fusionamos los estudiantes de cada curso
+                        $students = $students->merge($course->students);
+                    }
+                }
+            }
+            
+            $students = $students->unique('id');
+        
+        }
+        
+        elseif ($user->hasRole('Teacher')) {
+            // Crear una colección vacía para almacenar los estudiantes
+            $students = collect();
+            
+            // Iterar sobre los cursos relacionados con el teacher
+            foreach ($user->accountable->courses as $course) {
+                // Acceder a los cursos relacionados
+                
+                if ($course) {
+                    // Fusionamos los estudiantes del curso
+                    $students = $students->merge($course->students);
+                }
+            }
+            
+            // Eliminar estudiantes duplicados por id
+            $students = $students->unique('id');
+        }
+
+        elseif ($user->hasRole('Student')) {
+            // Crear una colección vacía para almacenar los estudiantes
+            $students = collect();
+            
+            // Acceder a los cursos del estudiante mediante la relación courseStudents
+            foreach ($user->accountable->courseStudents as $courseStudent) {
+                // Acceder al curso del estudiante
+                $course = $courseStudent->course;
+                
+                if ($course) {
+                    // Fusionamos los estudiantes del curso (en este caso, solo el estudiante actual debería estar aquí)
+                    $students = $students->merge($course->students);
+                }
+            }
+            
+            // Eliminar duplicados por id (aunque en este caso debería ser solo el estudiante)
+            $students = $students->unique('id');
+        }
+
+        else {
+            abort(403, 'No tienes permisos para acceder a esta sección.');
+        }
+
         $trashed = Student::onlyTrashed()->get();
         return view('students.index', compact('students', 'trashed'));
     }
