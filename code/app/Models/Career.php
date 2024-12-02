@@ -18,4 +18,34 @@ class Career extends Model
     public function institution(){
         return $this->belongsTo(Institution::class);
     }
+
+    public function courses(){
+        return $this->hasMany(Course::class);
+    }
+
+    public function students()
+    {
+        return $this->hasManyThrough(
+            Student::class,       // Modelo destino
+            Course::class,        // Modelo intermedio
+            'career_id',          // Clave foránea en el modelo intermedio (courses.career_id)
+            'id',                 // Clave foránea en el modelo destino (course_students.student_id)
+            'id',                 // Llave local en este modelo (careers.id)
+            'id'                  // Llave local en el modelo intermedio (courses.id)
+        );
+    }
+
+    public function subjects()
+    {
+        return $this->hasManyThrough(
+            Subject::class,       // Modelo destino
+            Course::class,        // Modelo intermedio
+            'career_id',          // Clave foránea en el modelo intermedio (courses.career_id)
+            'id',                 // Clave foránea en el modelo destino (course_students.student_id)
+            'id',                 // Llave local en este modelo (careers.id)
+            'id'                  // Llave local en el modelo intermedio (courses.id)
+        );
+    }
+
+
 }

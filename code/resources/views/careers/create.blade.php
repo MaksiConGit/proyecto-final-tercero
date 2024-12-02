@@ -1,39 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Formulario de Creación de Carreras</h1>
-    @if ($errors->any())
+<x-template-layout>
+    <div class="container">
+        <x-form-horizontal-icon>
+            <x-slot name="titulo">Crear carrera</x-slot>
+            <x-slot name="action">{{route('careers.store')}}</x-slot>
+            <x-slot name="method"></x-slot>
+            <x-slot name="inputs">
+                <x-input-text>
+                    <x-slot name="icon">bx bx-buildings</x-slot>
+                    <x-slot name="titulo">Nombre</x-slot>
+                    <x-slot name="name">name</x-slot>
+                    <x-slot name="placeholder">Nombre</x-slot>
+                    <x-slot name="value">{{old('name')}}</x-slot>
+                </x-input-text>
+                <x-input-select>
+                    <x-slot name="titulo">Institución</x-slot>
+                    <x-slot name="name">institution_id</x-slot>
+                    <x-slot name="opciones">
+                        <option value="" selected hidden>Seleccione una institución</option>
+                        @foreach ($institutions as $institution)
+                            <option {{ old('institution_id') == $institution->id ? 'selected' : '' }} value="{{$institution->id}}">{{$institution->name}}</option>
+                        @endforeach
+                    </x-slot>
+                </x-input-select>
+            </x-slot>
+            <x-slot name="modal">
+                <x-modal_template>
+                    <x-slot name="titulo">¿Estás seguro que quiere crear esta carrera?</x-slot>
+                    <x-slot name="contenido">Los datos se pordrán modificar más adelante.</x-slot>
+                </x-modal_template>
+            </x-slot>
+            <x-slot name="volver_url">{{route('careers.index')}}</x-slot>
+        </x-form-horizontal-icon>
+        @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>    
+                <div class="alert alert-danger" role="alert">{{$error}}</div>    
             @endforeach
         </ul>
-    @endif
-    <form method="POST" action="{{route('careers.store')}}">
-        @csrf
-        <label>
-            name:
-            <input type="text" name="name" value="{{old('name') }}"  required />
-        </label>
-        <br>
-        <label>
-            institution:
-            <select id="institution_id" name="institution_id" required>
-                <option value="">Selecciona una Institución</option>
-                @foreach($institutions as $institution)
-                    <option value="{{ $institution->id }}">{{ $institution->name }}</option>
-                @endforeach
-            </select>
-        </label>
-
-        </div>
-        <button type="submit"> create </button>
-    </form>
-</body>
-</html>
+        @endif
+    </div>
+</x-template-layout>

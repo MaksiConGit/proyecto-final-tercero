@@ -19,4 +19,18 @@ class Course extends Model
     public function career(){
         return $this->belongsTo(Career::class);
     }
+
+    public function courseTeachers(){
+        return $this->hasMany(CourseTeacher::class);
+    }
+
+    public function exams()
+    {
+        return $this->belongsToMany(
+            Exam::class,         // Modelo relacionado (Exam)
+            CourseExam::class,      // Nombre de la tabla intermedia
+            'course_id',         // Foreign key en la tabla intermedia que apunta a Course
+            'exam_id'            // Foreign key en la tabla intermedia que apunta a Exam
+        );
+    }
 }

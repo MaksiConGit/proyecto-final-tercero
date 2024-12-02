@@ -11,7 +11,7 @@ class StoreStudentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,8 +28,7 @@ class StoreStudentRequest extends FormRequest
             'phone' => 'required|string|max:14',
             'birthdate' => 'required|date|before:today',
             'city_id' => 'required|exists:cities,id',
-            'user_id' => 'required|exists:users,id',
-            'is_deleted' => 'boolean'
+            'user_id' => 'nullable|exists:users,id',
         ];
     }
 }

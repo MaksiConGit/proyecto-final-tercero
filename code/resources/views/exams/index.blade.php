@@ -1,69 +1,74 @@
 <x-template-layout>
     <div class="container">
+        <h4 class="fw-bold py-3 mb-4">Exámenes</h4>
 
-        <!-- Tabla con lista de exámenes -->
-        <x-table>
-
-            <x-slot name="titulo_tabla">Lista de Examen</x-slot>
-
-            <x-slot name="table_head">
-                <thead>
-                    <tr>
-                        <th>Examen</th>
-                        <th>Materia</th>
-                        <th>Profesor</th>
-                        <th>Curso</th>
-                        <th>Fecha</th>
-                    </tr>
-                </thead>
-            </x-slot>
-
-            <x-slot name="table_body">
-                <tbody class="table-borde-bottom-0">
-                    @foreach ($exams as $exam)
-                        <tr class="table-hover-row">
-                            <!-- Columna de Examen -->
+        @foreach ($courses as $course)
+        <div class="mb-4">
+            <!-- Encabezado del curso -->
+            <h5 
+                class="text-decoration-none text-primary badge bg-label-primary me-1" 
+                style="font-size: 1.2rem; padding: 0.5rem 1rem; border-radius: 8px;">
+                {{$course->course_number}}°{{$course->section}}
+            </h5>
+            
+            @if ($course->exams->isNotEmpty())
+            <!-- Tabla de exámenes -->
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered shadow-sm rounded">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Parcial N°</th>
+                            <th>Materia</th>
+                            <th>Profesor</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($course->exams as $exam)
+                        <tr onclick="if(!event.target.closest('.dropdown') && !event.target.closest('.avatar a')) { window.location.href='{{ route('exams.show', [$exam]) }}'; }" style="cursor: pointer;">
+                            <td><strong>{{$exam->number}}</strong></td>
                             <td>
-                                <a> Parcial I</a>
-                            </td>
-                            <!-- Columna de Materia -->
-                            
-                            <td>
-                                <a href="{{ route('exams.show', [$exam]) }}" class="text-decoration-none text-dark">
-                                    {{ $exam->teacherSubject->subject->name }}
+                                <a href="{{ route('subjects.show', [$exam->teacherSubject->subject]) }}" 
+                                   class="text-decoration-none text-primary"
+                                   onclick="event.stopPropagation();">
+                                    {{$exam->teacherSubject->subject->name}}
                                 </a>
                             </td>
-                            <!-- Columna de Profesor -->
                             <td>
-                                @if ($exam->teacherSubject->teacher)
-                                    <a href="{{ route('teachers.profile', [$exam->teacherSubject->teacher->id]) }}"
-                                        class="text-decoration-none text-primary">
-                                        {{ $exam->teacherSubject->teacher->name }}
-                                    </a>
-                                @else
-                                    No asignado
-                                @endif
+                                <a href="{{ route('teachers.show', [$exam->teacherSubject->teacher]) }}" 
+                                   class="text-decoration-none text-primary"
+                                   onclick="event.stopPropagation();">
+                                    {{$exam->teacherSubject->teacher->name}}, {{$exam->teacherSubject->teacher->lastname}}
+                                </a>
                             </td>
-                            <!-- Columna de Curso -->
+                            <td>{{$exam->date}}</td>
                             <td>
-                                4A
-                            </td>
-                            <!-- Columna de Fecha -->
-                            <td>
-                                {{ \Carbon\Carbon::parse($exam->date)->format('d/m/Y') ?? 'Fecha no disponible' }}
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ route('exams.edit', [$exam]) }}">
+                                            <i class="bx bx-edit-alt me-1"></i> Editar
+                                        </a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
-                    @endforeach
-                </tbody>
-            </x-slot>
-        </x-table>
-
-        {{-- <!-- Controles de paginación -->
-        <div class="mt-4">
-            {{ $exams->links() }}
-        </div> --}}
-
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            @else
+                <p class="text-muted">No tiene exámenes asignados.</p>
+            @endif
+        </div>
+        @endforeach
     </div>
-    <x-floating-icon-exams></x-floating-icon-exams>
-</x-template-layout>
 
+    <x-floating-icon>
+        <x-slot name="url">{{route('exams.create')}}</x-slot>
+    </x-floating-icon>
+
+</x-template-layout>
