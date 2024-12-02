@@ -10,8 +10,11 @@
         }
     </style>
     <div class="container">
+        
+        <hr>
         {{ $students->links() }}
-        <div class="d-flex flex-column align-items-stretch gap-3">
+        @livewire('StudentIndexTable')
+        {{-- <div class="d-flex flex-column align-items-stretch gap-3">
             @foreach ($students as $student)
                 <div class="row mb-1">
                     <div class="col-md">
@@ -26,17 +29,6 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $student->name . ', ' . $student->lastname }}</h5>
                                         <p class="card-text">
-                                            {{-- Materias:
-                                            @if ($student->subjects->isNotEmpty())
-                                                @foreach ($student->subjects as $subject)
-                                                    <a href="{{ route('subjects.show', [$subject->id]) }}" class="internal-link">
-                                                        {{ $subject->name }}
-                                                    </a>
-                                                @endforeach
-                                            @else
-                                                Sin asignar.
-                                            @endif
-                                            <br> --}}
                                             Usuario:
                                             @if ($student->user)
                                                 <a href="{{ route('users.show', [$student->user->id]) }}" class="internal-link">
@@ -53,8 +45,9 @@
                     </div>
                 </div>
             @endforeach
-        </div>
+        </div>--}}
         {{ $students->links() }}
+
     </div>
     <x-floating-icon>
         <x-slot name="url">{{ route('students.create') }}</x-slot>
