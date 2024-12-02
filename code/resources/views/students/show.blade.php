@@ -89,27 +89,35 @@
                         <tbody class="table-borde-bottom-0">
 
                             @foreach ($exams as $exam)
-                                <x-table-item>
-                                    <x-slot name="fila_url">{{ route('exams.show', [$course->id]) }}</x-slot>
-                                    <x-slot name="nombre">N°{{ $exam->number . ' / ' . $exam->date }}</x-slot>
-                                    <x-slot
-                                        name="apellido">{{ $exam->teacherSubject->teacher->name . ' ' . $exam->teacherSubject->teacher->lastname }}</x-slot>
-                                    <x-slot name="usuario">
-                                        {{ $exam->teacherSubject->subject->name }}
-                                        de
-                                        @foreach ($exam->courses as $course)
-                                            {{ $course->course_number }}° {{ $course->section }}
-                                        @endforeach
-                                    </x-slot>
-                                    <x-slot name="rol">
-                                        @if ($exam->grades->isNotEmpty())
-                                            {{ $exam->grades->first()->grade }}
-                                        @else
-                                            No realizado
-                                        @endif
-                                    </x-slot>
-                                    <x-slot name="editar_url">{{ route('exams.edit', [$exam->id]) }}</x-slot>
-                                </x-table-item>
+                                @php
+                                    // Filtra los cursos del examen que coinciden con los cursos del estudiante actual
+                                    $studentCourses = $student->courses;
+                                    $examCourses = $exam->courses->intersect($studentCourses);
+                                @endphp
+
+                                @if ($examCourses->isNotEmpty())
+                                    <!-- Solo muestra el examen si hay cursos válidos -->
+                                    <x-table-item>
+                                        <x-slot name="fila_url">{{ route('exams.show', [$exam->id]) }}</x-slot>
+                                        <x-slot name="nombre">N°{{ $exam->number . ' / ' . $exam->date }}</x-slot>
+                                        <x-slot
+                                            name="apellido">{{ $exam->teacherSubject->teacher->name . ' ' . $exam->teacherSubject->teacher->lastname }}</x-slot>
+                                        <x-slot name="usuario">
+                                            {{ $exam->teacherSubject->subject->name }} de
+                                            @foreach ($examCourses as $course)
+                                                {{ $course->course_number }}° {{ $course->section }}
+                                            @endforeach
+                                        </x-slot>
+                                        <x-slot name="rol">
+                                            @if ($exam->grades->isNotEmpty())
+                                                {{ $exam->grades->first()->grade }}
+                                            @else
+                                                No realizado
+                                            @endif
+                                        </x-slot>
+                                        <x-slot name="editar_url">{{ route('exams.edit', [$exam->id]) }}</x-slot>
+                                    </x-table-item>
+                                @endif
                             @endforeach
                         </tbody>
                     </x-slot>
