@@ -20,4 +20,13 @@ class Exam extends Model
         return $this->belongsTo(TeacherSubject::class);
     }
 
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_exams');
+    }
 }

@@ -24,7 +24,7 @@
                     <x-slot name="titulo">Correo Electrónico</x-slot>
                     <x-slot name="name">email</x-slot>
                     <x-slot name="placeholder">ejemplo@ejemplo.com</x-slot>
-                    <x-slot name="value">{{ old('email', $student->user->email) }}</x-slot>
+                    <x-slot name="value">{{ old('email', $student->user->email ?? '') }}</x-slot>
                 </x-input-email>
                 <x-input-text>
                     <x-slot name="icon">bx bx-buildings</x-slot>
@@ -52,9 +52,9 @@
                         <option value="">Selecciona una institución</option>
                         @foreach ($institutions as $institution)
                         <option value="{{ $institution->id }}" 
-                            @if ($student && $student->user->institution_id === $institution->id) selected @endif>
+                            @if ($student && $student->user && $student->user->institution_id === $institution->id) selected @endif>
                             {{ $institution->name }} 
-                            @if ($student && $student->user->institution_id === $institution->id) (Actual) @endif
+                            @if ($student && $student->user && $student->user->institution_id === $institution->id) (Actual) @endif
                         </option>
                         @endforeach
                     </x-slot>

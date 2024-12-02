@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\City;
+use App\Models\Exam;
 use App\Models\Institution;
 use App\Models\Role;
 use App\Models\Student;
@@ -88,7 +89,24 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
-        return view('students.show', compact('student'));
+        // Obtener los IDs de los cursos asignados al estudiante
+        $courseIds = $student->courses()->pluck('courses.id');
+
+        // Obtener los exámenes relacionados con los cursos del estudiante
+        $exams = Exam::whereHas('courses', function ($query) use ($courseIds) {
+            $query->whereIn('courses.id', $courseIds);
+        })
+            ->with([
+                'courses',
+                'teacherSubject.teacher',
+                'teacherSubject.subject',
+                'grades' => function ($query) use ($student) {
+                    $query->where('student_id', $student->id);
+                },
+            ])
+            ->get();
+
+        return view('students.show', compact('student', 'exams'));
     }
 
     public function edit(Student $student)
@@ -113,7 +131,9 @@ class StudentController extends Controller
         $selectedCourses = collect($request->input('selectedData', []))
             ->flatMap(function ($data) {
                 return $data['courses'] ?? [];
-            })->unique()->toArray();
+            })
+            ->unique()
+            ->toArray();
 
         // Sincronizar las relaciones en course_students
         $student->courses()->sync($selectedCourses);
@@ -122,6 +142,9 @@ class StudentController extends Controller
 
     public function destroy(Student $student)
     {
+        if ($student->user) {
+            $student->user->delete();
+        }
         $student->delete();
         return redirect(route('students.index'));
     }

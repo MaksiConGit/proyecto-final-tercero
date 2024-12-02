@@ -34,4 +34,9 @@ class Teacher extends Model
     {
         return $this->morphOne(User::class, 'accountable');
     }
+
+    public function courses(){
+        return $this->belongsToMany(Course::class, 'course_teachers')
+        ;
+    }
 }
