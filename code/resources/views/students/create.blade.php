@@ -1,6 +1,9 @@
 <x-template-layout>
-
+    <x-slot name="titulo">Añadir Estudiante</x-slot>
     <div class="container">
+        <h4 class="fw-bold py-3 mb-4">
+            <span class="text-muted fw-light"><a href="{{ route('students.index', [$student]) }}">Estudiantes /</a></span> Añadir
+        </h4>
         <x-form-horizontal-icon>
             <x-slot name="titulo">Crear estudiante</x-slot>
             <x-slot name="action">{{route('students.store')}}</x-slot>

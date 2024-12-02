@@ -1,5 +1,12 @@
 <x-template-layout>
+    <x-slot name="titulo">Editar Estudiante</x-slot>
     <div class="container">
+        <h4 class="fw-bold py-3 mb-4">
+            <span class="text-muted fw-light">
+                <a href="{{ route('students.index', [$student]) }}">Estudiantes /</a>
+                <a href="{{ route('students.show', [$student]) }}">Detalles /</a>
+            </span> Editar
+        </h4>
         <x-form-horizontal-icon>
             <x-slot name="titulo">Editar alumno</x-slot>
             <x-slot name="action">{{route('students.update', $student)}}</x-slot>

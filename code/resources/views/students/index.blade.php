@@ -1,4 +1,5 @@
 <x-template-layout>
+    <x-slot name="titulo">Estudiantes</x-slot>
     <style>
         .stretched-link {
             z-index: 1;
