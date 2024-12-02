@@ -25,12 +25,18 @@ class Student extends Model
         return $this->hasMany(CourseStudent::class);
     }
     
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function user_()
+    public function courses(){
+        return $this->belongsToMany(Course::class, 'course_students', 'student_id','course_id')
+            ->withPivot('id')->withTimestamps(); // Incluye el campo 'id' de la tabla intermedia
+        ;
+    }
+
+    public function user()
     {
         return $this->morphOne(User::class, 'accountable');
     }
