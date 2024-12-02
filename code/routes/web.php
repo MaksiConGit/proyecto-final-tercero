@@ -40,14 +40,7 @@ Route::resource('teachers', TeacherController::class)->names('teachers');
 
 Route::resource('courses', CourseController::class)->names('courses');
 
-Route::resource('exams', ExamController::class)
-    ->names('exams');
-
-Route::resource('students', StudentController::class)
-    ->names('students');
-
-Route::resource('exams', ExamController::class)
-    ->names('exams');
+Route::resource('exams', ExamController::class)->names('exams');
 
 Route::get('/redirect/{user}', function (App\Models\User $user) {
     $accountable = $user->accountable;
