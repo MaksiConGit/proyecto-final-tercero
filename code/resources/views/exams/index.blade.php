@@ -67,5 +67,8 @@
         @endforeach
     </div>
 
-    <x-floating-icon-exams></x-floating-icon-exams>
+    <x-floating-icon>
+        <x-slot name="url">{{route('exams.create')}}</x-slot>
+    </x-floating-icon>
+
 </x-template-layout>
