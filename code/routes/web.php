@@ -4,9 +4,11 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,6 +29,8 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('users', UserController::class)->names('users');
 
+Route::get('/teachers/{id}', [TeacherController::class, 'show'])->name('teachers.profile');
+
 require __DIR__ . '/auth.php';
 
 Route::resource('subjects', SubjectController::class)->names('subjects');
@@ -34,6 +38,8 @@ Route::resource('subjects', SubjectController::class)->names('subjects');
 Route::resource('careers', CareerController::class)->names('careers');
 
 Route::resource('teachers', TeacherController::class)->names('teachers');
+
+Route::resource('students', StudentController::class)->names('students');
 
 Route::resource('courses', CourseController::class)->names('courses');
 

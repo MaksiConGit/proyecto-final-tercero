@@ -2,8 +2,8 @@
 
     <div class="container">
         <x-form-horizontal-icon>
-            <x-slot name="titulo">Crear profesor</x-slot>
-            <x-slot name="action">{{route('teachers.store')}}</x-slot>
+            <x-slot name="titulo">Crear estudiante</x-slot>
+            <x-slot name="action">{{route('students.store')}}</x-slot>
             <x-slot name="method"></x-slot>
             <x-slot name="inputs">
                 <x-input-text>
@@ -49,14 +49,32 @@
                         @endforeach
                     </x-slot>
                 </x-input-select>
+                <x-input-select>
+                    <x-slot name="titulo">Usuario</x-slot>
+                    <x-slot name="name">user_id</x-slot>
+                    <x-slot name="opciones">
+                        <option value="">Selecciona una cuenta de usuario libre</option>
+                        {{-- Mostrar los usuarios libres --}}
+                        @foreach ($studentsThatHasNoUser as $user)
+                            {{-- Verifica que user no sea null --}}
+                            @if ($user)
+                                <option value="{{ $user->id }}" {{-- Verifica que exista un user dentro de student.
+                                    (Esto es para evitar una dato fantasma cuando a un student se le asigna una user_id y luego esa user_id es borrada) --}}
+                                    {{ isset($student->user) && $user->id == $student->user->id ? 'selected' : '' }}>
+                                    {{ $user->name }}
+                                </option>
+                            @endif
+                        @endforeach
+                    </x-slot>
+                </x-input-select>
             </x-slot>
             <x-slot name="modal">
                 <x-modal_template>
-                    <x-slot name="titulo">¿Estás seguro que quiere crear esta profesor?</x-slot>
+                    <x-slot name="titulo">¿Estás seguro que quiere crear este estudiante?</x-slot>
                     <x-slot name="contenido">Los datos se pordrán modificar más adelante.</x-slot>
                 </x-modal_template>
             </x-slot>
-            <x-slot name="volver_url">{{route('teachers.index')}}</x-slot>
+            <x-slot name="volver_url">{{route('students.index')}}</x-slot>
         </x-form-horizontal-icon>
         @if ($errors->any())
         <ul>
@@ -66,4 +84,5 @@
         </ul>
         @endif
     </div>
+
 </x-template-layout>

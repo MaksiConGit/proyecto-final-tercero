@@ -20,4 +20,47 @@ class Exam extends Model
         return $this->belongsTo(TeacherSubject::class);
     }
 
+    public function courseExams(){
+        return $this->hasMany(CourseExam::class);
+    }
+
+    public function exams()
+    {
+        return $this->belongsToMany(
+            Exam::class,
+            CourseExam::class,
+            'course_id',
+            'exam_id'
+        );
+    }
+
+    public function subject()
+    {
+        return $this->hasOneThrough(
+            Subject::class,
+            TeacherSubject::class,
+            'id',
+            'id',
+            'teacher_subject_id',
+            'subject_id'
+        );
+    }
+
+    public function teacher()
+    {
+        return $this->hasOneThrough(
+            Teacher::class,
+            TeacherSubject::class,
+            'id',
+            'id',
+            'teacher_subject_id',
+            'teacher_id'
+        );
+    }
+
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
+
 }

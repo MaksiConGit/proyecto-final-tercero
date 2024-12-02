@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="../../template_files/assets/vendor/libs/apex-charts/apex-charts.css" />
     <script src="../../template_files/assets/vendor/js/helpers.js"></script>
     <script src="../../template_files/assets/js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
@@ -43,7 +44,7 @@
 
         <x-navbar></x-navbar>
 
-        <x-breadcrumb></x-breadcrumb>
+        {{-- <x-breadcrumb></x-breadcrumb> --}}
 
         {{ $slot }}
 
@@ -71,5 +72,6 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
   </body>
 </html>
