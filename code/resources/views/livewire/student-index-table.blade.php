@@ -1,4 +1,6 @@
 <div>
+    <!-- Buscador en tiempo real -->
+    <input type="text" wire:model.live="searchTerm" placeholder="Buscar estudiantes...">
     <!-- Filtro por Institución -->
     <x-input-select wire:model.live="selectedInstitution">
         <x-slot name="titulo">Institución</x-slot>
