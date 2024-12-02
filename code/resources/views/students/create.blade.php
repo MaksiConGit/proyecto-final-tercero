@@ -20,11 +20,18 @@
                     <x-slot name="placeholder">Apellido</x-slot>
                     <x-slot name="value">{{old('lastname')}}</x-slot>
                 </x-input-text>
+                <x-input-email>
+                    <x-slot name="icon">bx bx-buildings</x-slot>
+                    <x-slot name="titulo">Correo Electrónico</x-slot>
+                    <x-slot name="name">email</x-slot>
+                    <x-slot name="placeholder">ejemplo@ejemplo.com</x-slot>
+                    <x-slot name="value">{{ old('email') }}</x-slot>
+                </x-input-email>
                 <x-input-text>
                     <x-slot name="icon">bx bx-buildings</x-slot>
                     <x-slot name="titulo">DNI</x-slot>
                     <x-slot name="name">dni</x-slot>
-                    <x-slot name="placeholder">DNI</x-slot>
+                    <x-slot name="placeholder">+11 1 1234567890</x-slot>
                     <x-slot name="value">{{old('dni')}}</x-slot>
                 </x-input-text>
                 <x-input-text>
@@ -39,39 +46,18 @@
                     <x-slot name="name">birthdate</x-slot>
                     <x-slot name="value">{{old('birthdate')}}</x-slot>
                 </x-input-date>
-                <x-input-select>
-                    <x-slot name="titulo">Ciudad</x-slot>
-                    <x-slot name="name">city_id</x-slot>
-                    <x-slot name="opciones">
-                        <option value="" selected hidden>Seleccione una ciudad</option>
-                        @foreach ($cities as $city)
-                            <option {{ old('city_id') == $city->id ? 'selected' : '' }} value="{{$city->id}}">{{$city->name}}</option>
-                        @endforeach
-                    </x-slot>
-                </x-input-select>
-                <x-input-select>
-                    <x-slot name="titulo">Usuario</x-slot>
-                    <x-slot name="name">user_id</x-slot>
-                    <x-slot name="opciones">
-                        <option value="">Selecciona una cuenta de usuario libre</option>
-                        {{-- Mostrar los usuarios libres --}}
-                        @foreach ($studentsThatHasNoUser as $user)
-                            {{-- Verifica que user no sea null --}}
-                            @if ($user)
-                                <option value="{{ $user->id }}" {{-- Verifica que exista un user dentro de student.
-                                    (Esto es para evitar una dato fantasma cuando a un student se le asigna una user_id y luego esa user_id es borrada) --}}
-                                    {{ isset($student->user) && $user->id == $student->user->id ? 'selected' : '' }}>
-                                    {{ $user->name }}
-                                </option>
-                            @endif
-                        @endforeach
-                    </x-slot>
-                </x-input-select>
+                
+                @livewire('CitySelect')
+
+                <hr>
+                <h5>Asignar Cursos</h5>
+                @livewire('CheckboxCourses')
+
             </x-slot>
             <x-slot name="modal">
                 <x-modal_template>
                     <x-slot name="titulo">¿Estás seguro que quiere crear este estudiante?</x-slot>
-                    <x-slot name="contenido">Los datos se pordrán modificar más adelante.</x-slot>
+                    <x-slot name="contenido">Los datos se podrán modificar más adelante.</x-slot>
                 </x-modal_template>
             </x-slot>
             <x-slot name="volver_url">{{route('students.index')}}</x-slot>
@@ -84,63 +70,4 @@
         </ul>
         @endif
     </div>
-
-    {{-- <h1>Formulario de Creación de Profesores</h1>
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-    <form method="POST" action="{{ route('students.store') }}">
-        @csrf
-        <label>
-            name:
-            <input type="text" name="name" value="{{ old('name') }}" required />
-        </label>
-        <br>
-        <label>
-            lastname:
-            <input type="text" name="lastname" value="{{ old('lastname') }}" required />
-        </label>
-        <br>
-        <label>
-            dni:
-            <input type="text" name="dni" value="{{ old('dni') }}" required />
-        </label>
-        <br>
-        <label>
-            phone:
-            <input type="text" name="phone" value="{{ old('phone') }}" required />
-        </label>
-        <br>
-        <label>
-            birthdate:
-            <input type="date" name="birthdate" value="{{ old('birthdate') }}" required />
-        </label>
-        <br>
-        <label>
-            city_id:
-            <select id="city_id" name="city_id" required>
-                <option value="">Selecciona una Ciudad</option>
-                @foreach ($cities as $city)
-                    <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
-                @endforeach
-            </select>
-        </label>
-        <br>
-        <label>
-            (opcional) user_id:
-            <select id="user_id" name="user_id">
-                <option value="">Selecciona una cuenta de usuario libre</option>
-                @foreach ($studentsThatHasNoUser as $user)
-                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                @endforeach
-            </select>
-        </label>
-        <br>
-        </div>
-        <button type="submit"> create </button>
-    </form> --}}
 </x-template-layout>
