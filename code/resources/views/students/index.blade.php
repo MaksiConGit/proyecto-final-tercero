@@ -10,6 +10,7 @@
         }
     </style>
     <div class="container">
+        {{ $students->links() }}
         <div class="d-flex flex-column align-items-stretch gap-3">
             @foreach ($students as $student)
                 <div class="row mb-1">
@@ -53,6 +54,7 @@
                 </div>
             @endforeach
         </div>
+        {{ $students->links() }}
     </div>
     <x-floating-icon>
         <x-slot name="url">{{ route('students.create') }}</x-slot>

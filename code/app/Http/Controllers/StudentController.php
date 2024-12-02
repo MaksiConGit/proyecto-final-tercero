@@ -18,7 +18,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::all();
+        $students = Student::orderBy('id')->paginate(5);
         $trashed = Student::onlyTrashed()->get();
         return view('students.index', compact('students', 'trashed'));
     }
