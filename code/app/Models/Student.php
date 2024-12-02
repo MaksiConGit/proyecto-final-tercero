@@ -40,4 +40,13 @@ class Student extends Model
     {
         return $this->morphOne(User::class, 'accountable');
     }
+
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
+
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
 }
