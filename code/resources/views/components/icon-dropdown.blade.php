@@ -1,6 +1,7 @@
 <div class="col-lg-3 col-sm-6 col-12">
     <div class="d-flex align-items-center flex-nowrap demo-inline-spacing mb-4">
         <h2 class="m-0" style="white-space: nowrap;">{{$titulo}}</h2>
+        @can('component.icon-dropdown')
         <div class="btn-group">
             <button
                 type="button"
@@ -23,6 +24,7 @@
 
             </ul>
         </div>
+        @endcan
     </div>
     {{$subtitulo}}
 </div>

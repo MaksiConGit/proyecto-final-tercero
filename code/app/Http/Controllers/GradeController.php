@@ -2,12 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Grade;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class GradeController extends Controller
+class GradeController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            // Middleware para permisos específicos
+            new Middleware('can:grades.create', only: ['create', 'store']),
+            new Middleware('can:grades.edit', only: ['edit', 'update']),
+            new Middleware('can:grades.delete', only: ['destroy']),
+        ];
+    }
     /**
      * Display a listing of the resource.
      */

@@ -14,12 +14,27 @@ use App\Models\TeacherSubject;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class TeacherController extends Controller
+class TeacherController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            // Middleware para permisos específicos
+            new Middleware('can:teachers.create', only: ['create', 'store']),
+            new Middleware('can:teachers.edit', only: ['edit', 'update']),
+            new Middleware('can:teachers.delete', only: ['destroy']),
+        ];
+    }
     public function index()
     {
         // $teachers = Teacher::all();

@@ -54,6 +54,8 @@ Route::resource('timetables', TimetableController::class)->names('timetables');
 Route::resource('students', StudentController::class)->names('students');
 
 Route::resource('principals', PrincipalController::class)->names('principals');
+Route::get('/principals/{principal}/createUser', [PrincipalController::class, 'createUser'])->name('principals.createUser');
+Route::post('/storeUser/{principal}', [PrincipalController::class, 'storeUser'])->name('principals.storeUser');
 
 Route::resource('attendance_records', AttendanceRecordController::class)->names('attendance_records');
 
