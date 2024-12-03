@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\CourseStudent;
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Testing\Fakes\Fake;
 
 /**

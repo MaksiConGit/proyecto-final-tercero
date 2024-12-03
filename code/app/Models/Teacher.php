@@ -38,7 +38,11 @@ class Teacher extends Model
     public function courses(){
         return $this->belongsToMany(Course::class, 'course_teachers');
     }
-    
+
+    public function courseTeachers()
+    {
+        return $this->hasMany(CourseTeacher::class);
+    }
     public function subjects()
     {
         return $this->hasManyThrough(
@@ -55,12 +59,4 @@ class Teacher extends Model
     {
         return $this->hasMany(TeacherSubject::class);
     }
-
-    public function courseTeachers()
-    {
-        return $this->hasMany(CourseTeacher::class);
-    }
-    
-
-
 }
