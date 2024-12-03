@@ -23,18 +23,12 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'principals.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
         Permission::create(['name' => 'principals.delete'])->syncRoles([$roleAdmin, $rolePrincipal]);
 
-        Permission::create(['name' => 'teachers.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
-        Permission::create(['name' => 'teachers.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
-        Permission::create(['name' => 'teachers.delete'])->syncRoles([$roleAdmin, $rolePrincipal]);
-
         Permission::create(['name' => 'component.icon-dropdown'])->syncRoles([$roleAdmin, $rolePrincipal]);
 
         Permission::create(['name' => 'subjects.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
         Permission::create(['name' => 'subjects.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
         Permission::create(['name' => 'subjects.delete'])->syncRoles([$roleAdmin, $rolePrincipal]);
         
-        Permission::create(['name' => 'component.icon-dropdown'])->syncRoles([$roleAdmin, $rolePrincipal]);
-
         Permission::create(['name' => 'careers.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
         Permission::create(['name' => 'careers.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
         Permission::create(['name' => 'careers.delete'])->syncRoles([$roleAdmin, $rolePrincipal]);
