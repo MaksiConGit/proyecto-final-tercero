@@ -26,6 +26,7 @@ class AttendanceRecordController extends Controller implements HasMiddleware
             new Middleware('can:attendance_records.delete', only: ['destroy']),
         ];
     }
+    
     public function index()
     {
         $class_start_date = Carbon::createFromDate(2024, 3, 1);

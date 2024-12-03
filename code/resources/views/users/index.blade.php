@@ -161,6 +161,12 @@
         </a>
     </li>
     <li class="menu-item">
+        <a href="{{ route('grades.index') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-pencil"></i>
+            <div data-i18n="Basic">Notas</div>
+        </a>
+    </li>
+    <li class="menu-item">
         <a href="{{ route('attendance_records.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-check-circle"></i>
             <div data-i18n="Basic">Asistencias</div>

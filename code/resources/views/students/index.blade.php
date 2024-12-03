@@ -2,7 +2,7 @@
     <x-slot name="titulo">Estudiantes</x-slot>
     <x-slot name="li">
         <li class="menu-item">
-            <a href="{{ route('dashboard') }}" class="menu-link">
+            <a href="{{ route('home') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Home</div>
             </a>
@@ -130,6 +130,12 @@
             <a href="{{ route('subjects.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book"></i>
                 <div data-i18n="Basic">Materias</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('grades.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-pencil"></i>
+                <div data-i18n="Basic">Notas</div>
             </a>
         </li>
         <li class="menu-item">

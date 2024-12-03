@@ -2,7 +2,7 @@
     <x-slot name="titulo">Estudiantes</x-slot>
     <x-slot name="li">
         <li class="menu-item">
-            <a href="{{ route('dashboard') }}" class="menu-link">
+            <a href="{{ route('home') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Home</div>
             </a>
@@ -132,6 +132,12 @@
                 <div data-i18n="Basic">Materias</div>
             </a>
         </li>
+        <li class="menu-item active">
+            <a href="{{ route('grades.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-pencil"></i>
+                <div data-i18n="Basic">Notas</div>
+            </a>
+        </li>
         <li class="menu-item">
             <a href="{{ route('attendance_records.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-check-circle"></i>
@@ -147,7 +153,7 @@
     
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Personas</span></li>
     
-        <li class="menu-item active">
+        <li class="menu-item">
             <a href="{{ route('students.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Basic">Estudiantes</div>
@@ -205,9 +211,48 @@
             {{-- <span class="text-muted fw-light">Estudiantes /</span> Editar Examen --}}
             Notas
         </h4>
-        <div class="row row-cols-1 row-cols-md-3 g-4">        
-            
-        </div>
+            @foreach ($exams as $exam)
+                <x-acordion>
+                <x-slot name="numero">{{$exam->id}}</x-slot>
+                <x-slot name="titulo">{{$exam->teacherSubject->subject->name}} | Examen N°{{$exam->number}}</x-slot>
+                <x-slot name="body">
+                    <x-table>
+                        <x-slot name="table_head">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Usuario</th>
+                                    <th>Nota</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                        </x-slot>
+
+                        <x-slot name="table_body">
+                            <tbody class="table-borde-bottom-0">
+                                @foreach ($exam->grades as $grade)
+                                    <x-table-item>
+                                        <x-slot name="fila_url">{{ route('students.show', [$grade->student->id]) }}</x-slot>
+                                        <x-slot name="nombre">{{ $grade->student->name }}</x-slot>
+                                        <x-slot name="apellido">{{ $grade->student->lastname }}</x-slot>  
+                                        <x-slot name="rol">{{ $grade->grade }}</x-slot>
+                                        <x-slot name="usuario">
+                                            {{-- <x-td-user>
+                                                <x-slot name="nombre_usuario">{{ $grade->student->user->name }}</x-slot>
+                                                <x-slot name="usuario_url">{{ route('users.edit', [$grade->student->user->id]) }}</x-slot>
+                                            </x-td-user> --}}
+                                        </x-slot>   
+                                        <x-slot name="editar_url">{{ route('students.edit', [$grade->student->id]) }}</x-slot>
+                                    </x-table-item>
+                                @endforeach
+                            </tbody>
+                        </x-slot>
+                    </x-table>
+                </x-slot>
+            </x-acordion>
+
+            @endforeach
 
     </div>
     <x-floating-icon>

@@ -1,8 +1,8 @@
 <x-template-layout>
     <x-slot name="titulo">Home - Estudiantes</x-slot>
     <x-slot name="li">
-        <li class="menu-item">
-            <a href="{{ route('dashboard') }}" class="menu-link">
+        <li class="menu-item active">
+            <a href="{{ route('home') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Home</div>
             </a>
@@ -109,9 +109,22 @@
             </a>
         </li>
         <li class="menu-item">
+            <a href="{{ route('notes.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book"></i>
+                <div data-i18n="Basic">Notas</div>
+            </a>
+        </li>
+        
+        <li class="menu-item">
             <a href="{{ route('subjects.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book"></i>
                 <div data-i18n="Basic">Materias</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('grades.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-pencil"></i>
+                <div data-i18n="Basic">Notas</div>
             </a>
         </li>
         <li class="menu-item">
@@ -129,7 +142,7 @@
 
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Personas</span></li>
 
-        <li class="menu-item active">
+        <li class="menu-item">
             <a href="{{ route('students.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Basic">Estudiantes</div>
@@ -232,6 +245,9 @@
 
         <div class="row">
             <!-- Promedio de Asistencia -->
+            <div class="container">
+                
+            </div>
             <div>
                 <x-card-attendance>
                     <x-slot name="titulo">Promedio de Asistencia</x-slot>

@@ -26,7 +26,8 @@ class TimetableController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        echo 'Horarios';
+        abort(404);
+
     }
 
     /**
@@ -34,7 +35,8 @@ class TimetableController extends Controller implements HasMiddleware
      */
     public function create()
     {
-        //
+        abort(404);
+        
     }
 
     /**
@@ -42,6 +44,7 @@ class TimetableController extends Controller implements HasMiddleware
      */
     public function store(Request $request)
     {
+        abort(404);
         //
     }
 
@@ -50,6 +53,7 @@ class TimetableController extends Controller implements HasMiddleware
      */
     public function show(string $id)
     {
+        abort(404);
         //
     }
 
@@ -58,6 +62,7 @@ class TimetableController extends Controller implements HasMiddleware
      */
     public function edit(string $id)
     {
+        abort(404);
         //
     }
 
@@ -66,6 +71,7 @@ class TimetableController extends Controller implements HasMiddleware
      */
     public function update(Request $request, string $id)
     {
+        abort(404);
         //
     }
 
@@ -74,6 +80,7 @@ class TimetableController extends Controller implements HasMiddleware
      */
     public function destroy(string $id)
     {
+        abort(404);
         //
     }
 }

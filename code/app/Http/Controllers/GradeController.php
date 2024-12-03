@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use App\Models\Exam;
+
 
 class GradeController extends Controller implements HasMiddleware
 {
@@ -26,7 +28,8 @@ class GradeController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        return view('grades.index');
+        $exams = Exam::all();
+        return view('grades.index', compact('exams'));
     }
 
     /**
