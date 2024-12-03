@@ -251,9 +251,12 @@
         </div>
 
     </div>
+    @can('students.create')
     <x-floating-icon>
         <x-slot name="url">{{ route('students.create') }}</x-slot>
         <x-slot name="texto">Estudiante +</x-slot>
     </x-floating-icon>
+    @endcan
+    
 </x-template-layout>
 
