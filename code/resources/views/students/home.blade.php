@@ -183,6 +183,7 @@
     </style>
 
     <div class="container">
+        <!-- Título de la página -->
         <h4 class="fw-bold py-3 mb-4">
             Hola, {{ $student->name . ' ' . $student->lastname }}
         </h4>
@@ -199,7 +200,8 @@
             }
         @endphp
 
-        <div class="card {{ $bgColor }} text-white">
+        <!-- Promedio de Calificaciones -->
+        <div class="card {{ $bgColor }} text-white mb-4">
             <div class="card-body">
                 <h5 class="card-title text-white">Promedio de Calificaciones</h5>
                 <p class="card-text">
@@ -212,11 +214,12 @@
             </div>
         </div>
 
-        <div class="card mb-6">
+        <!-- Última Calificación -->
+        <div class="card mb-4">
             <div class="card-body">
-                <h5 class="card-title mb-1">Última Calificacion</h5>
+                <h5 class="card-title mb-3">Última Calificación</h5>
                 @if ($lastExam)
-                    <p class="text-primary">Nota: {{ $lastExam->grade }} </p>
+                    <p class="text-primary">Nota: {{ $lastExam->grade }}</p>
                     <p class="card-text">
                         Examen Nº {{ $lastExam->exam->number }} de
                         {{ $lastExam->exam->teacherSubject->subject->name }}
@@ -227,34 +230,42 @@
             </div>
         </div>
 
-        <div class="container">
-            <x-card-attendance>
-                <x-slot name="titulo">Promedio de Asistencia</x-slot>
-                <x-slot name="url">{{ route('students.show', [$student->id]) }}</x-slot>
-                <x-slot name="id">{{ $student->id }}</x-slot>
-                <x-slot name="porcentaje_asistencia">{{ $attendanceAverage }}</x-slot>
-                <x-slot name="porcentaje_inasistencia">{{ $absenceAverage }}</x-slot>
-            </x-card-attendance>
-
-            <div class="card">
-                <div class="card-header">
-                    Próximo examen:
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        {{ $nextExam ? 'Exámen N°' . $nextExam->number . ' de ' . $nextExam->teacherSubject->subject->name . '. Fecha: ' . $nextExam->date : 'No tienes próximos examenes' }}
-                    </h5>
-                    <p class="card-text">
-                        {{$nextExam ? 'Profesor: ' . $nextExam->teacherSubject->teacher->name : '-'}}
-                    </p>
-                    <a href="javascript:void(0)" class="btn btn-primary">Ver Calendario</a>
+        <div class="row">
+            <!-- Promedio de Asistencia -->
+            <div>
+                <x-card-attendance>
+                    <x-slot name="titulo">Promedio de Asistencia</x-slot>
+                    <x-slot name="url">{{ route('students.show', [$student->id]) }}</x-slot>
+                    <x-slot name="id">{{ $student->id }}</x-slot>
+                    <x-slot name="porcentaje_asistencia">{{ $attendanceAverage }}</x-slot>
+                    <x-slot name="porcentaje_inasistencia">{{ $absenceAverage }}</x-slot>
+                </x-card-attendance>
+            </div>
+        
+            <!-- Próximo Examen -->
+            <div >
+                <div class="card">
+                    <div class="card-header">
+                        Próximo examen:
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ $nextExam ? 'Exámen N°' . $nextExam->number . ' de ' . $nextExam->teacherSubject->subject->name . '. Fecha: ' . $nextExam->date : 'No tienes próximos examenes' }}
+                        </h5>
+                        <p class="card-text">
+                            {{ $nextExam ? 'Profesor: ' . $nextExam->teacherSubject->teacher->name : '-' }}
+                        </p>
+                        <a href="javascript:void(0)" class="btn btn-primary">Ver Calendario</a>
+                    </div>
                 </div>
             </div>
         </div>
+        
     </div>
 
     <x-floating-icon>
         <x-slot name="url">{{ route('students.create') }}</x-slot>
+        <x-slot name="texto">Estudiante +</x-slot>
     </x-floating-icon>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

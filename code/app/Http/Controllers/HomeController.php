@@ -103,7 +103,8 @@ class HomeController extends Controller
             // Promedio de asistencia
             $totalDays = 6; // Ejemplo: días lectivos
 
-            $attendedDays = AttendanceRecord::where('course_student_id', $student->courseStudents->pluck('id'))->where('has_attended', 1)->count();
+            $attendedDays = AttendanceRecord::whereIn('course_student_id', $student->courseStudents->pluck('id'))->where('has_attended', 1)->count();
+
             $missedDays = $totalDays - $attendedDays;
             $attendanceAverage = round(($attendedDays / $totalDays) * 100);
             $absenceAverage = round(($missedDays / $totalDays) * 100);
