@@ -9,4 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class AttendanceRecord extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = ['course_student_id', 'has_attended', 'date'];
+
 }
