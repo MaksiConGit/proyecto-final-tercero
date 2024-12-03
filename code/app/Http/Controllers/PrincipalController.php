@@ -3,9 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class PrincipalController extends Controller
+class PrincipalController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            // Middleware para permisos específicos
+            new Middleware('can:principals.create', only: ['create', 'store']),
+            new Middleware('can:principals.edit', only: ['edit', 'update']),
+            new Middleware('can:principals.delete', only: ['destroy']),
+        ];
+    }
     /**
      * Display a listing of the resource.
      */
