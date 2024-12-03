@@ -1,5 +1,185 @@
 <x-template-layout>
+    <x-slot name="titulo">Editar Carrera</x-slot>
+    <x-slot name="li">
+        <li class="menu-item">
+            <a href="{{ route('dashboard') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Home</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-building"></i>
+                <div data-i18n="Layouts">Instituciones</div>
+            </a>
+        
+            @php
+                $user = auth()->user();
+                $institutions = collect(); // Inicializamos una colección vacía para instituciones
+            @endphp
+        
+            @if ($user->hasRole('Admin'))
+                @php
+                    $institutions = \App\Models\Institution::all(); // Todas las instituciones
+                @endphp
+        
+            @elseif ($user->hasRole('Principal'))
+                @php
+                    $institutions = $user->accountable->institutionPrincipals
+                                    ->pluck('institution')
+                                    ->unique('id');
+                @endphp
+        
+            @elseif ($user->hasRole('Teacher'))
+                @php
+                    $institutions = $user->accountable->courses
+                                    ->pluck('career.institution')
+                                    ->unique('id');
+                @endphp
+        
+            @elseif ($user->hasRole('Student'))
+                @php
+                    $institutions = $user->accountable->courses
+                                    ->pluck('career.institution')
+                                    ->unique('id');
+                @endphp
+        
+            @else
+                <p>No tienes acceso a esta sección.</p>
+            @endif
+        
+            <!-- Mostrar instituciones únicas -->
+            @if ($institutions->isNotEmpty())
+                <ul class="menu-sub">
+                    @foreach ($institutions as $institution)
+                        <li class="menu-item">
+                            <a href="{{ route('institutions.show', [$institution]) }}" class="menu-link">
+                                <div data-i18n="Without menu">{{ $institution->name }}</div>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </li>
+        
+
+        <li class="menu-item open active">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-briefcase"></i>
+                <div data-i18n="Layouts">Carreras</div>
+            </a>
+
+            @php
+                $user = auth()->user();
+                $careers_aside = collect();
+            @endphp
+
+            @if ($user->hasRole('Admin'))
+                @php
+                    $careers_aside = Career::all();
+                @endphp
+
+            @elseif ($user->hasRole('Principal'))
+                @foreach ($user->accountable->institutionPrincipals as $institutionPrincipal)
+                    @php
+                        $careers_aside = $careers_aside->merge($institutionPrincipal->institution->careers);
+                    @endphp
+                @endforeach
+
+            @elseif ($user->hasRole('Teacher'))
+                @php
+                    $careers_aside = $user->accountable->courses
+                                ->pluck('career')
+                                ->unique('id');
+                @endphp
+
+            @elseif ($user->hasRole('Student'))
+                @php
+                    $careers_aside = $user->accountable->courses
+                                ->pluck('career')
+                                ->unique('id');
+                @endphp
+
+            @else
+                <p>No tienes acceso a esta sección.</p>
+            @endif
+
+            @if ($careers_aside->isNotEmpty())
+                <ul class="menu-sub">
+                    @foreach ($careers_aside as $career_aside)
+                        <li class="menu-item {{($career_aside->id == $career->id) ? 'active' : ''}}">
+                            <a href="{{ route('careers.show', [$career_aside]) }}" class="menu-link">
+                                <div data-i18n="Without menu">{{ $career_aside->name }}</div>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </li>
+
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Utilidades</span></li>
+    
+        <li class="menu-item">
+            <a href="{{ route('timetables.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-calendar"></i>
+                <div data-i18n="Basic">Horarios</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('subjects.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book"></i>
+                <div data-i18n="Basic">Materias</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('attendance_records.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-check-circle"></i>
+                <div data-i18n="Basic">Asistencias</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('courses.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book-reader"></i>
+                <div data-i18n="Basic">Cursos</div>
+            </a>
+        </li>
+    
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Personas</span></li>
+    
+        <li class="menu-item">
+            <a href="{{ route('students.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Basic">Estudiantes</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('teachers.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-chalkboard"></i>
+                <div data-i18n="Basic">Profesores</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('principals.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <div data-i18n="Basic">Directivos</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('users.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-group"></i>
+                <div data-i18n="Basic">Usuarios</div>
+            </a>
+        </li>
+
+    </x-slot>
     <div class="container">
+        <h4 class="fw-bold py-3 mb-4">
+            <span class="text-muted fw-light">
+                <a href="{{ route('careers.index', [$career]) }}">Carreras /</a>
+                <a href="{{ route('careers.show', [$career]) }}">Detalles /</a>
+            </span> Editar
+        </h4>
         <x-form-horizontal-icon>
             <x-slot name="titulo">Editar carrera</x-slot>
             <x-slot name="action">{{route('careers.update', $career)}}</x-slot>
@@ -26,7 +206,7 @@
             <x-slot name="modal">
                 <x-modal_template>
                     <x-slot name="titulo">¿Estás seguro que quiere editar esta carrera?</x-slot>
-                    <x-slot name="contenido">Los datos se pordrán modificar más adelante.</x-slot>
+                    <x-slot name="contenido">Los datos se podrán modificar más adelante.</x-slot>
                 </x-modal_template>
             </x-slot>
             <x-slot name="volver_url">{{route('careers.index')}}</x-slot>
@@ -40,38 +220,3 @@
         @endif
     </div>
 </x-template-layout>
-
-
-
-{{-- <h1>Formulario de Edicion</h1>
-@if ($errors->any())
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{$error}}</li>    
-        @endforeach
-    </ul>
-@endif
-<form method="POST" action="{{route('careers.update', $career)}}">
-    @csrf
-    @method('PUT')
-
-    <label>
-        name:
-        <input type="text" name="name" value="{{ old('name', $career->name) }}" required />
-    </label>
-    <br>
-    <label>
-        institution:
-        <select id="institution_id" name="institution_id" required>a
-            @foreach ($institutions as $institution)
-                <option value="{{ $institution->id }}"
-                    {{ $institution->id == $career->institution->id ? 'selected' : '' }}>
-                    {{ $institution->name }}
-                </option>
-            @endforeach
-        </select>
-    </label>
-
-    </div>
-    <button type="submit"> update </button>
-</form> --}}
