@@ -10,6 +10,13 @@ class Grade extends Model
 {
     use HasFactory, SoftDeletes;
 
+
+    protected $fillable = [
+        'student_id',
+        'exam_id',
+        'grade',
+    ];
+
     public function student()
     {
         return $this->belongsTo(Student::class);
