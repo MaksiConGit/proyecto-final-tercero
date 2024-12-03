@@ -187,83 +187,112 @@
             Hola, {{ $teacher->name . ' ' . $teacher->lastname }}
         </h4>
 
-        
-
-        <h2>Promedio de Asistencias por Curso</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Carrera</th>
-                    <th>Curso</th>
-                    <th>Promedio de Asistencia</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($coursesWithAttendance as $data)
-                    <tr>
-                        <td>{{ $data['course']->career->name }}  </td>
-                        <td>{{ $data['course']->course_number . "° " . $data['course']->section }}  </td>
-                        <td>{{ $data['attendance_percentage'] }}%</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <x-acordion>
+            <x-slot name="numero">1</x-slot>
+            <x-slot name="titulo">Promedio de Asistencias por Curso</x-slot>
+            <x-slot name="body">
 
 
-        <h2>Próximos Exámenes</h2>
-        @if ($nextExams->isEmpty())
-            <p>No hay próximos exámenes programados.</p>
-        @else
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>N° de Examen</th>
-                        <th>Materia</th>
-                        <th>Curso</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($nextExams as $exam)
-                        <tr>
-                            <td>{{ \Carbon\Carbon::parse($exam->date)->format('d/m/Y') }}</td>
-                            <td>Examen #{{ $exam->number }}</td>
-                            <td>{{ $exam->teacherSubject->subject->name}}</td>
-                            <td>
-                                @foreach ($exam->courses as $course)
-                                    {{$course->course_number . "° " . $course->section . " "}}
-                                @endforeach
-                            </td>
-                        </tr>
-                        
-                    @endforeach
-                </tbody>
-            </table>
-        @endif
+                @if ($coursesWithAttendance->isEmpty())
+                    <p>No hay cursos asignados.</p>
+                @else
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Carrera</th>
+                                <th>Curso</th>
+                                <th>Promedio de Asistencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($coursesWithAttendance as $data)
+                                <tr>
+                                    <td>{{ $data['course']->career->name }} </td>
+                                    <td>{{ $data['course']->course_number . '° ' . $data['course']->section }} </td>
+                                    <td>{{ $data['attendance_percentage'] }}%</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
+            </x-slot>
+
+        </x-acordion>
+
+        <x-acordion>
+            <x-slot name="numero">2</x-slot>
+            <x-slot name="titulo">Próximos Exámenes</x-slot>
+            <x-slot name="body">
+
+                @if ($nextExams->isEmpty())
+                    <p>No hay próximos exámenes programados.</p>
+                @else
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>N° de Examen</th>
+                                <th>Materia</th>
+                                <th>Curso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($nextExams as $exam)
+                                <tr>
+                                    <td>{{ \Carbon\Carbon::parse($exam->date)->format('d/m/Y') }}</td>
+                                    <td>Examen #{{ $exam->number }}</td>
+                                    <td>{{ $exam->teacherSubject->subject->name }}</td>
+                                    <td>
+                                        @foreach ($exam->courses as $course)
+                                            {{ $course->course_number . '° ' . $course->section . ' ' }}
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
 
 
-        <h2>Cantidad de Exámenes Tomados</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Materia</th>
-                    <th>Exámenes Tomados</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($subjectsWithExamCount as $data)
-                    <tr>
-                        <td>{{ $data['subject']->name }}</td>
-                        <td>
-                            @if ($data['exam_count'] > 0)
-                                {{ $data['exam_count'] }}
-                            @else
-                                No se han tomado exámenes en esta materia.
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+            </x-slot>
+
+        </x-acordion>
+
+        <x-acordion>
+            <x-slot name="numero">3</x-slot>
+            <x-slot name="titulo">Cantidad de Exámenes Tomados</x-slot>
+            <x-slot name="body">
+
+                @if ($subjectsWithExamCount->isEmpty())
+                    <p>No hay exámenes tomados</p>
+                @else
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Materia</th>
+                                <th>Exámenes Tomados</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($subjectsWithExamCount as $data)
+                                <tr>
+                                    <td>{{ $data['subject']->name }}</td>
+                                    <td>
+                                        @if ($data['exam_count'] > 0)
+                                            {{ $data['exam_count'] }}
+                                        @else
+                                            No se han tomado exámenes en esta materia.
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
+
+            </x-slot>
+
+        </x-acordion>
+
 
 </x-template-layout>
