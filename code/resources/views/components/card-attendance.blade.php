@@ -1,4 +1,4 @@
-<div class="col-6 col-sm-6 col-md-4 col-lg-5 mb-4">
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
     <div class="card h-100" style="max-width: 100%; margin: auto;">
         <a href="{{$url}}">
         <h5 class="card-header text-center">{{$titulo}}</h5>
