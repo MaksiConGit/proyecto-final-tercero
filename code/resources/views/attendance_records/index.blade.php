@@ -1,5 +1,5 @@
 <x-template-layout>
-    <x-slot name="titulo">Crear Materia</x-slot>
+    <x-slot name="titulo">Asistencias</x-slot>
     <x-slot name="li">
         <li class="menu-item">
             <a href="{{ route('dashboard') }}" class="menu-link">
@@ -13,32 +13,42 @@
                 <i class="menu-icon tf-icons bx bx-building"></i>
                 <div data-i18n="Layouts">Instituciones</div>
             </a>
-
+        
             @php
                 $user = auth()->user();
                 $institutions = collect(); // Inicializamos una colección vacía para instituciones
             @endphp
-
+        
             @if ($user->hasRole('Admin'))
                 @php
                     $institutions = \App\Models\Institution::all(); // Todas las instituciones
                 @endphp
+        
             @elseif ($user->hasRole('Principal'))
                 @php
-                    $institutions = $user->accountable->institutionPrincipals->pluck('institution')->unique('id');
+                    $institutions = $user->accountable->institutionPrincipals
+                                    ->pluck('institution')
+                                    ->unique('id');
                 @endphp
+        
             @elseif ($user->hasRole('Teacher'))
                 @php
-                    $institutions = $user->accountable->courses->pluck('career.institution')->unique('id');
+                    $institutions = $user->accountable->courses
+                                    ->pluck('career.institution')
+                                    ->unique('id');
                 @endphp
+        
             @elseif ($user->hasRole('Student'))
                 @php
-                    $institutions = $user->accountable->courses->pluck('career.institution')->unique('id');
+                    $institutions = $user->accountable->courses
+                                    ->pluck('career.institution')
+                                    ->unique('id');
                 @endphp
+        
             @else
                 <p>No tienes acceso a esta sección.</p>
             @endif
-
+        
             <!-- Mostrar instituciones únicas -->
             @if ($institutions->isNotEmpty())
                 <ul class="menu-sub">
@@ -52,7 +62,7 @@
                 </ul>
             @endif
         </li>
-
+        
 
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -69,20 +79,28 @@
                 @php
                     $careers_aside = Career::all();
                 @endphp
+
             @elseif ($user->hasRole('Principal'))
                 @foreach ($user->accountable->institutionPrincipals as $institutionPrincipal)
                     @php
                         $careers_aside = $careers_aside->merge($institutionPrincipal->institution->careers);
                     @endphp
                 @endforeach
+
             @elseif ($user->hasRole('Teacher'))
                 @php
-                    $careers_aside = $user->accountable->courses->pluck('career')->unique('id');
+                    $careers_aside = $user->accountable->courses
+                                ->pluck('career')
+                                ->unique('id');
                 @endphp
+
             @elseif ($user->hasRole('Student'))
                 @php
-                    $careers_aside = $user->accountable->courses->pluck('career')->unique('id');
+                    $careers_aside = $user->accountable->courses
+                                ->pluck('career')
+                                ->unique('id');
                 @endphp
+
             @else
                 <p>No tienes acceso a esta sección.</p>
             @endif
@@ -101,20 +119,20 @@
         </li>
 
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Utilidades</span></li>
-
+    
         <li class="menu-item">
             <a href="{{ route('timetables.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-calendar"></i>
                 <div data-i18n="Basic">Horarios</div>
             </a>
         </li>
-        <li class="menu-item active">
+        <li class="menu-item">
             <a href="{{ route('subjects.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book"></i>
                 <div data-i18n="Basic">Materias</div>
             </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item active">
             <a href="{{ route('attendance_records.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-check-circle"></i>
                 <div data-i18n="Basic">Asistencias</div>
@@ -126,9 +144,9 @@
                 <div data-i18n="Basic">Cursos</div>
             </a>
         </li>
-
+    
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Personas</span></li>
-
+    
         <li class="menu-item">
             <a href="{{ route('students.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
@@ -156,55 +174,79 @@
 
     </x-slot>
     <div class="container">
-        <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light"><a href="{{ route('subjects.index') }}">Materias /</a></span> Añadir
-        </h4>
-        <x-form-horizontal-icon>
-            <x-slot name="titulo">Crear materia</x-slot>
-            <x-slot name="action">{{ route('subjects.store') }}</x-slot>
-            <x-slot name="method"></x-slot>
-            <x-slot name="inputs">
-                <x-input-text>
-                    <x-slot name="icon">bx bx-user</x-slot>
-                    <x-slot name="titulo">Nombre</x-slot>
-                    <x-slot name="name">name</x-slot>
-                    <x-slot name="placeholder">Nombre</x-slot>
-                    <x-slot name="value">{{ old('name') }}</x-slot>
-                </x-input-text>
-
-                <hr>
-                <h5>Asignar Cursos</h5>
-                @foreach ($courses as $group => $groupedCourses)
-                    <div class="mb-4">
-                        <h5>{{ $group }}</h5> <!-- Muestra "Institución - Carrera" -->
-                        @foreach ($groupedCourses as $course)
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="courses[]"
-                                    value="{{ $course->id }}" id="course_{{ $course->id }}">
-                                <label class="form-check-label" for="course_{{ $course->id }}">
-                                    {{ $course->course_number . "° " . $course->section }}
-                                </label>
-                            </div>
-                        @endforeach
-                    </div>
-                @endforeach
-
-            </x-slot>
-            <x-slot name="modal">
-                <x-modal_template>
-                    <x-slot name="titulo">¿Estás seguro que quiere crear esta materia?</x-slot>
-                    <x-slot name="contenido"></x-slot>
-                </x-modal_template>
-            </x-slot>
-            <x-slot name="volver_url">{{ route('students.index') }}</x-slot>
-        </x-form-horizontal-icon>
-        @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger" role="alert">{{ $error }}</div>
-                @endforeach
-            </ul>
-        @endif
+        <h4 class="fw-bold py-3 mb-4">Asistencias</h4>
+        <div class="row justify-content-center">
+            @foreach ($students as $student)
+                <x-card-attendance>
+                    @php
+                        $attendance = $student->attendanceRecords->where('has_attended', 1)->count();
+                        $attendance_percentage = round($attendance / round(50) * 100, 1);
+                        $absence_percentage = 100 - $attendance_percentage;
+                    @endphp
+                    <x-slot name="titulo">{{$student->name}}, {{$student->lastname}}</x-slot>
+                    <x-slot name="url">{{route('students.show', [$student->id])}}</x-slot>
+                    <x-slot name="id">{{ $student->id }}</x-slot>
+                    <x-slot name="porcentaje_asistencia">{{ $attendance_percentage }}</x-slot>
+                    <x-slot name="porcentaje_inasistencia">{{ $absence_percentage }}</x-slot>
+                </x-card-attendance>
+            @endforeach
+        </div>
     </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const primaryColor = '#666ee8';
+            const lightGreyColor = '#D3D3D3';
+            const orangeLightColor = '#FDAC34';
+            
+            @foreach ($students as $student)
 
+                @php
+                    $attendance = $student->attendanceRecords->where('has_attended', 1)->count();
+                    $attendance_percentage = round($attendance / round(50) * 100, 1);
+                    $absence_percentage = 100 - $attendance_percentage;
+                @endphp
+                
+                const ctx{{$student->id}} = document.getElementById('doughnutChart{{$student->id}}').getContext('2d');
+                const doughnutChart{{$student->id}} = new Chart(ctx{{$student->id}}, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Asistencia', 'Inasistencia'],
+                        datasets: [{
+                            data: [{{ $attendance_percentage }}, {{ $absence_percentage }}],
+                            backgroundColor: [primaryColor, lightGreyColor],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        cutout: '68%',
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return ' ' + context.label + ' : ' + context.raw + ' %';
+                                    }
+                                },
+                                backgroundColor: '#FFF',
+                                titleColor: '#333',
+                                bodyColor: '#666',
+                                borderWidth: 1,
+                                borderColor: '#DDD'
+                            }
+                        }
+                    }
+                });
+            @endforeach
+        });
+    </script>
+    @can('attendance_records.create')
+    <x-floating-icon>
+        <x-slot name="url">{{ route('attendance_records.create') }}</x-slot>
+        <x-slot name="texto">Asistencia +</x-slot>
+    </x-floating-icon>
+    @endcan
 </x-template-layout>

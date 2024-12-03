@@ -174,6 +174,7 @@ class TeacherController extends Controller implements HasMiddleware
 
         // Asociar polimórficamente el usuario con el estudiante
         $user->accountable()->associate($teacher);
+        $user->assignRole('Teacher');
         $user->save();
 
         return redirect(route('teachers.index'));

@@ -8,24 +8,9 @@ use App\Models\Course;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
 
-class AttendanceRecordController extends Controller implements HasMiddleware
+class AttendanceRecordController extends Controller
 {
-    /**
-     * Get the middleware that should be assigned to the controller.
-     */
-    public static function middleware(): array
-    {
-        return [
-            'auth',
-            // Middleware para permisos específicos
-            new Middleware('can:attendance_records.create', only: ['create', 'store']),
-            new Middleware('can:attendance_records.edit', only: ['edit', 'update']),
-            new Middleware('can:attendance_records.delete', only: ['destroy']),
-        ];
-    }
     public function index()
     {
         $class_start_date = Carbon::createFromDate(2024, 3, 1);
