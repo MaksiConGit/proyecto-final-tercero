@@ -12,4 +12,8 @@ class InstitutionPrincipal extends Model
     public function institution(){
         return $this->belongsTo(Institution::class);
     }
+
+    public function principal(){
+        return $this->belongsTo(Principal::class);
+    }
 }

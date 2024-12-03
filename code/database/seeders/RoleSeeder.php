@@ -22,5 +22,21 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'attendance_records.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
         Permission::create(['name' => 'attendance_records.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
         Permission::create(['name' => 'attendance_records.delete'])->syncRoles([$roleAdmin, $rolePrincipal]);
+
+        Permission::create(['name' => 'grades.create'])->syncRoles([$roleAdmin, $rolePrincipal, $roleTeacher]);
+        Permission::create(['name' => 'grades.edit'])->syncRoles([$roleAdmin, $rolePrincipal, $roleTeacher]);
+        Permission::create(['name' => 'grades.delete'])->syncRoles([$roleAdmin, $rolePrincipal, $roleTeacher]);
+      
+        Permission::create(['name' => 'teachers.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'teachers.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'teachers.delete'])->syncRoles([$roleAdmin, $rolePrincipal]);
+
+        Permission::create(['name' => 'students.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'students.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'students.delete'])->syncRoles([$roleAdmin, $rolePrincipal]);
+
+        Permission::create(['name' => 'institutions.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'institutions.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'institutions.delete'])->syncRoles([$roleAdmin, $rolePrincipal]);
     }
 }

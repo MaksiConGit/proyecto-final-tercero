@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 
-class InstitutionController extends Controller implements HasMiddleware
+class GradeController extends Controller implements HasMiddleware
 {
     /**
      * Get the middleware that should be assigned to the controller.
@@ -16,18 +16,17 @@ class InstitutionController extends Controller implements HasMiddleware
         return [
             'auth',
             // Middleware para permisos específicos
-            new Middleware('can:institutions.create', only: ['create', 'store']),
-            new Middleware('can:institutions.edit', only: ['edit', 'update']),
-            new Middleware('can:institutions.delete', only: ['destroy']),
+            new Middleware('can:grades.create', only: ['create', 'store']),
+            new Middleware('can:grades.edit', only: ['edit', 'update']),
+            new Middleware('can:grades.delete', only: ['destroy']),
         ];
     }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        echo 'Institución';
+        echo 'Notas';
     }
 
     /**

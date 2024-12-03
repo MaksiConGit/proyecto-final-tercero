@@ -28,4 +28,10 @@ class TeacherSubject extends Model
         return $this->hasMany(Exam::class);
     }
 
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
+
+
 }
