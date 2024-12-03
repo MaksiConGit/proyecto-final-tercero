@@ -23,6 +23,8 @@ class StoreSubjectRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'courses' => 'nullable|array', // El campo courses es opcional, pero debe ser un array si existe
+            'courses.*' => 'exists:courses,id',
         ];
     }
 }
