@@ -23,6 +23,10 @@ class Course extends Model
     public function courseTeachers(){
         return $this->hasMany(CourseTeacher::class);
     }
+    
+    public function courseExams(){
+        return $this->hasMany(CourseExam::class);
+    }
 
     public function courseStudents(){
         return $this->hasMany(CourseStudent::class);
@@ -33,9 +37,20 @@ class Course extends Model
         return $this->belongsToMany(Student::class, 'course_students');
     }
 
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class, 'course_teachers');
+    }
+
     public function exams()
     {
         return $this->belongsToMany(Exam::class, 'course_exams');
     }
+
+    public function teacherSubject()
+    {
+        return $this->belongsTo(TeacherSubject::class);
+    }
+
 
 }

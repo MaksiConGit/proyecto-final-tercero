@@ -39,6 +39,7 @@
             @endforeach
         </div>
     </div>
-
+    @can('subjects.create')
     <x-floating-icon></x-floating-icon>
+    @endcan
 </x-template-layout>
