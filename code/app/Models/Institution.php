@@ -15,4 +15,9 @@ class Institution extends Model
         return $this->hasMany(Career::class);
     }
 
+    public function institutionPrincipals()
+    {
+        return $this->hasMany(InstitutionPrincipal::class);
+    }
+
 }
