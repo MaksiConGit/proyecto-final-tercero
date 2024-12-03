@@ -50,4 +50,17 @@ class Teacher extends Model
             'subject_id'             // Clave foránea en Subject
         );
     }
+
+    public function teacherSubjects()
+    {
+        return $this->hasMany(TeacherSubject::class);
+    }
+
+    public function courseTeachers()
+    {
+        return $this->hasMany(CourseTeacher::class);
+    }
+    
+
+
 }
