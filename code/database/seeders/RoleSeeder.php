@@ -18,5 +18,9 @@ class RoleSeeder extends Seeder
         $rolePrincipal = Role::create(['name' => 'Principal']);
         $roleTeacher = Role::create(['name' => 'Teacher']);
         $roleStudent = Role::create(['name' => 'Student']);
+
+        Permission::create(['name' => 'courses.create'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'courses.edit'])->syncRoles([$roleAdmin, $rolePrincipal]);
+        Permission::create(['name' => 'courses.delete'])->syncRoles([$roleAdmin, $rolePrincipal]);
     }
 }
