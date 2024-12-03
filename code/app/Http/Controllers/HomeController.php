@@ -27,15 +27,15 @@ class HomeController extends Controller
             // Obtener instituciones del principal
             $institutionIds = InstitutionPrincipal::where('principal_id', $principalId)->pluck('institution_id');
 
-            $careers = Career::with('institution') // Relación con instituciones
-                ->withCount('courses') // Cuenta los cursos asociados
+            $careersCount = Career::with('institution')
+                ->withCount('courses') // Asegúrate de que se cuenten los cursos
                 ->whereIn('institution_id', $institutionIds)
                 ->get();
 
             // Obtener los promedios de notas agrupados por carrera
             $averages = DB::table('grades')->join('exams', 'grades.exam_id', '=', 'exams.id')->join('course_exams', 'exams.id', '=', 'course_exams.exam_id')->join('courses', 'course_exams.course_id', '=', 'courses.id')->join('careers', 'courses.career_id', '=', 'careers.id')->whereIn('careers.institution_id', $institutionIds)->select('careers.id as career_id', 'careers.name as career_name', DB::raw('AVG(grades.grade) as average_grade'))->groupBy('careers.id', 'careers.name')->get();
 
-            return view('principals.home', compact('principal', 'careers', 'averages'));
+            return view('principals.home', compact('principal', 'careersCount', 'averages'));
         }
 
         if ($user->hasRole('Teacher')) {

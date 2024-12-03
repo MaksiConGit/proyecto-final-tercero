@@ -187,44 +187,59 @@
             Hola, {{ $principal->name . ' ' . $principal->lastname }}
         </h4>
 
+        <x-acordion>
+            <x-slot name="numero">1</x-slot>
+            <x-slot name="titulo">Cantidad de cursos asignados en las carreras</x-slot>
+            <x-slot name="body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Carrera</th>
+                            <th>Institución</th>
+                            <th>Cantidad de Cursos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($careersCount as $career)
+                            <tr>
+                                <td>{{ $career->name }}</td>
+                                <td>{{ $career->institution->name }}</td>
+                                <td>{{ $career->courses_count > 0 ? $career->courses_count : 'No tiene cursos asignados.' }}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
 
-        <h2>Carreras y Cursos</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Carrera</th>
-                    <th>Institución</th>
-                    <th>Cantidad de Cursos</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($careers as $career)
-                    <tr>
-                        <td>{{ $career->name }}</td>
-                        <td>{{ $career->institution->name }}</td>
-                        <td>{{ $career->courses_count }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+            </x-slot>
 
-        <h2>Promedios de Notas por Carrera</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Carrera</th>
-                    <th>Promedio de Notas</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($averages as $average)
-                    <tr>
-                        <td>{{ $average->career_name }}</td>
-                        <td>{{ number_format($average->average_grade, 2) }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        </x-acordion>
+
+        <x-acordion>
+            <x-slot name="numero">2</x-slot>
+            <x-slot name="titulo">Promedio de notas de los estudiantes por carreas</x-slot>
+            <x-slot name="body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Carrera</th>
+                            <th>Promedio de Notas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($averages as $average)
+                            <tr>
+                                <td>{{ $average->career_name }}</td>
+                                <td>{{ number_format($average->average_grade, 2) }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+            </x-slot>
+
+        </x-acordion>
+
 
 
 </x-template-layout>
