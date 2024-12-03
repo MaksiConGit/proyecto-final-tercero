@@ -219,8 +219,8 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'city_id' => '2',
             'user_id' => '20',
         ]);
-        Principal::factory(10)->create();
-        Teacher::factory(10)->create();
-        Student::factory(10)->create();
+        // Principal::factory(10)->create();
+        // Teacher::factory(10)->create();
+        // Student::factory(10)->create();
     }
 }

@@ -224,9 +224,9 @@ class Institution_Career_CourseSeeder extends Seeder
             'section' => 'Comercializacion',
             'career_id' => '4',
         ]);
-        Institution::factory(10)->create();
-        Career::factory(10)->create();
-        Course::factory(10)->create();
+        // Institution::factory(10)->create();
+        // Career::factory(10)->create();
+        // Course::factory(10)->create();
         
     }
 }

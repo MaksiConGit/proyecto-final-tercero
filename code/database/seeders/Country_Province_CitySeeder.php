@@ -229,8 +229,6 @@ class Country_Province_CitySeeder extends Seeder
             'province_id' => '1',
         ]);
         // Country::factory(10)->create();
-        Province::factory(10)->create();
-        City::factory(10)->create();
 
     }
 }
