@@ -36,6 +36,14 @@ class Student extends Model
         ;
     }
 
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'course_students', 'course_id', 'student_id')
+            ->withPivot('id') // Incluye el campo 'id' de la tabla intermedia
+            ->withTimestamps(); // Incluye las marcas de tiempo si están presentes en la tabla intermedia
+    }
+
+
     public function user()
     {
         return $this->morphOne(User::class, 'accountable');

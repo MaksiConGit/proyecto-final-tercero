@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 
-class AttendanceRecordController extends Controller implements HasMiddleware
+class GradeController extends Controller implements HasMiddleware
 {
     /**
      * Get the middleware that should be assigned to the controller.
@@ -16,9 +16,9 @@ class AttendanceRecordController extends Controller implements HasMiddleware
         return [
             'auth',
             // Middleware para permisos específicos
-            new Middleware('can:attendance_records.create', only: ['create', 'store']),
-            new Middleware('can:attendance_records.edit', only: ['edit', 'update']),
-            new Middleware('can:attendance_records.delete', only: ['destroy']),
+            new Middleware('can:grades.create', only: ['create', 'store']),
+            new Middleware('can:grades.edit', only: ['edit', 'update']),
+            new Middleware('can:grades.delete', only: ['destroy']),
         ];
     }
     /**
@@ -26,7 +26,7 @@ class AttendanceRecordController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        echo 'Asistencias';
+        echo 'Notas';
     }
 
     /**
