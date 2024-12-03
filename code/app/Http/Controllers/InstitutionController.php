@@ -3,9 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class InstitutionController extends Controller
+class InstitutionController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            // Middleware para permisos específicos
+            new Middleware('can:institutions.create', only: ['create', 'store']),
+            new Middleware('can:institutions.edit', only: ['edit', 'update']),
+            new Middleware('can:institutions.delete', only: ['destroy']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
