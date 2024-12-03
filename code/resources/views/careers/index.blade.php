@@ -3,13 +3,15 @@
         <div class="row">
             @foreach ($careers as $career)
                 <div class="col-md-6 col-lg-4 mb-3 d-flex">
-                    <a href="{{route('careers.show', [$career->id])}}">
+                    <a href="{{ route('careers.show', [$career->id]) }}">
                         <x-card>
-                            <x-slot name="titulo">{{$career->name}}</x-slot>
+                            <x-slot name="titulo">{{ $career->name }}</x-slot>
                             <x-slot name="img">
-                                <img class="card-img-top" src="../template_files/assets/img/reyo/programacion-2-e1551291144973.jpg" alt="materia" />
+                                <img class="card-img-top"
+                                    src="../template_files/assets/img/reyo/programacion-2-e1551291144973.jpg"
+                                    alt="materia" />
                             </x-slot>
-                            <x-slot name="texto">{{$career->institution->name}}</x-slot>
+                            <x-slot name="texto">{{ $career->institution->name }}</x-slot>
                             <x-slot name="footer"></x-slot>
                         </x-card>
                     </a>
@@ -17,7 +19,10 @@
             @endforeach
         </div>
     </div>
-    <x-floating-icon>
-        <x-slot name="url">{{route('careers.create')}}</x-slot>
-    </x-floating-icon>
+    @can('careers.create')
+        <x-floating-icon>
+            <x-slot name="url">{{ route('careers.create') }}</x-slot>
+        </x-floating-icon>
+    @endcan
+
 </x-template-layout>
