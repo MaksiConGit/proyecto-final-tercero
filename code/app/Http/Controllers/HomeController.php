@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\AttendanceRecord;
+use App\Models\Career;
 use App\Models\Exam;
+use App\Models\Institution;
+use App\Models\InstitutionPrincipal;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -16,7 +20,22 @@ class HomeController extends Controller
         $user = auth()->user();
 
         if ($user->hasRole('Principal')) {
-            return view('principals.index');
+            $principal = $user->accountable;
+
+            $principalId = Auth::user()->accountable->id;
+
+            // Obtener instituciones del principal
+            $institutionIds = InstitutionPrincipal::where('principal_id', $principalId)->pluck('institution_id');
+
+            $careers = Career::with('institution') // Relación con instituciones
+                ->withCount('courses') // Cuenta los cursos asociados
+                ->whereIn('institution_id', $institutionIds)
+                ->get();
+
+            // Obtener los promedios de notas agrupados por carrera
+            $averages = DB::table('grades')->join('exams', 'grades.exam_id', '=', 'exams.id')->join('course_exams', 'exams.id', '=', 'course_exams.exam_id')->join('courses', 'course_exams.course_id', '=', 'courses.id')->join('careers', 'courses.career_id', '=', 'careers.id')->whereIn('careers.institution_id', $institutionIds)->select('careers.id as career_id', 'careers.name as career_name', DB::raw('AVG(grades.grade) as average_grade'))->groupBy('careers.id', 'careers.name')->get();
+
+            return view('principals.home', compact('principal', 'careers', 'averages'));
         }
 
         if ($user->hasRole('Teacher')) {
