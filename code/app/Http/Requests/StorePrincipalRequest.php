@@ -27,9 +27,7 @@ class StorePrincipalRequest extends FormRequest
             'dni' => 'required|string|max:255|unique:principals,dni',
             'phone' => 'required|string|max:14',
             'birthdate' => 'required|date|before:today',
-            'city_id' => 'required|exists:cities,id',
-            'user_id' => 'required|exists:users,id',
-            'is_deleted' => 'boolean'
+            'city_id' => 'required|exists:cities,id'
         ];
     }
 }
