@@ -150,9 +150,8 @@ class PrincipalController extends Controller
     public function edit(Principal $principal)
     {
         $cities = City::all();
-        $institutions = Institution::all();
-
-        return view('principals.edit', compact('principal', 'cities', 'institutions'));
+        $institutionsArray = Auth::user()->accountable->institutions;
+        return view('principals.edit', compact('principal', 'cities', 'institutionsArray'));
     }
 
     public function update(UpdatePrincipalRequest $request, Principal $principal)
@@ -161,9 +160,11 @@ class PrincipalController extends Controller
         $principal->update($request->validated());
 
         $principal->user->update([
-            'institution_id' => $request->input('institution'),
             'email' => $request->input('email'),
         ]);
+
+        // Actualiza las instituciones del estudiante
+        $principal->institutions()->sync($request->input('instituciones'));  // Sincroniza las relaciones con las instituciones
 
         return redirect(route('principals.show', $principal));
     }

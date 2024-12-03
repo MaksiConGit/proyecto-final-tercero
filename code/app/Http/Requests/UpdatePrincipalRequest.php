@@ -29,7 +29,8 @@ class UpdatePrincipalRequest extends FormRequest
             'phone' => 'required|string|max:14',
             'birthdate' => 'required|date|before:today',
             'city_id' => 'required|exists:cities,id',
-            'user_id' => ['nullable', Rule::unique('principals')->ignore($this->principal->id)],
+            'instituciones' => 'required|array|min:1',
+            'instituciones.*' => 'exists:institutions,id',
         ];
     }
 }

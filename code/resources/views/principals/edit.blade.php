@@ -13,42 +13,32 @@
                 <i class="menu-icon tf-icons bx bx-building"></i>
                 <div data-i18n="Layouts">Instituciones</div>
             </a>
-        
+
             @php
                 $user = auth()->user();
                 $institutions_aside = collect(); // Inicializamos una colección vacía para instituciones
             @endphp
-        
+
             @if ($user->hasRole('Admin'))
                 @php
                     $institutions_aside = \App\Models\Institution::all(); // Todas las instituciones
                 @endphp
-        
             @elseif ($user->hasRole('Principal'))
                 @php
-                    $institutions_aside = $user->accountable->institutionPrincipals
-                                    ->pluck('institution')
-                                    ->unique('id');
+                    $institutions_aside = $user->accountable->institutionPrincipals->pluck('institution')->unique('id');
                 @endphp
-        
             @elseif ($user->hasRole('Teacher'))
                 @php
-                    $institutions_aside = $user->accountable->courses
-                                    ->pluck('career.institution')
-                                    ->unique('id');
+                    $institutions_aside = $user->accountable->courses->pluck('career.institution')->unique('id');
                 @endphp
-        
             @elseif ($user->hasRole('Student'))
                 @php
-                    $institutions_aside = $user->accountable->courses
-                                    ->pluck('career.institution')
-                                    ->unique('id');
+                    $institutions_aside = $user->accountable->courses->pluck('career.institution')->unique('id');
                 @endphp
-        
             @else
                 <p>No tienes acceso a esta sección.</p>
             @endif
-        
+
             <!-- Mostrar instituciones únicas -->
             @if ($institutions_aside->isNotEmpty())
                 <ul class="menu-sub">
@@ -62,7 +52,7 @@
                 </ul>
             @endif
         </li>
-        
+
 
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -79,28 +69,20 @@
                 @php
                     $careers_aside = Career::all();
                 @endphp
-
             @elseif ($user->hasRole('Principal'))
                 @foreach ($user->accountable->institutionPrincipals as $institutionPrincipal)
                     @php
                         $careers_aside = $careers_aside->merge($institutionPrincipal->institution->careers);
                     @endphp
                 @endforeach
-
             @elseif ($user->hasRole('Teacher'))
                 @php
-                    $careers_aside = $user->accountable->courses
-                                ->pluck('career')
-                                ->unique('id');
+                    $careers_aside = $user->accountable->courses->pluck('career')->unique('id');
                 @endphp
-
             @elseif ($user->hasRole('Student'))
                 @php
-                    $careers_aside = $user->accountable->courses
-                                ->pluck('career')
-                                ->unique('id');
+                    $careers_aside = $user->accountable->courses->pluck('career')->unique('id');
                 @endphp
-
             @else
                 <p>No tienes acceso a esta sección.</p>
             @endif
@@ -119,7 +101,7 @@
         </li>
 
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Utilidades</span></li>
-    
+
         <li class="menu-item">
             <a href="{{ route('timetables.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-calendar"></i>
@@ -144,9 +126,9 @@
                 <div data-i18n="Basic">Cursos</div>
             </a>
         </li>
-    
+
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Personas</span></li>
-    
+
         <li class="menu-item">
             <a href="{{ route('students.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
@@ -182,7 +164,7 @@
         </h4>
         <x-form-horizontal-icon>
             <x-slot name="titulo">Editar direcitvo</x-slot>
-            <x-slot name="action">{{route('principals.update', $principal)}}</x-slot>
+            <x-slot name="action">{{ route('principals.update', $principal) }}</x-slot>
             <x-slot name="method">@method('PUT')</x-slot>
             <x-slot name="inputs">
                 <x-input-text>
@@ -211,38 +193,38 @@
                     <x-slot name="titulo">DNI</x-slot>
                     <x-slot name="name">dni</x-slot>
                     <x-slot name="placeholder">DNI</x-slot>
-                    <x-slot name="value">{{old('dni', $principal->dni)}}</x-slot>
+                    <x-slot name="value">{{ old('dni', $principal->dni) }}</x-slot>
                 </x-input-text>
                 <x-input-text>
                     <x-slot name="icon">bx bx-buildings</x-slot>
                     <x-slot name="titulo">Teléfono</x-slot>
                     <x-slot name="name">phone</x-slot>
                     <x-slot name="placeholder">Teléfono</x-slot>
-                    <x-slot name="value">{{old('phone', $principal->phone)}}</x-slot>
+                    <x-slot name="value">{{ old('phone', $principal->phone) }}</x-slot>
                 </x-input-text>
                 <x-input-date>
                     <x-slot name="titulo">Fecha de nacimiento</x-slot>
                     <x-slot name="name">birthdate</x-slot>
-                    <x-slot name="value">{{old('birthdate', $principal->birthdate)}}</x-slot>
+                    <x-slot name="value">{{ old('birthdate', $principal->birthdate) }}</x-slot>
                 </x-input-date>
-                <x-input-select>
-                    <x-slot name="titulo">Institución</x-slot>
-                    <x-slot name="name">institution</x-slot>
-                    <x-slot name="opciones">
-                        <option value="">Selecciona una institución</option>
-                        @foreach ($institutions as $institution)
-                            <option value="{{ $institution->id }}" 
-                                @if ($principal->user->institution_id == $institution->id) selected @endif>
-                                {{ $institution->name }} 
-                                @if ($principal && $principal->user && $principal->user->institution_id === $institution->id) 
-                                    (Actual) 
-                                @endif
-                            </option>
-                        @endforeach
-                    </x-slot>
-                </x-input-select>
 
                 @livewire('CitySelect', ['selectedCity' => $principal->city_id])
+
+                <hr>
+                <h5>Asignar Instituciones</h5>
+
+
+                @foreach ($institutionsArray as $institution)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="instituciones[]"
+                            value="{{ $institution->id }}" @if ($principal->institutions->contains($institution->id)) checked @endif>
+                        <label class="form-check-label" for="instituciones[]">
+                            {{ $institution->name }}
+                        </label>
+                    </div>
+                @endforeach
+
+
 
             </x-slot>
             <x-slot name="modal">
@@ -251,18 +233,15 @@
                     <x-slot name="contenido">Los datos se podrán modificar más adelante.</x-slot>
                 </x-modal_template>
             </x-slot>
-            <x-slot name="volver_url">{{route('principals.index')}}</x-slot>
+            <x-slot name="volver_url">{{ route('principals.index') }}</x-slot>
         </x-form-horizontal-icon>
         @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger" role="alert">{{$error}}</div>    
-            @endforeach
-        </ul>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger" role="alert">{{ $error }}</div>
+                @endforeach
+            </ul>
         @endif
     </div>
-    <x-floating-icon>
-        <x-slot name="url">{{ route('principals.create') }}</x-slot>
-        <x-slot name="texto">Directivo +</x-slot>
-    </x-floating-icon>
+
 </x-template-layout>
