@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\CourseStudent;
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,7 @@ class AttendanceRecordFactory extends Factory
     public function definition(): array
     {
         return [
-            'course_student_id' => DB::table('course_students')-> inRandomOrder()->first()->id,
+            'course_student_id' => CourseStudent::inRandomOrder()->first()->id,
             'has_attended'=> fake()->boolean(),
             'date'=>fake()->date()
         ];
