@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use function Ramsey\Uuid\v1;
+
 class PrincipalTeacherStudentSeeder extends Seeder
 {
     /**
@@ -147,6 +149,182 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'city_id' => '1',
             'user_id' => '12',
         ]);
+        Student::create([ //STUDENT
+            'name' => 'Butista',
+            'lastname' => 'Aguiar',
+            'dni' => '50098275',
+            'phone' => '543364872365',
+            'birthdate' => '2009-11-22',
+            'city_id' => '1',
+            'user_id' => '13',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Lionel',
+            'lastname' => 'Aguierre',
+            'dni' => '50234123',
+            'phone' => '543341957204',
+            'birthdate' => '2009-10-22',
+            'city_id' => '1',
+            'user_id' => '13',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Juan Agustín',
+            'lastname' => 'Ardissino',
+            'dni' => '50908760',
+            'phone' => '543364454643',
+            'birthdate' => '2009-10-22',
+            'city_id' => '1',
+            'user_id' => '14',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Chiara Carolina',
+            'lastname' => 'Borrás',
+            'dni' => '504098544',
+            'phone' => '543364887899',
+            'birthdate' => '2009-01-17',
+            'city_id' => '1',
+            'user_id' => '16',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Lautaro Nicolas',
+            'lastname' => 'Carrillo Suarez',
+            'dni' => '50785400',
+            'phone' => '54336466677',
+            'birthdate' => '2009-09-22',
+            'city_id' => '1',
+            'user_id' => '17',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Jeremías Agustín',
+            'lastname' => 'Casas',
+            'dni' => '50122132',
+            'phone' => '54336444456',
+            'birthdate' => '2009-08-22',
+            'city_id' => '1',
+            'user_id' => '18',
+        ]);
+
+        Student::create([ //STUDENT
+            'name' => 'Donato Elias',
+            'lastname' => 'Cavallero',
+            'dni' => '50990099',
+            'phone' => '543364122132',
+            'birthdate' => '2009-07-22',
+            'city_id' => '1',
+            'user_id' => '19',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Jenaro',
+            'lastname' => 'Dominguez Herrera',
+            'dni' => '51000001',
+            'phone' => '543364344334',
+            'birthdate' => '2009-07-1',
+            'city_id' => '1',
+            'user_id' => '20',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Emiliano',
+            'lastname' => 'Flores',
+            'dni' => '50990901',
+            'phone' => '543364344443',
+            'birthdate' => '2009-06-1',
+            'city_id' => '1',
+            'user_id' => '21',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Juan Bernabe',
+            'lastname' => 'Germano Pacanis',
+            'dni' => '51687876',
+            'phone' => '543364654334',
+            'birthdate' => '2009-05-1',
+            'city_id' => '1',
+            'user_id' => '22',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Maximiliano Ezequiel',
+            'lastname' => 'Godoy',
+            'dni' => '50009089',
+            'phone' => '54336432234',
+            'birthdate' => '2009-04-21',
+            'city_id' => '1',
+            'user_id' => '23',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Manuel Joaquín',
+            'lastname' => 'Gomez Zuliani',
+            'dni' => '50002001',
+            'phone' => '543364123345',
+            'birthdate' => '2009-07-15',
+            'city_id' => '1',
+            'user_id' => '24',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Tomas Gabriel',
+            'lastname' => 'Gomez',
+            'dni' => '50032001',
+            'phone' => '543364441332',
+            'birthdate' => '2009-03-05',
+            'city_id' => '1',
+            'user_id' => '25',
+        ]);
+
+        Student::create([ //STUDENT
+            'name' => 'Valentino',
+            'lastname' => 'González López',
+            'dni' => '51987765',
+            'phone' => '543364344223',
+            'birthdate' => '2009-11-29',
+            'city_id' => '1',
+            'user_id' => '26',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Bautista Jesus',
+            'lastname' => 'Gonzalez',
+            'dni' => '51510051',
+            'phone' => '543364345151',
+            'birthdate' => '2009-02-1',
+            'city_id' => '1',
+            'user_id' => '27',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Ciro',
+            'lastname' => 'Gorosito',
+            'dni' => '51045301',
+            'phone' => '543364344553',
+            'birthdate' => '2009-03-13',
+            'city_id' => '1',
+            'user_id' => '28',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Benjamin Eloy',
+            'lastname' => 'Herrera',
+            'dni' => '50987234',
+            'phone' => '543364350334',
+            'birthdate' => '2009-02-07',
+            'city_id' => '1',
+            'user_id' => '29',
+        ]);
+
+        Student::create([ //STUDENT
+            'name' => 'Fernando',
+            'lastname' => 'Herrera',
+            'dni' => '50777989',
+            'phone' => '543364778899',
+            'birthdate' => '2009-08-14',
+            'city_id' => '1',
+            'user_id' => '30',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Juan Ezequiel',
+            'lastname' => 'Llamas',
+            'dni' => '51335445',
+            'phone' => '543364221133',
+            'birthdate' => '2009-10-19',
+            'city_id' => '1',
+            'user_id' => '31',
+        ]);
+        
+
         Teacher::create([ //TEACHER
             'name' => 'Nicolas',
             'lastname' => 'Rotili',
@@ -154,7 +332,7 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'phone' => '3364987123',
             'birthdate' => Carbon::yesterday(),
             'city_id' => '2',
-            'user_id' => '12',
+            'user_id' => '32',
         ]);
         Teacher::create([ //TEACHER
             'name' => 'Walter',
@@ -163,7 +341,7 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'phone' => '3364987102',
             'birthdate' => Carbon::yesterday(),
             'city_id' => '2',
-            'user_id' => '14',
+            'user_id' => '33',
         ]);
         Teacher::create([ //TEACHER
             'name' => 'Karina',
@@ -172,7 +350,7 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'phone' => '3364555999',
             'birthdate' => Carbon::yesterday(),
             'city_id' => '2',
-            'user_id' => '15',
+            'user_id' => '34',
         ]);
         Teacher::create([ //TEACHER
             'name' => 'Nancy',
@@ -181,7 +359,7 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'phone' => '3364008765',
             'birthdate' => Carbon::yesterday(),
             'city_id' => '2',
-            'user_id' => '16',
+            'user_id' => '35',
         ]);
         Teacher::create([ //TEACHER
             'name' => 'Luis',
@@ -190,7 +368,7 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'phone' => '3364778899',
             'birthdate' => Carbon::yesterday(),
             'city_id' => '2',
-            'user_id' => '17',
+            'user_id' => '36',
         ]);
         Teacher::create([ //TEACHER
             'name' => 'Facundo',
@@ -199,7 +377,7 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'phone' => '3364987654',
             'birthdate' => Carbon::yesterday(),
             'city_id' => '2',
-            'user_id' => '18',
+            'user_id' => '37',
         ]);
         Teacher::create([ //TEACHER
             'name' => 'Fabian',
@@ -208,7 +386,7 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'phone' => '3364098172',
             'birthdate' => Carbon::yesterday(),
             'city_id' => '2',
-            'user_id' => '19',
+            'user_id' => '38',
         ]);
         Teacher::create([ //TEACHER
             'name' => 'Damian',
@@ -217,7 +395,7 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'phone' => '3364107385',
             'birthdate' => Carbon::yesterday(),
             'city_id' => '2',
-            'user_id' => '20',
+            'user_id' => '39',
         ]);
         // Principal::factory(10)->create();
         // Teacher::factory(10)->create();
