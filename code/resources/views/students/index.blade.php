@@ -240,14 +240,13 @@
                                     @endif">
                                     {{$student->user->getRoleNames()->first()}}</span>
                                 @else 
-                                    Usuario no asignado.
+                                    Rol no asignado.
                                 @endif
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-            
             @endforeach
         </div>
 
