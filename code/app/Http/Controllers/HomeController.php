@@ -28,10 +28,10 @@ class HomeController extends Controller
 
             // Última nota del examen
             $lastExam = $student->grades()->with('exam.teacherSubject.teacher')->latest()->first(); // Trae la última nota de los exámenes
-
             // Promedio de asistencia
             $totalDays = 6; // Ejemplo: días lectivos
-            $attendedDays = AttendanceRecord::where('student_id', $student->id)
+
+            $attendedDays = AttendanceRecord::where('course_student_id', $student->courseStudents->pluck('id'))
                 ->where('has_attended', 1)
                 ->count();
             $missedDays = $totalDays - $attendedDays;

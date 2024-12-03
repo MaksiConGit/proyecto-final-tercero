@@ -245,7 +245,7 @@
                         {{ $nextExam ? 'Exámen N°' . $nextExam->number . ' de ' . $nextExam->teacherSubject->subject->name . '. Fecha: ' . $nextExam->date : 'No tienes próximos examenes' }}
                     </h5>
                     <p class="card-text">
-                        Profesor: {{ $nextExam->teacherSubject->teacher->name }}
+                        {{$nextExam ? 'Profesor: ' . $nextExam->teacherSubject->teacher->name : '-'}}
                     </p>
                     <a href="javascript:void(0)" class="btn btn-primary">Ver Calendario</a>
                 </div>
