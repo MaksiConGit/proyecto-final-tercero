@@ -148,6 +148,7 @@ class StudentController extends Controller
 
         // Asociar polimórficamente el usuario con el estudiante
         $user->accountable()->associate($student);
+        $user->assignRole('Student');
         $user->save();
 
         return redirect(route('students.index'));

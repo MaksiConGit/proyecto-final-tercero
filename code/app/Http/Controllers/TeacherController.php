@@ -159,6 +159,7 @@ class TeacherController extends Controller
 
         // Asociar polimórficamente el usuario con el estudiante
         $user->accountable()->associate($teacher);
+        $user->assignRole('Teacher');
         $user->save();
 
         return redirect(route('teachers.index'));
