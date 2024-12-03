@@ -195,7 +195,7 @@
                                 <h4>{{$principal->name}}, {{$principal->lastname}}</h4>
                                 <p class="text-muted mb-0">{{$principal->email}}</p>
                                 @foreach ($principal->institutionPrincipals as $institutionPrincipal)
-                                <a href="{{ route('institutions.show', [$institutionPrincipal->institution]) }}"><span class="badge bg-primary mt-2">{{$institution->name}}</span></a>
+                                <a href="{{ route('institutions.show', [$institutionPrincipal->institution]) }}"><span class="badge bg-primary mt-2">{{$institutionPrincipal->institution->name}}</span></a>
                                 @endforeach
                             </div>
                         </div>
