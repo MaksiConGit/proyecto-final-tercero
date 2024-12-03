@@ -6,9 +6,25 @@ use App\Http\Requests\StoreCareerRequest;
 use App\Models\Career;
 use App\Models\Institution;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class CareerController extends Controller
+class CareerController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            // Middleware para permisos específicos
+            new Middleware('can:careers.create', only: ['create', 'store']),
+            new Middleware('can:careers.edit', only: ['edit', 'update']),
+            new Middleware('can:careers.delete', only: ['destroy']),
+        ];
+    }
+
     public function index(){
         $careers = Career::all();
         $trashed = Career::onlyTrashed()->get();
