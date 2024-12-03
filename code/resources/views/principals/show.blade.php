@@ -152,13 +152,13 @@
               <div data-i18n="Basic">Estudiantes</div>
           </a>
       </li>
-      <li class="menu-item active">
+      <li class="menu-item">
           <a href="{{ route('teachers.index') }}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-chalkboard"></i>
               <div data-i18n="Basic">Profesores</div>
           </a>
       </li>
-      <li class="menu-item">
+      <li class="menu-item active">
           <a href="{{ route('principals.index') }}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-user-circle"></i>
               <div data-i18n="Basic">Directivos</div>
@@ -175,7 +175,7 @@
     <x-slot name="titulo">Detalles del Profesor</x-slot>
     <div class="container-xxl flex-grow-1 container">
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light"><a href="{{ route('teachers.index', [$teacher]) }}">Profesores /</a></span> Detalles
+            <span class="text-muted fw-light"><a href="{{ route('principals.index', [$principal]) }}">Directivos /</a></span> Detalles
         </h4>
   
         <div class="row">
@@ -192,10 +192,10 @@
                                 width="100"
                             />
                             <div>
-                                <h4>{{$teacher->name}}, {{$teacher->lastname}}</h4>
-                                <p class="text-muted mb-0">{{$teacher->email}}</p>
-                                @foreach ($teacher->courses as $course)
-                                <a href="{{ route('courses.show', [$course]) }}"><span class="badge bg-primary mt-2">{{$course->course_number}}°{{$course->section}}</span></a>
+                                <h4>{{$principal->name}}, {{$principal->lastname}}</h4>
+                                <p class="text-muted mb-0">{{$principal->email}}</p>
+                                @foreach ($principal->institutionPrincipals as $institutionPrincipal)
+                                <a href="{{ route('institutions.show', [$institutionPrincipal->institution]) }}"><span class="badge bg-primary mt-2">{{$institutionPrincipal->institution->name}}</span></a>
                                 @endforeach
                             </div>
                         </div>
@@ -206,8 +206,8 @@
                           <div class="mb-3 col-md-6">
                             <label class="form-label fw-bold text-primary">Usuario</label>
                             <p class="form-control-plaintext text-dark">
-                              @if ($teacher->user)
-                                <a href="{{ route('users.show', [$teacher->user]) }}">{{$teacher->user->name}}</a>
+                              @if ($principal->user)
+                                <a href="{{ route('users.show', [$principal->user]) }}">{{$principal->user->name}}</a>
                               @else
                                 <a href="{{ route('users.create') }}">Crear usuario</a>
                               @endif
@@ -215,56 +215,59 @@
                           </div>
                             <div class="mb-3 col-md-6">
                                 <label class="form-label fw-bold text-primary">Rol</label>
-                                <br>
-                                <p class="card-text mb-0">
-                                    @if ($teacher->user->getRoleNames()->isNotEmpty())
-                                    <span class="badge me-1
-                                    @if($teacher->user->getRoleNames()->first() == 'Admin') bg-label-danger 
-                                    @elseif($teacher->user->getRoleNames()->first() == 'Principal') bg-label-primary 
-                                    @elseif($teacher->user->getRoleNames()->first() == 'Teacher') bg-label-warning 
-                                    @elseif($teacher->user->getRoleNames()->first() == 'Student') bg-label-info 
-                                    @else bg-label-secondary
-                                    @endif">
-                                    {{$teacher->user->getRoleNames()->first()}}</span>
+                                <br>      
+                              <p class="card-text mb-0">
+                                @if ($principal->user)
+                                    @if ($principal->user->getRoleNames()->isNotEmpty())
+                                        <span class="badge me-1
+                                        @if($principal->user->getRoleNames()->first() == 'Admin') bg-label-danger 
+                                        @elseif($principal->user->getRoleNames()->first() == 'Principal') bg-label-primary 
+                                        @elseif($principal->user->getRoleNames()->first() == 'Teacher') bg-label-warning 
+                                        @elseif($principal->user->getRoleNames()->first() == 'Student') bg-label-info 
+                                        @else bg-label-secondary
+                                        @endif">
+                                        {{$principal->user->getRoleNames()->first()}}</span>
                                     @else 
-                                    <span class="badge me-1 bg-label-secondary">Rol no asignado</span>
+                                        <span class="badge me-1 bg-label-secondary">Rol no asignado</span>
                                     @endif
-  
-                              </p>
+                                @else
+                                    <span class="badge me-1 bg-label-secondary">Rol no asignado</span>
+                                @endif
+                            </p>            
                             </div>
                             <div class="mb-3 col-md-6">
                               <label class="form-label fw-bold text-primary">DNI</label>
-                              <p class="form-control-plaintext text-dark">{{$teacher->dni}}</p>
+                              <p class="form-control-plaintext text-dark">{{$principal->dni}}</p>
                             </div>
                             <div class="mb-3 col-md-6">
                               <label class="form-label fw-bold text-primary">Teléfono</label>
-                              <p class="form-control-plaintext text-dark">{{$teacher->phone}}</p>
+                              <p class="form-control-plaintext text-dark">{{$principal->phone}}</p>
                             </div>
                             <div class="mb-3 col-md-6">
                               <label class="form-label fw-bold text-primary">Fecha de nacimiento</label>
-                              <p class="form-control-plaintext text-dark">{{$teacher->birthdate}}</p>
+                              <p class="form-control-plaintext text-dark">{{$principal->birthdate}}</p>
                             </div>
                             <div class="mb-3 col-md-6">
                               <label class="form-label fw-bold text-primary">Ciudad</label>
-                              <p class="form-control-plaintext text-dark">{{$teacher->city->name}}</p>
+                              <p class="form-control-plaintext text-dark">{{$principal->city->name}}</p>
                             </div>
                             <div class="mb-3 col-md-6">
                               <label class="form-label fw-bold text-primary">Fecha de Registro</label>
-                              <p class="form-control-plaintext text-dark">{{$teacher->created_at}}</p>
+                              <p class="form-control-plaintext text-dark">{{$principal->created_at}}</p>
                           </div>
                         </div>
                         <div class="mt-2 d-flex gap-3">
-                            <form method="POST" action="{{ route('teachers.destroy', [$teacher]) }}" class="m-0">
+                            <form method="POST" action="{{ route('principals.destroy', [$principal]) }}" class="m-0">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{ route('teachers.edit', [$teacher]) }}" class="btn btn-primary">Editar</a>
+                                <a href="{{ route('principals.edit', [$principal]) }}" class="btn btn-primary">Editar</a>
                                 <a href="" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalToggle">Eliminar</a>
                                 <x-modal_template_delete>
-                                    <x-slot name="titulo">¿Estás seguro que quiere ELIMINAR este alumno?</x-slot>
-                                    <x-slot name="contenido">Los datos NO pordrán modificar más adelante.</x-slot>
+                                    <x-slot name="titulo">¿Estás seguro que quiere ELIMINAR este directivo?</x-slot>
+                                    <x-slot name="contenido">Los datos NO podrán modificar más adelante.</x-slot>
                                 </x-modal_template_delete>
                             </form>
-                            {{-- <a href="{{ route('users.index', [$teacher]) }}" class="btn btn-secondary">Volver</a> --}}
+                            {{-- <a href="{{ route('users.index', [$principal]) }}" class="btn btn-secondary">Volver</a> --}}
                         </div>
                     </div>
                 </div>
@@ -293,7 +296,51 @@
             </div>
         </div>
         <x-acordion>
-          <x-slot name="numero">2</x-slot>
+            <x-slot name="numero">2</x-slot>
+            <x-slot name="titulo">Carreras</x-slot>
+            <x-slot name="body">
+    
+                <x-table>
+                    <x-slot name="table_head">
+                        <thead>
+                            <tr>
+                                <th>Institución</th>
+                                <th>Nombre</th>
+                                <th>Cantidad de alumnos</th>
+                                <th></th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                    </x-slot>
+    
+                    <x-slot name="table_body">
+                        <tbody class="table-borde-bottom-0">
+                          @foreach ($principal->institutionPrincipals as $institutionPrincipal)
+  
+                              @foreach ($institutionPrincipal->institution->careers as $career)
+  
+                                    <x-table-item>
+                                        <x-slot name="fila_url">{{ route('careers.show', [$career->id]) }}</x-slot>
+                                        <x-slot name="nombre">{{ $career->institution->name }}</x-slot>
+                                        <x-slot name="apellido">{{ $career->name }}</x-slot>
+                                        <x-slot name="usuario">{{ count($career->students) }}</x-slot>
+                                        <x-slot name="rol"></x-slot>
+                                        <x-slot name="editar_url">{{ route('careers.edit', [$career->id]) }}</x-slot>
+                                    </x-table-item>
+  
+                              @endforeach
+                               
+                          @endforeach
+  
+                        </tbody>
+                    </x-slot>
+                </x-table>
+    
+            </x-slot>
+    
+        </x-acordion>
+        <x-acordion>
+          <x-slot name="numero">3</x-slot>
           <x-slot name="titulo">Cursos</x-slot>
           <x-slot name="body">
   
@@ -312,17 +359,25 @@
   
                   <x-slot name="table_body">
                       <tbody class="table-borde-bottom-0">
-  
-                          @foreach ($teacher->courses as $course)
-                              <x-table-item>
-                                  <x-slot name="fila_url">{{ route('courses.show', [$course->id]) }}</x-slot>
-                                  <x-slot name="nombre">{{ $course->course_number }}</x-slot>
-                                  <x-slot name="apellido">{{ $course->section }}</x-slot>
-                                  <x-slot name="usuario">{{ $course->career->name }}</x-slot>
-                                  <x-slot name="rol"></x-slot>
-                                  <x-slot name="editar_url">{{ route('courses.edit', [$course->id]) }}</x-slot>
-                              </x-table-item>
-                          @endforeach
+                        @foreach ($principal->institutionPrincipals as $institutionPrincipal)
+
+                            @foreach ($institutionPrincipal->institution->careers as $career)
+
+                                @foreach ($career->courses as $course)
+                                    <x-table-item>
+                                        <x-slot name="fila_url">{{ route('courses.show', [$course->id]) }}</x-slot>
+                                        <x-slot name="nombre">{{ $course->course_number }}</x-slot>
+                                        <x-slot name="apellido">{{ $course->section }}</x-slot>
+                                        <x-slot name="usuario">{{ $course->career->name }}</x-slot>
+                                        <x-slot name="rol"></x-slot>
+                                        <x-slot name="editar_url">{{ route('courses.edit', [$course->id]) }}</x-slot>
+                                    </x-table-item>
+                                @endforeach
+
+                            @endforeach
+                             
+                        @endforeach
+
                       </tbody>
                   </x-slot>
               </x-table>
@@ -330,69 +385,11 @@
           </x-slot>
   
       </x-acordion>
-  
-      <x-acordion>
-          <x-slot name="numero">3</x-slot>
-          <x-slot name="titulo">Exámenes</x-slot>
-          <x-slot name="body">
-  
-              <x-table>
-                  <x-slot name="table_head">
-                      <thead>
-                          <tr>
-                              <th>Exámen</th>
-                              <th>Materia</th>
-                              <th>Fecha</th>
-                              <th>Cursos</th>
-                              <th>Acciones</th>
-                          </tr>
-                      </thead>
-                  </x-slot>
-  
-                  <x-slot name="table_body">
-                      <tbody class="table-borde-bottom-0">
-                          @foreach ($exams as $exam)
-                                <tr onclick="if(!event.target.closest('.dropdown') && !event.target.closest('.avatar a')) { window.location.href='{{ route('exams.show', [$exam->id]) }}'; }" style="cursor: pointer;">
-                                <td><strong>N°{{$exam->number}}</strong></td>
-                                <td>{{ $exam->teacherSubject->subject->name }}</td>
-                                <td>{{ $exam->date }}</td>
-                                <td>
-                                    <span class="badge bg-label-primary me-1">
-                                        @if ($exam->courses->isEmpty())
-                                            Sin curso asignado
-                                        @else
-                                            @foreach ($exam->courses as $course)
-                                                @if ($course)
-                                                    {{$course->course_number}}°{{$course->section}}
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    </span>                 
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{ route('exams.edit', [$exam->id]) }}"><i class="bx bx-edit-alt me-1"></i> Editar</a>
-                                            {{-- <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Quitar profesor</a> --}}
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                          @endforeach
-                      </tbody>
-                  </x-slot>
-              </x-table>
-  
-          </x-slot>
-  
-      </x-acordion>
+
     </div>
     <x-floating-icon>
-        <x-slot name="url">{{ route('teachers.create') }}</x-slot>
-        <x-slot name="texto">Profesor +</x-slot>
+        <x-slot name="url">{{ route('principals.create') }}</x-slot>
+        <x-slot name="texto">Directivo +</x-slot>
     </x-floating-icon>
   </x-template-layout>
   

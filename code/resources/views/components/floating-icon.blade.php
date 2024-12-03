@@ -3,6 +3,6 @@
     <a        
         href="{{$url}}"
         class="btn btn-primary btn-buy-now"
-        >+</a
+        >{{$texto}}</a
     >
 </div>

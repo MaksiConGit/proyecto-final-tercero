@@ -1,6 +1,12 @@
-<footer class="content-footer footer bg-footer-theme">
+<footer class="content-footer footer bg-footer-theme d-flex">
     <div class="container-xxl d-flex flex-wrap justify-content-center py-2 flex-md-row flex-column">
-        <div class="mb-2 mb-md-0">©<script>document.write(new Date().getFullYear());</script>, hecho con ❤️ por <a href="https://github.com/MaksiConGit/proyecto-final-tercero" target="_blank" class="footer-link fw-bolder">Team San Nicolás</a>
-        </div>
+    <div class="mb-2 mb-md-0">
+        ©
+        <script>
+        document.write(new Date().getFullYear());
+        </script>
+        , hecho con ❤️ por
+        <a href="https://github.com/MaksiConGit/proyecto-final-tercero" target="_blank" class="footer-link fw-bolder">Team San Nicolás</a>
+    </div>
     </div>
 </footer>
