@@ -254,7 +254,8 @@
                         </div>
                       </div>
                       <div class="mt-2 d-flex gap-3">
-                          <form method="POST" action="{{ route('students.destroy', [$student]) }}" class="m-0">
+                        @can('students.destroy')
+                            <form method="POST" action="{{ route('students.destroy', [$student]) }}" class="m-0">
                               @csrf
                               @method('DELETE')
                               <a href="{{ route('students.edit', [$student]) }}" class="btn btn-primary">Editar</a>
@@ -263,8 +264,9 @@
                                   <x-slot name="titulo">¿Estás seguro que quiere ELIMINAR este alumno?</x-slot>
                                   <x-slot name="contenido">Los datos NO pordrán modificar más adelante.</x-slot>
                               </x-modal_template_delete>
-                          </form>
-                          {{-- <a href="{{ route('users.index', [$student]) }}" class="btn btn-secondary">Volver</a> --}}
+                            </form>
+                        @endcan
+                          
                       </div>
                   </div>
               </div>
@@ -407,4 +409,8 @@
 
     </x-acordion>
   </div>
+  <x-floating-icon>
+    <x-slot name="url">{{ route('students.create') }}</x-slot>
+    <x-slot name="texto">Estudiante +</x-slot>
+</x-floating-icon>
 </x-template-layout>
