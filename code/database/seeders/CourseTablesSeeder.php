@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Course;
 use App\Models\Exam;
-use App\Models\Institution;
-use App\Models\Principal;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Teacher;
@@ -36,10 +34,6 @@ class CourseTablesSeeder extends Seeder
             DB::table('course_exams')->insert([
                 'course_id' => Course::all()->random()->id,
                 'exam_id' => Exam::all()->random()->id,
-            ]);
-            DB::table('institution_principals')->insert([
-                'institution_id' => Institution::all()->random()->id,
-                'principal_id' => Principal::all()->random()->id,
             ]);
         }
     }
