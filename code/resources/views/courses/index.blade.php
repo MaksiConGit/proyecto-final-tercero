@@ -174,7 +174,10 @@
 
     </x-slot>
     <div class="container">
-
+        <h4 class="fw-bold py-3 mb-4">
+            {{-- <span class="text-muted fw-light">Estudiantes /</span> Editar Examen --}}
+            Cursos
+        </h4>
         <div class="row">
             @foreach ($courses as $course)
                 <div class="col-md-2 mb-4">

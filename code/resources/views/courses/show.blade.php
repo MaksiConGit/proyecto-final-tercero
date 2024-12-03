@@ -176,6 +176,12 @@
 
     <div class="container">
 
+        <h4 class="fw-bold py-3 mb-4">
+            <span class="text-muted fw-light">
+                <a href="{{ route('courses.index', [$course]) }}">Cursos /</a>
+            </span> Detalles
+        </h4>
+
         <x-icon-dropdown>
             <x-slot name="titulo">{{$course->course_number}}°{{$course->section}}</x-slot>
             <x-slot name="subtitulo"><p class="mb-4" style="white-space: nowrap;">{{$course->career->name}}</p></x-slot>

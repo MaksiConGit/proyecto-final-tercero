@@ -174,6 +174,12 @@
 
     </x-slot>
     <div class="container">
+        <h4 class="fw-bold py-3 mb-4">
+            <span class="text-muted fw-light">
+                <a href="{{ route('courses.index', [$course]) }}">Cursos /</a>
+                <a href="{{ route('courses.show', [$course]) }}">Detalles /</a>
+            </span> Editar
+        </h4>
         <x-form-horizontal-icon>
             <x-slot name="titulo">Editar curso</x-slot>
             <x-slot name="action">{{route('courses.update', $course)}}</x-slot>
@@ -220,7 +226,7 @@
                     <x-slot name="contenido">Los datos se podrán modificar más adelante.</x-slot>
                 </x-modal_template>
             </x-slot>
-            <x-slot name="volver_url">{{route('courses.index')}}</x-slot>
+            <x-slot name="volver_url">{{ route('courses.show', [$course]) }}</x-slot>
         </x-form-horizontal-icon>
         @if ($errors->any())
         <ul>
