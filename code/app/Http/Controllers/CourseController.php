@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCourseRequest;
 use App\Models\Career;
 use App\Models\Course;
+use App\Models\Institution;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -32,8 +33,9 @@ class CourseController extends Controller implements HasMiddleware
     }
 
     public function create(){
+        $institutions = Institution::all();
         $careers = Career::all();
-        return view ('courses.create', compact('careers'));
+        return view ('courses.create', compact('careers', 'institutions'));
     }
 
     public function store(StoreCourseRequest $request){
@@ -46,8 +48,9 @@ class CourseController extends Controller implements HasMiddleware
     }
 
     public function edit(Course $course){
+        $institutions = Institution::all();
         $careers = Career::all();
-        return view ('courses.edit', compact('course', 'careers'));
+        return view ('courses.edit', compact('course', 'careers', 'institutions'));
     }
 
     public function update(Request $request ,Course $course){
