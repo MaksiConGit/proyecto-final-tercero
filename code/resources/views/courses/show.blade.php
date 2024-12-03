@@ -1,5 +1,5 @@
 <x-template-layout>
-    <x-slot name="titulo">Detalles del Estudiante</x-slot>
+    <x-slot name="titulo">Detalles del Curso</x-slot>
     <x-slot name="li">
         <li class="menu-item">
             <a href="{{ route('dashboard') }}" class="menu-link">
