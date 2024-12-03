@@ -8,9 +8,24 @@ use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\TeacherSubject;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class ExamController extends Controller
+class ExamController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            // Middleware para permisos específicos
+            new Middleware('can:exams.create', only: ['create', 'store']),
+            new Middleware('can:exams.edit', only: ['edit', 'update']),
+            new Middleware('can:exams.delete', only: ['destroy']),
+        ];
+    }
     public function index()
     {
         $exams = Exam::all();
