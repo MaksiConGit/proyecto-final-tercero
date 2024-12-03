@@ -26,7 +26,7 @@ class GradeController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        echo 'Notas';
+        return view('grades.index');
     }
 
     /**
@@ -34,7 +34,7 @@ class GradeController extends Controller implements HasMiddleware
      */
     public function create()
     {
-        //
+        return view('grades.create');
     }
 
     /**
@@ -42,13 +42,31 @@ class GradeController extends Controller implements HasMiddleware
      */
     public function store(Request $request)
     {
-        //
+
+        // Valida los datos
+        $validatedData = $request->validate([
+            'exam' => 'required|exists:exams,id',
+            'grades' => 'required|array',
+            'grades.*.student_id' => 'required|exists:students,id',
+            'grades.*.grade' => 'required|numeric|min:0|max:10',
+        ]);
+
+        // Iterar sobre los datos de las notas y guardar en la base de datos
+        foreach ($validatedData['grades'] as $gradeData) {
+            Grade::create([
+                'exam_id' => $validatedData['exam'], // ID del examen
+                'student_id' => $gradeData['student_id'], // ID del estudiante
+                'grade' => $gradeData['grade'], // Nota
+            ]);
+        }
+
+        return redirect(route('grades.index'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Grade $grade)
     {
         //
     }
@@ -56,7 +74,7 @@ class GradeController extends Controller implements HasMiddleware
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Grade $grade)
     {
         //
     }
@@ -64,7 +82,7 @@ class GradeController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Grade $grade)
     {
         //
     }
@@ -72,7 +90,7 @@ class GradeController extends Controller implements HasMiddleware
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Grade $grade)
     {
         //
     }
