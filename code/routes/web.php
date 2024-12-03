@@ -5,6 +5,7 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ProfileController;
@@ -76,3 +77,4 @@ Route::get('/redirect/{user}', function (App\Models\User $user) {
     abort(404, 'Tipo de cuenta no reconocido.');
 })->name('accountable.redirect');
 
+Route::resource('grades', GradeController::class)->names('grades');
