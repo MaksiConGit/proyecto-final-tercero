@@ -174,4 +174,46 @@ class PrincipalController extends Controller
         $principal->delete();
         return redirect(route('principals.index'));
     }
+
+    public function createUser(Principal $principal){
+        
+        return view('principals.createUser', compact('principal'));
+
+    }
+
+    public function storeUser(Request $request, Principal $principal) {
+        
+        // Generar un username único
+        $generatedUsername = strtolower(Str::slug(substr($principal->name, 0, 1) . str_replace(' ', '', $principal->lastname)));
+        $username = $generatedUsername;
+        $counter = 1;
+
+        while (User::where('name', $username)->exists()) {
+            $username = $generatedUsername . $counter;
+            $counter++;
+        }
+
+        //Almacenar datos de inicio de sesion para ver email y contraseña sin hashear
+        $password = Str::random(12);
+        DB::table('logindata')->insert([
+            'email' => $request->input('email'),
+            'password' => $password,
+        ]);
+
+        // Crear el usuario relacionado
+        $user = User::create([
+            'name' => $username,
+            'institution_id' => Auth::user()->institution_id,
+            'email' => $request->input('email'),
+            'password' => $password,
+        ]);
+
+        $user->accountable()->associate($principal);
+
+        $user->assignRole('Principal');
+
+        $user->save();
+
+        return redirect(route('principals.index'));
+    }
 }

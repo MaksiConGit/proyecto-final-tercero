@@ -13,42 +13,32 @@
                 <i class="menu-icon tf-icons bx bx-building"></i>
                 <div data-i18n="Layouts">Instituciones</div>
             </a>
-        
+
             @php
                 $user = auth()->user();
                 $institutions = collect();
             @endphp
-        
+
             @if ($user->hasRole('Admin'))
                 @php
                     $institutions = Institution::all();
                 @endphp
-        
             @elseif ($user->hasRole('Principal'))
                 @php
-                    $institutions = $user->accountable->institutionPrincipals
-                                    ->pluck('institution')
-                                    ->unique('id');
+                    $institutions = $user->accountable->institutionPrincipals->pluck('institution')->unique('id');
                 @endphp
-        
             @elseif ($user->hasRole('Teacher'))
                 @php
-                    $institutions = $user->accountable->courses
-                                    ->pluck('career.institution')
-                                    ->unique('id');
+                    $institutions = $user->accountable->courses->pluck('career.institution')->unique('id');
                 @endphp
-        
             @elseif ($user->hasRole('Student'))
                 @php
-                    $institutions = $user->accountable->courses
-                                    ->pluck('career.institution')
-                                    ->unique('id');
+                    $institutions = $user->accountable->courses->pluck('career.institution')->unique('id');
                 @endphp
-        
             @else
                 <p>No tienes acceso a esta sección.</p>
             @endif
-        
+
             <!-- Mostrar instituciones únicas -->
             @if ($institutions->isNotEmpty())
                 <ul class="menu-sub">
@@ -62,7 +52,7 @@
                 </ul>
             @endif
         </li>
-        
+
 
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -79,28 +69,20 @@
                 @php
                     $careers = Career::all();
                 @endphp
-
             @elseif ($user->hasRole('Principal'))
                 @foreach ($user->accountable->institutionPrincipals as $institutionPrincipal)
                     @php
                         $careers = $careers->merge($institutionPrincipal->institution->careers);
                     @endphp
                 @endforeach
-
             @elseif ($user->hasRole('Teacher'))
                 @php
-                    $careers = $user->accountable->courses
-                                ->pluck('career')
-                                ->unique('id');
+                    $careers = $user->accountable->courses->pluck('career')->unique('id');
                 @endphp
-
             @elseif ($user->hasRole('Student'))
                 @php
-                    $careers = $user->accountable->courses
-                                ->pluck('career')
-                                ->unique('id');
+                    $careers = $user->accountable->courses->pluck('career')->unique('id');
                 @endphp
-
             @else
                 <p>No tienes acceso a esta sección.</p>
             @endif
@@ -119,7 +101,7 @@
         </li>
 
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Utilidades</span></li>
-    
+
         <li class="menu-item">
             <a href="{{ route('timetables.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-calendar"></i>
@@ -144,9 +126,9 @@
                 <div data-i18n="Basic">Cursos</div>
             </a>
         </li>
-    
+
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Personas</span></li>
-    
+
         <li class="menu-item">
             <a href="{{ route('students.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
@@ -202,53 +184,31 @@
 
     <div class="container">
         <h4 class="fw-bold py-3 mb-4">
-            Directivos
+            Creacion de usuario para {{$principal->name . " " .$principal->lastname}}
         </h4>
-        <div class="row row-cols-1 row-cols-md-3 g-4">        
-            @foreach ($principals as $principal)
-            <div class="col">
-                <div class="card user-card position-relative">
-                    <a href="{{ route('principals.show', [$principal->id]) }}" class="stretched-link" style="pointer-events: auto;"></a>
-                    <div class="d-flex align-items-center p-3">
-                        <img src="../../template_files/assets/img/elements/12.jpg" alt="User image">
-                        <div class="ms-3">
-                            <h5 class="card-title mb-1">{{ $principal->name }}, {{$principal->lastname}}</h5>
-                            @if ($principal->user)
-                            <a href="{{ route('users.show', [$principal->user]) }}" 
-                               class="btn btn-link internal-link d-inline-block" 
-                               style="pointer-events: auto; position: relative; padding: 0;">
-                                {{$principal->user->name}}
-                            </a>
-                            @else
-                                <a href="{{ route('principals.createUser', $principal) }}" 
-                                class="btn btn-link internal-link d-inline-block text-decoration-none" 
-                                style="pointer-events: auto; position: relative; padding: 0;">
-                                    Crear usuario
-                                </a>
-                            @endif
-                            <p class="card-text mb-0">
-                                @if ($principal->user)
-                                    @if ($principal->user->getRoleNames()->isNotEmpty())
-                                        <span class="badge me-1
-                                        @if($principal->user->getRoleNames()->first() == 'Admin') bg-label-danger 
-                                        @elseif($principal->user->getRoleNames()->first() == 'Principal') bg-label-primary 
-                                        @elseif($principal->user->getRoleNames()->first() == 'Teacher') bg-label-warning 
-                                        @elseif($principal->user->getRoleNames()->first() == 'Student') bg-label-info 
-                                        @else bg-label-secondary
-                                        @endif">
-                                        {{$principal->user->getRoleNames()->first()}}</span>
-                                    @else 
-                                        <span class="badge me-1 bg-label-secondary">Rol no asignado</span>
-                                    @endif
-                                @else
-                                    <span class="badge me-1 bg-label-secondary">Rol no asignado</span>
-                                @endif
-                            </p>                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
+        <div class="">
+            <x-form-horizontal-icon>
+                <x-slot name="titulo">Ingrese su correo</x-slot>
+                <x-slot name="action">{{ route('principals.storeUser', $principal) }}</x-slot>
+                <x-slot name="method"></x-slot>
+                <x-slot name="inputs">
+                    <x-input-email>
+                        <x-slot name="icon">bx bx-buildings</x-slot>
+                        <x-slot name="titulo">Correo Electrónico</x-slot>
+                        <x-slot name="name">email</x-slot>
+                        <x-slot name="placeholder">ejemplo@ejemplo.com</x-slot>
+                        <x-slot name="value">{{ old('email') }}</x-slot>
+                    </x-input-email>
+                </x-slot>
+                <x-slot name="modal">
+                    <x-modal_template>
+                        <x-slot name="titulo">¿Estás seguro que el correo ingresado es el correcto?</x-slot>
+                        <x-slot name="contenido"></x-slot>
+                    </x-modal_template>
+                </x-slot>
+                <x-slot name="volver_url">{{route('principals.index')}}</x-slot>
+            </x-form-horizontal-icon>
+
         </div>
     </div>
     <x-floating-icon>
@@ -256,4 +216,3 @@
         <x-slot name="texto">Directivo +</x-slot>
     </x-floating-icon>
 </x-template-layout>
-
