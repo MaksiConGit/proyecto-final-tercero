@@ -17,13 +17,32 @@ use App\Models\Teacher;
 use App\Models\TeacherSubject;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class PrincipalController extends Controller
+class PrincipalController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            // Middleware para permisos específicos
+            new Middleware('can:principals.create', only: ['create', 'store']),
+            new Middleware('can:principals.edit', only: ['edit', 'update']),
+            new Middleware('can:principals.delete', only: ['destroy']),
+        ];
+    }
+    /**
+     * Display a listing of the resource.
+     */
+
     public function index()
     {
         $user = auth()->user();
