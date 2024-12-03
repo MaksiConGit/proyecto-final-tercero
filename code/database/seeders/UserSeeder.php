@@ -163,7 +163,7 @@ class UserSeeder extends Seeder
             'accountable_id' => '14'
         ])->assignRole('Student');
         User::create([
-            'name' => 'LautaroSuares', //ESTUDIANTE FRAY
+            'name' => 'Lautaro Suares', //ESTUDIANTE FRAY
             'email' => 'Suarez@gmail.com',
             'email_verified_at' => Carbon::yesterday(),
             'password' => '1234',
@@ -172,7 +172,7 @@ class UserSeeder extends Seeder
             'accountable_id' => '15'
         ])->assignRole('Student');
         User::create([
-            'name' => 'JeremiasCasas', //ESTUDIANTE FRAY
+            'name' => 'Jeremias Casas', //ESTUDIANTE FRAY
             'email' => 'CasasJeremias@gmail.com',
             'email_verified_at' => Carbon::yesterday(),
             'password' => '1234',
@@ -181,7 +181,7 @@ class UserSeeder extends Seeder
             'accountable_id' => '16'
         ])->assignRole('Student');
         User::create([
-            'name' => 'DonatoCavallero', //ESTUDIANTE FRAY
+            'name' => 'Donato Cavallero', //ESTUDIANTE FRAY
             'email' => 'Cavallero@gmail.com',
             'email_verified_at' => Carbon::yesterday(),
             'password' => '1234',
@@ -190,7 +190,7 @@ class UserSeeder extends Seeder
             'accountable_id' => '17'
         ])->assignRole('Student');
         User::create([
-            'name' => 'JenaroDominguez', //ESTUDIANTE FRAY
+            'name' => 'Jenaro Dominguez', //ESTUDIANTE FRAY
             'email' => 'DominguezJenaro@gmail.com',
             'email_verified_at' => Carbon::yesterday(),
             'password' => '1234',
@@ -199,7 +199,7 @@ class UserSeeder extends Seeder
             'accountable_id' => '18'
         ])->assignRole('Student');        
         User::create([
-            'name' => 'EmilianoFlores', //ESTUDIANTE FRAY
+            'name' => 'Emiliano Flores', //ESTUDIANTE FRAY
             'email' => 'FloresEmiliano@gmail.com',
             'email_verified_at' => Carbon::yesterday(),
             'password' => '1234',
@@ -208,7 +208,7 @@ class UserSeeder extends Seeder
             'accountable_id' => '19'
         ])->assignRole('Student');
         User::create([
-            'name' => 'JuanGermano', //ESTUDIANTE FRAY
+            'name' => 'Juan Germano', //ESTUDIANTE FRAY
             'email' => 'GermanoJuan@gmail.com',
             'email_verified_at' => Carbon::yesterday(),
             'password' => '1234',
@@ -298,6 +298,189 @@ class UserSeeder extends Seeder
             'accountable_type' => 'App\Models\Student',
             'accountable_id' => '29'
         ])->assignRole('Student');
+        User::create([
+            'name' => 'Geronimo Aguirre', //ESTUDIANTE SAN PABLO
+            'email' => 'AguirreGeronimo@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '30'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Mateo Bazan', //ESTUDIANTE SAN PABLO
+            'email' => 'BazanMateo@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '31'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Amiel Matias', //ESTUDIANTE SAN PABLO
+            'email' => 'Arrizaga1@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '32'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Elián Santiago', //ESTUDIANTE SAN PABLO
+            'email' => 'Arrizaga2@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '33'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Valentino Ezequiel', //ESTUDIANTE SAN PABLO
+            'email' => 'CejasValentino@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '34'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Valentina Soledad', //ESTUDIANTE SAN PABLO
+            'email' => 'Danti@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '35'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'San Pedro Agustin', //ESTUDIANTE SAN PABLO
+            'email' => 'DeSensi@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '36'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Sntiago', //ESTUDIANTE SAN PABLO
+            'email' => 'Fiore@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '37'
+        ])->assignRole('Student');
+
+        User::create([
+            'name' => 'Darío Flores', //ESTUDIANTE SAN PABLO
+            'email' => 'FloresDario@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '38'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Alejo', //ESTUDIANTE SAN PABLO
+            'email' => 'AlejoHerrera@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '39'
+        ])->assignRole('Student');
+                User::create([
+            'name' => 'Agustin Izarra', //ESTUDIANTE SAN PABLO
+            'email' => 'IzarraAgustin@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '40'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Vital Leandro', //ESTUDIANTE SAN PABLO
+            'email' => 'VitalLongo@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '41'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Sara Meliti', //ESTUDIANTE SAN PABLO
+            'email' => 'MelitiSara@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '42'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Mauricio Rapari', //ESTUDIANTE SAN PABLO
+            'email' => 'Rapari@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '43'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Danilo Gaspar', //ESTUDIANTE SAN PABLO
+            'email' => 'Rinaldi@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '44'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Ignacio Ivo', //ESTUDIANTE SAN PABLO
+            'email' => 'Romero@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '45'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Martín Ezequiel', //ESTUDIANTE SAN PABLO
+            'email' => 'SequiraMartin@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '46'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'NaSa', //ESTUDIANTE SAN PABLO
+            'email' => 'SerraNazareno@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '47'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Alan Gabriel', //ESTUDIANTE SAN PABLO
+            'email' => 'VelazquezAlan@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '48'
+        ])->assignRole('Student');
+        User::create([
+            'name' => 'Nicoloko67', //ESTUDIANTE SAN PABLO
+            'email' => 'VelezNicolas@gmail.com',
+            'email_verified_at' => Carbon::yesterday(),
+            'password' => '1234',
+            'institution_id' => '3',
+            'accountable_type' => 'App\Models\Student',
+            'accountable_id' => '49'
+        ])->assignRole('Student');
+
+
 
 
         User::create([

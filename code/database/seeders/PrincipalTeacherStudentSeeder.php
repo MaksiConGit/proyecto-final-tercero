@@ -323,6 +323,180 @@ class PrincipalTeacherStudentSeeder extends Seeder
             'city_id' => '1',
             'user_id' => '31',
         ]);
+        Student::create([ //STUDENT
+            'name' => 'Geronimo',
+            'lastname' => 'Aguirre',
+            'dni' => '42456980',
+            'phone' => '543364123342',
+            'birthdate' => '2000-08-9',
+            'city_id' => '1',
+            'user_id' => '32',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Mateo',
+            'lastname' => 'Bazán',
+            'dni' => '44854236',
+            'phone' => '543364338865',
+            'birthdate' => '2003-02-05',
+            'city_id' => '1',
+            'user_id' => '33',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Amiel Matías',
+            'lastname' => 'Arizaga',
+            'dni' => '42345678',
+            'phone' => '54336445645',
+            'birthdate' => '2001-05-10',
+            'city_id' => '1',
+            'user_id' => '34',
+        ]);
+
+        Student::create([ //STUDENT
+            'name' => 'Elián Santiago',
+            'lastname' => 'Arizaga',
+            'dni' => '42345679',
+            'phone' => '54336445646',
+            'birthdate' => '2001-05-10',
+            'city_id' => '1',
+            'user_id' => '35',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Valentino Ezequiel',
+            'lastname' => 'Cejas',
+            'dni' => '44009987',
+            'phone' => '543364980001',
+            'birthdate' => '2002-03-08',
+            'city_id' => '1',
+            'user_id' => '36',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Valentina Soledad',
+            'lastname' => 'Danti',
+            'dni' => '44123005',
+            'phone' => '543364889888',
+            'birthdate' => '2002-07-27',
+            'city_id' => '1',
+            'user_id' => '37',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'San Pedro Agustin',
+            'lastname' => 'De Sensi',
+            'dni' => '40567432',
+            'phone' => '543364112211',
+            'birthdate' => '1998-10-19',
+            'city_id' => '1',
+            'user_id' => '38',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Santiago',
+            'lastname' => 'Fiore Croccia',
+            'dni' => '44010044',
+            'phone' => '543364769009',
+            'birthdate' => '2003-03-02',
+            'city_id' => '1',
+            'user_id' => '39',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Darío',
+            'lastname' => 'Flores',
+            'dni' => '38456009',
+            'phone' => '543364566556',
+            'birthdate' => '1995-08-20',
+            'city_id' => '1',
+            'user_id' => '40',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Alejo',
+            'lastname' => 'Herrera Córdoba',
+            'dni' => '41654234',
+            'phone' => '543364223332',
+            'birthdate' => '2000-10-15',
+            'city_id' => '1',
+            'user_id' => '41',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Agustín',
+            'lastname' => 'Izarra',
+            'dni' => '41334433',
+            'phone' => '543364990908',
+            'birthdate' => '1995-04-30',
+            'city_id' => '1',
+            'user_id' => '42',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Vital Leandro',
+            'lastname' => 'Longo',
+            'dni' => '38456999',
+            'phone' => '543364226644',
+            'birthdate' => '1997-08-22',
+            'city_id' => '1',
+            'user_id' => '43',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Sara',
+            'lastname' => 'Meliti',
+            'dni' => '43456009',
+            'phone' => '543364565446',
+            'birthdate' => '2001-08-26',
+            'city_id' => '1',
+            'user_id' => '44',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Mauricio',
+            'lastname' => 'Rapari',
+            'dni' => '37454409',
+            'phone' => '543364533246',
+            'birthdate' => '1993-08-07',
+            'city_id' => '1',
+            'user_id' => '45',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Danilo',
+            'lastname' => 'Rinaldi Gaspar',
+            'dni' => '40998870',
+            'phone' => '543364565111',
+            'birthdate' => '2000-01-26',
+            'city_id' => '1',
+            'user_id' => '46',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Ivo Ignacio',
+            'lastname' => 'Romero',
+            'dni' => '43989004',
+            'phone' => '543364766444',
+            'birthdate' => '2002-08-21',
+            'city_id' => '1',
+            'user_id' => '47',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Martin Ezequiel',
+            'lastname' => 'Sequira',
+            'dni' => '424560129',
+            'phone' => '543364555667',
+            'birthdate' => '2000-08-26',
+            'city_id' => '1',
+            'user_id' => '48',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Nazareno',
+            'lastname' => 'Serra',
+            'dni' => '43567203',
+            'phone' => '5433641010101',
+            'birthdate' => '2002-04-19',
+            'city_id' => '1',
+            'user_id' => '49',
+        ]);
+        Student::create([ //STUDENT
+            'name' => 'Nicolas',
+            'lastname' => 'Velez',
+            'dni' => '44867204',
+            'phone' => '543364332230',
+            'birthdate' => '2003-01-24',
+            'city_id' => '1',
+            'user_id' => '51',
+        ]);
+
+
         
 
         Teacher::create([ //TEACHER
