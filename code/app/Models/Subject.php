@@ -22,4 +22,17 @@ class Subject extends Model
         return $this->hasMany(CourseSubject::class);
     }
 
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
+
+    public function timeSlots()
+    {
+        return $this->hasMany(Time_slot::class);
+    }
+
+
+
+
 }
