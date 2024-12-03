@@ -4,6 +4,7 @@ use App\Http\Controllers\AttendanceRecordController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ProfileController;
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -69,3 +73,4 @@ Route::get('/redirect/{user}', function (App\Models\User $user) {
 
     abort(404, 'Tipo de cuenta no reconocido.');
 })->name('accountable.redirect');
+
