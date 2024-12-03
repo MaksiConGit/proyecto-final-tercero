@@ -27,7 +27,7 @@
         }
     </style>
 
-<x-slot name="titulo">Materias</x-slot>
+<x-slot name="titulo">Usuarios</x-slot>
 <x-slot name="li">
     <li class="menu-item">
         <a href="{{ route('dashboard') }}" class="menu-link">
