@@ -55,9 +55,10 @@
         
 
     </div>
-
+    @can('subjects.create')    
     <x-floating-icon>
         <x-slot name="url">{{route('subjects.create')}}</x-slot>
     </x-floating-icon>
+    @endcan
 </x-template-layout>
 
