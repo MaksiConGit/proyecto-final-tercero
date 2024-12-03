@@ -28,14 +28,48 @@ class Country_Province_CitySeeder extends Seeder
             'name' => 'Brazil', //PAIS
         ]);
         Country::create([
-            'name' => 'Peru', //PAIS
+            'name' => 'Perú', //PAIS
         ]);
         Country::create([
             'name' => 'Chile', //PAIS
         ]);
         Country::create([
+            'name' => 'Mexico', //PAIS
+        ]);
+        Country::create([
+            'name' => 'España', //PAIS
+        ]);
+        Country::create([
             'name' => 'Bolivia', //PAIS
         ]);
+        Country::create([
+            'name' => 'Colombia', //PAIS
+        ]);
+        Country::create([
+            'name' => 'Panamá', //PAIS
+        ]);
+        Country::create([
+            'name' => 'Venezuela', //PAIS
+        ]);
+        Country::create([
+            'name' => 'Guatemala', //PAIS
+        ]);
+        Country::create([
+            'name' => 'Ecuador', //PAIS
+        ]);
+        Country::create([
+            'name' => 'Costa Rica', //PAIS
+        ]);
+        Country::create([
+            'name' => 'El Salvador', //PAIS
+        ]);
+        Country::create([
+            'name' => 'Nicaragua', //PAIS
+        ]);
+        Country::create([
+            'name' => 'Honduras', //PAIS
+        ]);
+
         Province::create([
             'name' => 'Buenos Aires', //PROVINCIA ARGENTINA
             'country_id' => '1',
@@ -189,6 +223,10 @@ class Country_Province_CitySeeder extends Seeder
         City::create([
             'name' => 'Comodoro Rivadavia', //CIUDAD ARGENTINA
             'province_id' => '21',
+        ]);
+        City::create([
+            'name' => 'Mar del Plata', //CIUDAD ARGENTINA
+            'province_id' => '1',
         ]);
         // Country::factory(10)->create();
         Province::factory(10)->create();
