@@ -96,7 +96,7 @@
                                                                 <x-slot name="usuario_url">{{ route('users.edit', [$teacher->user->id]) }}</x-slot>
                                                             </x-td-user>
                                                         </x-slot>
-                                                        <x-slot name="rol">{{ $teacher->user->role->name }}</x-slot>
+                                                        <x-slot name="rol"></x-slot>
                                                         <x-slot name="editar_url">{{ route('teachers.edit', [$teacher->id]) }}</x-slot>
                                                     </x-table-item>
                                                 @endif
@@ -142,12 +142,9 @@
                                         <x-slot name="nombre">{{ $student->name }}</x-slot>
                                         <x-slot name="apellido">{{ $student->lastname }}</x-slot>
                                         <x-slot name="usuario">
-                                            <x-td-user>
-                                                <x-slot name="nombre_usuario">{{ $student->user->name }}</x-slot>
-                                                <x-slot name="usuario_url">{{ route('users.edit', [$student->user->id]) }}</x-slot>
-                                            </x-td-user>
+
                                         </x-slot>
-                                        <x-slot name="rol">{{ $student->user->role->name }}</x-slot>
+                                        <x-slot name="rol"></x-slot>
                                         <x-slot name="editar_url">{{ route('teachers.edit', [$student->id]) }}</x-slot>
                                     </x-table-item>
                                 @endforeach

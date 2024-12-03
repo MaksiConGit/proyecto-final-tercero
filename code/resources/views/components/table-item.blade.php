@@ -1,7 +1,7 @@
 <tr onclick="if(!event.target.closest('.dropdown') && !event.target.closest('.avatar a')) { window.location.href='{{$fila_url}}'; }" style="cursor: pointer;">
     <td><strong>{{$nombre}}</strong></td>
     <td>{{$apellido}}</td>
-    {{$usuario}}
+    <td>{{$usuario}}</td>
     <td><span class="badge bg-label-primary me-1">{{$rol}}</span></td>
     <td>
         <div class="dropdown">

@@ -14,4 +14,9 @@ class Principal extends Model
     {
         return $this->morphOne(User::class, 'accountable');
     }
+
+    public function institutionPrincipals(){
+        return $this->hasMany(InstitutionPrincipal::class);
+    }
+
 }

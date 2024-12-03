@@ -1,12 +1,18 @@
 <?php
 
+use App\Http\Controllers\AttendanceRecordController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\InstitutionController;
+use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TimetableController;
+use App\Models\AttendanceRecord;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,15 +35,26 @@ Route::resource('users', UserController::class)->names('users');
 
 require __DIR__ . '/auth.php';
 
-Route::resource('subjects', SubjectController::class)->names('subjects');
+Route::resource('subjects', SubjectController::class)
+    ->names('subjects');
 
 Route::resource('careers', CareerController::class)->names('careers');
+
+Route::resource('institutions', InstitutionController::class)->names('institutions');
 
 Route::resource('teachers', TeacherController::class)->names('teachers');
 
 Route::resource('courses', CourseController::class)->names('courses');
 
 Route::resource('exams', ExamController::class)->names('exams');
+
+Route::resource('timetables', TimetableController::class)->names('timetables');
+
+Route::resource('students', StudentController::class)->names('students');
+
+Route::resource('principals', PrincipalController::class)->names('principals');
+
+Route::resource('attendance_records', AttendanceRecordController::class)->names('attendance_records');
 
 Route::get('/redirect/{user}', function (App\Models\User $user) {
     $accountable = $user->accountable;

@@ -13,7 +13,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
-    <title>Materias</title>
+    <title>{{$titulo}}</title>
     <meta name="description" content="" />
     <link rel="icon" type="image/x-icon" href="../../template_files/assets/img/favicon/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="../../template_files/assets/vendor/libs/apex-charts/apex-charts.css" />
     <script src="../../template_files/assets/vendor/js/helpers.js"></script>
     <script src="../../template_files/assets/js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
@@ -37,13 +38,15 @@
 
       <div class="layout-container">
 
-        <x-aside></x-aside>
+        <x-aside>
+          <x-slot name="li">{{$li}}</x-slot>
+        </x-aside>
 
         <div class="layout-page">
 
         <x-navbar></x-navbar>
 
-        <x-breadcrumb></x-breadcrumb>
+        {{-- <x-breadcrumb></x-breadcrumb> --}}
 
         {{ $slot }}
 
@@ -71,5 +74,6 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
   </body>
 </html>
