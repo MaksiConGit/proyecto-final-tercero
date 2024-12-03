@@ -20,7 +20,60 @@ class HomeController extends Controller
         }
 
         if ($user->hasRole('Teacher')) {
-            return view('teachers.index');
+            $teacher = $user->accountable;
+
+            // Cursos y promedio de asistencias de alumnos
+            $courses = $teacher->courseTeachers()->with('course.courseStudents.attendanceRecords')->get();
+            $coursesWithAttendance = $courses->map(function ($courseTeacher) {
+                $courseStudents = $courseTeacher->course->courseStudents;
+                $totalStudents = $courseStudents->count();
+                $totalAttendance = $courseStudents
+                    ->flatMap(function ($student) {
+                        return $student->attendanceRecords->where('has_attended', 1);
+                    })
+                    ->count();
+
+                $attendancePercentage =
+                    $totalStudents > 0
+                        ? round(($totalAttendance / ($totalStudents * 6)) * 100, 2) // Suponiendo 6 días lectivos por curso
+                        : 0;
+
+                return [
+                    'course' => $courseTeacher->course,
+                    'attendance_percentage' => $attendancePercentage,
+                ];
+            });
+
+            // Próximos exámenes
+            $nextExams = $teacher
+                ->teacherSubjects()
+                ->with([
+                    'exams' => function ($query) {
+                        $query->where('date', '>', now())->orderBy('date');
+                    },
+                ])
+                ->get()->flatMap->exams;
+
+            // Materias y cantidad de exámenes
+            $subjectsWithExamCount = $teacher
+                ->teacherSubjects()
+                ->with([
+                    'subject',
+                    'exams' => function ($query) {
+                        $query->where('date', '<=', now()); // Solo exámenes ya tomados
+                    },
+                ])
+                ->get()
+                ->map(function ($teacherSubject) {
+                    $examCount = $teacherSubject->exams->count();
+
+                    return [
+                        'subject' => $teacherSubject->subject,
+                        'exam_count' => $examCount,
+                    ];
+                });
+
+            return view('teachers.home', compact('teacher', 'coursesWithAttendance', 'nextExams', 'subjectsWithExamCount'));
         }
 
         if ($user->hasRole('Student')) {
@@ -31,9 +84,7 @@ class HomeController extends Controller
             // Promedio de asistencia
             $totalDays = 6; // Ejemplo: días lectivos
 
-            $attendedDays = AttendanceRecord::where('course_student_id', $student->courseStudents->pluck('id'))
-                ->where('has_attended', 1)
-                ->count();
+            $attendedDays = AttendanceRecord::where('course_student_id', $student->courseStudents->pluck('id'))->where('has_attended', 1)->count();
             $missedDays = $totalDays - $attendedDays;
             $attendanceAverage = round(($attendedDays / $totalDays) * 100);
             $absenceAverage = round(($missedDays / $totalDays) * 100);
@@ -49,14 +100,7 @@ class HomeController extends Controller
                 ->orderBy('date', 'asc') // El más cercano
                 ->first();
 
-            return view('students.home', compact(
-                'student',
-                'lastExam',
-                'attendanceAverage',
-                'averageGrade',
-                'nextExam',
-                'absenceAverage'
-            ));
+            return view('students.home', compact('student', 'lastExam', 'attendanceAverage', 'averageGrade', 'nextExam', 'absenceAverage'));
         }
 
         //return view('user.home', ['user' => $user]);
