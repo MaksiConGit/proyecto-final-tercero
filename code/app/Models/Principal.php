@@ -33,4 +33,9 @@ class Principal extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function institutions(){
+        return $this->belongsToMany(Institution::class, 'institution_principals');
+
+    }
+
 }

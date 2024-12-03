@@ -225,6 +225,21 @@
                 
                 @livewire('CitySelect')
 
+                <hr>
+                <h5>Asignar Instituciones</h5>
+
+                
+                    @foreach ($institutions as $institution)
+                    <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" name="instituciones[]" value="{{$institution->id}}" id="instituciones[]">
+                        <label class="form-check-label" for="instituciones[]">
+                            {{$institution->name}}
+                        </label>
+                    </div>
+                    @endforeach
+                    
+                
+
             </x-slot>
             <x-slot name="modal">
                 <x-modal_template>

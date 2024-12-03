@@ -10,6 +10,7 @@ use App\Models\City;
 use App\Models\Course;
 use App\Models\Exam;
 use App\Models\Institution;
+use App\Models\InstitutionPrincipal;
 use App\Models\Principal;
 use App\Models\Role;
 use App\Models\Teacher;
@@ -82,12 +83,13 @@ class PrincipalController extends Controller
     public function create()
     {
         $cities = City::all();
-        // $roles = Role::all();
+        $principal = Auth::user()->accountable;
+        $institutions = $principal->institutionPrincipals;
         //Trae todos los registros que no sean nulos de la columna "user_id" de la tabla "teachers" y crea un array de solo la columna "user_id". Entonces trae todos las user_id que si estan asignados.
         $principalsThatHasUser = Teacher::whereNotNull('user_id')->pluck('user_id');
         //Busca las user_id que no estén dentro del array $teachersThatHasUser el cual contiene las user_id ya asignadas, y por descarte, obtengo los user_id que están libres.
         $principalsThatHasNoUser = User::whereNotIn('id', $principalsThatHasUser)->get();
-        return view('principals.create', compact('cities', 'principalsThatHasNoUser'));
+        return view('principals.create', compact('cities', 'principalsThatHasNoUser', 'institutions'));
     }
 
     public function store(StorePrincipalRequest $request)
@@ -124,8 +126,15 @@ class PrincipalController extends Controller
         // Crear el estudiante
         $principal = Principal::create($validatedData);
 
+        // Procesar carreras y cursos seleccionados si existen
+        $selectedinstitutions = $request->input('instituciones');
+
+        // Sincronizar los cursos con el estudiante
+        $principal->institutions()->sync($selectedinstitutions);
+
         // Asociar polimórficamente el usuario con el estudiante
         $user->accountable()->associate($principal);
+
         $user->assignRole('Principal');
 
         $user->save();
