@@ -7,29 +7,41 @@ use App\Http\Requests\UpdateStudentRequest;
 use App\Models\City;
 use App\Models\Exam;
 use App\Models\Institution;
-use App\Models\Role;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class StudentController extends Controller
+class StudentController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            // Middleware para permisos específicos
+            new Middleware('can:students.create', only: ['create', 'store']),
+            new Middleware('can:students.edit', only: ['edit', 'update']),
+            new Middleware('can:students.delete', only: ['destroy']),
+        ];
+    }
+
     public function index()
     {
         $user = auth()->user();
 
         if ($user->hasRole('Admin')) {
             $students = Student::all();
-        }
-
-        elseif ($user->hasRole('Principal')) {
-    
+        } elseif ($user->hasRole('Principal')) {
             // Inicializamos una colección vacía para los estudiantes
             $students = collect();
-        
+
             // Recorrer las instituciones principales relacionadas con el principal
             foreach ($user->accountable->institutionPrincipals as $institutionPrincipal) {
                 if ($institutionPrincipal->institution->career) {
@@ -40,49 +52,42 @@ class StudentController extends Controller
                     }
                 }
             }
-            
+
             $students = $students->unique('id');
-        
-        }
-        
-        elseif ($user->hasRole('Teacher')) {
+        } elseif ($user->hasRole('Teacher')) {
             // Crear una colección vacía para almacenar los estudiantes
             $students = collect();
-            
+
             // Iterar sobre los cursos relacionados con el teacher
             foreach ($user->accountable->courses as $course) {
                 // Acceder a los cursos relacionados
-                
+
                 if ($course) {
                     // Fusionamos los estudiantes del curso
                     $students = $students->merge($course->students);
                 }
             }
-            
+
             // Eliminar estudiantes duplicados por id
             $students = $students->unique('id');
-        }
-
-        elseif ($user->hasRole('Student')) {
+        } elseif ($user->hasRole('Student')) {
             // Crear una colección vacía para almacenar los estudiantes
             $students = collect();
-            
+
             // Acceder a los cursos del estudiante mediante la relación courseStudents
             foreach ($user->accountable->courseStudents as $courseStudent) {
                 // Acceder al curso del estudiante
                 $course = $courseStudent->course;
-                
+
                 if ($course) {
                     // Fusionamos los estudiantes del curso (en este caso, solo el estudiante actual debería estar aquí)
                     $students = $students->merge($course->students);
                 }
             }
-            
+
             // Eliminar duplicados por id (aunque en este caso debería ser solo el estudiante)
             $students = $students->unique('id');
-        }
-
-        else {
+        } else {
             abort(403, 'No tienes permisos para acceder a esta sección.');
         }
 
