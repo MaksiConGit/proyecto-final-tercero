@@ -3,9 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class AttendanceRecordController extends Controller
+class AttendanceRecordController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            // Middleware para permisos específicos
+            new Middleware('can:attendance_records.create', only: ['create', 'store']),
+            new Middleware('can:attendance_records.edit', only: ['edit', 'update']),
+            new Middleware('can:attendance_records.delete', only: ['destroy']),
+        ];
+    }
     /**
      * Display a listing of the resource.
      */
