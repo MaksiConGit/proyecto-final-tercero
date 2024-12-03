@@ -126,6 +126,8 @@ class PrincipalController extends Controller
 
         // Asociar polimórficamente el usuario con el estudiante
         $user->accountable()->associate($principal);
+        $user->assignRole('Principal');
+
         $user->save();
 
         return redirect(route('principals.index'));
