@@ -22,4 +22,9 @@ class Subject extends Model
         return $this->hasMany(CourseSubject::class);
     }
 
+    public function courses() {
+        return $this->belongsToMany(Course::class, 'course_subjects'); // Tabla intermedia
+
+    }
+
 }
